@@ -25,7 +25,7 @@ const SUMMARY = [
 
 const StyledIcon = styled('div', {
   shouldForwardProp: (prop) => prop !== 'color',
-})(({ color, theme }) => ({
+})(({ color, theme }: any) => ({
   width: 160,
   height: 160,
   margin: 'auto',
@@ -34,8 +34,8 @@ const StyledIcon = styled('div', {
   alignItems: 'center',
   position: 'relative',
   justifyContent: 'center',
-  color: theme.palette[color].darker,
-  border: `dashed 2px ${alpha(theme.palette[color].main, 0.24)}`,
+  color: theme.palette[color!].darker,
+  border: `dashed 2px ${alpha(theme.palette[color!].main, 0.24)}`,
   '&:before': {
     zIndex: 8,
     content: '""',
@@ -53,7 +53,7 @@ const StyledIcon = styled('div', {
 // ----------------------------------------------------------------------
 
 export default function MarketingAbout() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   return (
     <Container
@@ -123,7 +123,7 @@ export default function MarketingAbout() {
               <CountUp
                 start={value.total / 5}
                 end={value.total}
-                formattingFn={(newValue) => fShortenNumber(newValue)}
+                formattingFn={(newValue: any) => fShortenNumber(newValue)}
               />
             </Typography>
 

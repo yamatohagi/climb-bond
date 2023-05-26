@@ -22,7 +22,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function MarketingLandingHero() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   return (
     <StyledRoot>

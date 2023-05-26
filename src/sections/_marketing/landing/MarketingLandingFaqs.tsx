@@ -20,7 +20,7 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function MarketingLandingFaqs() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   const [expanded, setExpanded] = useState(false);
 

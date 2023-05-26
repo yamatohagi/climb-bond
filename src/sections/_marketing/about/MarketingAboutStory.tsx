@@ -45,7 +45,7 @@ const COLORS = ['primary', 'secondary', 'warning', 'success'];
 // ----------------------------------------------------------------------
 
 export default function MarketingAboutStory() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   return (
     <Box
@@ -82,7 +82,7 @@ export default function MarketingAboutStory() {
               }}
             >
               <TimelineSeparator>
-                <TimelineDot color={COLORS[index]} />
+                <TimelineDot color={COLORS[index] as any} />
                 <TimelineConnector />
               </TimelineSeparator>
 

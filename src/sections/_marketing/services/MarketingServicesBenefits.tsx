@@ -44,7 +44,7 @@ const BENEFITS = [
 // ----------------------------------------------------------------------
 
 export default function MarketingServicesBenefits() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   return (
     <Box

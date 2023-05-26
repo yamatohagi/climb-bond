@@ -26,7 +26,7 @@ export default function RHFSlider({ name, helperText, ...other }: any) {
   );
 }
 
-RHFSlider.propTypes = {
-  name: PropTypes.string,
-  helperText: PropTypes.node,
-};
+// RHFSlider.propTypes = {
+//   name: PropTypes.string,
+//   helperText: PropTypes.node,
+// };

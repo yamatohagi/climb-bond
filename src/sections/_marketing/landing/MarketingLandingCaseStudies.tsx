@@ -43,7 +43,7 @@ const StyledOverlay = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function MarketingLandingCaseStudies({ caseStudies }: any) {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   return (
     <Container
@@ -236,7 +236,7 @@ function SmallItem({ caseStudy, isSquare, isMdUp }: any) {
 
         <StyledOverlay />
 
-        <m.div variants={varHover(1.25)} transition={varTranHover()}>
+        <m.div variants={varHover(1.25)} transition={varTranHover(undefined)}>
           <Image
             alt="cover"
             src={coverImg}

@@ -63,96 +63,99 @@ export default function ContactMarketingForm() {
       : [...selectedItems, item];
 
   return (
-        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit: any)}>
-            <Stack spacing={2.5} alignItems="flex-start">
-                <Controller
+    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+      <Stack spacing={2.5} alignItems="flex-start">
+        <Controller
           name="services"
-                    control={control}
-                    render={({ field, fieldState: { error } }) => (
-                        <div>
-                            <Stack direction="row" flexWrap="wrap">
-                                {SERVICES.map((service: any) => <ToggleButton
-                                    {...field}
-                                    key={service}
-                                    color="standard"
-                                    selected={field.value.includes(service)}
-                                    onChange={() => field.onChange(getSelected(field.value, service))}
-                                    sx={{
-                                        py: 0.5,
-                                        px: 2,
-                                        m: 0.5,
-                                        typography: 'body2',
-                    '&.Mui-selected': {
-                                            bgcolor: 'text.primary',
-                                            borderColor: 'transparent',
-                                            color: (theme: any) => theme.palette.mode === 'light' ? 'common.white' : 'grey.800',
-                      '&:hover': {
-                                                bgcolor: 'text.primary',
+          control={control}
+          render={({ field, fieldState: { error } }) => (
+            <div>
+              <Stack direction="row" flexWrap="wrap">
+                {SERVICES.map((service: any) => (
+                  <ToggleButton
+                    {...field}
+                    key={service}
+                    color="standard"
+                    selected={field.value.includes(service)}
+                    onChange={() => field.onChange(getSelected(field.value, service))}
+                    sx={{
+                      py: 0.5,
+                      px: 2,
+                      m: 0.5,
+                      typography: 'body2',
+                      '&.Mui-selected': {
+                        bgcolor: 'text.primary',
+                        borderColor: 'transparent',
+                        color: (theme: any) =>
+                          theme.palette.mode === 'light' ? 'common.white' : 'grey.800',
+                        '&:hover': {
+                          bgcolor: 'text.primary',
+                        },
                       },
-                    },
-                  }}
-                                >
-                                    {service}
-                </ToggleButton>)}
+                    }}
+                  >
+                    {service}
+                  </ToggleButton>
+                ))}
               </Stack>
 
-                            {!!error && (
-                                <FormHelperText error sx={{ px: 2 }}>
-                                    {error?.message}
+              {!!error && (
+                <FormHelperText error sx={{ px: 2 }}>
+                  {error?.message}
                 </FormHelperText>
               )}
             </div>
           )}
-                />
+        />
 
         <Stack
-                    spacing={{ xs: 2.5, md: 2 }}
-                    direction={{ xs: 'column', md: 'row' }}
-                    sx={{ width: 1 }}
+          spacing={{ xs: 2.5, md: 2 }}
+          direction={{ xs: 'column', md: 'row' }}
+          sx={{ width: 1 }}
         >
-                    <RHFTextField name="firstName" label="First Name" />
-                    <RHFTextField name="lastName" label="Last Name" />
+          <RHFTextField name="firstName" label="First Name" />
+          <RHFTextField name="lastName" label="Last Name" />
         </Stack>
 
-                <RHFTextField name="email" label="Email" />
-                <RHFTextField name="phoneNumber" label="Phone number" />
+        <RHFTextField name="email" label="Email" />
+        <RHFTextField name="phoneNumber" label="Phone number" />
 
-                <Stack
-                    direction={{ xs: 'column', md: 'row' }}
-                    spacing={{ xs: 2.5, md: 2 }}
-                    sx={{ width: 1 }}
+        <Stack
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={{ xs: 2.5, md: 2 }}
+          sx={{ width: 1 }}
         >
-                    <RHFTextField name="compnany" label="Compnany" />
+          <RHFTextField name="compnany" label="Compnany" />
 
-                    <RHFTextField name="website" label="Website" />
+          <RHFTextField name="website" label="Website" />
         </Stack>
 
-                <Stack spacing={5} sx={{ py: 2, width: 1 }}>
-                    <Typography variant="overline" sx={{ color: 'text.disabled' }}>
-                        Your Budget
+        <Stack spacing={5} sx={{ py: 2, width: 1 }}>
+          <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+            Your Budget
           </Typography>
 
           <RHFSlider
-                        name="budget"
-                        valueLabelDisplay="on"
-                        max={20000}
-                        step={1000}
-                        valueLabelFormat={(value) => fCurrency(value)}
+            name="budget"
+            valueLabelDisplay="on"
+            max={20000}
+            step={1000}
+            valueLabelFormat={(value) => fCurrency(value)}
           />
         </Stack>
 
-                <RHFTextField name="message" label="Message" multiline rows={4} />
+        <RHFTextField name="message" label="Message" multiline rows={4} />
       </Stack>
 
       <LoadingButton
-                size="large"
-                color="inherit"
-                type="submit"
-                variant="contained"
-                loading={isSubmitting}
-                sx={{ mt: 3 }}
+        size="large"
+        color="inherit"
+        type="submit"
+        variant="contained"
+        loading={isSubmitting}
+        sx={{ mt: 3 }}
       >
-                Send Request
+        Send Request
       </LoadingButton>
     </FormProvider>
   );

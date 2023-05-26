@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import ReactCountUp from 'react-countup';
+const ReactCountUp = dynamic(() => import('react-countup'), { ssr: false });
 // @mui
 import { Box } from '@mui/material';
+import dynamic from 'next/dynamic';
 
 // ----------------------------------------------------------------------
 
@@ -19,6 +20,6 @@ export default function CountUp({ sx, ...other }: any) {
   );
 }
 
-CountUp.propTypes = {
-  sx: PropTypes.object,
-};
+// CountUp.propTypes = {
+//   sx: PropTypes.object,
+// };

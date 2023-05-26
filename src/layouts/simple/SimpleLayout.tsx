@@ -7,7 +7,7 @@ import Header from './Header';
 // ----------------------------------------------------------------------
 
 export default function SimpleLayout({ children }: any) {
-  const isOffset = useOffSetTop();
+  const isOffset = useOffSetTop(undefined, undefined);
 
   return (
     <>

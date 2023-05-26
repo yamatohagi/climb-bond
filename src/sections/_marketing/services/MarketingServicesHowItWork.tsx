@@ -60,7 +60,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function MarketingServicesHowItWork() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   return (
     <StyledRoot>
@@ -93,7 +93,7 @@ export default function MarketingServicesHowItWork() {
               }}
             >
               <TimelineSeparator>
-                <TimelineDot color={COLORS[index]} />
+                <TimelineDot color={COLORS[index] as any} />
                 <TimelineConnector />
               </TimelineSeparator>
 

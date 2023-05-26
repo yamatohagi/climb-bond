@@ -75,7 +75,7 @@ export default function MarketingServicesHero() {
 // ----------------------------------------------------------------------
 
 function MarketingServicesHeroForm() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   return (
     <Stack spacing={2.5} direction={{ xs: 'column', md: 'row' }} alignItems={{ md: 'center' }}>

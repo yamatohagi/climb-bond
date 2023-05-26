@@ -35,52 +35,50 @@ const StyledOverlay = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function PostItem({
-  post
-}: any) {
+export default function PostItem({ post }: any) {
   const { title, duration, coverImg, author, createdAt } = post;
 
   return (
-        <Stack
-            component={m.div}
-            whileHover="hover"
-            variants={varHover(1)}
-            transition={varTranHover()}
-            sx={{ borderRadius: 2, overflow: 'hidden', position: 'relative' }}
+    <Stack
+      component={m.div}
+      whileHover="hover"
+      variants={varHover(1)}
+      transition={varTranHover(undefined)}
+      sx={{ borderRadius: 2, overflow: 'hidden', position: 'relative' }}
     >
-            <m.div variants={varHover(1.25)} transition={varTranHover()}>
-                <Image src={coverImg} alt={title} ratio="3/4" />
+      <m.div variants={varHover(1.25)} transition={varTranHover(undefined)}>
+        <Image src={coverImg} alt={title} ratio="3/4" />
       </m.div>
 
       <Stack
-                justifyContent="space-between"
-                sx={{
-                    p: 5,
-                    height: 1,
-                    zIndex: 9,
-                    position: 'absolute',
-                    color: 'common.white',
+        justifyContent="space-between"
+        sx={{
+          p: 5,
+          height: 1,
+          zIndex: 9,
+          position: 'absolute',
+          color: 'common.white',
         }}
       >
-                <Stack spacing={2}>
-                    <PostTimeBlock
-                        duration={duration}
-                        createdAt={fDate(createdAt: any)}
-                        sx={{ color: 'inherit', opacity: 0.72 }}
-                    />
+        <Stack spacing={2}>
+          <PostTimeBlock
+            duration={duration}
+            createdAt={fDate(createdAt, undefined)}
+            sx={{ color: 'inherit', opacity: 0.72 }}
+          />
 
-                    <Link component={NextLink} href={paths.marketing.post} sx={{ color: 'common.white' }}>
-                        <TextMaxLine variant="h4">{title}</TextMaxLine>
+          <Link component={NextLink} href={paths.marketing.post} sx={{ color: 'common.white' }}>
+            <TextMaxLine variant="h4">{title}</TextMaxLine>
           </Link>
         </Stack>
 
-                <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-                    <Avatar src={author.picture} sx={{ mr: 1 }} />
-                    {author.name}
-                </Stack>
+        <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
+          <Avatar src={author.picture} sx={{ mr: 1 }} />
+          {author.name}
+        </Stack>
       </Stack>
 
-            <StyledOverlay />
+      <StyledOverlay />
     </Stack>
   );
 }

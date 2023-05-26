@@ -3,7 +3,6 @@ import { useState } from 'react';
 // @mui
 import { Stack, Collapse, Typography } from '@mui/material';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 //
 import { StyledLink } from './styles';

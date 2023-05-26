@@ -11,7 +11,6 @@ import { NAV } from '../../config-global';
 //
 import Iconify from '../iconify';
 //
-// @ts-expect-error TS(6142): Module './MenuCarousel' was resolved to '/Users/ya... Remove this comment to see the full error message
 import MenuCarousel from './MenuCarousel';
 import MenuHotProducts from './MenuHotProducts';
 
@@ -53,7 +52,6 @@ function MegaMenuItem({ parent }: any) {
     return (
       <>
         <ParentItem
-          // @ts-expect-error TS(2322): Type '{ onMouseEnter: () => void; onMouseLeave: ()... Remove this comment to see the full error message
           onMouseEnter={handleOpen}
           onMouseLeave={handleClose}
           path={path}
@@ -73,7 +71,6 @@ function MegaMenuItem({ parent }: any) {
               position: 'absolute',
               left: NAV.W_BASE,
               width: MENU_PAPER_WIDTH,
-              // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
               boxShadow: (theme) => theme.customShadows.z20,
             }}
           >

@@ -2,9 +2,7 @@ import { useState } from 'react';
 // @mui
 import { Box, Stack, Button, Typography, InputAdornment, IconButton } from '@mui/material';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/hook-form' or i... Remove this comment to see the full error message
 import { RHFTextField } from 'src/components/hook-form';
 
 // ----------------------------------------------------------------------

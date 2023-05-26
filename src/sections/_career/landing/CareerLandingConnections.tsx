@@ -16,23 +16,15 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useBoundingClientRec... Remove this comment to see the full error message
 import useBoundingClientRect from 'src/hooks/useBoundingClientRect';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/svg-color' or i... Remove this comment to see the full error message
 import SvgColor from 'src/components/svg-color';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrows } from 'src/components/carousel';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { varHover, varTranHover } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -72,12 +64,10 @@ export default function CareerLandingConnections({ countries }: any) {
   };
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
@@ -200,7 +190,6 @@ function JobByCountryItem({ country }: any) {
         sx={{
           cursor: 'pointer',
           '&:hover': {
-            // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
             boxShadow: (theme) => theme.customShadows.z24,
           },
         }}

@@ -73,9 +73,7 @@ MegaMenuMobile.propTypes = {
 
 // ----------------------------------------------------------------------
 
-// @ts-expect-error TS(2339): Property 'icon' does not exist on type '{}'.
-const ParentItem = forwardRef(({ icon, title, hasSub, ...other }, ref) => (
-  // @ts-expect-error TS(2769): No overload matches this call.
+const ParentItem = forwardRef(({ icon, title, hasSub, ...other }: any, ref) => (
   <ListItemButton ref={ref} sx={{ height: 44, textTransform: 'capitalize' }} {...other}>
     <ListItemIcon
       sx={{
@@ -91,7 +89,6 @@ const ParentItem = forwardRef(({ icon, title, hasSub, ...other }, ref) => (
 ));
 
 ParentItem.propTypes = {
-  // @ts-expect-error TS(2322): Type '{ hasSub: PropTypes.Requireable<boolean>; ic... Remove this comment to see the full error message
   hasSub: PropTypes.bool,
   icon: PropTypes.node,
   title: PropTypes.string,

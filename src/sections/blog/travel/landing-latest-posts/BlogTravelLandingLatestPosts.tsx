@@ -6,15 +6,11 @@ import NextLink from 'next/link';
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Button, Typography } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselDots, CarouselArrows } from 'src/components/carousel';
 //
 import PostItem from './PostItem';
@@ -43,12 +39,10 @@ export default function BlogTravelLandingLatestPosts({ posts }: any) {
   };
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 

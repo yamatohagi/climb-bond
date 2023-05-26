@@ -29,12 +29,10 @@ export default function MenuCarousel({ products, numberShow, sx }: any) {
   };
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
@@ -68,7 +66,6 @@ export default function MenuCarousel({ products, numberShow, sx }: any) {
                 }}
               >
                 <Image
-                  // @ts-expect-error TS(2322): Type '{ alt: any; src: any; ratio: string; disable... Remove this comment to see the full error message
                   alt={product.image}
                   src={product.image}
                   ratio="1/1"

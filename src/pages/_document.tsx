@@ -5,12 +5,9 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 // emotion
 import createEmotionServer from '@emotion/server/create-instance';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/createEmotionCache' ... Remove this comment to see the full error message
 import createEmotionCache from 'src/utils/createEmotionCache';
 // theme
-// @ts-expect-error TS(2307): Cannot find module 'src/theme/palette' or its corr... Remove this comment to see the full error message
 import palette from 'src/theme/palette';
-// @ts-expect-error TS(2307): Cannot find module 'src/theme/typography' or its c... Remove this comment to see the full error message
 import { primaryFont } from 'src/theme/typography';
 
 // ----------------------------------------------------------------------

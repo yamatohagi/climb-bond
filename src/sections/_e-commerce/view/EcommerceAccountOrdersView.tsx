@@ -19,12 +19,9 @@ import {
   FormControlLabel,
 } from '@mui/material';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _productsTable } from 'src/_mock';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/scrollbar' or i... Remove this comment to see the full error message
 import Scrollbar from 'src/components/scrollbar';
 //
 import { EcommerceAccountLayout } from '../layout';
@@ -88,7 +85,6 @@ export default function EcommerceAccountOrdersPage() {
   };
 
   const handleSelectRow = (id: any) => {
-    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
     const selectedIndex = selected.indexOf(id);
     let newSelected: any = [];
 
@@ -202,7 +198,6 @@ export default function EcommerceAccountOrdersPage() {
                   <EcommerceAccountOrdersTableRow
                     key={row.id}
                     row={row}
-                    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
                     selected={selected.includes(row.id)}
                     onSelectRow={() => handleSelectRow(row.id)}
                   />

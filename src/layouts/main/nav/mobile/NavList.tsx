@@ -5,10 +5,8 @@ import { useRouter } from 'next/router';
 // @mui
 import { Collapse } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useActiveLink' or it... Remove this comment to see the full error message
 import useActiveLink from 'src/hooks/useActiveLink';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/nav-section' or... Remove this comment to see the full error message
 import { NavSectionVertical } from 'src/components/nav-section';
 //
 import NavItem from './NavItem';
@@ -29,7 +27,6 @@ export default function NavList({ item }: any) {
       <NavItem
         item={item}
         open={open}
-        // @ts-expect-error TS(2322): Type '{ item: any; open: boolean; onClick: () => v... Remove this comment to see the full error message
         onClick={() => setOpen(!open)}
         active={pathname === path}
         isExternalLink={isExternalLink}

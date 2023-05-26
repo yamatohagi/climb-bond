@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 // @mui
 import { Collapse } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useActiveLink' or it... Remove this comment to see the full error message
 import useActiveLink from 'src/hooks/useActiveLink';
 //
 import NavItem from './NavItem';
@@ -42,7 +41,6 @@ export default function NavList({ data, depth, hasChild }: any) {
         open={open}
         active={active}
         isExternalLink={isExternalLink}
-        // @ts-expect-error TS(2322): Type '{ item: any; depth: any; open: any; active: ... Remove this comment to see the full error message
         onClick={handleToggle}
       />
 

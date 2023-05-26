@@ -6,10 +6,8 @@ import { Box, IconButton } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-// @ts-expect-error TS(2339): Property 'children' does not exist on type '{}'.
-const IconButtonAnimate = forwardRef(({ children, size = 'medium', ...other }, ref) => (
+const IconButtonAnimate = forwardRef(({ children, size = 'medium', ...other }: any, ref) => (
   <AnimateWrap size={size}>
-    // @ts-expect-error TS(2769): No overload matches this call.
     <IconButton size={size} ref={ref} {...other}>
       {children}
     </IconButton>
@@ -17,7 +15,6 @@ const IconButtonAnimate = forwardRef(({ children, size = 'medium', ...other }, r
 ));
 
 IconButtonAnimate.propTypes = {
-  // @ts-expect-error TS(2322): Type '{ children: PropTypes.Requireable<PropTypes.... Remove this comment to see the full error message
   children: PropTypes.node,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };

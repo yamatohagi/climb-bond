@@ -9,7 +9,6 @@ import { Link, Paper, Typography, Divider, Stack } from '@mui/material';
 import Iconify from '../iconify';
 //
 import MenuHotProducts from './MenuHotProducts';
-// @ts-expect-error TS(6142): Module './MenuCarousel' was resolved to '/Users/ya... Remove this comment to see the full error message
 import MenuCarousel from './MenuCarousel';
 
 // ----------------------------------------------------------------------
@@ -50,7 +49,6 @@ function MegaMenuItem({ parent }: any) {
     return (
       <>
         <ParentItem
-          // @ts-expect-error TS(2322): Type '{ onMouseEnter: () => void; onMouseLeave: ()... Remove this comment to see the full error message
           onMouseEnter={handleOpen}
           onMouseLeave={handleClose}
           path={path}
@@ -72,7 +70,6 @@ function MegaMenuItem({ parent }: any) {
               top: PARENT_ITEM_HEIGHT,
               left: -ITEM_SPACING * 8,
               zIndex: (theme) => theme.zIndex.modal,
-              // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
               boxShadow: (theme) => theme.customShadows.z20,
             }}
           >

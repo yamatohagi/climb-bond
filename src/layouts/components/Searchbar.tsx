@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { Input, Slide, Button, IconButton, InputAdornment, ClickAwayListener } from '@mui/material';
 // config
-// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { HEADER } from 'src/config-global';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -24,7 +22,6 @@ const StyledSearchbar = styled('div')(({ theme }) => ({
   backdropFilter: 'blur(6px)',
   WebkitBackdropFilter: 'blur(6px)', // Fix on Mobile
   padding: theme.spacing(0, 3),
-  // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
   boxShadow: theme.customShadows.z8,
   backgroundColor: `${alpha(theme.palette.background.default, 0.72)}`,
   [theme.breakpoints.up('md')]: {

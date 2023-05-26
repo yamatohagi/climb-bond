@@ -5,12 +5,9 @@ import { m } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useHoverParallax' or... Remove this comment to see the full error message
 import useHoverParallax from 'src/hooks/useHoverParallax';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/svg-color' or i... Remove this comment to see the full error message
 import SvgColor from 'src/components/svg-color';
 // pattern
 import { Icon, Label, Character, Pattern01, Pattern02 } from './pattern';

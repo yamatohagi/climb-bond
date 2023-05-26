@@ -15,27 +15,18 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatTime' or its c... Remove this comment to see the full error message
 import { fDate } from 'src/utils/formatTime';
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _socials, _blogCoursePosts } from 'src/_mock';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/markdown' or it... Remove this comment to see the full error message
 import Markdown from 'src/components/markdown';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 //
 import NewsletterElearning from '../../newsletter/e-learning';

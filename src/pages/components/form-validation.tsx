@@ -12,16 +12,12 @@ import {
   FormControlLabel,
 } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // layouts
-// @ts-expect-error TS(2307): Cannot find module 'src/layouts/main' or its corre... Remove this comment to see the full error message
 import MainLayout from 'src/layouts/main';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 // sections
-// @ts-expect-error TS(2307): Cannot find module 'src/sections/examples/form' or... Remove this comment to see the full error message
 import { ReactHookForm } from 'src/sections/examples/form';
 
 // ----------------------------------------------------------------------

@@ -2,13 +2,10 @@ import { useState, useEffect } from 'react';
 // @mui
 import { Container, Stack, Typography, Button, Box } from '@mui/material';
 // config
-// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { NAV } from 'src/config-global';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _courses } from 'src/_mock';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 //
 import NewsletterElearning from '../../newsletter/e-learning';

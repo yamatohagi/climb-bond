@@ -4,13 +4,10 @@ import { add } from 'date-fns';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Container, Stack, Box } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _products } from 'src/_mock';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselDots, CarouselArrows } from 'src/components/carousel';
 //
 import { ProductCountdownBlock } from '../components';
@@ -52,12 +49,10 @@ export default function EcommerceLandingHotDealToday() {
   };
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 

@@ -4,28 +4,20 @@ import Head from 'next/head';
 // @mui
 import { Box, Card, Stack, Container, AppBar, Typography, Button } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
-// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { NAV } from 'src/config-global';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 // layouts
-// @ts-expect-error TS(2307): Cannot find module 'src/layouts/main' or its corre... Remove this comment to see the full error message
 import MainLayout from 'src/layouts/main';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 import {
   MegaMenuMobile,
   MegaMenuDesktopHorizon,
   MegaMenuDesktopVertical,
-  // @ts-expect-error TS(2307): Cannot find module 'src/components/mega-menu' or i... Remove this comment to see the full error message
 } from 'src/components/mega-menu';
 
 // ----------------------------------------------------------------------
@@ -68,7 +60,6 @@ export default function DemoMegaMenuPage() {
         position="static"
         color="transparent"
         sx={{
-          // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
           boxShadow: (theme) => theme.customShadows.z8,
         }}
       >

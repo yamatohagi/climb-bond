@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
-// @ts-expect-error TS(7016): Could not find a declaration file for module 'loda... Remove this comment to see the full error message
 import merge from 'lodash.merge';
 import { useMemo } from 'react';
 // @mui
 import { alpha, ThemeProvider, createTheme, useTheme } from '@mui/material/styles';
 //
-// @ts-expect-error TS(6142): Module './SettingsContext' was resolved to '/Users... Remove this comment to see the full error message
 import { useSettingsContext } from './SettingsContext';
 
 // ----------------------------------------------------------------------

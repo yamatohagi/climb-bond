@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 // rtl
-// @ts-expect-error TS(7016): Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 // emotion

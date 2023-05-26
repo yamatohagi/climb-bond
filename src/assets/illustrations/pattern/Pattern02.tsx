@@ -4,9 +4,7 @@ import { m } from 'framer-motion';
 // @mui
 import { Box } from '@mui/material';
 //
-// @ts-expect-error TS(6142): Module './Dots' was resolved to '/Users/yamatohagi... Remove this comment to see the full error message
 import Dot from './Dots';
-// @ts-expect-error TS(6142): Module './Circle' was resolved to '/Users/yamatoha... Remove this comment to see the full error message
 import Circle from './Circle';
 
 // ----------------------------------------------------------------------

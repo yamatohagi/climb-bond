@@ -35,7 +35,6 @@ function Pattern01({ sx, ...other }: any) {
   const PURPLE = '#DC8CFF';
   const BLUE = theme.palette.info.light;
   const RED = theme.palette.error.light;
-  // @ts-expect-error TS(2551): Property 'lighter' does not exist on type 'Palette... Remove this comment to see the full error message
   const CYAN = theme.palette.info.lighter;
   const GREEN = theme.palette.success.light;
   const ORANGE = theme.palette.warning.light;

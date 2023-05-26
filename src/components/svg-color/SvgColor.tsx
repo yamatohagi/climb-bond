@@ -5,8 +5,7 @@ import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-// @ts-expect-error TS(2339): Property 'src' does not exist on type '{}'.
-const SvgColor = forwardRef(({ src, sx, ...other }, ref) => (
+const SvgColor = forwardRef(({ src, sx, ...other }: any, ref) => (
   <Box
     component="span"
     className="svg-color"
@@ -25,7 +24,6 @@ const SvgColor = forwardRef(({ src, sx, ...other }, ref) => (
 ));
 
 SvgColor.propTypes = {
-  // @ts-expect-error TS(2322): Type '{ src: PropTypes.Requireable<string>; sx: Pr... Remove this comment to see the full error message
   src: PropTypes.string,
   sx: PropTypes.object,
 };

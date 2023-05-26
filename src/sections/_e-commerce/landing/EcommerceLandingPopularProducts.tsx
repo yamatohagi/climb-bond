@@ -2,7 +2,6 @@ import { useState } from 'react';
 // @mui
 import { Box, Typography, Container, Tabs, Tab } from '@mui/material';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _products } from 'src/_mock';
 //
 import { EcommerceProductItemBestSellers } from '../product/item';

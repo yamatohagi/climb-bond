@@ -1,5 +1,4 @@
 import { memo, useEffect } from 'react';
-// @ts-expect-error TS(7016): Could not find a declaration file for module 'npro... Remove this comment to see the full error message
 import NProgress from 'nprogress';
 // next
 import { useRouter } from 'next/router';

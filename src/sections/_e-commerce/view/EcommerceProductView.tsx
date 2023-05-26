@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react';
 // @mui
 import { Container, Unstable_Grid2 as Grid } from '@mui/material';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _products } from 'src/_mock';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/loading-screen'... Remove this comment to see the full error message
 import LoadingScreen from 'src/components/loading-screen';
 //
 import ReviewEcommerce from '../../review/e-commerce';

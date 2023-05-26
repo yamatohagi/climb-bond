@@ -5,7 +5,6 @@ import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { Stack, TextField } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useEventListener' or... Remove this comment to see the full error message
 import useEventListener from 'src/hooks/useEventListener';
 
 // ----------------------------------------------------------------------
@@ -25,7 +24,6 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
 
     data = data.split('');
 
-    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
     inputs.map((input, index) => setValue(input, data[index]));
 
     event.preventDefault();
@@ -45,14 +43,13 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
     }
 
     if (value.length >= maxLength && fieldIntIndex < 6 && nextfield !== null) {
-      // @ts-expect-error TS(2339): Property 'focus' does not exist on type 'Element'.
-      nextfield.focus();
+      (nextfield as any).focus();
     }
 
     handleChange(event);
   };
 
-  useEventListener('paste', handlePaste, codesRef);
+  useEventListener('paste', handlePaste, codesRef, false);
 
   return (
     <Stack direction="row" spacing={2} justifyContent="center" ref={codesRef}>

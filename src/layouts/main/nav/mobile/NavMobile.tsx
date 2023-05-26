@@ -5,17 +5,12 @@ import { useRouter } from 'next/router';
 // @mui
 import { List, Drawer, IconButton, Button, Stack } from '@mui/material';
 // config
-// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { NAV } from 'src/config-global';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/logo' or its co... Remove this comment to see the full error message
 import Logo from 'src/components/logo';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/scrollbar' or i... Remove this comment to see the full error message
 import Scrollbar from 'src/components/scrollbar';
 //
-// @ts-expect-error TS(6142): Module './NavList' was resolved to '/Users/yamatoh... Remove this comment to see the full error message
 import NavList from './NavList';
 
 // ----------------------------------------------------------------------

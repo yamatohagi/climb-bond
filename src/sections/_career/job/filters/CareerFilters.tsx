@@ -2,13 +2,10 @@ import { useState } from 'react';
 // @mui
 import { Stack, Button, Drawer, Box } from '@mui/material';
 // config
-// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { NAV } from 'src/config-global';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 //
 import {

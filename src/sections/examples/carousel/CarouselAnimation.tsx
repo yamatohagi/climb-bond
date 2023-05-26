@@ -5,14 +5,10 @@ import { useState, useRef } from 'react';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Card, Paper, Button, Typography, CardContent } from '@mui/material';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { MotionContainer, varFade } from 'src/components/animate';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
@@ -36,12 +32,10 @@ export default function CarouselAnimation({ data }: any) {
   };
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 

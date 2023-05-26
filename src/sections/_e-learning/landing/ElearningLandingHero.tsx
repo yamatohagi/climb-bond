@@ -12,23 +12,16 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatNumber' or its... Remove this comment to see the full error message
 import { fShortenNumber } from 'src/utils/formatNumber';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 // assets
-// @ts-expect-error TS(2307): Cannot find module 'src/assets/illustrations/Elear... Remove this comment to see the full error message
 import ElearningHeroIllustration from 'src/assets/illustrations/ElearningHeroIllustration';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/player' or its ... Remove this comment to see the full error message
 import { PlayerDialog } from 'src/components/player';
 
 // ----------------------------------------------------------------------

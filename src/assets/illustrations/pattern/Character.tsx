@@ -13,14 +13,12 @@ function Character({ front = false, ...other }) {
 
   const PRIMARY_DARK = theme.palette.primary.dark;
 
-  // @ts-expect-error TS(2551): Property 'darker' does not exist on type 'PaletteC... Remove this comment to see the full error message
   const PRIMARY_DARKER = theme.palette.primary.darker;
 
   const SECONDARY_MAIN = theme.palette.secondary.main;
 
   const SECONDARY_DARK = theme.palette.secondary.dark;
 
-  // @ts-expect-error TS(2551): Property 'darker' does not exist on type 'PaletteC... Remove this comment to see the full error message
   const SECONDARY_DARKER = theme.palette.secondary.darker;
 
   return (

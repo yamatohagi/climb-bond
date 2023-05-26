@@ -53,7 +53,6 @@ export default function ElearningCourseDetailsLessonList({ lessons }: any) {
         <ElearningCourseDetailsLessonItem
           key={lesson.id}
           lesson={lesson}
-          // @ts-expect-error TS(2339): Property 'id' does not exist on type 'never'.
           selected={play && selectLesson?.id === lesson.id}
           expanded={expanded === lesson.id}
           onExpanded={handleExpanded(lesson.id)}

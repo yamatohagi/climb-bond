@@ -6,16 +6,12 @@ import { useRouter } from 'next/router';
 // @mui
 import { Fade, Portal, Stack, Box, Link, Unstable_Grid2 as Grid } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useActiveLink' or it... Remove this comment to see the full error message
 import useActiveLink from 'src/hooks/useActiveLink';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/label' or its c... Remove this comment to see the full error message
 import Label from 'src/components/label';
 //
 import { StyledMenu, StyledSubheader } from './styles';
-// @ts-expect-error TS(6142): Module './NavItem' was resolved to '/Users/yamatoh... Remove this comment to see the full error message
 import { NavItem } from './NavItem';
 
 // ----------------------------------------------------------------------
@@ -53,7 +49,6 @@ export default function NavList({ item }: any) {
   return (
     <>
       <NavItem
-        // @ts-expect-error TS(2322): Type '{ item: any; active: any; open: boolean; isE... Remove this comment to see the full error message
         item={item}
         active={active}
         open={openMenu}

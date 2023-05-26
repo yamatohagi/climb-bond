@@ -11,7 +11,6 @@ import {
   InputAdornment,
 } from '@mui/material';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -81,15 +80,15 @@ export default function TravelFilterGuests({
   );
 }
 
-TravelFilterGuests.propTypes = {
-  guests: PropTypes.shape({
-    adults: PropTypes.number,
-    children: PropTypes.node,
-  }),
-  onDecreaseGuests: PropTypes.func,
-  onIncrementGuests: PropTypes.func,
-  sx: PropTypes.object,
-};
+// TravelFilterGuests.propTypes = {
+//   guests: PropTypes.shape({
+//     adults: PropTypes.number,
+//     children: PropTypes.node,
+//   }),
+//   onDecreaseGuests: PropTypes.func,
+//   onIncrementGuests: PropTypes.func,
+//   sx: PropTypes.object,
+// };
 
 // ----------------------------------------------------------------------
 

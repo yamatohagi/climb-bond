@@ -13,21 +13,14 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatTime' or its c... Remove this comment to see the full error message
 import { fDate } from 'src/utils/formatTime';
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatNumber' or its... Remove this comment to see the full error message
 import { fCurrency } from 'src/utils/formatNumber';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/label' or its c... Remove this comment to see the full error message
 import Label from 'src/components/label';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/text-max-line' ... Remove this comment to see the full error message
 import TextMaxLine from 'src/components/text-max-line';
 
 // ----------------------------------------------------------------------
@@ -57,7 +50,6 @@ export default function CareerJobItem({ job }: any) {
     <Card
       sx={{
         '&:hover': {
-          // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
           boxShadow: (theme) => theme.customShadows.z24,
         },
       }}

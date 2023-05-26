@@ -6,10 +6,8 @@ import { useRouter } from 'next/router';
 import { alpha } from '@mui/material/styles';
 import { Typography, Stack, Box, Button, Divider, Card } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatNumber' or its... Remove this comment to see the full error message
 import { fCurrency } from 'src/utils/formatNumber';
 //
 import { TravelFilterTime, TravelFilterGuests } from '../filters/components';

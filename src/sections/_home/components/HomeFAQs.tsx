@@ -13,15 +13,11 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // assets
-// @ts-expect-error TS(2307): Cannot find module 'src/assets/illustrations/patte... Remove this comment to see the full error message
 import { Pattern01 } from 'src/assets/illustrations/pattern';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { MotionViewport, varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -88,7 +84,6 @@ export default function HomeFAQs() {
             {CONTENTS.map((faq) => (
               <m.div key={faq.question} variants={varFade().in}>
                 <Accordion
-                  // @ts-expect-error TS(2367): This condition will always return 'false' since th... Remove this comment to see the full error message
                   expanded={expanded === faq.question}
                   onChange={handleChangeExpanded(faq.question)}
                 >
@@ -99,7 +94,6 @@ export default function HomeFAQs() {
 
                     <Iconify
                       width={24}
-                      // @ts-expect-error TS(2367): This condition will always return 'false' since th... Remove this comment to see the full error message
                       icon={expanded === faq.question ? 'carbon:subtract' : 'carbon:add'}
                     />
                   </AccordionSummary>

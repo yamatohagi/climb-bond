@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 // @mui
 import { Slider, FormControl, Typography, Popover, Select } from '@mui/material';
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatNumber' or its... Remove this comment to see the full error message
 import { fCurrency } from 'src/utils/formatNumber';
 //
 import { inputStyle } from '../styles';

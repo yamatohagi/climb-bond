@@ -2,16 +2,11 @@ import { useRef } from 'react';
 // @mui
 import { Typography, Container, Stack, Box, Card } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useBoundingClientRec... Remove this comment to see the full error message
 import useBoundingClientRect from 'src/hooks/useBoundingClientRect';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/svg-color' or i... Remove this comment to see the full error message
 import SvgColor from 'src/components/svg-color';
 
 // ----------------------------------------------------------------------
@@ -37,7 +32,7 @@ const SUMMARY = [
 // ----------------------------------------------------------------------
 
 export default function TravelLandingIntroduce() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', false);
 
   const containerRef = useRef(null);
 

@@ -4,9 +4,7 @@ import { useState } from 'react';
 import { alpha } from '@mui/material/styles';
 import { Box, Stack, Divider, Popover, MenuItem, Typography, IconButton } from '@mui/material';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/label' or its c... Remove this comment to see the full error message
 import Label from 'src/components/label';
 
 // ----------------------------------------------------------------------

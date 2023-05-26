@@ -30,7 +30,6 @@ export default function MarketingCaseStudyList({ caseStudies }: any) {
         onChange={handleChangeTab}
       >
         {categories.map((category) => (
-          // @ts-expect-error TS(2769): No overload matches this call.
           <Tab key={category} value={category} label={category} />
         ))}
       </Tabs>

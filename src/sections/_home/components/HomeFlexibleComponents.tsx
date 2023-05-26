@@ -33,15 +33,11 @@ import {
 } from '@mui/material';
 import { DateCalendar } from '@mui/x-date-pickers';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { MotionViewport, varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -231,7 +227,6 @@ export default function HomeFlexibleComponents() {
               </ToggleButtonGroup>
 
               <Chip
-                // @ts-expect-error TS(2769): No overload matches this call.
                 variant="soft"
                 color="primary"
                 label="Pamela"
@@ -260,7 +255,6 @@ export default function HomeFlexibleComponents() {
               <Rating
                 value={rating}
                 onChange={(event, newValue) => {
-                  // @ts-expect-error TS(2345): Argument of type 'number | null' is not assignable... Remove this comment to see the full error message
                   setRating(newValue);
                 }}
               />

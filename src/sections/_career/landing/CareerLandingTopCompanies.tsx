@@ -6,14 +6,10 @@ import NextLink from 'next/link';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Container, Box, Link } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/text-max-line' ... Remove this comment to see the full error message
 import TextMaxLine from 'src/components/text-max-line';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrows } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
@@ -24,12 +20,10 @@ export default function CareerLandingTopCompanies({ companies }: any) {
   const carouselRef = useRef(null);
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
@@ -117,7 +111,6 @@ function CompanyItem({ company }: any) {
             }),
           '&:hover': {
             bgcolor: 'background.paper',
-            // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
             boxShadow: (theme) => theme.customShadows.z24,
           },
         }}

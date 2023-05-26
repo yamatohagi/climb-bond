@@ -4,12 +4,9 @@ import { useState, useRef, useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { Box } from '@mui/material';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
@@ -18,7 +15,6 @@ const THUMB_SIZE = 64;
 
 const StyledThumbnailsContainer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'length',
-  // @ts-expect-error TS(2339): Property 'length' does not exist on type 'MUIStyle... Remove this comment to see the full error message
 })(({ length, theme }) => ({
   margin: theme.spacing(0, 'auto'),
   position: 'relative',
@@ -110,12 +106,10 @@ export default function CarouselThumbnail({ data }: any) {
   }, []);
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickNext();
   };
 

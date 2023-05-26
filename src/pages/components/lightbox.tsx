@@ -15,20 +15,14 @@ import {
   FormControlLabel,
 } from '@mui/material';
 // routes
-// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // _mock
-// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 // layouts
-// @ts-expect-error TS(2307): Cannot find module 'src/layouts/main' or its corre... Remove this comment to see the full error message
 import MainLayout from 'src/layouts/main';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/lightbox' or it... Remove this comment to see the full error message
 import Lightbox, { useLightBox } from 'src/components/lightbox';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
 // ----------------------------------------------------------------------
@@ -125,7 +119,6 @@ export default function DemoLightboxPage() {
                 }}
               >
                 {slides.map((slide) => {
-                  // @ts-expect-error TS(2339): Property 'type' does not exist on type '{ src: any... Remove this comment to see the full error message
                   const thumbnail = slide.type === 'video' ? slide.poster : slide.src;
 
                   return (

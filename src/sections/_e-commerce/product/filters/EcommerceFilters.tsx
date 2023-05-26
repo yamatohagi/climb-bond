@@ -3,13 +3,10 @@ import { useState } from 'react';
 // @mui
 import { Stack, Drawer, Button, Collapse, Typography } from '@mui/material';
 // hooks
-// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // config
-// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { NAV } from 'src/config-global';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 //
 import {
@@ -143,7 +140,6 @@ export default function EcommerceFilters({ mobileOpen, onMobileClose }: any) {
           filterCategories={filters.filterCategories}
           onChangeCategories={handleChangeCategories}
           options={CATEGORY_OPTIONS}
-          // @ts-expect-error TS(2322): Type '{ filterCategories: string; onChangeCategori... Remove this comment to see the full error message
           sx={{ mt: 2 }}
         />
       </Block>
@@ -153,7 +149,6 @@ export default function EcommerceFilters({ mobileOpen, onMobileClose }: any) {
           filterBrand={filters.filterBrand}
           onChangeBrand={handleChangeBrand}
           options={BRAND_OPTIONS}
-          // @ts-expect-error TS(2322): Type '{ filterBrand: string[]; onChangeBrand: (nam... Remove this comment to see the full error message
           sx={{ mt: 1 }}
         />
       </Block>
@@ -163,7 +158,6 @@ export default function EcommerceFilters({ mobileOpen, onMobileClose }: any) {
           filterPrice={filters.filterPrice}
           onChangeStartPrice={handleChangeStartPrice}
           onChangeEndPrice={handleChangeEndPrice}
-          // @ts-expect-error TS(2322): Type '{ filterPrice: { start: number; end: number;... Remove this comment to see the full error message
           sx={{ mt: 2 }}
         />
       </Block>
@@ -173,7 +167,6 @@ export default function EcommerceFilters({ mobileOpen, onMobileClose }: any) {
           filterShipping={filters.filterShipping}
           onChangeShipping={handleChangeShipping}
           options={SHIPPING_OPTIONS}
-          // @ts-expect-error TS(2322): Type '{ filterShipping: never[]; onChangeShipping:... Remove this comment to see the full error message
           sx={{ mt: 1 }}
         />
       </Block>
@@ -182,7 +175,6 @@ export default function EcommerceFilters({ mobileOpen, onMobileClose }: any) {
         <EcommerceFilterRating
           filterRating={filters.filterRating}
           onChangeRating={handleChangeRating}
-          // @ts-expect-error TS(2322): Type '{ filterRating: null; onChangeRating: (event... Remove this comment to see the full error message
           sx={{ mt: 2 }}
         />
       </Block>
@@ -194,7 +186,6 @@ export default function EcommerceFilters({ mobileOpen, onMobileClose }: any) {
           filterTag={filters.filterTag}
           onChangeTag={handleChangeTag}
           options={TAG_OPTIONS}
-          // @ts-expect-error TS(2322): Type '{ filterTag: never[]; onChangeTag: (name: an... Remove this comment to see the full error message
           sx={{ mt: 2 }}
         />
       </Block>

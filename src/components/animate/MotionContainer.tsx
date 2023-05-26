@@ -7,11 +7,11 @@ import { varContainer } from './variants';
 
 // ----------------------------------------------------------------------
 
-MotionContainer.propTypes = {
-  action: PropTypes.bool,
-  animate: PropTypes.bool,
-  children: PropTypes.node,
-};
+// MotionContainer.propTypes = {
+//   action: PropTypes.bool,
+//   animate: PropTypes.bool,
+//   children: PropTypes.node,
+// };
 
 export default function MotionContainer({ animate, action = false, children, ...other }: any) {
   if (action) {

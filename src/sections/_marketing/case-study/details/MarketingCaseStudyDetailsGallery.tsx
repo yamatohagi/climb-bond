@@ -5,13 +5,9 @@ import { useRef, useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Box, Stack } from '@mui/material';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/lightbox' or it... Remove this comment to see the full error message
 import Lightbox, { useLightBox } from 'src/components/lightbox';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrows } from 'src/components/carousel';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { varHover, varTranHover } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -35,18 +31,15 @@ export default function MarketingCaseStudyDetailsGallery({ images }: any) {
 
   useEffect(() => {
     if (openLightbox) {
-      // @ts-expect-error TS(2339): Property 'slickGoTo' does not exist on type 'never... Remove this comment to see the full error message
       carouselRef.current?.slickGoTo(selectedImage);
     }
   }, [openLightbox, selectedImage]);
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 

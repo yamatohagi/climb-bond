@@ -6,7 +6,6 @@ import NextLink from 'next/link';
 // @mui
 import { Link } from '@mui/material';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 //
 import { StyledNavItem } from './styles';
@@ -14,13 +13,11 @@ import { StyledNavItem } from './styles';
 // ----------------------------------------------------------------------
 
 export const NavItem = forwardRef(
-  // @ts-expect-error TS(2339): Property 'item' does not exist on type '{}'.
-  ({ item, open, active, subItem, isExternalLink, ...other }, ref) => {
+  ({ item, open, active, subItem, isExternalLink, ...other }: any, ref) => {
     const { title, path, children } = item;
 
     const renderContent = (
       <StyledNavItem
-        // @ts-expect-error TS(2322): Type 'ForwardedRef<unknown>' is not assignable to ... Remove this comment to see the full error message
         ref={ref}
         disableRipple
         subItem={subItem}
@@ -58,7 +55,6 @@ export const NavItem = forwardRef(
 );
 
 NavItem.propTypes = {
-  // @ts-expect-error TS(2322): Type '{ active: PropTypes.Requireable<boolean>; is... Remove this comment to see the full error message
   active: PropTypes.bool,
   isExternalLink: PropTypes.bool,
   item: PropTypes.object,

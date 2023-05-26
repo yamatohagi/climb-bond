@@ -4,9 +4,7 @@ import { useRef } from 'react';
 // @mui
 import { Box, Paper, Typography } from '@mui/material';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/scrollbar' or i... Remove this comment to see the full error message
 import Scrollbar from 'src/components/scrollbar';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { MotionViewport, varContainer } from 'src/components/animate';
 //
 import getVariant from '../getVariant';
@@ -44,7 +42,6 @@ export default function ContainerView({ selectVariant, ...other }: any) {
               alignItems: 'center',
               justifyContent: 'center',
               bgcolor: 'background.paper',
-              // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
               boxShadow: (theme) => theme.customShadows.z8,
             }}
           >

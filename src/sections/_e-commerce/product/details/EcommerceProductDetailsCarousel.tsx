@@ -4,14 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrows } from 'src/components/carousel';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/lightbox' or it... Remove this comment to see the full error message
 import Lightbox, { useLightBox } from 'src/components/lightbox';
 
 // ----------------------------------------------------------------------
@@ -20,7 +16,6 @@ const THUMB_SIZE = 64;
 
 const StyledThumbnailsContainer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'length',
-  // @ts-expect-error TS(2339): Property 'length' does not exist on type 'MUIStyle... Remove this comment to see the full error message
 })(({ length, theme }) => ({
   margin: theme.spacing(0, 'auto'),
   position: 'relative',
@@ -124,18 +119,15 @@ export default function EcommerceProductDetailsCarousel({ images }: any) {
 
   useEffect(() => {
     if (openLightbox) {
-      // @ts-expect-error TS(2339): Property 'slickGoTo' does not exist on type 'never... Remove this comment to see the full error message
       carousel1.current?.slickGoTo(selectedImage);
     }
   }, [openLightbox, selectedImage]);
 
   const handlePrev = () => {
-    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickPrev();
   };
 
   const handleNext = () => {
-    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickNext();
   };
 
@@ -168,7 +160,6 @@ export default function EcommerceProductDetailsCarousel({ images }: any) {
 
   const renderThumbnails = (
     <StyledThumbnailsContainer
-      // @ts-expect-error TS(2322): Type '{ children: Element; length: any; sx: { '& .... Remove this comment to see the full error message
       length={slides.length}
       sx={{
         '& .slick-current img': {

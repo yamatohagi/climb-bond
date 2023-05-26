@@ -24,17 +24,12 @@ import Head from 'next/head';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 // theme
-// @ts-expect-error TS(2307): Cannot find module 'src/theme' or its correspondin... Remove this comment to see the full error message
 import ThemeProvider from 'src/theme';
 // utils
-// @ts-expect-error TS(2307): Cannot find module 'src/utils/createEmotionCache' ... Remove this comment to see the full error message
 import createEmotionCache from 'src/utils/createEmotionCache';
 // components
-// @ts-expect-error TS(2307): Cannot find module 'src/components/progress-bar' o... Remove this comment to see the full error message
 import ProgressBar from 'src/components/progress-bar';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/settings' or it... Remove this comment to see the full error message
 import { ThemeSettings, SettingsProvider } from 'src/components/settings';
-// @ts-expect-error TS(2307): Cannot find module 'src/components/animate/MotionL... Remove this comment to see the full error message
 import MotionLazyContainer from 'src/components/animate/MotionLazyContainer';
 
 // ----------------------------------------------------------------------
@@ -48,7 +43,6 @@ export default function MyApp(props: any) {
 
   return (
     <CacheProvider value={emotionCache}>
-      this comment to see the full error message
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>

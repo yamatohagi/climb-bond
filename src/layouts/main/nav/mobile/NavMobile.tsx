@@ -20,9 +20,7 @@ import NavList from './NavList';
 
 // ----------------------------------------------------------------------
 
-export default function NavMobile({
-  data
-}: any) {
+export default function NavMobile({ data }: any) {
   const { pathname } = useRouter();
 
   const [open, setOpen] = useState(false);
@@ -42,46 +40,40 @@ export default function NavMobile({
     setOpen(false);
   };
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-  return <>
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <IconButton onClick={handleOpen} sx={{ ml: 1, color: 'inherit' }}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Iconify icon="carbon:menu" />
-    </IconButton>
+  return (
+    <>
+      <IconButton onClick={handleOpen} sx={{ ml: 1, color: 'inherit' }}>
+        <Iconify icon="carbon:menu" />
+      </IconButton>
 
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <Drawer
-      open={open}
-      onClose={handleClose}
-      PaperProps={{
-        sx: {
-          pb: 5,
-          width: NAV.W_BASE,
-        },
-      }}
-    >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Scrollbar>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Logo sx={{ mx: 2.5, my: 3 }} />
+      <Drawer
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          sx: {
+            pb: 5,
+            width: NAV.W_BASE,
+          },
+        }}
+      >
+        <Scrollbar>
+          <Logo sx={{ mx: 2.5, my: 3 }} />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <List component="nav" disablePadding>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {data.map((link: any) => <NavList key={link.title} item={link} />)}
-        </List>
+          <List component="nav" disablePadding>
+            {data.map((link: any) => (
+              <NavList key={link.title} item={link} />
+            ))}
+          </List>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Stack spacing={1.5} sx={{ p: 3 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <Button fullWidth variant="contained" color="inherit">
-            Buy Now
-          </Button>
-        </Stack>
-      </Scrollbar>
-    </Drawer>
-  </>;
+          <Stack spacing={1.5} sx={{ p: 3 }}>
+            <Button fullWidth variant="contained" color="inherit">
+              Buy Now
+            </Button>
+          </Stack>
+        </Scrollbar>
+      </Drawer>
+    </>
+  );
 }
 
 NavMobile.propTypes = {

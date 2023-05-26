@@ -33,9 +33,7 @@ const StyledContentItem = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function CarouselBasic4({
-  data
-}: any) {
+export default function CarouselBasic4({ data }: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -61,14 +59,12 @@ export default function CarouselBasic4({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Card>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrows filled shape="rounded" onNext={handleNext} onPrev={handlePrev}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {data.map((item: any) => <CarouselItem key={item.id} item={item} />)}
+          {data.map((item: any) => (
+            <CarouselItem key={item.id} item={item} />
+          ))}
         </Carousel>
       </CarouselArrows>
     </Card>
@@ -81,24 +77,17 @@ CarouselBasic4.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function CarouselItem({
-  item
-}: any) {
+function CarouselItem({ item }: any) {
   const { image, title } = item;
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box sx={{ position: 'relative', zIndex: 0 }}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Image alt={title} src={image} ratio="1/1" />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledContentItem>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h6" sx={{ color: 'common.white' }}>
           {item.title}
         </Typography>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <IconButton
           onClick={() => {}}
           sx={{
@@ -109,7 +98,6 @@ function CarouselItem({
             },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Iconify icon="eva:more-horizontal-fill" />
         </IconButton>
       </StyledContentItem>

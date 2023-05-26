@@ -20,9 +20,7 @@ TestimonialTravel.propTypes = {
   testimonials: PropTypes.array,
 };
 
-export default function TestimonialTravel({
-  testimonials
-}: any) {
+export default function TestimonialTravel({ testimonials }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -53,17 +51,13 @@ export default function TestimonialTravel({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         py: { xs: 10, md: 15 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Grid container spacing={3} alignItems="center">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid xs={12} md={6}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography
             variant="h2"
             sx={{
@@ -74,17 +68,15 @@ export default function TestimonialTravel({
             What Our Customer Say
           </Typography>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Carousel ref={carouselRef} {...carouselSettings}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            {testimonials.map((testimonial: any) => <TestimonialItem key={testimonial.id} testimonial={testimonial} />)}
+            {testimonials.map((testimonial: any) => (
+              <TestimonialItem key={testimonial.id} testimonial={testimonial} />
+            ))}
           </Carousel>
         </Grid>
 
         {isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={6}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Image
               alt="travel testimonial"
               src="/assets/images/travel/travel_testimonial.png"
@@ -95,7 +87,6 @@ export default function TestimonialTravel({
       </Grid>
 
       {isMdUp && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CarouselArrows
           spacing={2}
           justifyContent={{ xs: 'center', md: 'unset' }}

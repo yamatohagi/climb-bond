@@ -20,9 +20,7 @@ import { NavItem } from './NavItem';
 
 // ----------------------------------------------------------------------
 
-export default function NavList({
-  item
-}: any) {
+export default function NavList({ item }: any) {
   const { pathname } = useRouter();
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -52,69 +50,61 @@ export default function NavList({
     setOpenMenu(false);
   };
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-  return <>
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <NavItem
-      // @ts-expect-error TS(2322): Type '{ item: any; active: any; open: boolean; isE... Remove this comment to see the full error message
-      item={item}
-      active={active}
-      open={openMenu}
-      isExternalLink={isExternalLink}
-      onMouseEnter={handleOpenMenu}
-      onMouseLeave={handleCloseMenu}
-    />
+  return (
+    <>
+      <NavItem
+        // @ts-expect-error TS(2322): Type '{ item: any; active: any; open: boolean; isE... Remove this comment to see the full error message
+        item={item}
+        active={active}
+        open={openMenu}
+        isExternalLink={isExternalLink}
+        onMouseEnter={handleOpenMenu}
+        onMouseLeave={handleCloseMenu}
+      />
 
-    {!!children && openMenu && (
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Portal>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Fade in={openMenu}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <StyledMenu onMouseEnter={handleOpenMenu} onMouseLeave={handleCloseMenu}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <Grid container columns={15}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-              <Grid xs={12}>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                <Box
-                  gap={5}
-                  display="grid"
-                  gridTemplateColumns="repeat(5, 1fr)"
-                  sx={{
-                    p: 5,
-                    height: 1,
-                    position: 'relative',
-                    bgcolor: 'background.neutral',
-                  }}
-                >
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                  {mainList.map((list: any) => <NavSubList
-                    key={list.subheader}
-                    subheader={list.subheader}
-                    cover={list.cover}
-                    items={list.items}
-                    isNew={list.isNew}
-                  />)}
-                </Box>
-              </Grid>
-
-              {commonList && (
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                <Grid xs={3}>
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                  <Box sx={{ bgcolor: 'background.default', p: 5 }}>
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                    <NavSubList subheader={commonList.subheader} items={commonList.items} />
+      {!!children && openMenu && (
+        <Portal>
+          <Fade in={openMenu}>
+            <StyledMenu onMouseEnter={handleOpenMenu} onMouseLeave={handleCloseMenu}>
+              <Grid container columns={15}>
+                <Grid xs={12}>
+                  <Box
+                    gap={5}
+                    display="grid"
+                    gridTemplateColumns="repeat(5, 1fr)"
+                    sx={{
+                      p: 5,
+                      height: 1,
+                      position: 'relative',
+                      bgcolor: 'background.neutral',
+                    }}
+                  >
+                    {mainList.map((list: any) => (
+                      <NavSubList
+                        key={list.subheader}
+                        subheader={list.subheader}
+                        cover={list.cover}
+                        items={list.items}
+                        isNew={list.isNew}
+                      />
+                    ))}
                   </Box>
                 </Grid>
-              )}
-            </Grid>
-          </StyledMenu>
-        </Fade>
-      </Portal>
-    )}
-  </>;
+
+                {commonList && (
+                  <Grid xs={3}>
+                    <Box sx={{ bgcolor: 'background.default', p: 5 }}>
+                      <NavSubList subheader={commonList.subheader} items={commonList.items} />
+                    </Box>
+                  </Grid>
+                )}
+              </Grid>
+            </StyledMenu>
+          </Fade>
+        </Portal>
+      )}
+    </>
+  );
 }
 
 NavList.propTypes = {
@@ -123,12 +113,7 @@ NavList.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function NavSubList({
-  subheader,
-  isNew,
-  cover,
-  items
-}: any) {
+function NavSubList({ subheader, isNew, cover, items }: any) {
   const { pathname } = useRouter();
 
   const coverPath = items.length ? items[0].path : '';
@@ -136,13 +121,10 @@ function NavSubList({
   const commonList = subheader === 'Common';
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack spacing={2}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledSubheader>
         {subheader}
         {isNew && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Label color="info" sx={{ ml: 1 }}>
             NEW
           </Label>
@@ -150,9 +132,7 @@ function NavSubList({
       </StyledSubheader>
 
       {!commonList && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Link component={NextLink} href={coverPath}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Image
             disabledEffect
             alt={cover}
@@ -172,10 +152,10 @@ function NavSubList({
         </Link>
       )}
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={1.5} alignItems="flex-start">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        {items.map((item: any) => <NavItem key={item.title} item={item} active={item.path === pathname} subItem />)}
+        {items.map((item: any) => (
+          <NavItem key={item.title} item={item} active={item.path === pathname} subItem />
+        ))}
       </Stack>
     </Stack>
   );

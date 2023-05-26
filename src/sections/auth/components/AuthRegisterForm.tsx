@@ -59,28 +59,20 @@ export default function AuthRegisterForm() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={2.5}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <RHFTextField name="fullName" label="Full Name" />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <RHFTextField name="email" label="Email address" />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <RHFTextField
           name="password"
           label="Password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <InputAdornment position="end">
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Iconify icon={showPassword ? 'carbon:view' : 'carbon:view-off'} />
                 </IconButton>
               </InputAdornment>
@@ -88,18 +80,14 @@ export default function AuthRegisterForm() {
           }}
         />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <RHFTextField
           name="confirmPassword"
           label="Confirm Password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <InputAdornment position="end">
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Iconify icon={showPassword ? 'carbon:view' : 'carbon:view-off'} />
                 </IconButton>
               </InputAdornment>
@@ -107,7 +95,6 @@ export default function AuthRegisterForm() {
           }}
         />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <LoadingButton
           fullWidth
           color="inherit"
@@ -119,15 +106,12 @@ export default function AuthRegisterForm() {
           Register
         </LoadingButton>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="caption" align="center" sx={{ color: 'text.secondary', mt: 3 }}>
           {`I agree to `}
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Link color="text.primary" href="#" underline="always">
             Terms of Service
           </Link>
           {` and `}
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Link color="text.primary" href="#" underline="always">
             Privacy Policy.
           </Link>

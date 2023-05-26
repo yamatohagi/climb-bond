@@ -8,9 +8,7 @@ import ElearningCourseDetailsLessonsDialog from './ElearningCourseDetailsLessons
 
 // ----------------------------------------------------------------------
 
-export default function ElearningCourseDetailsLessonList({
-  lessons
-}: any) {
+export default function ElearningCourseDetailsLessonList({ lessons }: any) {
   const [selectLesson, setSelectLesson] = useState(null);
 
   const [open, setOpen] = useState(false);
@@ -46,25 +44,23 @@ export default function ElearningCourseDetailsLessonList({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography variant="h4" sx={{ mb: 3 }}>
         Lessons
       </Typography>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      {lessons?.map((lesson: any) => <ElearningCourseDetailsLessonItem
-        key={lesson.id}
-        lesson={lesson}
-        // @ts-expect-error TS(2339): Property 'id' does not exist on type 'never'.
-        selected={play && selectLesson?.id === lesson.id}
-        expanded={expanded === lesson.id}
-        onExpanded={handleExpanded(lesson.id)}
-        onOpen={() => handleOpen(lesson)}
-      />)}
+      {lessons?.map((lesson: any) => (
+        <ElearningCourseDetailsLessonItem
+          key={lesson.id}
+          lesson={lesson}
+          // @ts-expect-error TS(2339): Property 'id' does not exist on type 'never'.
+          selected={play && selectLesson?.id === lesson.id}
+          expanded={expanded === lesson.id}
+          onExpanded={handleExpanded(lesson.id)}
+          onOpen={() => handleOpen(lesson)}
+        />
+      ))}
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <ElearningCourseDetailsLessonsDialog
         selected={play}
         open={open}

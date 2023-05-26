@@ -10,10 +10,7 @@ import { TravelFilterTime, TravelFilterGuests, TravelFilterLocation } from './co
 
 // ----------------------------------------------------------------------
 
-export default function TravelFilters({
-  sx,
-  ...other
-}: any) {
+export default function TravelFilters({ sx, ...other }: any) {
   const [departureDay, setDepartureDay] = useState(null);
 
   const [guests, setGuests] = useState({
@@ -42,7 +39,6 @@ export default function TravelFilters({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack
       spacing={2.5}
       alignItems={{ md: 'center' }}
@@ -50,29 +46,23 @@ export default function TravelFilters({
       sx={{ p: 4, borderRadius: 2, bgcolor: 'background.neutral', ...sx }}
       {...other}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TravelFilterLocation />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Divider flexItem orientation="vertical" />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TravelFilterTime
         departureDay={departureDay}
         onChangeDepartureDay={handleChangeDepartureDay}
       />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Divider flexItem orientation="vertical" />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TravelFilterGuests
         guests={guests}
         onDecreaseGuests={handleDecreaseGuests}
         onIncrementGuests={handleIncrementGuests}
       />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Button
         size="large"
         color="secondary"
@@ -83,7 +73,6 @@ export default function TravelFilters({
           minWidth: { xs: 1, md: 48 },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Iconify icon="carbon:search" />
       </Button>
     </Stack>

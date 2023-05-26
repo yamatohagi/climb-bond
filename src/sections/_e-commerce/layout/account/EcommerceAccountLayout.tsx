@@ -21,9 +21,7 @@ EcommerceAccountLayout.propTypes = {
   children: PropTypes.node,
 };
 
-export default function EcommerceAccountLayout({
-  children
-}: any) {
+export default function EcommerceAccountLayout({ children }: any) {
   const isMdUp = useResponsive('up', 'md');
 
   const [menuOpen, setMemuOpen] = useState(false);
@@ -37,27 +35,19 @@ export default function EcommerceAccountLayout({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <EcommerceHeader />
 
       {isMdUp ? (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Container sx={{ my: 5 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h3">Account</Typography>
         </Container>
       ) : (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ py: 2, mb: 5, borderBottom: (theme) => `solid 1px ${theme.palette.divider}` }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Container>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button
               size="small"
               color="inherit"
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               startIcon={<Iconify icon="carbon:menu" />}
               onClick={handleMenuOpen}
             >
@@ -67,9 +57,7 @@ export default function EcommerceAccountLayout({
         </Box>
       )}
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack
           direction={{
             md: 'row',
@@ -84,10 +72,8 @@ export default function EcommerceAccountLayout({
             },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <EcommerceAccountMenu open={menuOpen} onClose={handleMenuClose} />
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             sx={{
               flexGrow: 1,

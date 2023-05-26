@@ -14,9 +14,7 @@ import { ElearningCourseItem } from '../course/item';
 
 // ----------------------------------------------------------------------
 
-export default function ElearningLandingFeaturedCourses({
-  courses
-}: any) {
+export default function ElearningLandingFeaturedCourses({ courses }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -51,13 +49,11 @@ export default function ElearningLandingFeaturedCourses({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         pt: { xs: 5, md: 10 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack
         direction={{ xs: 'column', md: 'row' }}
         alignItems={{ md: 'flex-end' }}
@@ -65,21 +61,16 @@ export default function ElearningLandingFeaturedCourses({
           textAlign: { xs: 'center', md: 'unset' },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={3} flexGrow={1}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h2">Featured Courses</Typography>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography sx={{ color: 'text.secondary' }}>
             Nullam accumsan lorem in dui. Praesent ac massa at ligula laoreet iaculis.
           </Typography>
         </Stack>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         {isMdUp && <CarouselArrows spacing={2} onNext={handleNext} onPrev={handlePrev} />}
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           position: 'relative',
@@ -87,7 +78,6 @@ export default function ElearningLandingFeaturedCourses({
           width: { md: 'calc(100% + 32px)' },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CarouselArrows
           onNext={handleNext}
           onPrev={handlePrev}
@@ -112,20 +102,19 @@ export default function ElearningLandingFeaturedCourses({
             },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Carousel ref={carouselRef} {...carouselSettings}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            {courses.map((course: any) => <Box
-              key={course.id}
-              sx={{
-                px: 2,
-                pt: { xs: 8, md: 10 },
-                pb: { xs: 10, md: 15 },
-              }}
-            >
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-              <ElearningCourseItem course={course} vertical />
-            </Box>)}
+            {courses.map((course: any) => (
+              <Box
+                key={course.id}
+                sx={{
+                  px: 2,
+                  pt: { xs: 8, md: 10 },
+                  pb: { xs: 10, md: 15 },
+                }}
+              >
+                <ElearningCourseItem course={course} vertical />
+              </Box>
+            ))}
           </Carousel>
         </CarouselArrows>
       </Box>

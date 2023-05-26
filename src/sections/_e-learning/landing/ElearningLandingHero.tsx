@@ -65,11 +65,8 @@ export default function ElearningLandingHero() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledRoot>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Container
           sx={{
             py: 15,
@@ -78,67 +75,51 @@ export default function ElearningLandingHero() {
             height: { md: `100vh` },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid container spacing={3}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid xs={12} md={6} lg={5}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Stack
                 sx={{
                   textAlign: { xs: 'center', md: 'unset' },
                 }}
               >
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography variant="h1">
                   Free
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Box component="span" sx={{ color: 'text.disabled' }}>
                     {` Online `}
                   </Box>
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Box component="span" sx={{ color: 'primary.main', textDecoration: 'underline' }}>
                     {` Courses `}
                   </Box>
                   From The Experts
                 </Typography>
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography sx={{ color: 'text.secondary', mt: 3, mb: 5 }}>
                   Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis
                   venenatis ante odio sit amet eros.
                 </Typography>
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Stack spacing={3} alignItems="center" direction={{ xs: 'column', md: 'row' }}>
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Button color="inherit" size="large" variant="contained">
                     Ready Start
                   </Button>
 
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack direction="row" alignItems="center" sx={{ typography: 'h6' }}>
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Fab size="medium" color="info" onClick={handleOpenVideo} sx={{ mr: 1 }}>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Iconify width={24} icon="carbon:play" />
                     </Fab>
                     Watch Video
                   </Stack>
                 </Stack>
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Divider sx={{ borderStyle: 'dashed', mt: 8, mb: 6 }} />
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Stack
                   direction="row"
                   spacing={{ xs: 3, sm: 10 }}
                   justifyContent={{ xs: 'center', md: 'unset' }}
                 >
                   {SUMMARY.map((item) => (
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Stack key={item.value} spacing={0.5} sx={{ position: 'relative' }}>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Box
                         sx={{
                           top: 8,
@@ -151,9 +132,7 @@ export default function ElearningLandingHero() {
                           bgcolor: `${item.color}.main`,
                         }}
                       />
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Typography variant="h3">{fShortenNumber(item.value)}+</Typography>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                         {item.label}
                       </Typography>
@@ -164,9 +143,7 @@ export default function ElearningLandingHero() {
             </Grid>
 
             {isMdUp && (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Grid xs={12} md={6} lg={7}>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <ElearningHeroIllustration />
               </Grid>
             )}
@@ -174,7 +151,6 @@ export default function ElearningLandingHero() {
         </Container>
       </StyledRoot>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <PlayerDialog open={openVideo} onClose={handleCloseVideo} videoPath={_mock.video(0)} />
     </>
   );

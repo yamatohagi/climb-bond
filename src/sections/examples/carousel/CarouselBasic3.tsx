@@ -11,9 +11,7 @@ import Carousel, { CarouselDots, CarouselArrows } from 'src/components/carousel'
 
 // ----------------------------------------------------------------------
 
-export default function CarouselBasic3({
-  data
-}: any) {
+export default function CarouselBasic3({ data }: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -42,7 +40,6 @@ export default function CarouselBasic3({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         position: 'relative',
@@ -53,12 +50,11 @@ export default function CarouselBasic3({
         },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrows filled shape="rounded" onNext={handleNext} onPrev={handlePrev}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {data.map((item: any) => <CarouselItem key={item.id} item={item} />)}
+          {data.map((item: any) => (
+            <CarouselItem key={item.id} item={item} />
+          ))}
         </Carousel>
       </CarouselArrows>
     </Box>
@@ -71,12 +67,9 @@ CarouselBasic3.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function CarouselItem({
-  item
-}: any) {
+function CarouselItem({ item }: any) {
   const { image, title } = item;
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <Image alt={title} src={image} ratio="1/1" />;
 }
 

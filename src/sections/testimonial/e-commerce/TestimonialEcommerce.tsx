@@ -14,9 +14,7 @@ import TestimonialItem from './TestimonialItem';
 
 // ----------------------------------------------------------------------
 
-export default function TestimonialEcommerce({
-  testimonials
-}: any) {
+export default function TestimonialEcommerce({ testimonials }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -59,22 +57,18 @@ export default function TestimonialEcommerce({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         pt: 8,
         pb: { xs: 8, md: 10 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack direction="row" alignItems="center" sx={{ mb: 8 }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h3" sx={{ textAlign: { xs: 'center', md: 'unset' }, flexGrow: 1 }}>
           Popular Reviews
         </Typography>
 
         {isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             spacing={2}
             justifyContent="center"
@@ -84,13 +78,12 @@ export default function TestimonialEcommerce({
         )}
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel ref={carouselRef} {...carouselSettings}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        {testimonials.map((testimonial: any) => <Box key={testimonial.id} sx={{ px: 1.5 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <TestimonialItem testimonial={testimonial} />
-        </Box>)}
+        {testimonials.map((testimonial: any) => (
+          <Box key={testimonial.id} sx={{ px: 1.5 }}>
+            <TestimonialItem testimonial={testimonial} />
+          </Box>
+        ))}
       </Carousel>
     </Container>
   );

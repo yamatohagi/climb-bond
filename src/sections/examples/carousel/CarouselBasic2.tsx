@@ -11,9 +11,7 @@ import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function CarouselBasic2({
-  data
-}: any) {
+export default function CarouselBasic2({ data }: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -43,31 +41,25 @@ export default function CarouselBasic2({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Card>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel ref={carouselRef} {...carouselSettings}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        {data.map((item: any) => <Stack key={item.id}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <Image alt={item.title} src={item.image} ratio="4/3" />
+        {data.map((item: any) => (
+          <Stack key={item.id}>
+            <Image alt={item.title} src={item.image} ratio="4/3" />
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <CardContent sx={{ textAlign: 'left' }}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <Typography variant="h6" noWrap gutterBottom>
-              {item.title}
-            </Typography>
+            <CardContent sx={{ textAlign: 'left' }}>
+              <Typography variant="h6" noWrap gutterBottom>
+                {item.title}
+              </Typography>
 
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-              {item.description}
-            </Typography>
-          </CardContent>
-        </Stack>)}
+              <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+                {item.description}
+              </Typography>
+            </CardContent>
+          </Stack>
+        ))}
       </Carousel>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrowIndex
         index={currentIndex}
         total={data.length}

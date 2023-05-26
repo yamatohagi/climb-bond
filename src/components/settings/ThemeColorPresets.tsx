@@ -14,9 +14,7 @@ ThemeColorPresets.propTypes = {
   children: PropTypes.node,
 };
 
-export default function ThemeColorPresets({
-  children
-}: any) {
+export default function ThemeColorPresets({ children }: any) {
   const outerTheme = useTheme();
 
   const { presetsColor } = useSettingsContext();
@@ -37,6 +35,5 @@ export default function ThemeColorPresets({
 
   const theme = createTheme(merge(outerTheme, themeOptions));
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

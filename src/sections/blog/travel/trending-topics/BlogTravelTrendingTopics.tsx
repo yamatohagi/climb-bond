@@ -71,15 +71,12 @@ export default function BlogTravelTrendingTopics() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box sx={{ bgcolor: 'background.neutral' }}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container
         sx={{
           py: { xs: 8, md: 10 },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack
           direction="row"
           justifyContent={{ md: 'space-between' }}
@@ -87,23 +84,18 @@ export default function BlogTravelTrendingTopics() {
             mb: { xs: 8, md: 10 },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h3">Trending Topics</Typography>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           {isMdUp && <CarouselArrows onNext={handleNext} onPrev={handlePrev} spacing={2} />}
         </Stack>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
           {TOPICS.map((topic) => (
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TopicItem key={topic.id} topic={topic} />
           ))}
         </Carousel>
 
         {!isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             spacing={2}
             justifyContent="center"

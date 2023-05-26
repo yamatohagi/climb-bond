@@ -16,9 +16,7 @@ import { TravelFilterTime, TravelFilterGuests } from '../filters/components';
 
 // ----------------------------------------------------------------------
 
-export default function TravelTourDetailsReserveForm({
-  tour
-}: any) {
+export default function TravelTourDetailsReserveForm({ tour }: any) {
   const { push } = useRouter();
 
   const [departureDay, setDepartureDay] = useState(null);
@@ -55,29 +53,22 @@ export default function TravelTourDetailsReserveForm({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Card>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={3} sx={{ p: 3 }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={1} direction="row" alignItems="center" sx={{ typography: 'h4' }}>
           {priceSale > 0 && (
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Box sx={{ color: 'grey.500', textDecoration: 'line-through', mr: 1 }}>
               {fCurrency(priceSale)}
             </Box>
           )}
 
           {fCurrency(price)}
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2" component="span" sx={{ color: 'text.disabled', ml: 1 }}>
             /Tour
           </Typography>
         </Stack>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={1.5}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             sx={{
               py: 0.5,
@@ -86,14 +77,12 @@ export default function TravelTourDetailsReserveForm({
               bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
             }}
           >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TravelFilterTime
               departureDay={departureDay}
               onChangeDepartureDay={handleChangeDepartureDay}
             />
           </Box>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             sx={{
               py: 0.5,
@@ -102,7 +91,6 @@ export default function TravelTourDetailsReserveForm({
               bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
             }}
           >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TravelFilterGuests
               guests={guests}
               onDecreaseGuests={handleDecreaseGuests}
@@ -111,41 +99,29 @@ export default function TravelTourDetailsReserveForm({
           </Box>
         </Stack>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={1} direction="row" alignItems="center" justifyContent="space-between">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2" sx={{ color: 'text.disabled' }}>
             Service charge
           </Typography>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2">{fCurrency(priceSale) || '-'}</Typography>
         </Stack>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={1} direction="row" alignItems="center" justifyContent="space-between">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2" sx={{ color: 'text.disabled' }}>
             Discount
           </Typography>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2"> - </Typography>
         </Stack>
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Divider sx={{ borderStyle: 'dashed' }} />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={3} sx={{ p: 3 }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={1} direction="row" alignItems="center" justifyContent="space-between">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h5">Total</Typography>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h5">{fCurrency(priceSale)}</Typography>
         </Stack>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Button size="large" variant="contained" color="inherit" onClick={handleClickReserve}>
           Reserve
         </Button>

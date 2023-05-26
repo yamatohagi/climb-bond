@@ -12,11 +12,7 @@ import NavItem from './NavItem';
 
 // ----------------------------------------------------------------------
 
-export default function NavList({
-  data,
-  depth,
-  hasChild
-}: any) {
+export default function NavList({ data, depth, hasChild }: any) {
   const { pathname } = useRouter();
 
   const { active, isExternalLink } = useActiveLink(data.path);
@@ -39,9 +35,7 @@ export default function NavList({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <NavItem
         item={data}
         depth={depth}
@@ -53,9 +47,7 @@ export default function NavList({
       />
 
       {hasChild && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Collapse in={open} unmountOnExit>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <NavSubList data={data.children} depth={depth} />
         </Collapse>
       )}
@@ -71,20 +63,19 @@ NavList.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function NavSubList({
-  data,
-  depth
-}: any) {
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-  return <>
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    {data.map((list: any) => <NavList
-      key={list.title + list.path}
-      data={list}
-      depth={depth + 1}
-      hasChild={!!list.children}
-    />)}
-  </>;
+function NavSubList({ data, depth }: any) {
+  return (
+    <>
+      {data.map((list: any) => (
+        <NavList
+          key={list.title + list.path}
+          data={list}
+          depth={depth + 1}
+          hasChild={!!list.children}
+        />
+      ))}
+    </>
+  );
 }
 
 NavSubList.propTypes = {

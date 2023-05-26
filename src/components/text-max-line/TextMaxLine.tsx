@@ -8,8 +8,10 @@ import useTypography from './useTypography';
 // ----------------------------------------------------------------------
 
 const TextMaxLine = forwardRef(
-  // @ts-expect-error TS(2339): Property 'asLink' does not exist on type '{}'.
-  ({ asLink, variant = 'body1', line = 2, persistent = false, children, sx, ...other }, ref) => {
+  (
+    { asLink, variant = 'body1', line = 2, persistent = false, children, sx, ...other }: any,
+    ref
+  ) => {
     const { lineHeight } = useTypography(variant);
 
     const styles = {
@@ -26,7 +28,6 @@ const TextMaxLine = forwardRef(
 
     if (asLink) {
       return (
-        // @ts-expect-error TS(2769): No overload matches this call.
         <Link color="inherit" ref={ref} variant={variant} sx={{ ...styles }} {...other}>
           {children}
         </Link>
@@ -34,7 +35,6 @@ const TextMaxLine = forwardRef(
     }
 
     return (
-      // @ts-expect-error TS(2769): No overload matches this call.
       <Typography ref={ref} variant={variant} sx={{ ...styles }} {...other}>
         {children}
       </Typography>
@@ -43,7 +43,6 @@ const TextMaxLine = forwardRef(
 );
 
 TextMaxLine.propTypes = {
-  // @ts-expect-error TS(2322): Type '{ sx: PropTypes.Requireable<object>; asLink:... Remove this comment to see the full error message
   sx: PropTypes.object,
   asLink: PropTypes.bool,
   line: PropTypes.number,

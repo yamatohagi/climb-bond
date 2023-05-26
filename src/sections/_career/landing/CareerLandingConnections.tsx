@@ -37,9 +37,7 @@ import { varHover, varTranHover } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function CareerLandingConnections({
-  countries
-}: any) {
+export default function CareerLandingConnections({ countries }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -84,7 +82,6 @@ export default function CareerLandingConnections({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         overflow: 'hidden',
@@ -92,7 +89,6 @@ export default function CareerLandingConnections({
         py: { xs: 8, md: 15 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container
         sx={{
           mb: { md: 0 },
@@ -103,7 +99,6 @@ export default function CareerLandingConnections({
         }}
       >
         {isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <SvgColor
             src="/assets/illustrations/illustration_map.svg"
             sx={{
@@ -118,11 +113,8 @@ export default function CareerLandingConnections({
           />
         )}
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container spacing={3} justifyContent="space-between">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={4}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Stack
               alignItems={{ xs: 'center', md: 'flex-start' }}
               sx={{
@@ -130,23 +122,19 @@ export default function CareerLandingConnections({
                 textAlign: { xs: 'center', md: 'unset' },
               }}
             >
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography variant="h2">Global Connections</Typography>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography sx={{ mt: 3, mb: 5, color: 'text.secondary' }}>
                 Vestibulum fringilla pede sit amet augue. Nam adipiscing. Nulla neque dolor,
                 sagittis eget, iaculis quis.
               </Typography>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button
                 component={NextLink}
                 href={paths.career.jobs}
                 color="inherit"
                 size="large"
                 variant="contained"
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 endIcon={<Iconify icon="carbon:chevron-right" />}
               >
                 View All Jobs
@@ -154,40 +142,35 @@ export default function CareerLandingConnections({
             </Stack>
           </Grid>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={7}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Box ref={containerRef} />
           </Grid>
         </Grid>
       </Container>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           pl: `${offsetLeft}px`,
           width: { md: `calc(100% + 120px)` },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {countries.map((country: any) => <Box
-            key={country.id}
-            sx={{
-              ml: '-1px',
-              py: 8,
-              pr: { xs: 2, md: 4 },
-              pl: { xs: 2, md: 0 },
-              color: 'common.white',
-            }}
-          >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <JobByCountryItem key={country.id} country={country} />
-          </Box>)}
+          {countries.map((country: any) => (
+            <Box
+              key={country.id}
+              sx={{
+                ml: '-1px',
+                py: 8,
+                pr: { xs: 2, md: 4 },
+                pl: { xs: 2, md: 0 },
+                color: 'common.white',
+              }}
+            >
+              <JobByCountryItem key={country.id} country={country} />
+            </Box>
+          ))}
         </Carousel>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CarouselArrows
           spacing={2}
           justifyContent="center"
@@ -206,15 +189,11 @@ CareerLandingConnections.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function JobByCountryItem({
-  country
-}: any) {
+function JobByCountryItem({ country }: any) {
   const { location, coverImg, totalJobs } = country;
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Link component={NextLink} href={paths.career.jobs} underline="none">
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Card
         component={m.div}
         whileHover="hover"
@@ -226,20 +205,14 @@ function JobByCountryItem({
           },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ overflow: 'hidden' }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <m.div variants={varHover(1.1)} transition={varTranHover()}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Image src={coverImg} alt="cover" ratio="3/4" />
           </m.div>
         </Box>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={1} sx={{ textAlign: 'center', p: 2.5 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h6">{location}</Typography>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2" sx={{ color: 'text.disabled' }}>
             {totalJobs} Jobs
           </Typography>

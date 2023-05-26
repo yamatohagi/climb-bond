@@ -18,9 +18,7 @@ import Carousel, { CarouselArrows } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function CarouselCenterMode({
-  data
-}: any) {
+export default function CarouselCenterMode({ data }: any) {
   const carouselRef = useRef(null);
 
   const theme = useTheme();
@@ -57,22 +55,19 @@ export default function CarouselCenterMode({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         overflow: 'hidden',
         position: 'relative',
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrows filled icon="noto:rightwards-hand" onNext={handleNext} onPrev={handlePrev}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {data.map((item: any) => <Box key={item.id} sx={{ px: 1 }}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <CarouselItem item={item} />
-          </Box>)}
+          {data.map((item: any) => (
+            <Box key={item.id} sx={{ px: 1 }}>
+              <CarouselItem item={item} />
+            </Box>
+          ))}
         </Carousel>
       </CarouselArrows>
     </Box>
@@ -85,15 +80,12 @@ CarouselCenterMode.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function CarouselItem({
-  item
-}: any) {
+function CarouselItem({ item }: any) {
   const theme = useTheme();
 
   const { image, title } = item;
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper
       sx={{
         borderRadius: 2,
@@ -101,9 +93,7 @@ function CarouselItem({
         position: 'relative',
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Image alt={title} src={image} ratio="3/4" />
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CardContent
         sx={{
           bottom: 0,
@@ -119,12 +109,10 @@ function CarouselItem({
           }),
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <TextMaxLine variant="h4" paragraph>
           {title}
         </TextMaxLine>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Link
           color="inherit"
           variant="overline"
@@ -137,7 +125,6 @@ function CarouselItem({
           }}
         >
           learn More
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Iconify icon="eva:arrow-forward-fill" width={16} sx={{ ml: 1 }} />
         </Link>
       </CardContent>

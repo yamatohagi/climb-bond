@@ -16,9 +16,7 @@ ThemeRtlLayout.propTypes = {
   children: PropTypes.node,
 };
 
-export default function ThemeRtlLayout({
-  children
-}: any) {
+export default function ThemeRtlLayout({ children }: any) {
   const theme = useTheme();
 
   useEffect(() => {
@@ -31,6 +29,5 @@ export default function ThemeRtlLayout({
     stylisPlugins: theme.direction === 'rtl' ? [prefixer, rtlPlugin] : [],
   });
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
 }

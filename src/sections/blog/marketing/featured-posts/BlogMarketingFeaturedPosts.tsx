@@ -42,9 +42,7 @@ const StyledOverlay = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function BlogMarketingFeaturedPosts({
-  posts
-}: any) {
+export default function BlogMarketingFeaturedPosts({ posts }: any) {
   const theme = useTheme();
 
   const [selected, setSelected] = useState(0);
@@ -76,11 +74,8 @@ export default function BlogMarketingFeaturedPosts({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <StyledRoot>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container sx={{ position: 'relative', zIndex: 9 }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CarouselArrows
           onNext={handleNext}
           onPrev={handlePrev}
@@ -105,10 +100,10 @@ export default function BlogMarketingFeaturedPosts({
             },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Carousel ref={carouselRef} {...carouselSettings}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            {posts.map((post: any) => <PostItem key={post.id} post={post} />)}
+            {posts.map((post: any) => (
+              <PostItem key={post.id} post={post} />
+            ))}
           </Carousel>
         </CarouselArrows>
       </Container>
@@ -116,7 +111,6 @@ export default function BlogMarketingFeaturedPosts({
       {posts.map(
         (post: any, index: any) =>
           selected === index && (
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Image
               key={post.id}
               alt="post cover"
@@ -126,7 +120,6 @@ export default function BlogMarketingFeaturedPosts({
           )
       )}
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledOverlay />
     </StyledRoot>
   );

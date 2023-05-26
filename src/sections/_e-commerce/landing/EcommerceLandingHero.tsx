@@ -45,13 +45,11 @@ export default function EcommerceLandingHero() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         pt: { xs: 5, md: 8 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           ...bgGradient({
@@ -63,10 +61,10 @@ export default function EcommerceLandingHero() {
           position: 'relative',
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {_productsCarousel.map((product: any) => <EcommerceProductItemHero key={product.id} product={product} />)}
+          {_productsCarousel.map((product: any) => (
+            <EcommerceProductItemHero key={product.id} product={product} />
+          ))}
         </Carousel>
       </Box>
     </Container>

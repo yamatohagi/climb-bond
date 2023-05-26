@@ -15,9 +15,7 @@ TestimonialElearning.propTypes = {
   testimonials: PropTypes.array,
 };
 
-export default function TestimonialElearning({
-  testimonials
-}: any) {
+export default function TestimonialElearning({ testimonials }: any) {
   const theme = useTheme();
 
   const [selected, setSelected] = useState(0);
@@ -78,7 +76,6 @@ export default function TestimonialElearning({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         bgcolor: 'background.neutral',
@@ -87,44 +84,36 @@ export default function TestimonialElearning({
         py: { xs: 10, md: 15 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container sx={{ position: 'relative' }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container spacing={3} justifyContent="center">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={6}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="h2" sx={{ mb: 5 }}>
               What Our Customer Say
             </Typography>
 
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <CarouselArrows
               onNext={handleNext}
               onPrev={handlePrev}
               leftButtonProps={{ sx: { display: { xs: 'none', md: 'inline-flex' } } }}
               rightButtonProps={{ sx: { display: { xs: 'none', md: 'inline-flex' } } }}
             >
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Carousel
                 {...carouselContentSettings}
                 asNavFor={carouselThumbnail}
                 ref={carouselRef1}
               >
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                {testimonials.map((testimonial: any) => <TestimonialItemContent key={testimonial.id} testimonial={testimonial} />)}
+                {testimonials.map((testimonial: any) => (
+                  <TestimonialItemContent key={testimonial.id} testimonial={testimonial} />
+                ))}
               </Carousel>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Box sx={{ mb: 3, mx: 'auto', maxWidth: { xs: 360, sm: 420 } }}>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Carousel
                   {...carouselThumbnailSettings}
                   asNavFor={carouselContent}
                   ref={carouselRef2}
                 >
                   {testimonials.map((testimonial: any, index: any) => (
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <TestimonialItemThumbnail
                       key={testimonial.id}
                       testimonial={testimonial}
@@ -138,11 +127,8 @@ export default function TestimonialElearning({
             {testimonials.map(
               (testimonial: any, index: any) =>
                 selected === index && (
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack key={testimonial.id} spacing={0.5}>
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Typography variant="h6">{testimonial.name}</Typography>
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                       {testimonial.role}
                     </Typography>

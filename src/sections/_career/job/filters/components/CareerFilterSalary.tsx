@@ -9,10 +9,7 @@ import { inputStyle } from '../styles';
 
 // ----------------------------------------------------------------------
 
-export default function CareerFilterSalary({
-  filterSalary,
-  onChangeSalary
-}: any) {
+export default function CareerFilterSalary({ filterSalary, onChangeSalary }: any) {
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event: any) => {
@@ -28,11 +25,8 @@ export default function CareerFilterSalary({
   const maxSalary = filterSalary[1];
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <FormControl fullWidth hiddenLabel variant="filled" onClick={handleOpen} sx={inputStyle}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Select
           open={false}
           displayEmpty
@@ -40,14 +34,12 @@ export default function CareerFilterSalary({
           renderValue={() => {
             if (minSalary === 0 && maxSalary === 20000) {
               return (
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography variant="body2" sx={{ color: 'text.disabled' }}>
                   All salary ranges
                 </Typography>
               );
             }
             return (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography variant="subtitle2" component="span">{`${fCurrency(
                 minSalary
               )} - ${fCurrency(maxSalary)}`}</Typography>
@@ -56,7 +48,6 @@ export default function CareerFilterSalary({
         />
       </FormControl>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Popover
         open={!!open}
         onClose={handleClose}
@@ -74,12 +65,10 @@ export default function CareerFilterSalary({
           },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="overline" sx={{ mb: 8, display: 'block', color: 'text.disabled' }}>
           Value based on 1 month
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Slider
           marks
           step={1000}

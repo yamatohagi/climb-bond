@@ -19,7 +19,6 @@ export const NavItem = forwardRef(
     const { title, path, children } = item;
 
     const renderContent = (
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledNavItem
         // @ts-expect-error TS(2322): Type 'ForwardedRef<unknown>' is not assignable to ... Remove this comment to see the full error message
         ref={ref}
@@ -31,7 +30,6 @@ export const NavItem = forwardRef(
       >
         {title}
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         {!!children && <Iconify width={16} icon="carbon:chevron-down" sx={{ ml: 1 }} />}
       </StyledNavItem>
     );
@@ -39,7 +37,6 @@ export const NavItem = forwardRef(
     // ExternalLink
     if (isExternalLink) {
       return (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Link href={path} target="_blank" rel="noopener" color="inherit" underline="none">
           {renderContent}
         </Link>
@@ -53,7 +50,6 @@ export const NavItem = forwardRef(
 
     // Default
     return (
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Link component={NextLink} href={path} color="inherit" underline="none">
         {renderContent}
       </Link>

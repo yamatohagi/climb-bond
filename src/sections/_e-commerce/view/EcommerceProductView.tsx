@@ -34,19 +34,14 @@ export default function EcommerceProductView() {
   }, []);
 
   if (loading) {
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     return <LoadingScreen />;
   }
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <EcommerceHeader />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container sx={{ overflow: 'hidden' }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CustomBreadcrumbs
           links={[
             {
@@ -62,17 +57,12 @@ export default function EcommerceProductView() {
           sx={{ my: 5 }}
         />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container spacing={{ xs: 5, md: 8 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={6} lg={7}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <EcommerceProductDetailsCarousel images={_mockProduct.images} />
           </Grid>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={6} lg={5}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <EcommerceProductDetailsInfo
               name={_mockProduct.name}
               price={_mockProduct.price}
@@ -84,11 +74,8 @@ export default function EcommerceProductView() {
           </Grid>
         </Grid>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container columnSpacing={{ md: 8 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={6} lg={7}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <EcommerceProductDetailsDescription
               description={_mockProduct.description}
               specifications={[
@@ -103,7 +90,6 @@ export default function EcommerceProductView() {
         </Grid>
       </Container>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <ReviewEcommerce />
     </>
   );

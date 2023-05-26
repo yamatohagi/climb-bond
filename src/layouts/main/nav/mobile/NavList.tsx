@@ -15,9 +15,7 @@ import NavItem from './NavItem';
 
 // ----------------------------------------------------------------------
 
-export default function NavList({
-  item
-}: any) {
+export default function NavList({ item }: any) {
   const { pathname } = useRouter();
 
   const { path, children } = item;
@@ -27,9 +25,7 @@ export default function NavList({
   const [open, setOpen] = useState(false);
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <NavItem
         item={item}
         open={open}
@@ -40,9 +36,7 @@ export default function NavList({
       />
 
       {!!children && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Collapse in={open} unmountOnExit>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <NavSectionVertical data={children} />
         </Collapse>
       )}

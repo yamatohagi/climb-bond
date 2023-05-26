@@ -8,7 +8,6 @@ import { Box, IconButton } from '@mui/material';
 
 // @ts-expect-error TS(2339): Property 'children' does not exist on type '{}'.
 const IconButtonAnimate = forwardRef(({ children, size = 'medium', ...other }, ref) => (
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <AnimateWrap size={size}>
     // @ts-expect-error TS(2769): No overload matches this call.
     <IconButton size={size} ref={ref} {...other}>
@@ -47,15 +46,11 @@ AnimateWrap.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
-function AnimateWrap({
-  size,
-  children
-}: any) {
+function AnimateWrap({ size, children }: any) {
   const isSmall = size === 'small';
   const isLarge = size === 'large';
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       component={m.div}
       whileTap="tap"

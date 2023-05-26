@@ -55,16 +55,13 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
   useEventListener('paste', handlePaste, codesRef);
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack direction="row" spacing={2} justifyContent="center" ref={codesRef}>
       {inputs.map((name, index) => (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Controller
           key={name}
           name={`${keyName}${index + 1}`}
           control={control}
           render={({ field, fieldState: { error } }) => (
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TextField
               {...field}
               error={!!error}

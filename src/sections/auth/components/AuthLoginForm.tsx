@@ -59,25 +59,18 @@ export default function AuthLoginForm() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={2.5} alignItems="flex-end">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <RHFTextField name="email" label="Email address" />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <RHFTextField
           name="password"
           label="Password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <InputAdornment position="end">
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <IconButton onClick={handleShowPassword} edge="end">
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Iconify icon={showPassword ? 'carbon:view' : 'carbon:view-off'} />
                 </IconButton>
               </InputAdornment>
@@ -85,7 +78,6 @@ export default function AuthLoginForm() {
           }}
         />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Link
           component={NextLink}
           href={paths.resetPassword}
@@ -96,7 +88,6 @@ export default function AuthLoginForm() {
           Forgot password?
         </Link>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <LoadingButton
           fullWidth
           color="inherit"

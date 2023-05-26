@@ -33,56 +33,45 @@ export default function MarketingLandingFaqs() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         pt: { xs: 5, md: 10 },
         pb: { xs: 10, md: 15 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Grid container spacing={3} justifyContent="space-between" alignItems="center">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid xs={12} md={6} lg={6}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Stack spacing={2} sx={{ mb: 5, textAlign: { xs: 'center', md: 'left' } }}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="overline" color="text.disabled">
               FAQS
             </Typography>
 
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="h2">Frequently Asked Questions</Typography>
           </Stack>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {_faqs.map((faq: any) => <Accordion
-            key={faq.id}
-            expanded={expanded === faq.question}
-            onChange={handleChangeExpanded(faq.question)}
-          >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <AccordionSummary>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-              <Typography variant="h5" sx={{ flexGrow: 1 }}>
-                {faq.question}
-              </Typography>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-              <Iconify
-                width={24}
-                icon={expanded === faq.question ? 'carbon:subtract' : 'carbon:add'}
-              />
-            </AccordionSummary>
+          {_faqs.map((faq: any) => (
+            <Accordion
+              key={faq.id}
+              expanded={expanded === faq.question}
+              onChange={handleChangeExpanded(faq.question)}
+            >
+              <AccordionSummary>
+                <Typography variant="h5" sx={{ flexGrow: 1 }}>
+                  {faq.question}
+                </Typography>
+                <Iconify
+                  width={24}
+                  icon={expanded === faq.question ? 'carbon:subtract' : 'carbon:add'}
+                />
+              </AccordionSummary>
 
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <AccordionDetails>{faq.answer}</AccordionDetails>
-          </Accordion>)}
+              <AccordionDetails>{faq.answer}</AccordionDetails>
+            </Accordion>
+          ))}
         </Grid>
 
         {isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={6} lg={5}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Image alt="faqs" src="/assets/illustrations/illustration_faqs.svg" />
           </Grid>
         )}

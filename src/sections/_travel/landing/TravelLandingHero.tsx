@@ -39,9 +39,7 @@ const StyledOverlay = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function TravelLandingHero({
-  tours
-}: any) {
+export default function TravelLandingHero({ tours }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -99,18 +97,16 @@ export default function TravelLandingHero({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box sx={{ minHeight: { md: '100vh' }, position: 'relative' }}>
       {!!tours.length && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel {...carouselContentSettings} asNavFor={carouselThumbnail} ref={carouselRef1}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {tours.map((tour: any) => <CarouselItem key={tour.id} tour={tour} />)}
+          {tours.map((tour: any) => (
+            <CarouselItem key={tour.id} tour={tour} />
+          ))}
         </Carousel>
       )}
 
       {isMdUp && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack
           spacing={2}
           justifyContent="center"
@@ -123,10 +119,8 @@ export default function TravelLandingHero({
           }}
         >
           {!!tours.length && (
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Carousel {...carouselThumbnailSettings} asNavFor={carouselContent} ref={carouselRef2}>
               {tours.map((tour: any, index: any) => (
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <ThumbnailItem key={tour.id} tour={tour} isSelected={selected === index} />
               ))}
             </Carousel>
@@ -143,13 +137,10 @@ TravelLandingHero.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function CarouselItem({
-  tour
-}: any) {
+function CarouselItem({ tour }: any) {
   const { slug, location, heroImg, ratings, price, duration } = tour;
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         display: 'flex',
@@ -161,7 +152,6 @@ function CarouselItem({
       }}
     >
       {/* Content */}
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack
         alignItems="center"
         sx={{
@@ -170,53 +160,42 @@ function CarouselItem({
           position: { md: 'absolute' },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="overline" sx={{ color: 'info.main', mb: 5 }}>
           {location}
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h1" sx={{ maxWidth: 480 }}>
           {slug}
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack
           alignItems="center"
           spacing={{ xs: 2.5, md: 5 }}
           direction={{ xs: 'column', md: 'row' }}
           sx={{ my: 5 }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Iconify icon="carbon:time" width={24} sx={{ mr: 1, color: 'primary.main' }} />
             {duration}
           </Stack>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Iconify icon="carbon:star" width={24} sx={{ mr: 1, color: 'primary.main' }} />
             {`${ratings} reviews`}
           </Stack>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2' }}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Iconify icon="carbon:currency" width={24} sx={{ mr: 1, color: 'primary.main' }} />
             {`Starting at ${fCurrency(price)}`}
           </Stack>
         </Stack>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Button variant="contained" size="large">
           Book Now
         </Button>
       </Stack>
 
       {/* Background */}
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           width: 1,
@@ -227,10 +206,8 @@ function CarouselItem({
           },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <StyledOverlay />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Image
           alt="hero"
           src={heroImg}
@@ -249,16 +226,12 @@ CarouselItem.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function ThumbnailItem({
-  tour,
-  isSelected
-}: any) {
+function ThumbnailItem({ tour, isSelected }: any) {
   const theme = useTheme();
 
   const { continent, heroImg, location } = tour;
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack
       direction="row"
       alignItems="center"
@@ -277,21 +250,15 @@ function ThumbnailItem({
         }),
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Avatar src={heroImg} sx={{ width: 48, height: 48 }} />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={0.5}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <TextMaxLine variant="h6" line={1}>
           {location}
         </TextMaxLine>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack direction="row" alignItems="center">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Iconify icon="carbon:location" sx={{ mr: 1, color: 'primary.main' }} />
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <TextMaxLine variant="caption" line={1} sx={{ opacity: 0.48 }}>
             {continent}
           </TextMaxLine>

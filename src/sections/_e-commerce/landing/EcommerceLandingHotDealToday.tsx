@@ -62,13 +62,11 @@ export default function EcommerceLandingHotDealToday() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         py: { xs: 5, md: 8 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack
         direction={{ xs: 'column', md: 'row' }}
         alignItems="center"
@@ -77,7 +75,6 @@ export default function EcommerceLandingHotDealToday() {
           mb: 8,
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography
           variant="h3"
           sx={{
@@ -87,7 +84,6 @@ export default function EcommerceLandingHotDealToday() {
           🔥 Hot Deal Today
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <ProductCountdownBlock
           hiddenLabel
           expired={add(new Date(), { hours: 1, minutes: 30 })}
@@ -106,7 +102,6 @@ export default function EcommerceLandingHotDealToday() {
         />
 
         {isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             onNext={handleNext}
             onPrev={handlePrev}
@@ -117,19 +112,18 @@ export default function EcommerceLandingHotDealToday() {
         )}
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel ref={carouselRef} {...carouselSettings}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        {_products.map((product: any) => <Box
-          key={product.id}
-          sx={{
-            py: 0.5,
-            px: { xs: 1, md: 1.5 },
-          }}
-        >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <EcommerceProductItemHot product={product} hotProduct />
-        </Box>)}
+        {_products.map((product: any) => (
+          <Box
+            key={product.id}
+            sx={{
+              py: 0.5,
+              px: { xs: 1, md: 1.5 },
+            }}
+          >
+            <EcommerceProductItemHot product={product} hotProduct />
+          </Box>
+        ))}
       </Carousel>
     </Container>
   );

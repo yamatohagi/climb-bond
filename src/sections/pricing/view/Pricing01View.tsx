@@ -20,7 +20,6 @@ export default function Pricing01View() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         minHeight: 1,
@@ -28,21 +27,16 @@ export default function Pricing01View() {
         pb: { xs: 10, md: 15 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography variant="h3" align="center" paragraph>
         Flexible plans for your
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <br /> community&apos;s size and needs
       </Typography>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography align="center" sx={{ color: 'text.secondary' }}>
         Choose your plan and make modern online conversation magic
       </Typography>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack sx={{ my: { xs: 5, md: 8 } }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <ToggleButtonGroup
           exclusive
           color="standard"
@@ -69,14 +63,11 @@ export default function Pricing01View() {
             },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <ToggleButton value="monthly">MONTHLY</ToggleButton>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <ToggleButton value="yearly">YEARLY (save 10%)</ToggleButton>
         </ToggleButtonGroup>
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           gap: 4,
@@ -88,8 +79,9 @@ export default function Pricing01View() {
           },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        {_pricing01.map((plan: any) => <PlanCard key={plan.license} plan={plan} />)}
+        {_pricing01.map((plan: any) => (
+          <PlanCard key={plan.license} plan={plan} />
+        ))}
       </Box>
     </Container>
   );

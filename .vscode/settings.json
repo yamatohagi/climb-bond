@@ -1,4 +1,45 @@
 {
-  "typescript.validate.enable": false,
-  "javascript.validate.enable": false,
+  "editor.formatOnSave": true, // ファイル保存時の自動フォーマット有効
+  "editor.formatOnPaste": true, // ペーストした文字の自動フォーマット有効
+  "editor.formatOnType": true, // 文字入力行の自動フォーマット有効
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // デフォルトフォーマッターをPrettierに指定
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true // ファイル保存時に ESLint でフォーマット
+  },
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "search.useIgnoreFiles": true,
+  // Explorer で非表示にするもの
+  "files.exclude": {
+    // "**/.next": true,  // Next.js サーバーのキャッシュ
+    "**/node_modules": true
+    // "out": true  // Next.js の export 先
+  },
+  "cSpell.words": [
+    "Adca",
+    "codegen",
+    "Datetime",
+    "disp",
+    "entypo",
+    "exceljs",
+    "fullcalendar",
+    "hookform",
+    "Iconify",
+    "incollect",
+    "Informations",
+    "jexcel",
+    "jspreadsheet",
+    "libphonenumber",
+    "onafterchanges",
+    "onbeforechange",
+    "radiobutton",
+    "scrollgrid",
+    "selectbox",
+    "signin",
+    "signout",
+    "textbox",
+    "timegrid",
+    "USERLIST"
+  ]
 }

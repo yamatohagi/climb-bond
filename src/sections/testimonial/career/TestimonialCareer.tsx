@@ -14,9 +14,7 @@ import TestimonialItem from './TestimonialItem';
 
 // ----------------------------------------------------------------------
 
-export default function TestimonialCareer({
-  testimonials
-}: any) {
+export default function TestimonialCareer({ testimonials }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -47,34 +45,28 @@ export default function TestimonialCareer({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         bgcolor: 'background.neutral',
         py: { xs: 10, md: 15 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container spacing={3} justifyContent="center">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={6}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="h2" sx={{ mb: 5, textAlign: 'center' }}>
               What Our Customer Say
             </Typography>
 
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Carousel ref={carouselRef} {...carouselSettings}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-              {testimonials.map((testimonial: any) => <TestimonialItem key={testimonial.id} testimonial={testimonial} />)}
+              {testimonials.map((testimonial: any) => (
+                <TestimonialItem key={testimonial.id} testimonial={testimonial} />
+              ))}
             </Carousel>
           </Grid>
         </Grid>
 
         {isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             spacing={2}
             justifyContent="center"

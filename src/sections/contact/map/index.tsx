@@ -14,11 +14,7 @@ import { mapStyle } from './styles';
 
 // ----------------------------------------------------------------------
 
-export default function ContactMap({
-  offices,
-  sx,
-  ...other
-}: any) {
+export default function ContactMap({ offices, sx, ...other }: any) {
   const [tooltip, setTooltip] = useState(null);
 
   const [centerMap, setCenterMap] = useState({
@@ -36,9 +32,7 @@ export default function ContactMap({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box sx={{ height: 480, overflow: 'hidden', ...sx }} {...other}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <GoogleMapReact
         bootstrapURLKeys={{ key: GOOGLE_MAP_API }}
         center={centerMap}
@@ -49,7 +43,6 @@ export default function ContactMap({
         }}
       >
         {offices.map((office: any, index: any) => (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <MapMarker
             key={index}
             lat={office.latlng[0]}
@@ -59,7 +52,6 @@ export default function ContactMap({
         ))}
 
         {tooltip && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <MapPopup
             // @ts-expect-error TS(2339): Property 'latlng' does not exist on type 'never'.
             lat={tooltip.latlng[0]}

@@ -53,10 +53,7 @@ const defaultValues = {
   },
 };
 
-export default function EcommerceFilters({
-  mobileOpen,
-  onMobileClose
-}: any) {
+export default function EcommerceFilters({ mobileOpen, onMobileClose }: any) {
   const isMdUp = useResponsive('up', 'md');
 
   const [filters, setFilters] = useState(defaultValues);
@@ -133,7 +130,6 @@ export default function EcommerceFilters({
   };
 
   const renderContent = (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack
       spacing={3}
       alignItems="flex-start"
@@ -142,9 +138,7 @@ export default function EcommerceFilters({
         width: { xs: 1, md: NAV.W_DRAWER },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Block title="Category">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <EcommerceFilterCategory
           filterCategories={filters.filterCategories}
           onChangeCategories={handleChangeCategories}
@@ -154,9 +148,7 @@ export default function EcommerceFilters({
         />
       </Block>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Block title="Brand">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <EcommerceFilterBrand
           filterBrand={filters.filterBrand}
           onChangeBrand={handleChangeBrand}
@@ -166,9 +158,7 @@ export default function EcommerceFilters({
         />
       </Block>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Block title="Price">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <EcommerceFilterPrice
           filterPrice={filters.filterPrice}
           onChangeStartPrice={handleChangeStartPrice}
@@ -178,9 +168,7 @@ export default function EcommerceFilters({
         />
       </Block>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Block title="Shipping">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <EcommerceFilterShipping
           filterShipping={filters.filterShipping}
           onChangeShipping={handleChangeShipping}
@@ -190,9 +178,7 @@ export default function EcommerceFilters({
         />
       </Block>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Block title="Ratings">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <EcommerceFilterRating
           filterRating={filters.filterRating}
           onChangeRating={handleChangeRating}
@@ -201,12 +187,9 @@ export default function EcommerceFilters({
         />
       </Block>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <EcommerceFilterStock filterStock={filters.filterStock} onChangeStock={handleChangeStock} />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Block title="Tags">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <EcommerceFilterTag
           filterTag={filters.filterTag}
           onChangeTag={handleChangeTag}
@@ -216,13 +199,11 @@ export default function EcommerceFilters({
         />
       </Block>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Button
         fullWidth
         color="inherit"
         size="large"
         variant="contained"
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         startIcon={<Iconify icon="carbon:trash-can" />}
         onClick={handleClearAll}
       >
@@ -232,12 +213,10 @@ export default function EcommerceFilters({
   );
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
       {isMdUp ? (
         renderContent
       ) : (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Drawer
           anchor="right"
           open={mobileOpen}
@@ -265,11 +244,7 @@ EcommerceFilters.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function Block({
-  title,
-  children,
-  ...other
-}: any) {
+function Block({ title, children, ...other }: any) {
   const [checked, setChecked] = useState(true);
 
   const handleOpen = () => {
@@ -277,9 +252,7 @@ function Block({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack alignItems="flex-start" sx={{ width: 1 }} {...other}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack
         direction="row"
         alignItems="center"
@@ -287,17 +260,14 @@ function Block({
         onClick={handleOpen}
         sx={{ width: 1, cursor: 'pointer' }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h6">{title}</Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Iconify
           icon={checked ? 'carbon:subtract' : 'carbon:add'}
           sx={{ color: 'text.secondary' }}
         />
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Collapse unmountOnExit in={checked} sx={{ px: 0.5 }}>
         {children}
       </Collapse>

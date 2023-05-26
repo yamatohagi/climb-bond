@@ -11,9 +11,7 @@ import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function CarouselBasic1({
-  data
-}: any) {
+export default function CarouselBasic1({ data }: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -41,15 +39,13 @@ export default function CarouselBasic1({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Card>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel ref={carouselRef} {...carouselSettings}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        {data.map((item: any) => <Image key={item.id} alt={item.title} src={item.image} ratio="1/1" />)}
+        {data.map((item: any) => (
+          <Image key={item.id} alt={item.title} src={item.image} ratio="1/1" />
+        ))}
       </Carousel>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrowIndex
         index={currentIndex}
         total={data.length}

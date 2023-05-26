@@ -38,7 +38,6 @@ function ProgressBar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <StyledProgressBar />;
 }
 

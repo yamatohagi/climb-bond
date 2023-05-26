@@ -50,15 +50,10 @@ export default function HomeHero() {
   const offsetLeft = container?.left;
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <StyledRoot>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container sx={{ height: 1 }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container columnSpacing={3} alignItems="center" sx={{ height: 1 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={5}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Stack
               spacing={5}
               justifyContent="center"
@@ -68,28 +63,22 @@ export default function HomeHero() {
                 textAlign: { xs: 'center', md: 'left' },
               }}
             >
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography variant="h1">
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 Create Your <br /> Website Today with
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Box component="span" sx={{ color: 'primary.main' }}>
                   {` ZONE`}
                 </Box>
               </Typography>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography sx={{ color: 'text.secondary' }}>
                 The ZONE is built on top of MUI, a powerful library that provides flexible,
                 customizable, and easy-to-use components.
               </Typography>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button
                 color="inherit"
                 size="large"
                 variant="contained"
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 endIcon={<Iconify icon="carbon:launch" />}
                 target="_blank"
                 rel="noopener"
@@ -98,14 +87,10 @@ export default function HomeHero() {
                 figma workspace
               </Button>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Stack spacing={3}>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Typography variant="overline">AVAILABLE FOR</Typography>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Stack direction="row" spacing={2.5}>
                   {['js', 'ts', 'figma', 'cra', 'nextjs'].map((icon) => (
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <SvgColor
                       key={icon}
                       src={`/assets/icons/platforms/ic_${icon}.svg`}
@@ -117,16 +102,13 @@ export default function HomeHero() {
             </Stack>
           </Grid>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={7}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Box ref={containerRef} />
           </Grid>
         </Grid>
       </Container>
 
       {isMdUp && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box
           sx={{
             maxWidth: 1280,
@@ -136,7 +118,6 @@ export default function HomeHero() {
             width: { md: `calc(100% - ${offsetLeft}px)` },
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Image
             visibleByDefault
             disabledEffect

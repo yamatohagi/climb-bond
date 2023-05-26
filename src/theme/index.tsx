@@ -20,9 +20,7 @@ ThemeProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export default function ThemeProvider({
-  children
-}: any) {
+export default function ThemeProvider({ children }: any) {
   const { themeMode, themeDirection } = useSettingsContext();
 
   const themeOptions = useMemo(
@@ -43,11 +41,8 @@ export default function ThemeProvider({
   theme.components = componentsOverride(theme);
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <MUIThemeProvider theme={theme}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CssBaseline />
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <GlobalStyles />
       {children}
     </MUIThemeProvider>

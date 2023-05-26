@@ -116,7 +116,6 @@ export default function TravelCheckoutView() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         overflow: 'hidden',
@@ -124,42 +123,30 @@ export default function TravelCheckoutView() {
         pb: { xs: 8, md: 15 },
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography variant="h2" sx={{ mb: 5 }}>
         Confirm and Pay
       </Typography>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container spacing={{ xs: 5, md: 8 }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={7}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Stack>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <StepLabel title="Shipping Information" step="1" />
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <TravelCheckOutShippingForm
                 sameBilling={sameBilling}
                 onChangeSameBilling={handleChangeSameBilling}
               />
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Divider sx={{ my: 5, borderStyle: 'dashed' }} />
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <StepLabel title="Payment Methods" step="2" />
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <TravelCheckOutPaymentForm />
             </Stack>
           </Grid>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={5}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TravelCheckOutSummary
               guests={guests}
               tour={_tours[0]}
@@ -178,14 +165,9 @@ export default function TravelCheckoutView() {
 
 // ----------------------------------------------------------------------
 
-function StepLabel({
-  step,
-  title
-}: any) {
+function StepLabel({ step, title }: any) {
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack direction="row" alignItems="center" sx={{ mb: 3, typography: 'h5' }}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           mr: 1.5,

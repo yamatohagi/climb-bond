@@ -58,19 +58,13 @@ export default function PaymentMethods() {
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={5}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h5">Payment Method</Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <RadioGroup value={method} onChange={handleChangeMethod}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Stack spacing={2.5}>
             {PAYMENT_OPTIONS.map((option) => (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <OptionItem
                 key={option.value}
                 option={option}
@@ -83,7 +77,6 @@ export default function PaymentMethods() {
         </RadioGroup>
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <PaymentNewCardForm open={openNewForm} onClose={() => setOpenNewForm(false)} />
     </>
   );
@@ -91,34 +84,22 @@ export default function PaymentMethods() {
 
 // ----------------------------------------------------------------------
 
-function OptionItem({
-  option,
-  onOpen,
-  selected,
-  isCredit
-}: any) {
+function OptionItem({ option, onOpen, selected, isCredit }: any) {
   const { value, label } = option;
 
   const renderLabel = (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack direction="row" alignItems="center">
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box component="span" sx={{ typography: 'subtitle1', flexGrow: 1 }}>
         {label}
       </Box>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={1} direction="row" alignItems="center">
         {value === 'creditcard' ? (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Iconify icon="logos:mastercard" width={24} />,
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Iconify icon="logos:visa" width={24} />
           </>
         ) : (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Iconify icon="logos:paypal" width={24} />
         )}
       </Stack>
@@ -126,7 +107,6 @@ function OptionItem({
   );
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         borderRadius: 1,
@@ -136,14 +116,11 @@ function OptionItem({
         }),
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <FormControlLabel
         value={value}
         control={
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Radio
             disableRipple
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             checkedIcon={<Iconify width={24} icon="carbon:checkmark-outline" />}
             sx={{ mx: 1 }}
           />
@@ -161,7 +138,6 @@ function OptionItem({
       />
 
       {isCredit && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack
           alignItems="flex-start"
           sx={{
@@ -169,7 +145,6 @@ function OptionItem({
             width: 1,
           }}
         >
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <TextField
             select
             fullWidth
@@ -179,18 +154,15 @@ function OptionItem({
             }}
           >
             {CARD_OPTIONS.map((card) => (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <option key={card.value} value={card.value}>
                 {card.label}
               </option>
             ))}
           </TextField>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Button
             size="small"
             color="inherit"
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             startIcon={<Iconify icon="carbon:add" />}
             onClick={onOpen}
             sx={{ my: 3 }}

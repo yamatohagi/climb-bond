@@ -13,14 +13,10 @@ import getVariant from '../getVariant';
 
 // ----------------------------------------------------------------------
 
-export default function ContainerView({
-  selectVariant,
-  ...other
-}: any) {
+export default function ContainerView({ selectVariant, ...other }: any) {
   const scrollRef = useRef(null);
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper
       ref={scrollRef}
       component={m.div}
@@ -31,10 +27,8 @@ export default function ContainerView({
       }}
       {...other}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Scrollbar>
         {[...Array(40)].map((_, index) => (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             key={index}
             component={MotionViewport}
@@ -54,7 +48,6 @@ export default function ContainerView({
               boxShadow: (theme) => theme.customShadows.z8,
             }}
           >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="body2">Item {index + 1}</Typography>
           </Box>
         ))}

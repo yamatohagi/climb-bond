@@ -24,9 +24,7 @@ import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function TravelTourDetailsHeader({
-  tour
-}: any) {
+export default function TravelTourDetailsHeader({ tour }: any) {
   const { slug, ratings, reviews, location, favorited, tourGuide } = tour;
 
   const [favorite, setFavorite] = useState(favorited);
@@ -45,102 +43,83 @@ export default function TravelTourDetailsHeader({
     setFavorite(event.target.checked);
   };
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-  return <>
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <Stack
-      spacing={3}
-      direction={{ xs: 'column', md: 'row' }}
-      sx={{
-        mb: 3,
-      }}
-    >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Typography variant="h3" component="h1" sx={{ flexGrow: 1, pr: { md: 10 } }}>
-        {slug}
-      </Typography>
-
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Stack direction="row" alignItems="center" flexShrink={0}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <IconButton onClick={handleOpen} color={open ? 'primary' : 'default'}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <Iconify icon="carbon:share" />
-        </IconButton>
-
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Checkbox
-          color="error"
-          checked={favorite}
-          onChange={handleChangeFavorite}
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          icon={<Iconify icon="carbon:favorite" />}
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          checkedIcon={<Iconify icon="carbon:favorite-filled" />}
-        />
-      </Stack>
-    </Stack>
-
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <Stack spacing={3} direction={{ xs: 'column', md: 'row' }}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Stack spacing={0.5} direction="row" alignItems="center">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Iconify icon="carbon:star-filled" sx={{ color: 'warning.main' }} />
-
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Box sx={{ typography: 'h6' }}>
-          {Number.isInteger(ratings) ? `${ratings}.0` : ratings}
-        </Box>
-
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Link variant="body2" sx={{ color: 'text.secondary' }}>
-          ({fShortenNumber(reviews)} reviews)
-        </Link>
-      </Stack>
-
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Iconify icon="carbon:location" sx={{ mr: 0.5 }} /> {location}
-      </Stack>
-
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Stack direction="row" alignItems="center">
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Avatar src={tourGuide?.picture} sx={{ width: 24, height: 24 }} />
-
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Typography variant="body2" sx={{ color: 'text.secondary', mx: 0.5 }}>
-          Tour guide by
+  return (
+    <>
+      <Stack
+        spacing={3}
+        direction={{ xs: 'column', md: 'row' }}
+        sx={{
+          mb: 3,
+        }}
+      >
+        <Typography variant="h3" component="h1" sx={{ flexGrow: 1, pr: { md: 10 } }}>
+          {slug}
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Link variant="subtitle2" color="inherit">
-          {tourGuide?.name}
-        </Link>
-      </Stack>
-    </Stack>
+        <Stack direction="row" alignItems="center" flexShrink={0}>
+          <IconButton onClick={handleOpen} color={open ? 'primary' : 'default'}>
+            <Iconify icon="carbon:share" />
+          </IconButton>
 
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <Popover
-      open={!!open}
-      onClose={handleClose}
-      anchorEl={open}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-      PaperProps={{
-        sx: { width: 220, p: 1 },
-      }}
-    >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      {_socials.map((social: any) => <MenuItem key={social.value} onClick={handleClose} sx={{ typography: 'body2' }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Iconify icon={social.icon} width={24} sx={{ mr: 1, color: social.color }} />
-        Share via {social.label}
-      </MenuItem>)}
-    </Popover>
-  </>;
+          <Checkbox
+            color="error"
+            checked={favorite}
+            onChange={handleChangeFavorite}
+            icon={<Iconify icon="carbon:favorite" />}
+            checkedIcon={<Iconify icon="carbon:favorite-filled" />}
+          />
+        </Stack>
+      </Stack>
+
+      <Stack spacing={3} direction={{ xs: 'column', md: 'row' }}>
+        <Stack spacing={0.5} direction="row" alignItems="center">
+          <Iconify icon="carbon:star-filled" sx={{ color: 'warning.main' }} />
+
+          <Box sx={{ typography: 'h6' }}>
+            {Number.isInteger(ratings) ? `${ratings}.0` : ratings}
+          </Box>
+
+          <Link variant="body2" sx={{ color: 'text.secondary' }}>
+            ({fShortenNumber(reviews)} reviews)
+          </Link>
+        </Stack>
+
+        <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
+          <Iconify icon="carbon:location" sx={{ mr: 0.5 }} /> {location}
+        </Stack>
+
+        <Stack direction="row" alignItems="center">
+          <Avatar src={tourGuide?.picture} sx={{ width: 24, height: 24 }} />
+
+          <Typography variant="body2" sx={{ color: 'text.secondary', mx: 0.5 }}>
+            Tour guide by
+          </Typography>
+
+          <Link variant="subtitle2" color="inherit">
+            {tourGuide?.name}
+          </Link>
+        </Stack>
+      </Stack>
+
+      <Popover
+        open={!!open}
+        onClose={handleClose}
+        anchorEl={open}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+        PaperProps={{
+          sx: { width: 220, p: 1 },
+        }}
+      >
+        {_socials.map((social: any) => (
+          <MenuItem key={social.value} onClick={handleClose} sx={{ typography: 'body2' }}>
+            <Iconify icon={social.icon} width={24} sx={{ mr: 1, color: social.color }} />
+            Share via {social.label}
+          </MenuItem>
+        ))}
+      </Popover>
+    </>
+  );
 }
 
 TravelTourDetailsHeader.propTypes = {

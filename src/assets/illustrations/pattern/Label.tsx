@@ -5,14 +5,8 @@ import { Box, Stack } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-function Label({
-  icon,
-  text,
-  sx,
-  ...other
-}: any) {
+function Label({ icon, text, sx, ...other }: any) {
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack
       direction="row"
       alignItems="center"
@@ -34,7 +28,6 @@ function Label({
       {...other}
     >
       {icon}
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box sx={{ ml: 1 }}>{text}</Box>
     </Stack>
   );

@@ -18,9 +18,7 @@ import Carousel, { CarouselArrows } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function CareerLandingTopCompanies({
-  companies
-}: any) {
+export default function CareerLandingTopCompanies({ companies }: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -57,7 +55,6 @@ export default function CareerLandingTopCompanies({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         pt: { xs: 10, md: 15 },
@@ -65,35 +62,30 @@ export default function CareerLandingTopCompanies({
         bgcolor: 'background.neutral',
       }}
     >
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h2" sx={{ textAlign: 'center' }}>
           Top Companies
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ position: 'relative' }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             onNext={handleNext}
             onPrev={handlePrev}
             leftButtonProps={{ sx: { left: { xs: 0, md: -40 } } }}
             rightButtonProps={{ sx: { right: { xs: 0, md: -40 } } }}
           >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Carousel ref={carouselRef} {...carouselSettings}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-              {companies.map((company: any) => <Box
-                key={company.id}
-                sx={{
-                  px: 2,
-                  py: { xs: 8, md: 10 },
-                }}
-              >
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                <CompanyItem company={company} />
-              </Box>)}
+              {companies.map((company: any) => (
+                <Box
+                  key={company.id}
+                  sx={{
+                    px: 2,
+                    py: { xs: 8, md: 10 },
+                  }}
+                >
+                  <CompanyItem company={company} />
+                </Box>
+              ))}
             </Carousel>
           </CarouselArrows>
         </Box>
@@ -108,13 +100,9 @@ CareerLandingTopCompanies.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function CompanyItem({
-  company
-}: any) {
+function CompanyItem({ company }: any) {
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Link component={NextLink} href={paths.career.jobs} color="inherit" underline="none">
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           py: 5,
@@ -134,7 +122,6 @@ function CompanyItem({
           },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Image
           alt={company.companyName}
           src={company.companyLogo}
@@ -145,12 +132,10 @@ function CompanyItem({
             borderRadius: 1,
           }}
         />
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="body2" sx={{ color: 'text.disabled', mt: 2.5, mb: 0.5 }}>
           {company.totalJobs} jobs
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <TextMaxLine variant="subtitle2" persistent>
           {company.companyName}
         </TextMaxLine>

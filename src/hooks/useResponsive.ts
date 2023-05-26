@@ -38,7 +38,6 @@ export function useWidth() {
   const keys = [...theme.breakpoints.keys].reverse();
 
   return (
-    // @ts-expect-error TS(2769): No overload matches this call.
     keys.reduce((output, key) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const matches = useMediaQuery(theme.breakpoints.up(key));

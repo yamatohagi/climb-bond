@@ -35,9 +35,7 @@ const StyledSearchbar = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Searchbar({
-  sx
-}: any) {
+export default function Searchbar({ sx }: any) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -49,36 +47,26 @@ export default function Searchbar({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <ClickAwayListener onClickAway={handleClose}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <div>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <IconButton color="inherit" aria-label="search" onClick={handleOpen} sx={sx}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Iconify icon="carbon:search" />
         </IconButton>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Slide direction="down" in={open} mountOnEnter unmountOnExit>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledSearchbar>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Input
               autoFocus
               fullWidth
               disableUnderline
               placeholder="Search…"
               startAdornment={
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <InputAdornment position="start">
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Iconify icon="carbon:search" sx={{ color: 'text.disabled' }} />
                 </InputAdornment>
               }
               sx={{ mr: 1, fontWeight: 'fontWeightBold' }}
             />
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button variant="contained" onClick={handleClose}>
               Search
             </Button>

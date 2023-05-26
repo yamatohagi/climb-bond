@@ -56,9 +56,7 @@ const StyledOverlay = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function ElearningCourseDetailsHero({
-  course
-}: any) {
+export default function ElearningCourseDetailsHero({ course }: any) {
   const {
     slug,
     level,
@@ -89,18 +87,14 @@ export default function ElearningCourseDetailsHero({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           bgcolor: 'background.neutral',
           pb: { xs: 5, md: 10 },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Container sx={{ overflow: 'hidden' }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CustomBreadcrumbs
             links={[
               { name: 'Home', href: '/' },
@@ -113,17 +107,13 @@ export default function ElearningCourseDetailsHero({
             }}
           />
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid container spacing={{ xs: 5, md: 10 }} direction="row-reverse">
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid xs={12} md={5}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Stack
                 alignItems="center"
                 justifyContent="center"
                 sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden' }}
               >
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Fab
                   color="primary"
                   onClick={handleOpenVideo}
@@ -132,104 +122,79 @@ export default function ElearningCourseDetailsHero({
                     position: 'absolute',
                   }}
                 >
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Iconify icon="carbon:play" width={24} />
                 </Fab>
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <StyledOverlay />
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Image alt="hero" src={coverImg} ratio={isMdUp ? '3/4' : '4/3'} />
               </Stack>
             </Grid>
 
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid xs={12} md={7}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Stack spacing={3}>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Stack spacing={2} alignItems="flex-start">
                   {bestSeller && (
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Label color="warning" variant="filled" sx={{ textTransform: 'uppercase' }}>
                       Best Seller
                     </Label>
                   )}
 
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Typography variant="overline" sx={{ color: 'secondary.main' }}>
                     {category}
                   </Typography>
 
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Typography variant="h3" component="h1">
                     {slug}
                   </Typography>
 
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Typography sx={{ color: 'text.secondary' }}>{description}</Typography>
                 </Stack>
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Stack
                   spacing={1.5}
                   direction="row"
                   alignItems="center"
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   divider={<Divider orientation="vertical" sx={{ height: 20 }} />}
                 >
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack spacing={0.5} direction="row" alignItems="center">
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Iconify icon="carbon:star-filled" sx={{ color: 'warning.main' }} />
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Box sx={{ typography: 'h6' }}>
                       {Number.isInteger(ratings) ? `${ratings}.0` : ratings}
                     </Box>
 
                     {reviews && (
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Link variant="body2" sx={{ color: 'text.secondary' }}>
                         ({fShortenNumber(reviews)} reviews)
                       </Link>
                     )}
                   </Stack>
 
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack direction="row" sx={{ typography: 'subtitle2' }}>
                     {fShortenNumber(students)}
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Box component="span" typography="body2" sx={{ ml: 0.5 }}>
                       students
                     </Box>
                   </Stack>
                 </Stack>
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Stack direction="row" alignItems="center">
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Avatar src={teachers[0]?.picture} />
 
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Typography variant="body2" sx={{ ml: 1, mr: 0.5 }}>
                     {teachers[0]?.name}
                   </Typography>
 
                   {!!teachers.length && (
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Link underline="always" color="text.secondary" variant="body2">
                       + {teachers.length} teachers
                     </Link>
                   )}
                 </Stack>
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Divider sx={{ borderStyle: 'dashed' }} />
 
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Stack spacing={2}>
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack
                     direction="row"
                     flexWrap="wrap"
@@ -237,22 +202,16 @@ export default function ElearningCourseDetailsHero({
                       '& > *': { my: 0.5, mr: 3 },
                     }}
                   >
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Iconify icon="carbon:time" sx={{ mr: 1 }} /> {`${totalHours} hours`}
                     </Stack>
 
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Iconify icon="carbon:document" sx={{ mr: 1 }} />
                       {`${lessons?.length} Lessons`}
                     </Stack>
 
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Iconify
                         icon={
                           (level === 'Beginner' && 'carbon:skill-level-basic') ||
@@ -265,7 +224,6 @@ export default function ElearningCourseDetailsHero({
                     </Stack>
                   </Stack>
 
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack
                     direction="row"
                     flexWrap="wrap"
@@ -273,16 +231,12 @@ export default function ElearningCourseDetailsHero({
                       '& > *': { my: 0.5, mr: 3 },
                     }}
                   >
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Iconify icon="carbon:content-delivery-network" sx={{ mr: 1 }} />
                       {typeof languages === 'string' ? languages : languages?.join(', ')}
                     </Stack>
 
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                       <Iconify icon="carbon:help" sx={{ mr: 1 }} /> {`${quizzes} Quizzes`}
                     </Stack>
                   </Stack>
@@ -293,7 +247,6 @@ export default function ElearningCourseDetailsHero({
         </Container>
       </Box>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <PlayerDialog open={openVideo} onClose={handleCloseVideo} videoPath={_mock.video(0)} />
     </>
   );

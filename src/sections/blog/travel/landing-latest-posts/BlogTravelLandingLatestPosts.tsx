@@ -22,9 +22,7 @@ import PostItemCarouse from './PostItemCarouse';
 
 // ----------------------------------------------------------------------
 
-export default function BlogTravelLandingLatestPosts({
-  posts
-}: any) {
+export default function BlogTravelLandingLatestPosts({ posts }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -55,16 +53,13 @@ export default function BlogTravelLandingLatestPosts({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box sx={{ bgcolor: 'grey.900' }}>
       {!isMdUp && (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h2" sx={{ pt: 10, pb: 8, color: 'common.white', textAlign: 'center' }}>
           Latest Posts
         </Typography>
       )}
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         gap={{ xs: 8, md: 0 }}
         display="grid"
@@ -73,43 +68,38 @@ export default function BlogTravelLandingLatestPosts({
           md: 'repeat(2, 1fr)',
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box sx={{ overflow: 'hidden', position: 'relative' }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             onNext={handleNext}
             onPrev={handlePrev}
             leftButtonProps={{ sx: { color: 'common.white' } }}
             rightButtonProps={{ sx: { color: 'common.white' } }}
           >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Carousel ref={carouselRef} {...carouselSettings}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-              {posts.map((post: any) => <PostItemCarouse key={post.id} post={post} />)}
+              {posts.map((post: any) => (
+                <PostItemCarouse key={post.id} post={post} />
+              ))}
             </Carousel>
           </CarouselArrows>
         </Box>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box
           sx={{
             px: { xs: 2.5, sm: 5, md: 8, lg: 15 },
           }}
         >
           {isMdUp && (
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="h2" sx={{ color: 'common.white', py: 10 }}>
               Latest Posts
             </Typography>
           )}
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Stack spacing={3}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            {posts.slice(0, 3).map((post: any) => <PostItem key={post.id} post={post} />)}
+            {posts.slice(0, 3).map((post: any) => (
+              <PostItem key={post.id} post={post} />
+            ))}
           </Stack>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             sx={{
               mt: { xs: 8, md: 5 },
@@ -117,11 +107,9 @@ export default function BlogTravelLandingLatestPosts({
               textAlign: { xs: 'center', md: 'right' },
             }}
           >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button
               component={NextLink}
               href={paths.travel.posts}
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               endIcon={<Iconify icon="carbon:chevron-right" />}
             >
               View All

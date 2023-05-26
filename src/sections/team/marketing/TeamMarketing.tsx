@@ -46,9 +46,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function TeamMarketing({
-  members
-}: any) {
+export default function TeamMarketing({ members }: any) {
   const theme = useTheme();
 
   const isMdUp = useResponsive('up', 'md');
@@ -100,27 +98,19 @@ export default function TeamMarketing({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <StyledRoot>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledContainer>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container spacing={3} justifyContent="space-between">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={4}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Stack spacing={3} sx={{ textAlign: { xs: 'center', md: 'unset' } }}>
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography variant="overline" sx={{ color: 'grey.600' }}>
                 Team
               </Typography>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography variant="h2" sx={{ color: 'primary.main' }}>
                 Meet Our Team
               </Typography>
 
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography sx={{ color: 'common.white' }}>
                 Since wire-frame renderings are relatively simple and fast to calculate, they are
                 often used in cases
@@ -128,15 +118,12 @@ export default function TeamMarketing({
             </Stack>
           </Grid>
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={7}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Box ref={containerRef} />
           </Grid>
         </Grid>
 
         {isMdUp && (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             spacing={2}
             onNext={handleNext}
@@ -148,28 +135,26 @@ export default function TeamMarketing({
         )}
       </StyledContainer>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           pl: `${offsetLeft}px`,
           width: { md: `calc(100% + 120px)` },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {members.map((member: any) => <Box
-            key={member.id}
-            sx={{
-              ml: '-1px',
-              pl: { xs: 2, md: 4 },
-              pr: { xs: 2, md: 0 },
-              color: 'common.white',
-            }}
-          >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <TeamMember member={member} />
-          </Box>)}
+          {members.map((member: any) => (
+            <Box
+              key={member.id}
+              sx={{
+                ml: '-1px',
+                pl: { xs: 2, md: 4 },
+                pr: { xs: 2, md: 0 },
+                color: 'common.white',
+              }}
+            >
+              <TeamMember member={member} />
+            </Box>
+          ))}
         </Carousel>
       </Box>
     </StyledRoot>

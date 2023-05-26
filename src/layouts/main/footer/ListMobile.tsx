@@ -10,9 +10,7 @@ import { StyledLink } from './styles';
 
 // ----------------------------------------------------------------------
 
-export default function ListMobile({
-  list
-}: any) {
+export default function ListMobile({ list }: any) {
   const { subheader, items } = list;
 
   const [expand, setExpand] = useState(false);
@@ -22,9 +20,7 @@ export default function ListMobile({
   };
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack spacing={1.5} alignItems="flex-start">
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography
         variant="subtitle2"
         onClick={onExpand}
@@ -35,7 +31,6 @@ export default function ListMobile({
         }}
       >
         {subheader}
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Iconify
           width={16}
           icon={expand ? 'carbon:chevron-down' : 'carbon:chevron-right'}
@@ -43,14 +38,13 @@ export default function ListMobile({
         />
       </Typography>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Collapse in={expand} unmountOnExit sx={{ width: 1 }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={1.5} alignItems="flex-start">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          {items?.map((link: any) => <StyledLink key={link.title} href={link.path}>
-            {link.title}
-          </StyledLink>)}
+          {items?.map((link: any) => (
+            <StyledLink key={link.title} href={link.path}>
+              {link.title}
+            </StyledLink>
+          ))}
         </Stack>
       </Collapse>
     </Stack>

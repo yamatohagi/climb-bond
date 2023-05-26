@@ -16,15 +16,13 @@ import { varHover, varTranHover } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export default function MarketingCaseStudyDetailsGallery({
-  images
-}: any) {
+export default function MarketingCaseStudyDetailsGallery({ images }: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
 
   const slides = images.map((slide: any) => ({
-    src: slide
+    src: slide,
   }));
 
   const {
@@ -70,46 +68,40 @@ export default function MarketingCaseStudyDetailsGallery({
     ],
   };
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-  return <>
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <Stack direction="row" justifyContent="space-between" sx={{ mt: 3, mb: 5 }}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <Typography variant="h4">Gallery</Typography>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      <CarouselArrows spacing={2} onNext={handleNext} onPrev={handlePrev} />
-    </Stack>
+  return (
+    <>
+      <Stack direction="row" justifyContent="space-between" sx={{ mt: 3, mb: 5 }}>
+        <Typography variant="h4">Gallery</Typography>
+        <CarouselArrows spacing={2} onNext={handleNext} onPrev={handlePrev} />
+      </Stack>
 
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <Carousel ref={carouselRef} {...carouselSettings}>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-      {slides.map((slide: any) => <Box
-        key={slide.src}
-        component={m.div}
-        whileHover="hover"
-        sx={{ px: 1 }}
-        onClick={() => handleOpenLightbox(slide.src)}
-      >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-        <Box sx={{ borderRadius: 2, overflow: 'hidden', cursor: 'pointer' }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-          <m.div variants={varHover(1.25)} transition={varTranHover()}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-            <Image alt={slide.src} src={slide.src} ratio="4/3" />
-          </m.div>
-        </Box>
-      </Box>)}
-    </Carousel>
+      <Carousel ref={carouselRef} {...carouselSettings}>
+        {slides.map((slide: any) => (
+          <Box
+            key={slide.src}
+            component={m.div}
+            whileHover="hover"
+            sx={{ px: 1 }}
+            onClick={() => handleOpenLightbox(slide.src)}
+          >
+            <Box sx={{ borderRadius: 2, overflow: 'hidden', cursor: 'pointer' }}>
+              <m.div variants={varHover(1.25)} transition={varTranHover()}>
+                <Image alt={slide.src} src={slide.src} ratio="4/3" />
+              </m.div>
+            </Box>
+          </Box>
+        ))}
+      </Carousel>
 
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    <Lightbox
-      index={selectedImage}
-      slides={slides}
-      open={openLightbox}
-      close={handleCloseLightbox}
-      onGetCurrentIndex={(index: any) => setSelectedImage(index)}
-    />
-  </>;
+      <Lightbox
+        index={selectedImage}
+        slides={slides}
+        open={openLightbox}
+        close={handleCloseLightbox}
+        onGetCurrentIndex={(index: any) => setSelectedImage(index)}
+      />
+    </>
+  );
 }
 
 MarketingCaseStudyDetailsGallery.propTypes = {

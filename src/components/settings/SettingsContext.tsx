@@ -41,9 +41,7 @@ export const useSettingsContext = () => {
 
 // ----------------------------------------------------------------------
 
-export function SettingsProvider({
-  children
-}: any) {
+export function SettingsProvider({ children }: any) {
   const [open, setOpen] = useState(false);
 
   const [themeMode, setThemeMode] = useState(defaultSettings.themeMode);
@@ -153,7 +151,6 @@ export function SettingsProvider({
     ]
   );
 
-  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <SettingsContext.Provider value={memoizedValue}>{children}</SettingsContext.Provider>;
 }
 

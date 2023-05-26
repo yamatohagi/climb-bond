@@ -16,37 +16,31 @@ const TOPICS = [
   {
     title: 'Account',
     icon: '/assets/icons/faq/ic_faq_account.svg',
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     content: <SupportContent contents={_faqsSupport} />,
   },
   {
     title: 'Payment',
     icon: '/assets/icons/faq/ic_faq_payment.svg',
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     content: <SupportContent contents={_faqsSupport} />,
   },
   {
     title: 'Delivery',
     icon: '/assets/icons/faq/ic_faq_delivery.svg',
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     content: <SupportContent contents={_faqsSupport} />,
   },
   {
     title: 'Product',
     icon: '/assets/icons/faq/ic_faq_package.svg',
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     content: <SupportContent contents={_faqsSupport} />,
   },
   {
     title: 'Return & Refund',
     icon: '/assets/icons/faq/ic_faq_refund.svg',
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     content: <SupportContent contents={_faqsSupport} />,
   },
   {
     title: 'Assurances',
     icon: '/assets/icons/faq/ic_faq_assurances.svg',
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     content: <SupportContent contents={_faqsSupport} />,
   },
 ];
@@ -70,12 +64,9 @@ export default function SupportView() {
   }, [topic]);
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <SupportHero />
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack
         alignItems="flex-end"
         sx={{
@@ -85,23 +76,17 @@ export default function SupportView() {
           borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <IconButton onClick={() => setMobileOpen(true)}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Iconify icon="carbon:menu" />
         </IconButton>
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h3" sx={{ py: { xs: 3, md: 10 } }}>
           Frequently Asked Questions
         </Typography>
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack direction="row" sx={{ pb: { xs: 10, md: 15 } }}>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <SupportNav
             sidebarConfig={TOPICS}
             topic={topic}
@@ -110,7 +95,6 @@ export default function SupportView() {
             onCloseSidebar={() => setMobileOpen(false)}
           />
 
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           {TOPICS.map((item) => item.title === topic && <div key={item.title}>{item.content}</div>)}
         </Stack>
       </Container>

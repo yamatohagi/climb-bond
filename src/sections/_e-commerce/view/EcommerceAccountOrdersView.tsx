@@ -124,14 +124,11 @@ export default function EcommerceAccountOrdersPage() {
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - _productsTable.length) : 0;
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <EcommerceAccountLayout>
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography variant="h5" sx={{ mb: 3 }}>
         Orders
       </Typography>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Tabs
         value={tab}
         scrollButtons="auto"
@@ -140,38 +137,29 @@ export default function EcommerceAccountOrdersPage() {
         onChange={handleChangeTab}
       >
         {TABS.map((category) => (
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Tab key={category} value={category} label={category} />
         ))}
       </Tabs>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ mt: 5, mb: 3 }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <TextField
           fullWidth
           hiddenLabel
           placeholder="Search..."
           InputProps={{
             startAdornment: (
-              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <InputAdornment position="start">
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Iconify icon="carbon:search" width={24} sx={{ color: 'text.disabled' }} />
               </InputAdornment>
             ),
           }}
         />
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={2} direction={{ xs: 'column', md: 'row' }} alignItems="center">
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <DatePicker label="Start Date" sx={{ width: 1, minWidth: 180 }} />
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <DatePicker label="End Date" sx={{ width: 1, minWidth: 180 }} />
         </Stack>
       </Stack>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TableContainer
         sx={{
           overflow: 'unset',
@@ -184,23 +172,19 @@ export default function EcommerceAccountOrdersPage() {
           },
         }}
       >
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <EcommerceAccountOrdersTableToolbar
           rowCount={_productsTable.length}
           numSelected={selected.length}
           onSelectAllRows={handleSelectAllRows}
         />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Scrollbar>
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Table
             sx={{
               minWidth: 720,
             }}
             size={dense ? 'small' : 'medium'}
           >
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <EcommerceAccountOrdersTableHead
               order={order}
               orderBy={orderBy}
@@ -211,27 +195,25 @@ export default function EcommerceAccountOrdersPage() {
               onSelectAllRows={handleSelectAllRows}
             />
 
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TableBody>
               {stableSort(_productsTable, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-                .map((row: any) => <EcommerceAccountOrdersTableRow
-                key={row.id}
-                row={row}
-                // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
-                selected={selected.includes(row.id)}
-                onSelectRow={() => handleSelectRow(row.id)}
-              />)}
+                .map((row: any) => (
+                  <EcommerceAccountOrdersTableRow
+                    key={row.id}
+                    row={row}
+                    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
+                    selected={selected.includes(row.id)}
+                    onSelectRow={() => handleSelectRow(row.id)}
+                  />
+                ))}
 
               {emptyRows > 0 && (
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <TableRow
                   sx={{
                     height: (dense ? 36 : 57) * emptyRows,
                   }}
                 >
-                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <TableCell colSpan={9} />
                 </TableRow>
               )}
@@ -240,9 +222,7 @@ export default function EcommerceAccountOrdersPage() {
         </Scrollbar>
       </TableContainer>
 
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box sx={{ position: 'relative' }}>
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <TablePagination
           page={page}
           component="div"
@@ -253,9 +233,7 @@ export default function EcommerceAccountOrdersPage() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
 
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <FormControlLabel
-          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           control={<Switch checked={dense} onChange={handleChangeDense} />}
           label="Dense padding"
           sx={{

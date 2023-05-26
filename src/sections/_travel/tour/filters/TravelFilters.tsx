@@ -3,13 +3,17 @@ import { useState } from 'react';
 // @mui
 import { Stack, Button, Divider } from '@mui/material';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 //
 import { TravelFilterTime, TravelFilterGuests, TravelFilterLocation } from './components';
 
 // ----------------------------------------------------------------------
 
-export default function TravelFilters({ sx, ...other }) {
+export default function TravelFilters({
+  sx,
+  ...other
+}: any) {
   const [departureDay, setDepartureDay] = useState(null);
 
   const [guests, setGuests] = useState({
@@ -17,11 +21,11 @@ export default function TravelFilters({ sx, ...other }) {
     children: 0,
   });
 
-  const handleChangeDepartureDay = (newValue) => {
+  const handleChangeDepartureDay = (newValue: any) => {
     setDepartureDay(newValue);
   };
 
-  const handleIncrementGuests = (guest) => {
+  const handleIncrementGuests = (guest: any) => {
     if (guest === 'children') {
       setGuests({ ...guests, children: guests.children + 1 });
     } else {
@@ -29,7 +33,7 @@ export default function TravelFilters({ sx, ...other }) {
     }
   };
 
-  const handleDecreaseGuests = (guest) => {
+  const handleDecreaseGuests = (guest: any) => {
     if (guest === 'children') {
       setGuests({ ...guests, children: guests.children - 1 });
     } else {
@@ -38,6 +42,7 @@ export default function TravelFilters({ sx, ...other }) {
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack
       spacing={2.5}
       alignItems={{ md: 'center' }}
@@ -45,23 +50,29 @@ export default function TravelFilters({ sx, ...other }) {
       sx={{ p: 4, borderRadius: 2, bgcolor: 'background.neutral', ...sx }}
       {...other}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TravelFilterLocation />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Divider flexItem orientation="vertical" />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TravelFilterTime
         departureDay={departureDay}
         onChangeDepartureDay={handleChangeDepartureDay}
       />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Divider flexItem orientation="vertical" />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TravelFilterGuests
         guests={guests}
         onDecreaseGuests={handleDecreaseGuests}
         onIncrementGuests={handleIncrementGuests}
       />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Button
         size="large"
         color="secondary"
@@ -72,6 +83,7 @@ export default function TravelFilters({ sx, ...other }) {
           minWidth: { xs: 1, md: 48 },
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Iconify icon="carbon:search" />
       </Button>
     </Stack>

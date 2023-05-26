@@ -15,14 +15,20 @@ import {
   FormControlLabel,
 } from '@mui/material';
 // routes
+// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 // layouts
+// @ts-expect-error TS(2307): Cannot find module 'src/layouts/main' or its corre... Remove this comment to see the full error message
 import MainLayout from 'src/layouts/main';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/lightbox' or it... Remove this comment to see the full error message
 import Lightbox, { useLightBox } from 'src/components/lightbox';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
 // ----------------------------------------------------------------------
@@ -52,7 +58,8 @@ const slides = [
 
 // ----------------------------------------------------------------------
 
-DemoLightboxPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+// @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+DemoLightboxPage.getLayout = (page: any) => <MainLayout>{page}</MainLayout>;
 
 // ----------------------------------------------------------------------
 
@@ -69,7 +76,7 @@ export default function DemoLightboxPage() {
     disabledFullscreen: false,
   });
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setState({
       ...state,
       [event.target.name]: event.target.checked,
@@ -77,11 +84,15 @@ export default function DemoLightboxPage() {
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Head>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <title>Components: Lightbox | ZONE UI</title>
       </Head>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           pt: 6,
@@ -90,7 +101,9 @@ export default function DemoLightboxPage() {
           bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Container>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CustomBreadcrumbs
             heading="Lightbox"
             links={[
@@ -105,10 +118,15 @@ export default function DemoLightboxPage() {
         </Container>
       </Box>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container sx={{ my: 10 }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Card sx={{ p: 3 }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid container spacing={3}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid item xs={12} md={9}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Box
                 gap={1}
                 display="grid"
@@ -119,9 +137,11 @@ export default function DemoLightboxPage() {
                 }}
               >
                 {slides.map((slide) => {
+                  // @ts-expect-error TS(2339): Property 'type' does not exist on type '{ src: any... Remove this comment to see the full error message
                   const thumbnail = slide.type === 'video' ? slide.poster : slide.src;
 
                   return (
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Image
                       key={thumbnail}
                       alt={thumbnail}
@@ -138,16 +158,23 @@ export default function DemoLightboxPage() {
               </Box>
             </Grid>
 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid item xs={12} md={3}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Paper sx={{ p: 3, bgcolor: 'background.neutral', borderRadius: 2 }}>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <FormControl component="fieldset" variant="standard">
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack spacing={2}>
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormLabel component="legend" sx={{ typography: 'body2' }}>
                       Controls
                     </FormLabel>
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormControlLabel
                       control={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Switch
                           size="small"
                           name="disabledZoom"
@@ -158,8 +185,10 @@ export default function DemoLightboxPage() {
                       label="Disabled Zoom"
                     />
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormControlLabel
                       control={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Switch
                           size="small"
                           name="disabledTotal"
@@ -170,8 +199,10 @@ export default function DemoLightboxPage() {
                       label="Disabled Total"
                     />
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormControlLabel
                       control={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Switch
                           size="small"
                           name="disabledVideo"
@@ -182,8 +213,10 @@ export default function DemoLightboxPage() {
                       label="Disabled Video"
                     />
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormControlLabel
                       control={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Switch
                           size="small"
                           name="disabledCaptions"
@@ -194,8 +227,10 @@ export default function DemoLightboxPage() {
                       label="Disabled Captions"
                     />
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormControlLabel
                       control={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Switch
                           size="small"
                           name="disabledSlideshow"
@@ -206,8 +241,10 @@ export default function DemoLightboxPage() {
                       label="Disabled Slideshow"
                     />
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormControlLabel
                       control={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Switch
                           size="small"
                           name="disabledThumbnails"
@@ -218,8 +255,10 @@ export default function DemoLightboxPage() {
                       label="Disabled Thumbnails"
                     />
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <FormControlLabel
                       control={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Switch
                           size="small"
                           name="disabledFullscreen"
@@ -237,6 +276,7 @@ export default function DemoLightboxPage() {
         </Card>
       </Container>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Lightbox
         open={open}
         close={onClose}

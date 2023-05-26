@@ -12,6 +12,7 @@ import {
   InputAdornment,
 } from '@mui/material';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 //
 import { EcommerceAccountLayout } from '../layout';
@@ -85,22 +86,27 @@ const VOUCHERS = [
 export default function EcommerceAccountVouchersView() {
   const [tab, setTab] = useState('All Vouchers');
 
-  const handleChangeTab = (event, newValue) => {
+  const handleChangeTab = (event: any, newValue: any) => {
     setTab(newValue);
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <EcommerceAccountLayout>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography variant="h5" sx={{ mb: 3 }}>
         Vouchers
       </Typography>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TextField
         fullWidth
         label="Enter voucher code"
         InputProps={{
           endAdornment: (
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <InputAdornment position="end">
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button size="large" variant="contained" color="inherit" sx={{ mr: -1 }}>
                 Redeem
               </Button>
@@ -109,8 +115,10 @@ export default function EcommerceAccountVouchersView() {
         }}
       />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Divider sx={{ my: 3, borderStyle: 'dashed' }} />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Tabs
         value={tab}
         scrollButtons="auto"
@@ -120,10 +128,12 @@ export default function EcommerceAccountVouchersView() {
         sx={{ mb: 3 }}
       >
         {TABS.map((category) => (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Tab key={category} value={category} label={category} />
         ))}
       </Tabs>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         gap={3}
         display="grid"
@@ -133,6 +143,7 @@ export default function EcommerceAccountVouchersView() {
         }}
       >
         {VOUCHERS.map((voucher) => (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <EcommerceAccountVoucherItem key={voucher.id} voucher={voucher} />
         ))}
       </Box>

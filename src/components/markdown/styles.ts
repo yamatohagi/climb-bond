@@ -10,6 +10,7 @@ const MARGIN = {
 
 const StyledMarkdown = styled('div', {
   shouldForwardProp: (prop) => prop !== 'firstLetter',
+// @ts-expect-error TS(2339): Property 'firstLetter' does not exist on type 'MUI... Remove this comment to see the full error message
 })(({ firstLetter, theme }) => ({
   // Heading
   '& h1': { ...MARGIN, ...theme.typography.h1 },
@@ -52,6 +53,7 @@ const StyledMarkdown = styled('div', {
     fontFamily: 'Georgia, serif',
     padding: theme.spacing(3, 3, 3, 8),
     borderRadius: Number(theme.shape.borderRadius) * 2,
+    // @ts-expect-error TS(2339): Property 'neutral' does not exist on type 'TypeBac... Remove this comment to see the full error message
     backgroundColor: theme.palette.background.neutral,
     color: `${theme.palette.text.secondary} !important`,
     [theme.breakpoints.up('md')]: {
@@ -90,6 +92,7 @@ const StyledMarkdown = styled('div', {
       border: `1px solid ${theme.palette.divider}`,
     },
     'tbody tr:nth-of-type(odd)': {
+      // @ts-expect-error TS(2339): Property 'neutral' does not exist on type 'TypeBac... Remove this comment to see the full error message
       backgroundColor: theme.palette.background.neutral,
     },
   },

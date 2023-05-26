@@ -13,24 +13,33 @@ export default function BackgroundView() {
 
   const [selectVariant, setSelectVariant] = useState('kenburnsTop');
 
-  const handleChangeVariant = (event) => {
+  const handleChangeVariant = (event: any) => {
     setCount(count + 1);
     setSelectVariant(event.target.value);
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Card sx={{ p: 3 }}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Grid container sx={{ mb: 3 }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid item xs={9}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Toolbar onRefresh={() => setCount(count + 1)} />
         </Grid>
       </Grid>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Grid container spacing={3}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid item xs={9}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <ContainerView key={count} selectVariant={selectVariant} />
         </Grid>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid item xs={3}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <ControlPanel
             variantKey={variantKey}
             selectVariant={selectVariant}

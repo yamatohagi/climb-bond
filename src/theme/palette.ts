@@ -92,7 +92,7 @@ const COMMON = {
   },
 };
 
-export default function palette(themeMode) {
+export default function palette(themeMode: any) {
   const light = {
     ...COMMON,
     mode: 'light',

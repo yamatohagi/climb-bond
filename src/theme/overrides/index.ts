@@ -43,7 +43,7 @@ import LoadingButton from './LoadingButton';
 
 // ----------------------------------------------------------------------
 
-export default function ComponentsOverrides(theme) {
+export default function ComponentsOverrides(theme: any) {
   return Object.assign(
     Fab(theme),
     Tabs(theme),

@@ -13,11 +13,15 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // hooks
+// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // assets
+// @ts-expect-error TS(2307): Cannot find module 'src/assets/illustrations/patte... Remove this comment to see the full error message
 import { Pattern01 } from 'src/assets/illustrations/pattern';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { MotionViewport, varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -56,11 +60,12 @@ export default function HomeFAQs() {
 
   const [expanded, setExpanded] = useState(false);
 
-  const handleChangeExpanded = (panel) => (event, isExpanded) => {
+  const handleChangeExpanded = (panel: any) => (event: any, isExpanded: any) => {
     setExpanded(isExpanded ? panel : false);
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       component={MotionViewport}
       sx={{
@@ -68,37 +73,51 @@ export default function HomeFAQs() {
         py: { xs: 5, md: 10 },
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Grid container spacing={{ md: 3 }} justifyContent="center">
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid xs={12} md={8}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <m.div variants={varFade().in}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="h2" sx={{ textAlign: 'center' }}>
               Frequently Asked Questions
             </Typography>
           </m.div>
 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             sx={{
               my: { xs: 8, md: 10 },
             }}
           >
             {CONTENTS.map((faq) => (
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <m.div key={faq.question} variants={varFade().in}>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <Accordion
+                  // @ts-expect-error TS(2367): This condition will always return 'false' since th... Remove this comment to see the full error message
                   expanded={expanded === faq.question}
                   onChange={handleChangeExpanded(faq.question)}
                 >
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <AccordionSummary>
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                       {faq.question}
                     </Typography>
 
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Iconify
                       width={24}
+                      // @ts-expect-error TS(2367): This condition will always return 'false' since th... Remove this comment to see the full error message
                       icon={expanded === faq.question ? 'carbon:subtract' : 'carbon:add'}
                     />
                   </AccordionSummary>
 
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <AccordionDetails>
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Typography>{faq.answer}</Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -106,6 +125,7 @@ export default function HomeFAQs() {
             ))}
           </Box>
 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             sx={{
               borderWidth: 1,
@@ -117,17 +137,23 @@ export default function HomeFAQs() {
               py: { xs: 6, md: 8 },
             }}
           >
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <m.div variants={varFade().inUp}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography variant="h3">Still Have Questions?</Typography>
             </m.div>
 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <m.div variants={varFade().inUp}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Typography sx={{ mt: 3, mb: 5, color: 'text.secondary' }}>
                 Please describe your case to receive the most accurate advice.
               </Typography>
             </m.div>
 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <m.div variants={varFade().inUp}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button
                 size="large"
                 color="inherit"
@@ -142,6 +168,7 @@ export default function HomeFAQs() {
       </Grid>
 
       {isSmUp && (
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Pattern01
           sx={{
             top: 80,

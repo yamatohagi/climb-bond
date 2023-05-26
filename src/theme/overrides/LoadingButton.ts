@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function LoadingButton(theme) {
+export default function LoadingButton(theme: any) {
   return {
     MuiLoadingButton: {
       variants: [

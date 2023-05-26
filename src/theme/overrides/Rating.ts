@@ -4,11 +4,13 @@ import { StarIcon } from './CustomIcons';
 
 // ----------------------------------------------------------------------
 
-export default function Rating(theme) {
+export default function Rating(theme: any) {
   return {
     MuiRating: {
       defaultProps: {
+        // @ts-expect-error TS(2749): 'StarIcon' refers to a value, but is being used as... Remove this comment to see the full error message
         emptyIcon: <StarIcon />,
+        // @ts-expect-error TS(2749): 'StarIcon' refers to a value, but is being used as... Remove this comment to see the full error message
         icon: <StarIcon />,
       },
       styleOverrides: {

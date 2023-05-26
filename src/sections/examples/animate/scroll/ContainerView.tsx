@@ -4,17 +4,23 @@ import { useRef } from 'react';
 // @mui
 import { Box, Paper, Typography } from '@mui/material';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/scrollbar' or i... Remove this comment to see the full error message
 import Scrollbar from 'src/components/scrollbar';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { MotionViewport, varContainer } from 'src/components/animate';
 //
 import getVariant from '../getVariant';
 
 // ----------------------------------------------------------------------
 
-export default function ContainerView({ selectVariant, ...other }) {
+export default function ContainerView({
+  selectVariant,
+  ...other
+}: any) {
   const scrollRef = useRef(null);
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper
       ref={scrollRef}
       component={m.div}
@@ -25,8 +31,10 @@ export default function ContainerView({ selectVariant, ...other }) {
       }}
       {...other}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Scrollbar>
         {[...Array(40)].map((_, index) => (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Box
             key={index}
             component={MotionViewport}
@@ -42,9 +50,11 @@ export default function ContainerView({ selectVariant, ...other }) {
               alignItems: 'center',
               justifyContent: 'center',
               bgcolor: 'background.paper',
+              // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
               boxShadow: (theme) => theme.customShadows.z8,
             }}
           >
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="body2">Item {index + 1}</Typography>
           </Box>
         ))}

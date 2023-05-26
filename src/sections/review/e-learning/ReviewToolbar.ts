@@ -27,21 +27,30 @@ const MenuProps = {
 
 // ----------------------------------------------------------------------
 
-export default function ReviewToolbar({ sort, onChangeSort }) {
+export default function ReviewToolbar({
+  sort,
+  onChangeSort
+}: any) {
   return (
+    // @ts-expect-error TS(2749): 'Stack' refers to a value, but is being used as a ... Remove this comment to see the full error message
     <Stack spacing={5} alignItems="center" direction="row" sx={{ mb: 5 }}>
+      // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
       <Typography variant="h4" sx={{ width: 1 }}>
+        // @ts-expect-error TS(2304): Cannot find name 'Reviews'.
         Reviews
       </Typography>
 
+      // @ts-expect-error TS(2304): Cannot find name 'direction'.
       <Stack direction="row" spacing={2} alignItems="center" flexShrink={0}>
+        // @ts-expect-error TS(2749): 'FormControl' refers to a value, but is being used... Remove this comment to see the full error message
         <FormControl hiddenLabel variant="filled" size="small" sx={inputStyle}>
+          // @ts-expect-error TS(2749): 'Select' refers to a value, but is being used as a... Remove this comment to see the full error message
           <Select value={sort} onChange={onChangeSort} MenuProps={MenuProps}>
-            {SORT_OPTIONS.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
+            // @ts-expect-error TS(2749): 'MenuItem' refers to a value, but is being used as... Remove this comment to see the full error message
+            {SORT_OPTIONS.map((option: any) => <MenuItem key={option.value} value={option.value}>
+              // @ts-expect-error TS(18004): No value exists in scope for the shorthand propert... Remove this comment to see the full error message
+              {option.label}
+            </MenuItem>)}
           </Select>
         </FormControl>
       </Stack>

@@ -2,18 +2,20 @@ import { alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export default function Switch(theme) {
+export default function Switch(theme: any) {
   const isLight = theme.palette.mode === 'light';
 
-  const rootStyle = (ownerState) => ({
+  const rootStyle = (ownerState: any) => ({
     padding: '9px 13px 9px 12px',
     width: 58,
     height: 38,
+
     ...(ownerState.size === 'small' && {
       padding: '4px 8px 4px 7px',
       width: 40,
       height: 24,
     }),
+
     '& .MuiSwitch-thumb': {
       width: 14,
       height: 14,
@@ -24,11 +26,13 @@ export default function Switch(theme) {
         height: 10,
       }),
     },
+
     '& .MuiSwitch-track': {
       opacity: 1,
       borderRadius: 14,
       backgroundColor: alpha(theme.palette.grey[500], 0.48),
     },
+
     '& .MuiSwitch-switchBase': {
       left: 3,
       padding: 12,
@@ -46,13 +50,15 @@ export default function Switch(theme) {
         '& .MuiSwitch-thumb': { opacity: isLight ? 1 : 0.48 },
         '&+.MuiSwitch-track': { opacity: 0.48 },
       },
-    },
+    }
   });
 
   return {
     MuiSwitch: {
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
       },
     },
   };

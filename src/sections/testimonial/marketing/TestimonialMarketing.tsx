@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Container, Stack, Box, Unstable_Grid2 as Grid } from '@mui/material';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselDots, CarouselArrows } from 'src/components/carousel';
 //
 import TestimonialItem from './TestimonialItem';
@@ -14,7 +15,9 @@ TestimonialMarketing.propTypes = {
   testimonials: PropTypes.array,
 };
 
-export default function TestimonialMarketing({ testimonials }) {
+export default function TestimonialMarketing({
+  testimonials
+}: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -35,41 +38,51 @@ export default function TestimonialMarketing({ testimonials }) {
   };
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box sx={{ bgcolor: 'background.neutral', overflow: 'hidden' }}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container
         sx={{
           position: 'relative',
           py: { xs: 10, md: 15 },
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack spacing={2} sx={{ textAlign: 'center', mb: { xs: 8, md: 10 } }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="overline" sx={{ color: 'text.disabled' }}>
             Testimonials
           </Typography>
 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h2">Who Love Our Work</Typography>
         </Stack>
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CarouselArrows
           onNext={handleNext}
           onPrev={handlePrev}
           leftButtonProps={{ sx: { display: { xs: 'none', md: 'block' } } }}
           rightButtonProps={{ sx: { display: { xs: 'none', md: 'block' } } }}
         >
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid container spacing={10} justifyContent="center">
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid xs={12} md={8}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Carousel ref={carouselRef} {...carouselSettings}>
-                {testimonials.map((testimonial) => (
-                  <TestimonialItem key={testimonial.id} testimonial={testimonial} />
-                ))}
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                {testimonials.map((testimonial: any) => <TestimonialItem key={testimonial.id} testimonial={testimonial} />)}
               </Carousel>
             </Grid>
           </Grid>

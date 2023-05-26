@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function Dialog(theme) {
+export default function Dialog(theme: any) {
   return {
     MuiDialog: {
       styleOverrides: {

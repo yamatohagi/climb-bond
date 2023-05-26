@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function Timeline(theme) {
+export default function Timeline(theme: any) {
   return {
     MuiTimelineDot: {
       styleOverrides: {

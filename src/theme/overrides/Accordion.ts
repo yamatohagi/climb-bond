@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function Accordion(theme) {
+export default function Accordion(theme: any) {
   return {
     MuiAccordion: {
       styleOverrides: {

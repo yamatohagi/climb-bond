@@ -4,7 +4,7 @@ import { useEffect, useRef, useLayoutEffect } from 'react';
 
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-function useEventListener(eventName, handler, element, options) {
+function useEventListener(eventName: any, handler: any, element: any, options: any) {
   // Create a ref that stores handler
   const savedHandler = useRef(handler);
 
@@ -20,7 +20,7 @@ function useEventListener(eventName, handler, element, options) {
     }
 
     // Create event listener that calls handler function stored in ref
-    const eventListener = (event) => savedHandler.current(event);
+    const eventListener = (event: any) => savedHandler.current(event);
 
     targetElement.addEventListener(eventName, eventListener, options);
 

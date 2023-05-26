@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
+// @ts-expect-error TS(2339): Property 'ownerState' does not exist on type 'Syst... Remove this comment to see the full error message
 export const StyledLabel = styled(Box)(({ theme, ownerState }) => {
   const isLight = theme.palette.mode === 'light';
 
@@ -33,18 +34,24 @@ export const StyledLabel = styled(Box)(({ theme, ownerState }) => {
     ...(ownerState.color !== 'default' && {
       // FILLED
       ...(filledVariant && {
+        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         color: theme.palette[ownerState.color].contrastText,
+        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         backgroundColor: theme.palette[ownerState.color].main,
       }),
       // OUTLINED
       ...(outlinedVariant && {
         backgroundColor: 'transparent',
+        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         color: theme.palette[ownerState.color].main,
+        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         border: `2px solid ${theme.palette[ownerState.color].main}`,
       }),
       // SOFT
       ...(softVariant && {
+        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         color: theme.palette[ownerState.color][isLight ? 'dark' : 'light'],
+        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         backgroundColor: alpha(theme.palette[ownerState.color].main, 0.16),
       }),
     }),

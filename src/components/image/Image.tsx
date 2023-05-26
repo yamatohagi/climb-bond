@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+// @ts-expect-error TS(7016): Could not find a declaration file for module 'reac... Remove this comment to see the full error message
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 // @mui
 import { Box } from '@mui/material';
@@ -9,8 +10,10 @@ import getRatio from './getRatio';
 // ----------------------------------------------------------------------
 
 const Image = forwardRef(
+  // @ts-expect-error TS(2339): Property 'ratio' does not exist on type '{}'.
   ({ ratio, disabledEffect = false, effect = 'blur', sx, ...other }, ref) => {
     const content = (
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         component={LazyLoadImage}
         wrapperClassName="wrapper"
@@ -23,6 +26,7 @@ const Image = forwardRef(
 
     if (ratio) {
       return (
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Box
           ref={ref}
           component="span"
@@ -50,6 +54,7 @@ const Image = forwardRef(
     }
 
     return (
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         ref={ref}
         component="span"
@@ -73,6 +78,7 @@ const Image = forwardRef(
 );
 
 Image.propTypes = {
+  // @ts-expect-error TS(2322): Type '{ sx: PropTypes.Requireable<object>; effect:... Remove this comment to see the full error message
   sx: PropTypes.object,
   effect: PropTypes.string,
   disabledEffect: PropTypes.bool,

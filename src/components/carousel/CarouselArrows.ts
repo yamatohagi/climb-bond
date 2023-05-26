@@ -9,6 +9,7 @@ import { LeftIcon, RightIcon } from './Icon';
 
 const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop) => prop !== 'filled' && prop !== 'hasChild' && prop !== 'shape',
+// @ts-expect-error TS(2339): Property 'filled' does not exist on type '{ childr... Remove this comment to see the full error message
 })(({ filled, shape, hasChild, theme }) => ({
   color: 'inherit',
   transition: theme.transitions.create('all', {
@@ -52,7 +53,7 @@ export default function CarouselArrows({
   rightButtonProps,
   sx,
   ...other
-}) {
+}: any) {
   const theme = useTheme();
 
   const isRTL = theme.direction === 'rtl';
@@ -61,37 +62,55 @@ export default function CarouselArrows({
 
   if (hasChild) {
     return (
+      // @ts-expect-error TS(2749): 'Stack' refers to a value, but is being used as a ... Remove this comment to see the full error message
       <Stack sx={sx} {...other}>
         {onNext && (
+          // @ts-expect-error TS(2749): 'StyledIconButton' refers to a value, but is being... Remove this comment to see the full error message
           <StyledIconButton
             filled={filled}
             shape={shape}
+            // @ts-expect-error TS(2588): Cannot assign to 'hasChild' because it is a consta... Remove this comment to see the full error message
             hasChild={!!children}
+            // @ts-expect-error TS(2552): Cannot find name 'onClick'. Did you mean 'onclick'... Remove this comment to see the full error message
             onClick={onPrev}
             {...leftButtonProps}
             sx={{
+              // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
               left: 16,
               ...leftButtonProps?.sx,
             }}
           >
+            // @ts-expect-error TS(2709): Cannot use namespace 'LeftIcon' as a type.
             <LeftIcon icon={icon} isRTL={isRTL} />
           </StyledIconButton>
         )}
 
+        // @ts-expect-error TS(2304): Cannot find name 'children'.
         {children}
 
+        // @ts-expect-error TS(2304): Cannot find name 'onPrev'.
         {onPrev && (
+          // @ts-expect-error TS(2749): 'StyledIconButton' refers to a value, but is being... Remove this comment to see the full error message
           <StyledIconButton
+            // @ts-expect-error TS(2552): Cannot find name 'filled'. Did you mean 'File'?
             filled={filled}
+            // @ts-expect-error TS(2304): Cannot find name 'shape'.
             shape={shape}
+            // @ts-expect-error TS(2304): Cannot find name 'hasChild'.
             hasChild={!!children}
+            // @ts-expect-error TS(2304): Cannot find name 'onClick'.
             onClick={onNext}
+            // @ts-expect-error TS(2304): Cannot find name 'rightButtonProps'.
             {...rightButtonProps}
+            // @ts-expect-error TS(2304): Cannot find name 'sx'.
             sx={{
+              // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
               right: 16,
+              // @ts-expect-error TS(2304): Cannot find name 'rightButtonProps'.
               ...rightButtonProps?.sx,
             }}
           >
+            // @ts-expect-error TS(2709): Cannot use namespace 'RightIcon' as a type.
             <RightIcon icon={icon} isRTL={isRTL} />
           </StyledIconButton>
         )}
@@ -100,12 +119,17 @@ export default function CarouselArrows({
   }
 
   return (
+    // @ts-expect-error TS(2304): Cannot find name 'alignItems'.
     <Stack direction="row" alignItems="center" display="inline-flex" sx={sx} {...other}>
+      // @ts-expect-error TS(2749): 'StyledIconButton' refers to a value, but is being... Remove this comment to see the full error message
       <StyledIconButton filled={filled} shape={shape} onClick={onPrev} {...leftButtonProps}>
+        // @ts-expect-error TS(2709): Cannot use namespace 'LeftIcon' as a type.
         <LeftIcon icon={icon} isRTL={isRTL} />
       </StyledIconButton>
 
+      // @ts-expect-error TS(2304): Cannot find name 'filled'.
       <StyledIconButton filled={filled} shape={shape} onClick={onNext} {...rightButtonProps}>
+        // @ts-expect-error TS(2709): Cannot use namespace 'RightIcon' as a type.
         <RightIcon icon={icon} isRTL={isRTL} />
       </StyledIconButton>
     </Stack>

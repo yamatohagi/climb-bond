@@ -4,10 +4,10 @@ import { alpha } from '@mui/material/styles';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
-export default function Pagination(theme) {
+export default function Pagination(theme: any) {
   const isLight = theme.palette.mode === 'light';
 
-  const rootStyle = (ownerState) => {
+  const rootStyle = (ownerState: any) => {
     const outlinedVariant = ownerState.variant === 'outlined';
 
     const softVariant = ownerState.variant === 'soft';
@@ -54,7 +54,9 @@ export default function Pagination(theme) {
       },
 
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
       },
     },
   };

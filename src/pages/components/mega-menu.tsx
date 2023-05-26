@@ -4,25 +4,34 @@ import Head from 'next/head';
 // @mui
 import { Box, Card, Stack, Container, AppBar, Typography, Button } from '@mui/material';
 // routes
+// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
+// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { NAV } from 'src/config-global';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 // layouts
+// @ts-expect-error TS(2307): Cannot find module 'src/layouts/main' or its corre... Remove this comment to see the full error message
 import MainLayout from 'src/layouts/main';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 import {
   MegaMenuMobile,
   MegaMenuDesktopHorizon,
   MegaMenuDesktopVertical,
+// @ts-expect-error TS(2307): Cannot find module 'src/components/mega-menu' or i... Remove this comment to see the full error message
 } from 'src/components/mega-menu';
 
 // ----------------------------------------------------------------------
 
-DemoMegaMenuPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+// @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+DemoMegaMenuPage.getLayout = (page: any) => <MainLayout>{page}</MainLayout>;
 
 // ----------------------------------------------------------------------
 
@@ -30,11 +39,15 @@ export default function DemoMegaMenuPage() {
   const [openMenuMobile, setOpenMenuMobile] = useState(false);
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Head>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <title>Components: Mega Menu | ZONE UI</title>
       </Head>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           pt: 6,
@@ -42,7 +55,9 @@ export default function DemoMegaMenuPage() {
           bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Container>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CustomBreadcrumbs
             heading="Mega Menu"
             links={[
@@ -56,33 +71,42 @@ export default function DemoMegaMenuPage() {
         </Container>
       </Box>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <AppBar
         position="static"
         color="transparent"
         sx={{
+          // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
           boxShadow: (theme) => theme.customShadows.z8,
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Container sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Menu Horizon
           </Typography>
 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <MegaMenuDesktopHorizon data={data} />
         </Container>
       </AppBar>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container sx={{ my: 10 }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <MegaMenuMobile
           data={data}
           open={openMenuMobile}
           onOpen={() => setOpenMenuMobile(true)}
           onClose={() => setOpenMenuMobile(false)}
           action={
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Button
               color="inherit"
               variant="contained"
               onClick={() => setOpenMenuMobile(true)}
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               startIcon={<Iconify icon="carbon:menu" />}
             >
               Menu Mobile
@@ -90,15 +114,21 @@ export default function DemoMegaMenuPage() {
           }
         />
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack direction="row" spacing={3} mt={5}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Card sx={{ width: NAV.W_BASE, flexShrink: 0, overflow: 'unset', zIndex: 9 }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="h6" sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Iconify icon="eva:list-fill" width={24} sx={{ mr: 1 }} /> Menu Vertical
             </Typography>
 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <MegaMenuDesktopVertical data={data} />
           </Card>
 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Image
             alt="any photo"
             src={_mock.image.travel(1)}
@@ -132,6 +162,7 @@ const data = [
   {
     title: 'Parent 1',
     path: '#',
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     icon: <Iconify icon="carbon:accessibility-alt" sx={{ width: 1, height: 1 }} />,
     more: { title: 'More Categories', path: '#' },
     products: PRODUCTS,
@@ -199,6 +230,7 @@ const data = [
   {
     title: 'Parent 2',
     path: '#',
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     icon: <Iconify icon="carbon:airplay" sx={{ width: 1, height: 1 }} />,
     more: { title: 'More Categories', path: '#' },
     products: PRODUCTS,
@@ -266,11 +298,13 @@ const data = [
   {
     title: 'Parent 3',
     path: '#',
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     icon: <Iconify icon="carbon:api" sx={{ width: 1, height: 1 }} />,
   },
   {
     title: 'Parent 4',
     path: '#',
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     icon: <Iconify icon="carbon:basketball" sx={{ width: 1, height: 1 }} />,
   },
 ];

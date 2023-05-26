@@ -1,6 +1,8 @@
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import _mock from 'src/_mock';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 
 // MOCK DATA
@@ -24,9 +26,13 @@ export const data = [
   {
     path: '',
     title: 'Categories',
+    // @ts-expect-error TS(2304): Cannot find name 'icon'.
     icon: <Iconify icon="carbon:menu" sx={{ width: 1, height: 1 }} />,
+    // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
     products: PRODUCTS,
+    // @ts-expect-error TS(2552): Cannot find name 'tags'. Did you mean 'TAGS'?
     tags: TAGS,
+    // @ts-expect-error TS(2304): Cannot find name 'children'.
     children: [
       {
         subheader: 'Other Machinery & Parts',

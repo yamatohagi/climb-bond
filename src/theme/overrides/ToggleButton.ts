@@ -4,8 +4,8 @@ import { alpha } from '@mui/material/styles';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
-export default function ToggleButton(theme) {
-  const rootStyle = (ownerState) => {
+export default function ToggleButton(theme: any) {
+  const rootStyle = (ownerState: any) => {
     const defaultStyle = {
       '&.Mui-selected': {
         borderColor: 'currentColor',
@@ -39,7 +39,9 @@ export default function ToggleButton(theme) {
   return {
     MuiToggleButton: {
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
       },
     },
     MuiToggleButtonGroup: {

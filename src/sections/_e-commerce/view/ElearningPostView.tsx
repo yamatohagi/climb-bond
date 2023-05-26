@@ -15,18 +15,27 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // routes
+// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatTime' or its c... Remove this comment to see the full error message
 import { fDate } from 'src/utils/formatTime';
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // hooks
+// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _socials, _blogCoursePosts } from 'src/_mock';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/markdown' or it... Remove this comment to see the full error message
 import Markdown from 'src/components/markdown';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 //
 import NewsletterElearning from '../../newsletter/e-learning';
@@ -60,7 +69,7 @@ export default function ElearningPostView() {
 
   const [open, setOpen] = useState(null);
 
-  const handleOpen = (event) => {
+  const handleOpen = (event: any) => {
     setOpen(event.currentTarget);
   };
 
@@ -68,134 +77,171 @@ export default function ElearningPostView() {
     setOpen(null);
   };
 
-  const handleChangeFavorite = (event) => {
+  const handleChangeFavorite = (event: any) => {
     setFavorite(event.target.checked);
   };
 
-  return (
-    <>
-      <Divider />
+  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  return <>
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <Divider />
 
-      <Container sx={{ overflow: 'hidden' }}>
-        <CustomBreadcrumbs
-          links={[
-            { name: 'Home', href: '/' },
-            { name: 'Blog', href: paths.eLearning.posts },
-            { name: title },
-          ]}
-          sx={{ my: 5 }}
-        />
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <Container sx={{ overflow: 'hidden' }}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      <CustomBreadcrumbs
+        links={[
+          { name: 'Home', href: '/' },
+          { name: 'Blog', href: paths.eLearning.posts },
+          { name: title },
+        ]}
+        sx={{ my: 5 }}
+      />
 
-        <Stack
-          alignItems="center"
-          justifyContent="center"
-          sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden' }}
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      <Stack
+        alignItems="center"
+        justifyContent="center"
+        sx={{ position: 'relative', borderRadius: 2, overflow: 'hidden' }}
+      >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <Fab
+          color="primary"
+          sx={{
+            zIndex: 9,
+            position: 'absolute',
+          }}
         >
-          <Fab
-            color="primary"
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Iconify icon="carbon:play" width={24} />
+        </Fab>
+
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <StyledOverlay />
+
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <Image alt="hero" src={heroImg} ratio={isMdUp ? '21/9' : '16/9'} />
+      </Stack>
+
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      <Grid container spacing={3} justifyContent={{ md: 'center' }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <Grid xs={12} md={8}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Stack
+            spacing={3}
             sx={{
-              zIndex: 9,
-              position: 'absolute',
+              pb: 6,
+              textAlign: 'center',
+              pt: { xs: 6, md: 10 },
             }}
           >
-            <Iconify icon="carbon:play" width={24} />
-          </Fab>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Typography variant="body2" sx={{ color: 'text.disabled' }}>
+              {duration}
+            </Typography>
 
-          <StyledOverlay />
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Typography variant="h2" component="h1">
+              {title}
+            </Typography>
 
-          <Image alt="hero" src={heroImg} ratio={isMdUp ? '21/9' : '16/9'} />
-        </Stack>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Typography variant="h5">{description}</Typography>
+          </Stack>
 
-        <Grid container spacing={3} justifyContent={{ md: 'center' }}>
-          <Grid xs={12} md={8}>
-            <Stack
-              spacing={3}
-              sx={{
-                pb: 6,
-                textAlign: 'center',
-                pt: { xs: 6, md: 10 },
-              }}
-            >
-              <Typography variant="body2" sx={{ color: 'text.disabled' }}>
-                {duration}
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Divider />
+
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Stack direction="row" justifyContent="space-between" spacing={1.5} sx={{ py: 3 }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Avatar src={author.picture} sx={{ width: 48, height: 48 }} />
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Stack spacing={0.5} flexGrow={1}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <Typography variant="subtitle2">{author.name}</Typography>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                {fDate(createdAt, 'dd/MM/yyyy p')}
               </Typography>
-
-              <Typography variant="h2" component="h1">
-                {title}
-              </Typography>
-
-              <Typography variant="h5">{description}</Typography>
             </Stack>
 
-            <Divider />
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Stack direction="row" alignItems="center">
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <IconButton onClick={handleOpen} color={open ? 'primary' : 'default'}>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                <Iconify icon="carbon:share" />
+              </IconButton>
 
-            <Stack direction="row" justifyContent="space-between" spacing={1.5} sx={{ py: 3 }}>
-              <Avatar src={author.picture} sx={{ width: 48, height: 48 }} />
-
-              <Stack spacing={0.5} flexGrow={1}>
-                <Typography variant="subtitle2">{author.name}</Typography>
-                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                  {fDate(createdAt, 'dd/MM/yyyy p')}
-                </Typography>
-              </Stack>
-
-              <Stack direction="row" alignItems="center">
-                <IconButton onClick={handleOpen} color={open ? 'primary' : 'default'}>
-                  <Iconify icon="carbon:share" />
-                </IconButton>
-
-                <Checkbox
-                  color="error"
-                  checked={favorite}
-                  onChange={handleChangeFavorite}
-                  icon={<Iconify icon="carbon:favorite" />}
-                  checkedIcon={<Iconify icon="carbon:favorite-filled" />}
-                />
-              </Stack>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <Checkbox
+                color="error"
+                checked={favorite}
+                onChange={handleChangeFavorite}
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                icon={<Iconify icon="carbon:favorite" />}
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                checkedIcon={<Iconify icon="carbon:favorite-filled" />}
+              />
             </Stack>
+          </Stack>
 
-            <Divider sx={{ mb: 6 }} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Divider sx={{ mb: 6 }} />
 
-            <Markdown content={content} firstLetter />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Markdown content={content} firstLetter />
 
-            <PostTags tags={tags} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <PostTags tags={tags} />
 
-            <PostSocialsShare />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <PostSocialsShare />
 
-            <Divider sx={{ mt: 8 }} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Divider sx={{ mt: 8 }} />
 
-            <PostAuthor author={author} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <PostAuthor author={author} />
 
-            <Divider />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Divider />
 
-            <PostPrevAndNext prevPost={_blogCoursePosts[1]} nextPost={_blogCoursePosts[2]} />
-          </Grid>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <PostPrevAndNext prevPost={_blogCoursePosts[1]} nextPost={_blogCoursePosts[2]} />
         </Grid>
-      </Container>
+      </Grid>
+    </Container>
 
-      <Divider />
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <Divider />
 
-      <BlogElearningLatestPosts posts={_blogCoursePosts.slice(0, 3)} />
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <BlogElearningLatestPosts posts={_blogCoursePosts.slice(0, 3)} />
 
-      <NewsletterElearning />
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <NewsletterElearning />
 
-      <Popover
-        open={!!open}
-        onClose={handleClose}
-        anchorEl={open}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-        PaperProps={{
-          sx: { width: 220, p: 1 },
-        }}
-      >
-        {_socials.map((social) => (
-          <MenuItem key={social.value} onClick={handleClose} sx={{ typography: 'body2' }}>
-            <Iconify icon={social.icon} width={24} sx={{ mr: 1, color: social.color }} />
-            Share via {social.label}
-          </MenuItem>
-        ))}
-      </Popover>
-    </>
-  );
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <Popover
+      open={!!open}
+      onClose={handleClose}
+      anchorEl={open}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+      PaperProps={{
+        sx: { width: 220, p: 1 },
+      }}
+    >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      {_socials.map((social: any) => <MenuItem key={social.value} onClick={handleClose} sx={{ typography: 'body2' }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <Iconify icon={social.icon} width={24} sx={{ mr: 1, color: social.color }} />
+        Share via {social.label}
+      </MenuItem>)}
+    </Popover>
+  </>;
 }

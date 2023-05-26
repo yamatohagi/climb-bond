@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function Skeleton(theme) {
+export default function Skeleton(theme: any) {
   return {
     MuiSkeleton: {
       defaultProps: {

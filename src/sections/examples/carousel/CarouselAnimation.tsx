@@ -5,15 +5,21 @@ import { useState, useRef } from 'react';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Card, Paper, Button, Typography, CardContent } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/animate' or its... Remove this comment to see the full error message
 import { MotionContainer, varFade } from 'src/components/animate';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function CarouselAnimation({ data }) {
+export default function CarouselAnimation({
+  data
+}: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -28,25 +34,31 @@ export default function CarouselAnimation({ data }) {
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: Boolean(theme.direction === 'rtl'),
-    beforeChange: (current, next) => setCurrentIndex(next),
+    beforeChange: (current: any, next: any) => setCurrentIndex(next),
   };
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Card>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel ref={carouselRef} {...carouselSettings}>
-        {data.map((item, index) => (
+        {data.map((item: any, index: any) => (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselItem key={item.id} item={item} isActive={index === currentIndex} />
         ))}
       </Carousel>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrowIndex
         index={currentIndex}
         total={data.length}
@@ -63,15 +75,21 @@ CarouselAnimation.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function CarouselItem({ item, isActive }) {
+function CarouselItem({
+  item,
+  isActive
+}: any) {
   const theme = useTheme();
 
   const { image, title } = item;
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper sx={{ position: 'relative' }}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Image alt={title} src={image} ratio="16/9" />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           top: 0,
@@ -86,6 +104,7 @@ function CarouselItem({ item, isActive }) {
         }}
       />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CardContent
         component={MotionContainer}
         animate={isActive}
@@ -99,19 +118,25 @@ function CarouselItem({ item, isActive }) {
           color: 'common.white',
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <m.div variants={varFade().inRight}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="h3" gutterBottom>
             {item.title}
           </Typography>
         </m.div>
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <m.div variants={varFade().inRight}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2" noWrap gutterBottom>
             {item.description}
           </Typography>
         </m.div>
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <m.div variants={varFade().inRight}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Button variant="contained" sx={{ mt: 3 }}>
             View More
           </Button>

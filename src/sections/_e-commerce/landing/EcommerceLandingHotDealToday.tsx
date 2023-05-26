@@ -4,10 +4,13 @@ import { add } from 'date-fns';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Container, Stack, Box } from '@mui/material';
 // hooks
+// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _products } from 'src/_mock';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselDots, CarouselArrows } from 'src/components/carousel';
 //
 import { ProductCountdownBlock } from '../components';
@@ -49,19 +52,23 @@ export default function EcommerceLandingHotDealToday() {
   };
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         py: { xs: 5, md: 8 },
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack
         direction={{ xs: 'column', md: 'row' }}
         alignItems="center"
@@ -70,6 +77,7 @@ export default function EcommerceLandingHotDealToday() {
           mb: 8,
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography
           variant="h3"
           sx={{
@@ -79,6 +87,7 @@ export default function EcommerceLandingHotDealToday() {
           🔥 Hot Deal Today
         </Typography>
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <ProductCountdownBlock
           hiddenLabel
           expired={add(new Date(), { hours: 1, minutes: 30 })}
@@ -97,6 +106,7 @@ export default function EcommerceLandingHotDealToday() {
         />
 
         {isMdUp && (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <CarouselArrows
             onNext={handleNext}
             onPrev={handlePrev}
@@ -107,18 +117,19 @@ export default function EcommerceLandingHotDealToday() {
         )}
       </Stack>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel ref={carouselRef} {...carouselSettings}>
-        {_products.map((product) => (
-          <Box
-            key={product.id}
-            sx={{
-              py: 0.5,
-              px: { xs: 1, md: 1.5 },
-            }}
-          >
-            <EcommerceProductItemHot product={product} hotProduct />
-          </Box>
-        ))}
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        {_products.map((product: any) => <Box
+          key={product.id}
+          sx={{
+            py: 0.5,
+            px: { xs: 1, md: 1.5 },
+          }}
+        >
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <EcommerceProductItemHot product={product} hotProduct />
+        </Box>)}
       </Carousel>
     </Container>
   );

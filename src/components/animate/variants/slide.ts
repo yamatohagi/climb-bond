@@ -3,7 +3,7 @@ import { varTranEnter, varTranExit } from './transition';
 
 // ----------------------------------------------------------------------
 
-export const varSlide = (props) => {
+export const varSlide = (props: any) => {
   const distance = props?.distance || 160;
   const durationIn = props?.durationIn;
   const durationOut = props?.durationOut;

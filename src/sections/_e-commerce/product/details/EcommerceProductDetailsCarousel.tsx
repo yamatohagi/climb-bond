@@ -4,10 +4,14 @@ import { useState, useRef, useEffect } from 'react';
 import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrows } from 'src/components/carousel';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/lightbox' or it... Remove this comment to see the full error message
 import Lightbox, { useLightBox } from 'src/components/lightbox';
 
 // ----------------------------------------------------------------------
@@ -16,6 +20,7 @@ const THUMB_SIZE = 64;
 
 const StyledThumbnailsContainer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'length',
+// @ts-expect-error TS(2339): Property 'length' does not exist on type 'MUIStyle... Remove this comment to see the full error message
 })(({ length, theme }) => ({
   margin: theme.spacing(0, 'auto'),
   position: 'relative',
@@ -65,11 +70,13 @@ const StyledThumbnailsContainer = styled('div', {
 
 // ----------------------------------------------------------------------
 
-export default function EcommerceProductDetailsCarousel({ images }) {
+export default function EcommerceProductDetailsCarousel({
+  images
+}: any) {
   const theme = useTheme();
 
-  const slides = images.map((slide) => ({
-    src: slide,
+  const slides = images.map((slide: any) => ({
+    src: slide
   }));
 
   const {
@@ -119,19 +126,23 @@ export default function EcommerceProductDetailsCarousel({ images }) {
 
   useEffect(() => {
     if (openLightbox) {
+      // @ts-expect-error TS(2339): Property 'slickGoTo' does not exist on type 'never... Remove this comment to see the full error message
       carousel1.current?.slickGoTo(selectedImage);
     }
   }, [openLightbox, selectedImage]);
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickNext();
   };
 
   const renderLargeImg = (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         mb: 3,
@@ -141,25 +152,28 @@ export default function EcommerceProductDetailsCarousel({ images }) {
         bgcolor: 'background.neutral',
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrows onNext={handleNext} onPrev={handlePrev}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel {...carouselSettings1} asNavFor={nav2} ref={carousel1}>
-          {slides.map((slide) => (
-            <Image
-              key={slide.src}
-              alt="product"
-              src={slide.src}
-              ratio="1/1"
-              onClick={() => handleOpenLightbox(slide.src)}
-              sx={{ cursor: 'zoom-in' }}
-            />
-          ))}
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          {slides.map((slide: any) => <Image
+            key={slide.src}
+            alt="product"
+            src={slide.src}
+            ratio="1/1"
+            onClick={() => handleOpenLightbox(slide.src)}
+            sx={{ cursor: 'zoom-in' }}
+          />)}
         </Carousel>
       </CarouselArrows>
     </Box>
   );
 
   const renderThumbnails = (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <StyledThumbnailsContainer
+      // @ts-expect-error TS(2322): Type '{ children: Element; length: any; sx: { '& .... Remove this comment to see the full error message
       length={slides.length}
       sx={{
         '& .slick-current img': {
@@ -168,49 +182,50 @@ export default function EcommerceProductDetailsCarousel({ images }) {
         },
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel {...carouselSettings2} asNavFor={nav1} ref={carousel2}>
-        {slides.map((slide) => (
-          <Image
-            className="thumbnail"
-            key={slide.src}
-            disabledEffect
-            alt="thumbnail"
-            src={slide.src}
-            sx={{
-              width: THUMB_SIZE,
-              height: THUMB_SIZE,
-              borderRadius: 1.5,
-              cursor: 'pointer',
-            }}
-          />
-        ))}
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        {slides.map((slide: any) => <Image
+          className="thumbnail"
+          key={slide.src}
+          disabledEffect
+          alt="thumbnail"
+          src={slide.src}
+          sx={{
+            width: THUMB_SIZE,
+            height: THUMB_SIZE,
+            borderRadius: 1.5,
+            cursor: 'pointer',
+          }}
+        />)}
       </Carousel>
     </StyledThumbnailsContainer>
   );
 
-  return (
-    <>
-      <Box
-        sx={{
-          '& .slick-slide': {
-            float: theme.direction === 'rtl' ? 'right' : 'left',
-          },
-        }}
-      >
-        {renderLargeImg}
+  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  return <>
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <Box
+      sx={{
+        '& .slick-slide': {
+          float: theme.direction === 'rtl' ? 'right' : 'left',
+        },
+      }}
+    >
+      {renderLargeImg}
 
-        {renderThumbnails}
-      </Box>
+      {renderThumbnails}
+    </Box>
 
-      <Lightbox
-        index={selectedImage}
-        slides={slides}
-        open={openLightbox}
-        close={handleCloseLightbox}
-        onGetCurrentIndex={(index) => setSelectedImage(index)}
-      />
-    </>
-  );
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <Lightbox
+      index={selectedImage}
+      slides={slides}
+      open={openLightbox}
+      close={handleCloseLightbox}
+      onGetCurrentIndex={(index: any) => setSelectedImage(index)}
+    />
+  </>;
 }
 
 EcommerceProductDetailsCarousel.propTypes = {

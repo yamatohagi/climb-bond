@@ -1,36 +1,37 @@
+// @ts-expect-error TS(7016): Could not find a declaration file for module 'nume... Remove this comment to see the full error message
 import numeral from 'numeral';
 
 // ----------------------------------------------------------------------
 
-export function fNumber(number) {
+export function fNumber(number: any) {
   return numeral(number).format();
 }
 
-export function fCurrency(number) {
+export function fCurrency(number: any) {
   const format = number ? numeral(number).format('$0,0.00') : '';
 
   return result(format, '.00');
 }
 
-export function fPercent(number) {
+export function fPercent(number: any) {
   const format = number ? numeral(Number(number) / 100).format('0.0%') : '';
 
   return result(format, '.0');
 }
 
-export function fShortenNumber(number) {
+export function fShortenNumber(number: any) {
   const format = number ? numeral(number).format('0.00a') : '';
 
   return result(format, '.00');
 }
 
-export function fData(number) {
+export function fData(number: any) {
   const format = number ? numeral(number).format('0.0 b') : '';
 
   return result(format, '.0');
 }
 
-function result(format, key = '.00') {
+function result(format: any, key = '.00') {
   const isInteger = format.includes(key);
 
   return isInteger ? format.replace(key, '') : format;

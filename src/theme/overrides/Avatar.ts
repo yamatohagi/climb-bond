@@ -2,7 +2,7 @@ import { alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export default function Avatar(theme) {
+export default function Avatar(theme: any) {
   return {
     MuiAvatar: {
       styleOverrides: {

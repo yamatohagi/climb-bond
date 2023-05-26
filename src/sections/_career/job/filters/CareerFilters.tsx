@@ -2,10 +2,13 @@ import { useState } from 'react';
 // @mui
 import { Stack, Button, Drawer, Box } from '@mui/material';
 // config
+// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { NAV } from 'src/config-global';
 // hooks
+// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useResponsive' or it... Remove this comment to see the full error message
 import useResponsive from 'src/hooks/useResponsive';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 //
 import {
@@ -45,28 +48,28 @@ export default function CareerFilters() {
     setMobileOpen(false);
   };
 
-  const handleChangeKeyword = (keyword) => {
+  const handleChangeKeyword = (keyword: any) => {
     setFilters({
       ...filters,
       filterKeyword: keyword,
     });
   };
 
-  const handleChangeCategory = (keyword) => {
+  const handleChangeCategory = (keyword: any) => {
     setFilters({
       ...filters,
       filterCategories: keyword,
     });
   };
 
-  const handleChangeLocation = (keyword) => {
+  const handleChangeLocation = (keyword: any) => {
     setFilters({
       ...filters,
       filterLocation: keyword,
     });
   };
 
-  const handleChangeJobType = (event) => {
+  const handleChangeJobType = (event: any) => {
     const {
       target: { value },
     } = event;
@@ -76,7 +79,7 @@ export default function CareerFilters() {
     });
   };
 
-  const handleChangeJobLevel = (event) => {
+  const handleChangeJobLevel = (event: any) => {
     const {
       target: { value },
     } = event;
@@ -86,7 +89,7 @@ export default function CareerFilters() {
     });
   };
 
-  const handleChangeJobBenefits = (event) => {
+  const handleChangeJobBenefits = (event: any) => {
     const {
       target: { value },
     } = event;
@@ -96,7 +99,7 @@ export default function CareerFilters() {
     });
   };
 
-  const handleChangeSalary = (event, newValue) => {
+  const handleChangeSalary = (event: any, newValue: any) => {
     setFilters({
       ...filters,
       filterSalary: newValue,
@@ -114,24 +117,30 @@ export default function CareerFilters() {
   };
 
   const renderFilters = (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack spacing={2.5} direction={{ xs: 'column', md: 'row' }} alignItems="center">
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CareerFilterKeyword
           filterKeyword={filters.filterKeyword}
           onChangeKeyword={handleChangeKeyword}
         />
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CareerFilterCategories
           filterCategories={filters.filterCategories}
           onChangeCategory={handleChangeCategory}
         />
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CareerFilterLocations
           filterLocation={filters.filterLocation}
           onChangeLocation={handleChangeLocation}
         />
 
         {isMdUp && (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Button
             size="large"
             variant="contained"
@@ -139,24 +148,30 @@ export default function CareerFilters() {
             onClick={onSubmit}
             sx={{ px: 0, minWidth: { md: 48 } }}
           >
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Iconify icon="carbon:search" width={24} />
           </Button>
         )}
       </Stack>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 2.5, md: 1 }} sx={{ mt: 2.5 }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CareerFilterType filterType={filters.filterType} onChangeJobType={handleChangeJobType} />
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CareerFilterLevel
           filterLevel={filters.filterLevel}
           onChangeJobType={handleChangeJobLevel}
         />
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CareerFilterSalary
           filterSalary={filters.filterSalary}
           onChangeSalary={handleChangeSalary}
         />
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CareerFilterBenefits
           filterBenefits={filters.filterBenefits}
           onChangeJobBenefits={handleChangeJobBenefits}
@@ -164,10 +179,12 @@ export default function CareerFilters() {
       </Stack>
 
       {!isMdUp && (
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Button
           size="large"
           variant="contained"
           color="inherit"
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           startIcon={<Iconify icon="carbon:search" />}
           sx={{ mt: 2.5 }}
         >
@@ -178,15 +195,20 @@ export default function CareerFilters() {
   );
 
   if (isMdUp) {
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     return <Box sx={{ py: 5 }}>{renderFilters}</Box>;
   }
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack alignItems="flex-end" sx={{ py: 3 }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Button
           color="inherit"
           variant="contained"
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           startIcon={<Iconify icon="carbon:filter" width={18} />}
           onClick={handleMobileOpen}
         >
@@ -194,6 +216,7 @@ export default function CareerFilters() {
         </Button>
       </Stack>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Drawer
         anchor="right"
         open={mobileOpen}

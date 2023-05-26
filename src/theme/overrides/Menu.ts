@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function Menu(theme) {
+export default function Menu(theme: any) {
   return {
     MuiMenuItem: {
       styleOverrides: {

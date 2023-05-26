@@ -21,9 +21,12 @@ export default function ReviewProgress({ ...other }) {
   );
 
   return (
+    // @ts-expect-error TS(2749): 'RadioGroup' refers to a value, but is being used ... Remove this comment to see the full error message
     <RadioGroup>
+      // @ts-expect-error TS(2749): 'Stack' refers to a value, but is being used as a ... Remove this comment to see the full error message
       <Stack spacing={2} {...other}>
-        {RATINGS.map((rating, index) => (
+        {RATINGS.map((rating: any, index: any) => (
+          // @ts-expect-error TS(2709): Cannot use namespace 'ReviewProgressItem' as a typ... Remove this comment to see the full error message
           <ReviewProgressItem key={rating.value} rating={rating} index={index} totals={totals} />
         ))}
       </Stack>

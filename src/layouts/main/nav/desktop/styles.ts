@@ -6,6 +6,7 @@ import { Paper, ListSubheader, ListItemButton } from '@mui/material';
 
 export const StyledNavItem = styled(ListItemButton, {
   shouldForwardProp: (prop) => prop !== 'active' && prop !== 'open' && prop !== 'subItem',
+// @ts-expect-error TS(2339): Property 'active' does not exist on type 'ListItem... Remove this comment to see the full error message
 })(({ active, open, subItem, theme }) => {
   const dotActiveStyle = {
     content: '""',
@@ -37,6 +38,7 @@ export const StyledNavItem = styled(ListItemButton, {
     // Active
     ...(active && {
       color: theme.palette.text.primary,
+      // @ts-expect-error TS(2339): Property 'fontWeightSemiBold' does not exist on ty... Remove this comment to see the full error message
       fontWeight: theme.typography.fontWeightSemiBold,
       '&::before': dotActiveStyle,
     }),
@@ -44,6 +46,7 @@ export const StyledNavItem = styled(ListItemButton, {
     ...(active &&
       subItem && {
         color: theme.palette.text.primary,
+        // @ts-expect-error TS(2339): Property 'fontWeightSemiBold' does not exist on ty... Remove this comment to see the full error message
         fontWeight: theme.typography.fontWeightSemiBold,
         '&::before': {
           ...dotActiveStyle,
@@ -66,6 +69,7 @@ export const StyledMenu = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
   position: 'fixed',
   zIndex: theme.zIndex.modal,
+  // @ts-expect-error TS(2339): Property 'customShadows' does not exist on type 'T... Remove this comment to see the full error message
   boxShadow: theme.customShadows.dialog,
   backgroundColor: theme.palette.background.default,
 }));

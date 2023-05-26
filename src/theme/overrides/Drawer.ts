@@ -2,13 +2,15 @@ import { alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export default function Drawer(theme) {
+export default function Drawer(theme: any) {
   const isLight = theme.palette.mode === 'light';
 
   return {
     MuiDrawer: {
       styleOverrides: {
-        root: ({ ownerState }) => ({
+        root: ({
+          ownerState
+        }: any) => ({
           ...(ownerState.variant === 'temporary' && {
             '& .MuiDrawer-paper': {
               boxShadow: `-40px 40px 80px -8px ${alpha(

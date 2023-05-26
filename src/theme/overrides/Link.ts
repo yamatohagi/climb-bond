@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function Link(theme) {
+export default function Link(theme: any) {
   return {
     MuiLink: {
       defaultProps: {

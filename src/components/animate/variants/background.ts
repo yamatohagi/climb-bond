@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export const varBgColor = (props) => {
+export const varBgColor = (props: any) => {
   const colors = props?.colors || ['#19dcea', '#b22cff'];
   const duration = props?.duration || 5;
   const ease = props?.ease || 'linear';
@@ -15,7 +15,7 @@ export const varBgColor = (props) => {
 
 // ----------------------------------------------------------------------
 
-export const varBgKenburns = (props) => {
+export const varBgKenburns = (props: any) => {
   const duration = props?.duration || 5;
   const ease = props?.ease || 'easeOut';
 
@@ -59,12 +59,12 @@ export const varBgKenburns = (props) => {
 
 // ----------------------------------------------------------------------
 
-export const varBgPan = (props) => {
+export const varBgPan = (props: any) => {
   const colors = props?.colors || ['#ee7752', '#e73c7e', '#23a6d5', '#23d5ab'];
   const duration = props?.duration || 5;
   const ease = props?.ease || 'linear';
 
-  const gradient = (deg) => `linear-gradient(${deg}deg, ${colors})`;
+  const gradient = (deg: any) => `linear-gradient(${deg}deg, ${colors})`;
 
   return {
     top: {

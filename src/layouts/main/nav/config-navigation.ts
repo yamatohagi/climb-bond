@@ -1,4 +1,5 @@
 // routes
+// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 
 // ----------------------------------------------------------------------

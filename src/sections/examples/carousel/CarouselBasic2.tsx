@@ -4,12 +4,16 @@ import { useState, useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Card, Typography, CardContent, Stack } from '@mui/material';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function CarouselBasic2({ data }) {
+export default function CarouselBasic2({
+  data
+}: any) {
   const theme = useTheme();
 
   const carouselRef = useRef(null);
@@ -25,37 +29,45 @@ export default function CarouselBasic2({ data }) {
     initialSlide: currentIndex,
     fade: Boolean(theme.direction !== 'rtl'),
     rtl: Boolean(theme.direction === 'rtl'),
-    beforeChange: (current, next) => setCurrentIndex(next),
+    beforeChange: (current: any, next: any) => setCurrentIndex(next),
   };
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Card>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel ref={carouselRef} {...carouselSettings}>
-        {data.map((item) => (
-          <Stack key={item.id}>
-            <Image alt={item.title} src={item.image} ratio="4/3" />
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        {data.map((item: any) => <Stack key={item.id}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Image alt={item.title} src={item.image} ratio="4/3" />
 
-            <CardContent sx={{ textAlign: 'left' }}>
-              <Typography variant="h6" noWrap gutterBottom>
-                {item.title}
-              </Typography>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <CardContent sx={{ textAlign: 'left' }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Typography variant="h6" noWrap gutterBottom>
+              {item.title}
+            </Typography>
 
-              <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-                {item.description}
-              </Typography>
-            </CardContent>
-          </Stack>
-        ))}
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+              {item.description}
+            </Typography>
+          </CardContent>
+        </Stack>)}
       </Carousel>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrowIndex
         index={currentIndex}
         total={data.length}

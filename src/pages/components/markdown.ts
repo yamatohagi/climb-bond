@@ -3,16 +3,20 @@ import Head from 'next/head';
 // @mui
 import { Box, Card, Container, CardContent } from '@mui/material';
 // routes
+// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // layouts
+// @ts-expect-error TS(2307): Cannot find module 'src/layouts/main' or its corre... Remove this comment to see the full error message
 import MainLayout from 'src/layouts/main';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/markdown' or it... Remove this comment to see the full error message
 import Markdown from 'src/components/markdown';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/custom-breadcru... Remove this comment to see the full error message
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
 // ----------------------------------------------------------------------
 
-DemoMarkdownPage.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+DemoMarkdownPage.getLayout = (page: any) => <MainLayout>{page}</MainLayout>;
 
 // ----------------------------------------------------------------------
 
@@ -74,40 +78,52 @@ const content = `
 `;
 
 export default function DemoMarkdownPage() {
-  return (
-    <>
-      <Head>
-        <title>Extra Components: Markdown | ZONE UI</title>
-      </Head>
+  return <>
+    // @ts-expect-error TS(2749): 'Head' refers to a value, but is being used as a t... Remove this comment to see the full error message
+    <Head>
+      // @ts-expect-error TS(2304): Cannot find name 'title'.
+      <title>Extra Components: Markdown | ZONE UI</title>
+    </Head>
 
-      <Box
-        sx={{
-          pt: 6,
-          pb: 1,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800'),
-        }}
-      >
-        <Container>
-          <CustomBreadcrumbs
-            heading="Markdown"
-            links={[
-              {
-                name: 'Components',
-                href: paths.components.root,
-              },
-              { name: 'Markdown' },
-            ]}
-          />
-        </Container>
-      </Box>
-
-      <Container sx={{ my: 10 }}>
-        <Card>
-          <CardContent>
-            <Markdown content={content} />
-          </CardContent>
-        </Card>
+    <Box
+      // @ts-expect-error TS(2304): Cannot find name 'sx'.
+      sx={{
+        // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
+        pt: 6,
+        // @ts-expect-error TS(2304): Cannot find name 'pb'.
+        pb: 1,
+        // @ts-expect-error TS(2304): Cannot find name 'bgcolor'.
+        bgcolor: (theme: any) => theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
+      }}
+    >
+      // @ts-expect-error TS(2749): 'Container' refers to a value, but is being used a... Remove this comment to see the full error message
+      <Container>
+        <CustomBreadcrumbs
+          // @ts-expect-error TS(2304): Cannot find name 'heading'.
+          heading="Markdown"
+          // @ts-expect-error TS(2304): Cannot find name 'links'.
+          links={[
+            // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
+            {
+              name: 'Components',
+              href: paths.components.root,
+            },
+            { name: 'Markdown' },
+          ]}
+        />
       </Container>
-    </>
-  );
+    </Box>
+
+    // @ts-expect-error TS(2304): Cannot find name 'sx'.
+    <Container sx={{ my: 10 }}>
+      // @ts-expect-error TS(2749): 'Card' refers to a value, but is being used as a t... Remove this comment to see the full error message
+      <Card>
+        // @ts-expect-error TS(2749): 'CardContent' refers to a value, but is being used... Remove this comment to see the full error message
+        <CardContent>
+          // @ts-expect-error TS(2365): Operator '<' cannot be applied to types 'boolean' ... Remove this comment to see the full error message
+          <Markdown content={content} />
+        </CardContent>
+      </Card>
+    </Container>
+  </>;
 }

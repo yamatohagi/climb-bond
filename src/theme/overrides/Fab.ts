@@ -4,10 +4,10 @@ import { alpha } from '@mui/material/styles';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
-export default function Fab(theme) {
+export default function Fab(theme: any) {
   const isLight = theme.palette.mode === 'light';
 
-  const rootStyle = (ownerState) => {
+  const rootStyle = (ownerState: any) => {
     const defaultColor = ownerState.color === 'default';
 
     const inheritColor = ownerState.color === 'inherit';
@@ -153,7 +153,9 @@ export default function Fab(theme) {
       },
 
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
       },
     },
   };

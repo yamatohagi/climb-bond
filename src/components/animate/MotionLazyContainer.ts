@@ -10,9 +10,13 @@ MotionLazyContainer.propTypes = {
   children: PropTypes.node,
 };
 
-export default function MotionLazyContainer({ children }) {
+export default function MotionLazyContainer({
+  children
+}: any) {
   return (
+    // @ts-expect-error TS(2749): 'LazyMotion' refers to a value, but is being used ... Remove this comment to see the full error message
     <LazyMotion strict features={loadFeatures}>
+      // @ts-expect-error TS(2503): Cannot find namespace 'm'.
       <m.div style={{ height: '100%' }}> {children} </m.div>
     </LazyMotion>
   );

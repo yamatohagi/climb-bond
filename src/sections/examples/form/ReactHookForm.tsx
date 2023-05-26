@@ -18,6 +18,7 @@ import {
 import { LoadingButton } from '@mui/lab';
 import { DatePicker } from '@mui/x-date-pickers';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
 import FormProvider, {
   RHFSelect,
@@ -29,6 +30,7 @@ import FormProvider, {
   RHFMultiSelect,
   RHFAutocomplete,
   RHFMultiCheckbox,
+// @ts-expect-error TS(2307): Cannot find module 'src/components/hook-form' or i... Remove this comment to see the full error message
 } from 'src/components/hook-form';
 //
 import { FormSchema } from './schema';
@@ -73,7 +75,9 @@ export const defaultValues = {
   sliderRange: [15, 80],
 };
 
-export default function ReactHookForm({ debug }) {
+export default function ReactHookForm({
+  debug
+}: any) {
   const [showPassword, setShowPassword] = useState(false);
 
   const methods = useForm({
@@ -89,211 +93,258 @@ export default function ReactHookForm({ debug }) {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
     console.log('DATA', data);
     reset();
   };
 
-  return (
-    <>
-      {isSubmitting && (
-        <Backdrop open sx={{ zIndex: (theme) => theme.zIndex.modal + 1 }}>
-          <CircularProgress color="primary" />
-        </Backdrop>
-      )}
+  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  return <>
+    {isSubmitting && (
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      <Backdrop open sx={{ zIndex: (theme) => theme.zIndex.modal + 1 }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <CircularProgress color="primary" />
+      </Backdrop>
+    )}
 
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={5}>
-          <Grid item xs={12} md={6}>
-            <Stack spacing={2}>
-              <Block>
-                <RHFTextField name="fullName" label="Full Name" />
-              </Block>
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      <Grid container spacing={5}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <Grid item xs={12} md={6}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Stack spacing={2}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFTextField name="fullName" label="Full Name" />
+            </Block>
 
-              <Block>
-                <RHFTextField name="email" label="Email address" />
-              </Block>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFTextField name="email" label="Email address" />
+            </Block>
 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFTextField
+                name="age"
+                label="Age"
+                onChange={(event: any) => setValue('age', Number(event.target.value), { shouldValidate: true })
+                }
+                InputProps={{
+                  type: 'number',
+                }}
+              />
+            </Block>
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <Controller
+                name="startDate"
+                control={control}
+                render={({ field, fieldState: { error } }) => (
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                  <DatePicker
+                    {...field}
+                    label="Start date"
+                    format="dd/MM/yyyy"
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        error: !!error,
+                        helperText: error?.message,
+                      },
+                    }}
+                  />
+                )}
+              />
+
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <Controller
+                name="endDate"
+                control={control}
+                render={({ field, fieldState: { error } }) => (
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                  <DatePicker
+                    {...field}
+                    label="End date"
+                    format="dd/MM/yyyy"
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        error: !!error,
+                        helperText: error?.message,
+                      },
+                    }}
+                  />
+                )}
+              />
+            </Stack>
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Block>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <RHFTextField
-                  name="age"
-                  label="Age"
-                  onChange={(event) =>
-                    setValue('age', Number(event.target.value), { shouldValidate: true })
-                  }
+                  name="password"
+                  label="Password"
+                  type={showPassword ? 'text' : 'password'}
                   InputProps={{
-                    type: 'number',
+                    endAdornment: (
+                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                      <InputAdornment position="end">
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                        <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                          <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
                   }}
                 />
               </Block>
 
-              <Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
-                <Controller
-                  name="startDate"
-                  control={control}
-                  render={({ field, fieldState: { error } }) => (
-                    <DatePicker
-                      {...field}
-                      label="Start date"
-                      format="dd/MM/yyyy"
-                      slotProps={{
-                        textField: {
-                          fullWidth: true,
-                          error: !!error,
-                          helperText: error?.message,
-                        },
-                      }}
-                    />
-                  )}
-                />
-
-                <Controller
-                  name="endDate"
-                  control={control}
-                  render={({ field, fieldState: { error } }) => (
-                    <DatePicker
-                      {...field}
-                      label="End date"
-                      format="dd/MM/yyyy"
-                      slotProps={{
-                        textField: {
-                          fullWidth: true,
-                          error: !!error,
-                          helperText: error?.message,
-                        },
-                      }}
-                    />
-                  )}
-                />
-              </Stack>
-
-              <Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
-                <Block>
-                  <RHFTextField
-                    name="password"
-                    label="Password"
-                    type={showPassword ? 'text' : 'password'}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                            <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </Block>
-
-                <Block>
-                  <RHFTextField
-                    name="confirmPassword"
-                    label="Confirm Password"
-                    type={showPassword ? 'text' : 'password'}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                            <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </Block>
-              </Stack>
-
-              <Block label="RHFAutocomplete">
-                <RHFAutocomplete
-                  name="autocomplete"
-                  label="Autocomplete"
-                  options={OPTIONS}
-                  getOptionLabel={(option) => option.label}
-                  isOptionEqualToValue={(option, value) => option.value === value.value}
-                />
-              </Block>
-
-              <Block label="RHFSelect">
-                <RHFSelect name="singleSelect" label="Single select">
-                  <MenuItem value="">None</MenuItem>
-                  <Divider sx={{ borderStyle: 'dashed' }} />
-                  {OPTIONS.map((option) => (
-                    <MenuItem key={option.value} value={option.label}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </RHFSelect>
-              </Block>
-
-              <Block label="RHFMultiSelect">
-                <RHFMultiSelect
-                  chip
-                  checkbox
-                  name="multiSelect"
-                  label="Multi select"
-                  options={OPTIONS}
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <Block>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                <RHFTextField
+                  name="confirmPassword"
+                  label="Confirm Password"
+                  type={showPassword ? 'text' : 'password'}
+                  InputProps={{
+                    endAdornment: (
+                      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                      <InputAdornment position="end">
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                        <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                          <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </Block>
             </Stack>
-          </Grid>
 
-          <Grid item xs={12} md={6}>
-            <Stack spacing={2}>
-              <RHFCheckbox name="checkbox" label="RHFCheckbox" />
-
-              <RHFSwitch name="switch" label="RHFSwitch" />
-
-              <RHFRadioGroup
-                row
-                name="radioGroup"
-                label="RHFRadioGroup"
-                spacing={4}
-                options={[
-                  { value: 'option 1', label: 'Radio 1' },
-                  { value: 'option 2', label: 'Radio 2' },
-                  { value: 'option 3', label: 'Radio 3' },
-                ]}
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block label="RHFAutocomplete">
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFAutocomplete
+                name="autocomplete"
+                label="Autocomplete"
+                options={OPTIONS}
+                getOptionLabel={(option: any) => option.label}
+                isOptionEqualToValue={(option: any, value: any) => option.value === value.value}
               />
+            </Block>
 
-              <RHFMultiCheckbox
-                row
-                name="multiCheckbox"
-                label="RHFMultiCheckbox"
-                spacing={4}
-                options={[
-                  { value: 'option 1', label: 'Checkbox 1' },
-                  { value: 'option 2', label: 'Checkbox 2' },
-                  { value: 'option 3', label: 'Checkbox 3' },
-                ]}
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block label="RHFSelect">
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFSelect name="singleSelect" label="Single select">
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                <MenuItem value="">None</MenuItem>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                <Divider sx={{ borderStyle: 'dashed' }} />
+                {OPTIONS.map((option) => (
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                  <MenuItem key={option.value} value={option.label}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </RHFSelect>
+            </Block>
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block label="RHFMultiSelect">
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFMultiSelect
+                chip
+                checkbox
+                name="multiSelect"
+                label="Multi select"
+                options={OPTIONS}
               />
-
-              <Block label="RHFSlider">
-                <RHFSlider name="slider" />
-              </Block>
-
-              <Block label="RHFSlider">
-                <RHFSlider name="sliderRange" />
-              </Block>
-
-              <LoadingButton
-                fullWidth
-                color="inherit"
-                size="large"
-                type="submit"
-                variant="contained"
-                loading={isSubmitting}
-              >
-                Submit to check
-              </LoadingButton>
-            </Stack>
-          </Grid>
+            </Block>
+          </Stack>
         </Grid>
 
-        {debug && <ValuesPreview />}
-      </FormProvider>
-    </>
-  );
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        <Grid item xs={12} md={6}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          <Stack spacing={2}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <RHFCheckbox name="checkbox" label="RHFCheckbox" />
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <RHFSwitch name="switch" label="RHFSwitch" />
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <RHFRadioGroup
+              row
+              name="radioGroup"
+              label="RHFRadioGroup"
+              spacing={4}
+              options={[
+                { value: 'option 1', label: 'Radio 1' },
+                { value: 'option 2', label: 'Radio 2' },
+                { value: 'option 3', label: 'Radio 3' },
+              ]}
+            />
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <RHFMultiCheckbox
+              row
+              name="multiCheckbox"
+              label="RHFMultiCheckbox"
+              spacing={4}
+              options={[
+                { value: 'option 1', label: 'Checkbox 1' },
+                { value: 'option 2', label: 'Checkbox 2' },
+                { value: 'option 3', label: 'Checkbox 3' },
+              ]}
+            />
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block label="RHFSlider">
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFSlider name="slider" />
+            </Block>
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <Block label="RHFSlider">
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              <RHFSlider name="sliderRange" />
+            </Block>
+
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <LoadingButton
+              fullWidth
+              color="inherit"
+              size="large"
+              type="submit"
+              variant="contained"
+              loading={isSubmitting}
+            >
+              Submit to check
+            </LoadingButton>
+          </Stack>
+        </Grid>
+      </Grid>
+
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      {debug && <ValuesPreview />}
+    </FormProvider>
+  </>;
 }
 
 ReactHookForm.propTypes = {
@@ -302,9 +353,15 @@ ReactHookForm.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function Block({ label = 'RHFTextField', sx, children }) {
+function Block({
+  label = 'RHFTextField',
+  sx,
+  children
+}: any) {
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack spacing={1} sx={{ width: 1, ...sx }}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography
         variant="caption"
         sx={{

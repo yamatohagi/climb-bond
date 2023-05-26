@@ -4,9 +4,12 @@ import { useState, useRef, useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { Box } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
@@ -15,6 +18,7 @@ const THUMB_SIZE = 64;
 
 const StyledThumbnailsContainer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'length',
+// @ts-expect-error TS(2339): Property 'length' does not exist on type 'MUIStyle... Remove this comment to see the full error message
 })(({ length, theme }) => ({
   margin: theme.spacing(0, 'auto'),
   position: 'relative',
@@ -64,7 +68,9 @@ const StyledThumbnailsContainer = styled('div', {
 
 // ----------------------------------------------------------------------
 
-export default function CarouselThumbnail({ data }) {
+export default function CarouselThumbnail({
+  data
+}: any) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [nav1, setNav1] = useState(undefined);
@@ -82,7 +88,7 @@ export default function CarouselThumbnail({ data }) {
     draggable: false,
     slidesToScroll: 1,
     adaptiveHeight: true,
-    beforeChange: (current, next) => setCurrentIndex(next),
+    beforeChange: (current: any, next: any) => setCurrentIndex(next),
   };
 
   const carouselSettings2 = {
@@ -106,14 +112,17 @@ export default function CarouselThumbnail({ data }) {
   }, []);
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carousel2.current?.slickNext();
   };
 
   const renderLargeImg = (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         mb: 3,
@@ -123,12 +132,13 @@ export default function CarouselThumbnail({ data }) {
         position: 'relative',
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel {...carouselSettings1} asNavFor={nav2} ref={carousel1}>
-        {data.map((item) => (
-          <Image key={item.id} alt={item.title} src={item.image} ratio="16/9" />
-        ))}
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        {data.map((item: any) => <Image key={item.id} alt={item.title} src={item.image} ratio="16/9" />)}
       </Carousel>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrowIndex
         index={currentIndex}
         total={data.length}
@@ -139,9 +149,12 @@ export default function CarouselThumbnail({ data }) {
   );
 
   const renderThumbnails = (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <StyledThumbnailsContainer length={data.length}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Carousel {...carouselSettings2} asNavFor={nav1} ref={carousel2}>
-        {data.map((item, index) => (
+        {data.map((item: any, index: any) => (
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Image
             key={item.id}
             disabledEffect
@@ -153,7 +166,7 @@ export default function CarouselThumbnail({ data }) {
               borderRadius: 1.5,
               cursor: 'pointer',
               ...(currentIndex === index && {
-                border: (theme) => `solid 2px ${theme.palette.primary.main}`,
+                border: (theme: any) => `solid 2px ${theme.palette.primary.main}`,
               }),
             }}
           />
@@ -163,6 +176,7 @@ export default function CarouselThumbnail({ data }) {
   );
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         '& .slick-slide': {

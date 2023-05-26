@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export default function Tabs(theme) {
+export default function Tabs(theme: any) {
   return {
     MuiTabs: {
       defaultProps: {
@@ -24,7 +24,9 @@ export default function Tabs(theme) {
         iconPosition: 'start',
       },
       styleOverrides: {
-        root: ({ ownerState }) => ({
+        root: ({
+          ownerState
+        }: any) => ({
           padding: 0,
           opacity: 1,
           minWidth: 48,

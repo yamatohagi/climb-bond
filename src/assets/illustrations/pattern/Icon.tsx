@@ -53,8 +53,14 @@ const StyledShape02 = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-function Icon({ content, color, sx, ...other }) {
+function Icon({
+  content,
+  color,
+  sx,
+  ...other
+}: any) {
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         p: 1.5,
@@ -67,6 +73,7 @@ function Icon({ content, color, sx, ...other }) {
       }}
       {...other}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           bgcolor: color,
@@ -74,8 +81,11 @@ function Icon({ content, color, sx, ...other }) {
           boxShadow: (theme) => `0px 24px 48px ${alpha(theme.palette.common.black, 0.4)}`,
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <StyledContent sx={{ bgcolor: color }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledShape01 sx={{ bgcolor: color }} />
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <StyledShape02 />
           {content}
         </StyledContent>

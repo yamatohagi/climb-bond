@@ -17,7 +17,7 @@ const TITLE = [
   `How To Make More Event By Doing Less`,
 ];
 
-const content = (name) => `
+const content = (name: any) => `
 <p>Pellentesque posuere. Phasellus a est. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc.</p>
 
 <p>Pellentesque posuere. Phasellus a est. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Phasellus viverra nulla ut metus varius laoreet. Praesent egestas tristique nibh. Donec posuere vulputate arcu. Quisque rutrum.</p>
@@ -48,7 +48,7 @@ const content = (name) => `
 
 `;
 
-const base = (index) => ({
+const base = (index: any) => ({
   id: _mock.id(index),
   title: TITLE[index],
   description: _mock.text.description(index),
@@ -56,6 +56,7 @@ const base = (index) => ({
   favorited: _mock.boolean(index),
   createdAt: _mock.time(index),
   duration: '8 minutes read',
+
   tags: [
     { label: 'Marketing', path: '' },
     { label: 'Development', path: '' },
@@ -63,6 +64,7 @@ const base = (index) => ({
     { label: 'Design', path: '' },
     { label: 'Management', path: '' },
   ],
+
   author: {
     name: _mock.name.fullName(index),
     role: _mock.role(index),
@@ -70,7 +72,7 @@ const base = (index) => ({
     quotes: 'Member since Mar 15, 2021',
     about:
       'Integer tincidunt. Nullam dictum felis eu pede mollis pretium. Maecenas ullamcorper, dui et placerat feugiat, eros pede varius nisi, condimentum viverra felis nunc et lorem.',
-  },
+  }
 });
 
 // ----------------------------------------------------------------------

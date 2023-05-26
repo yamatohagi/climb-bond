@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/settings' or it... Remove this comment to see the full error message
 import { useSettingsContext } from 'src/components/settings';
 //
 import palette from './palette';
@@ -19,7 +20,9 @@ ThemeProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export default function ThemeProvider({ children }) {
+export default function ThemeProvider({
+  children
+}: any) {
   const { themeMode, themeDirection } = useSettingsContext();
 
   const themeOptions = useMemo(
@@ -34,13 +37,17 @@ export default function ThemeProvider({ children }) {
     [themeDirection, themeMode]
   );
 
+  // @ts-expect-error TS(2345): Argument of type '{ palette: { mode: string; text:... Remove this comment to see the full error message
   const theme = createTheme(themeOptions);
 
   theme.components = componentsOverride(theme);
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <MUIThemeProvider theme={theme}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CssBaseline />
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <GlobalStyles />
       {children}
     </MUIThemeProvider>

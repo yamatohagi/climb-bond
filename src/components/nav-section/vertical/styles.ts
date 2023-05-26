@@ -2,12 +2,14 @@
 import { alpha, styled } from '@mui/material/styles';
 import { ListItemIcon, ListSubheader, ListItemButton } from '@mui/material';
 // config
+// @ts-expect-error TS(2307): Cannot find module 'src/config-global' or its corr... Remove this comment to see the full error message
 import { ICON, NAV } from 'src/config-global';
 
 // ----------------------------------------------------------------------
 
 export const StyledItem = styled(ListItemButton, {
   shouldForwardProp: (prop) => prop !== 'active' && prop !== 'caption',
+// @ts-expect-error TS(2339): Property 'active' does not exist on type 'ListItem... Remove this comment to see the full error message
 })(({ active, disabled, depth, caption, theme }) => {
   const isLight = theme.palette.mode === 'light';
 
@@ -83,6 +85,7 @@ export const StyledIcon = styled(ListItemIcon)({
 
 export const StyledDotIcon = styled('span', {
   shouldForwardProp: (prop) => prop !== 'active',
+// @ts-expect-error TS(2339): Property 'active' does not exist on type 'MUIStyle... Remove this comment to see the full error message
 })(({ active, theme }) => ({
   width: 4,
   height: 4,

@@ -4,10 +4,10 @@ import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from './CustomIcons';
 
 const COLORS = ['info', 'success', 'warning', 'error'];
 
-export default function Alert(theme) {
+export default function Alert(theme: any) {
   const isLight = theme.palette.mode === 'light';
 
-  const rootStyle = (ownerState) => {
+  const rootStyle = (ownerState: any) => {
     const standardVariant = ownerState.variant === 'standard';
 
     const filledVariant = ownerState.variant === 'filled';
@@ -55,7 +55,9 @@ export default function Alert(theme) {
       },
 
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
         icon: {
           opacity: 1,
         },

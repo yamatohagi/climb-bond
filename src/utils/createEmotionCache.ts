@@ -12,5 +12,6 @@ export default function createEmotionCache() {
     insertionPoint = emotionInsertionPoint ?? undefined;
   }
 
+  // @ts-expect-error TS(2322): Type 'Element | undefined' is not assignable to ty... Remove this comment to see the full error message
   return createCache({ key: 'css', insertionPoint });
 }

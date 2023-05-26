@@ -4,8 +4,8 @@ import { alpha } from '@mui/material';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
-export default function Progress(theme) {
-  const rootStyle = (ownerState) => {
+export default function Progress(theme: any) {
+  const rootStyle = (ownerState: any) => {
     const bufferVariant = ownerState.variant === 'buffer';
 
     const defaultStyle = {
@@ -30,7 +30,9 @@ export default function Progress(theme) {
   return {
     MuiLinearProgress: {
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
       },
     },
   };

@@ -3,6 +3,7 @@ import { useState } from 'react';
 // @mui
 import { Box, Rating, Button, Stack, Avatar, Divider, Typography, TextField } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatTime' or its c... Remove this comment to see the full error message
 import { fDate } from 'src/utils/formatTime';
 
 // ----------------------------------------------------------------------
@@ -19,8 +20,8 @@ export default function ReviewItem({
   postedAt,
   hasReply,
   avatarUrl,
-  helpful = 0,
-}) {
+  helpful = 0
+}: any) {
   const [openReply, setOpenReply] = useState(false);
 
   const [isHelpful, setIsHelpful] = useState(false);
@@ -34,7 +35,9 @@ export default function ReviewItem({
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Stack
         direction="row"
         sx={{
@@ -46,25 +49,31 @@ export default function ReviewItem({
           }),
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Avatar
           alt={name}
           src={avatarUrl}
           sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE, mr: 2.5 }}
         />
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Stack sx={{ width: 1 }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Stack
             spacing={1}
             alignItems={{ sm: 'center' }}
             direction={{ xs: 'column', sm: 'row' }}
             justifyContent={{ sm: 'space-between' }}
           >
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography variant="subtitle2">{name}</Typography>
 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             {!hasReply && <Rating size="small" value={rating} precision={0.5} readOnly />}
           </Stack>
 
           {postedAt && (
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Typography
               variant="body2"
               sx={{
@@ -77,13 +86,17 @@ export default function ReviewItem({
             </Typography>
           )}
 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Typography variant="body2">
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             {tagUser && <strong>{`@${tagUser} `}</strong>}
             {message}
           </Typography>
 
           {!hasReply && (
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Stack direction="row" alignItems="center" spacing={2} sx={{ mt: 2 }}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button
                 size="small"
                 color={isHelpful ? 'primary' : 'inherit'}
@@ -92,8 +105,10 @@ export default function ReviewItem({
                 Helpful {getHelpful(helpful, isHelpful)}
               </Button>
 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Box sx={{ width: 4, height: 4, bgcolor: 'text.disabled', borderRadius: '50%' }} />
 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Button
                 size="small"
                 color={openReply ? 'primary' : 'inherit'}
@@ -105,6 +120,7 @@ export default function ReviewItem({
           )}
 
           {!hasReply && openReply && (
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TextField
               fullWidth
               hiddenLabel
@@ -116,6 +132,7 @@ export default function ReviewItem({
         </Stack>
       </Stack>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Divider sx={{ ml: 'auto', width: WIDTH }} />
     </>
   );
@@ -134,7 +151,7 @@ ReviewItem.propTypes = {
 
 // ----------------------------------------------------------------------
 
-const getHelpful = (helpful, isHelpful) => {
+const getHelpful = (helpful: any, isHelpful: any) => {
   if (helpful > 0) {
     return isHelpful ? `(${helpful + 1})` : `(${helpful})`;
   }

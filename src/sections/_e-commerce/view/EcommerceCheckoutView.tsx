@@ -17,11 +17,15 @@ import {
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // routes
+// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _products } from 'src/_mock';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/hook-form' or i... Remove this comment to see the full error message
 import FormProvider from 'src/components/hook-form';
 //
 import { EcommerceHeader } from '../layout';
@@ -124,7 +128,7 @@ export default function EcommerceCheckoutView() {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
       reset();
@@ -136,9 +140,12 @@ export default function EcommerceCheckoutView() {
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <EcommerceHeader />
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container
         sx={{
           overflow: 'hidden',
@@ -146,40 +153,61 @@ export default function EcommerceCheckoutView() {
           pb: { xs: 5, md: 10 },
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Typography variant="h3" sx={{ mb: 5 }}>
           Checkout
         </Typography>
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid container spacing={{ xs: 5, md: 8 }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid xs={12} md={8}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Stack spacing={5} divider={<Divider sx={{ borderStyle: 'dashed' }} />}>
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <div>
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <StepLabel title="Personal Details" step="1" />
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <EcommerceCheckoutPersonalDetails />
                 </div>
 
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <div>
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <StepLabel title="Shipping Details" step="2" />
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <EcommerceCheckoutShippingDetails />
                 </div>
 
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <div>
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <StepLabel title="Shipping Method" step="3" />
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <EcommerceCheckoutShippingMethod options={SHIPPING_OPTIONS} />
                 </div>
 
+                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <div>
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <StepLabel title="Payment Method" step="4" />
 
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <EcommerceCheckoutPaymentMethod options={PAYMENT_OPTIONS} />
 
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Divider sx={{ my: 3 }} />
 
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Stack alignItems="flex-end">
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <Button
                       color={openNewForm ? 'error' : 'inherit'}
                       startIcon={
+                        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                         <Iconify icon={openNewForm ? 'carbon:close' : 'carbon:add'} width={24} />
                       }
                       onClick={() => setOpenNewForm(!openNewForm)}
@@ -188,14 +216,18 @@ export default function EcommerceCheckoutView() {
                     </Button>
                   </Stack>
 
+                  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                   <Collapse in={openNewForm} unmountOnExit>
+                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <EcommerceCheckoutNewCardForm />
                   </Collapse>
                 </div>
               </Stack>
             </Grid>
 
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Grid xs={12} md={4}>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <EcommerceCheckoutOrderSummary
                 tax={7}
                 total={357.09}
@@ -215,9 +247,14 @@ export default function EcommerceCheckoutView() {
 
 // ----------------------------------------------------------------------
 
-function StepLabel({ step, title }) {
+function StepLabel({
+  step,
+  title
+}: any) {
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack direction="row" alignItems="center" sx={{ mb: 3, typography: 'h6' }}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           mr: 1.5,

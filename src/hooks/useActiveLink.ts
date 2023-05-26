@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 // ----------------------------------------------------------------------
 
-export default function useActiveLink(path, deep = true) {
+export default function useActiveLink(path: any, deep = true) {
   const { pathname, asPath } = useRouter();
 
   const checkPath = path.startsWith('#');

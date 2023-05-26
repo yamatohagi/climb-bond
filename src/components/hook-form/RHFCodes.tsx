@@ -5,6 +5,7 @@ import { useFormContext, Controller } from 'react-hook-form';
 // @mui
 import { Stack, TextField } from '@mui/material';
 // hooks
+// @ts-expect-error TS(2307): Cannot find module 'src/hooks/useEventListener' or... Remove this comment to see the full error message
 import useEventListener from 'src/hooks/useEventListener';
 
 // ----------------------------------------------------------------------
@@ -19,17 +20,18 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
 
   const { control, setValue } = useFormContext();
 
-  const handlePaste = (event) => {
+  const handlePaste = (event: any) => {
     let data = event.clipboardData.getData('text');
 
     data = data.split('');
 
+    // @ts-expect-error TS(2345): Argument of type 'any' is not assignable to parame... Remove this comment to see the full error message
     inputs.map((input, index) => setValue(input, data[index]));
 
     event.preventDefault();
   };
 
-  const handleChangeWithNextField = (event, handleChange) => {
+  const handleChangeWithNextField = (event: any, handleChange: any) => {
     const { maxLength, value, name } = event.target;
 
     const fieldIndex = name.replace(keyName, '');
@@ -43,6 +45,7 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
     }
 
     if (value.length >= maxLength && fieldIntIndex < 6 && nextfield !== null) {
+      // @ts-expect-error TS(2339): Property 'focus' does not exist on type 'Element'.
       nextfield.focus();
     }
 
@@ -52,13 +55,16 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
   useEventListener('paste', handlePaste, codesRef);
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack direction="row" spacing={2} justifyContent="center" ref={codesRef}>
       {inputs.map((name, index) => (
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Controller
           key={name}
           name={`${keyName}${index + 1}`}
           control={control}
           render={({ field, fieldState: { error } }) => (
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TextField
               {...field}
               error={!!error}

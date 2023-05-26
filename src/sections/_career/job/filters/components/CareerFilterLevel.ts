@@ -18,36 +18,53 @@ const JOB_LEVELS = [
 
 // ----------------------------------------------------------------------
 
-export default function CareerFilterLevel({ filterLevel, onChangeJobType }) {
+export default function CareerFilterLevel({
+  filterLevel,
+  onChangeJobType
+}: any) {
   return (
+    // @ts-expect-error TS(2749): 'FormControl' refers to a value, but is being used... Remove this comment to see the full error message
     <FormControl fullWidth hiddenLabel variant="filled" sx={inputStyle}>
+      // @ts-expect-error TS(2749): 'Select' refers to a value, but is being used as a... Remove this comment to see the full error message
       <Select
+        // @ts-expect-error TS(2304): Cannot find name 'multiple'.
         multiple
+        // @ts-expect-error TS(2304): Cannot find name 'displayEmpty'.
         displayEmpty
+        // @ts-expect-error TS(2304): Cannot find name 'value'.
         value={filterLevel}
+        // @ts-expect-error TS(2552): Cannot find name 'onChange'. Did you mean 'onchang... Remove this comment to see the full error message
         onChange={onChangeJobType}
+        // @ts-expect-error TS(2632): Cannot assign to 'MenuProps' because it is an impo... Remove this comment to see the full error message
         MenuProps={MenuProps}
+        // @ts-expect-error TS(2304): Cannot find name 'renderValue'.
         renderValue={(selected) => {
+          // @ts-expect-error TS(2304): Cannot find name 'selected'.
           if (selected.length === 0) {
             return (
+              // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
               <Typography variant="body2" sx={{ color: 'text.disabled' }}>
+                // @ts-expect-error TS(2304): Cannot find name 'All'.
                 All levels
               </Typography>
             );
           }
           return (
+            // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
             <Typography variant="subtitle2" component="span">
+              // @ts-expect-error TS(18004): No value exists in scope for the shorthand propert... Remove this comment to see the full error message
               {selected.join(', ')}
             </Typography>
           );
         }}
       >
-        {JOB_LEVELS.map((type) => (
-          <MenuItem key={type} value={type} sx={menuItemStyle}>
-            <Checkbox size="small" disableRipple checked={filterLevel.includes(type)} />
-            {type}
-          </MenuItem>
-        ))}
+        // @ts-expect-error TS(2749): 'MenuItem' refers to a value, but is being used as... Remove this comment to see the full error message
+        {JOB_LEVELS.map((type: any) => <MenuItem key={type} value={type} sx={menuItemStyle}>
+          // @ts-expect-error TS(2749): 'Checkbox' refers to a value, but is being used as... Remove this comment to see the full error message
+          <Checkbox size="small" disableRipple checked={filterLevel.includes(type)} />
+          // @ts-expect-error TS(18004): No value exists in scope for the shorthand propert... Remove this comment to see the full error message
+          {type}
+        </MenuItem>)}
       </Select>
     </FormControl>
   );

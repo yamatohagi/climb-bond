@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------
 
-export function descendingComparator(a, b, orderBy) {
+export function descendingComparator(a: any, b: any, orderBy: any) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -12,18 +12,18 @@ export function descendingComparator(a, b, orderBy) {
 
 // ----------------------------------------------------------------------
 
-export function getComparator(order, orderBy) {
+export function getComparator(order: any, orderBy: any) {
   return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
+    ? (a: any, b: any) => descendingComparator(a, b, orderBy)
+    : (a: any, b: any) => -descendingComparator(a, b, orderBy);
 }
 
 // ----------------------------------------------------------------------
 
-export function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+export function stableSort(array: any, comparator: any) {
+  const stabilizedThis = array.map((el: any, index: any) => [el, index]);
 
-  stabilizedThis.sort((a, b) => {
+  stabilizedThis.sort((a: any, b: any) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) {
       return order;
@@ -31,7 +31,7 @@ export function stableSort(array, comparator) {
     return a[1] - b[1];
   });
 
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map((el: any) => el[0]);
 }
 
 // ----------------------------------------------------------------------

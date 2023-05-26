@@ -4,16 +4,23 @@ import { useRef } from 'react';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Paper, Link, CardContent } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/iconify' or its... Remove this comment to see the full error message
 import Iconify from 'src/components/iconify';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/text-max-line' ... Remove this comment to see the full error message
 import TextMaxLine from 'src/components/text-max-line';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselArrows } from 'src/components/carousel';
 
 // ----------------------------------------------------------------------
 
-export default function CarouselCenterMode({ data }) {
+export default function CarouselCenterMode({
+  data
+}: any) {
   const carouselRef = useRef(null);
 
   const theme = useTheme();
@@ -40,27 +47,32 @@ export default function CarouselCenterMode({ data }) {
   };
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Box
       sx={{
         overflow: 'hidden',
         position: 'relative',
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CarouselArrows filled icon="noto:rightwards-hand" onNext={handleNext} onPrev={handlePrev}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          {data.map((item) => (
-            <Box key={item.id} sx={{ px: 1 }}>
-              <CarouselItem item={item} />
-            </Box>
-          ))}
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          {data.map((item: any) => <Box key={item.id} sx={{ px: 1 }}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            <CarouselItem item={item} />
+          </Box>)}
         </Carousel>
       </CarouselArrows>
     </Box>
@@ -73,12 +85,15 @@ CarouselCenterMode.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function CarouselItem({ item }) {
+function CarouselItem({
+  item
+}: any) {
   const theme = useTheme();
 
   const { image, title } = item;
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Paper
       sx={{
         borderRadius: 2,
@@ -86,7 +101,9 @@ function CarouselItem({ item }) {
         position: 'relative',
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Image alt={title} src={image} ratio="3/4" />
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <CardContent
         sx={{
           bottom: 0,
@@ -102,10 +119,12 @@ function CarouselItem({ item }) {
           }),
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <TextMaxLine variant="h4" paragraph>
           {title}
         </TextMaxLine>
 
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Link
           color="inherit"
           variant="overline"
@@ -118,6 +137,7 @@ function CarouselItem({ item }) {
           }}
         >
           learn More
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Iconify icon="eva:arrow-forward-fill" width={16} sx={{ ml: 1 }} />
         </Link>
       </CardContent>

@@ -4,10 +4,11 @@ import { AutocompleteIcon } from './CustomIcons';
 
 // ----------------------------------------------------------------------
 
-export default function Autocomplete(theme) {
+export default function Autocomplete(theme: any) {
   return {
     MuiAutocomplete: {
       defaultProps: {
+        // @ts-expect-error TS(2749): 'AutocompleteIcon' refers to a value, but is being... Remove this comment to see the full error message
         popupIcon: <AutocompleteIcon />,
       },
 

@@ -8,10 +8,13 @@ import { useRouter } from 'next/router';
 // @mui
 import { Box, Stack, Divider, Container, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 // routes
+// @ts-expect-error TS(2307): Cannot find module 'src/routes/paths' or its corre... Remove this comment to see the full error message
 import { paths } from 'src/routes/paths';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _tours } from 'src/_mock';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/hook-form' or i... Remove this comment to see the full error message
 import FormProvider from 'src/components/hook-form';
 //
 import {
@@ -77,7 +80,7 @@ export default function TravelCheckoutView() {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
       reset();
@@ -88,11 +91,11 @@ export default function TravelCheckoutView() {
     }
   };
 
-  const handleChangeDepartureDay = (newValue) => {
+  const handleChangeDepartureDay = (newValue: any) => {
     setDepartureDay(newValue);
   };
 
-  const handleIncrementGuests = (guest) => {
+  const handleIncrementGuests = (guest: any) => {
     if (guest === 'children') {
       setGuests({ ...guests, children: guests.children + 1 });
     } else {
@@ -100,7 +103,7 @@ export default function TravelCheckoutView() {
     }
   };
 
-  const handleDecreaseGuests = (guest) => {
+  const handleDecreaseGuests = (guest: any) => {
     if (guest === 'children') {
       setGuests({ ...guests, children: guests.children - 1 });
     } else {
@@ -108,11 +111,12 @@ export default function TravelCheckoutView() {
     }
   };
 
-  const handleChangeSameBilling = (event) => {
+  const handleChangeSameBilling = (event: any) => {
     setSameBilling(event.target.checked);
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         overflow: 'hidden',
@@ -120,30 +124,42 @@ export default function TravelCheckoutView() {
         pb: { xs: 8, md: 15 },
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Typography variant="h2" sx={{ mb: 5 }}>
         Confirm and Pay
       </Typography>
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Grid container spacing={{ xs: 5, md: 8 }}>
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={7}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Stack>
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <StepLabel title="Shipping Information" step="1" />
 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <TravelCheckOutShippingForm
                 sameBilling={sameBilling}
                 onChangeSameBilling={handleChangeSameBilling}
               />
 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <Divider sx={{ my: 5, borderStyle: 'dashed' }} />
 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <StepLabel title="Payment Methods" step="2" />
 
+              // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
               <TravelCheckOutPaymentForm />
             </Stack>
           </Grid>
 
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Grid xs={12} md={5}>
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <TravelCheckOutSummary
               guests={guests}
               tour={_tours[0]}
@@ -162,9 +178,14 @@ export default function TravelCheckoutView() {
 
 // ----------------------------------------------------------------------
 
-function StepLabel({ step, title }) {
+function StepLabel({
+  step,
+  title
+}: any) {
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Stack direction="row" alignItems="center" sx={{ mb: 3, typography: 'h5' }}>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           mr: 1.5,

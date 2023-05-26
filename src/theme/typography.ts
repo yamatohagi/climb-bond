@@ -2,15 +2,19 @@ import { Public_Sans, Barlow } from 'next/font/google';
 
 // ----------------------------------------------------------------------
 
-export function remToPx(value) {
+export function remToPx(value: any) {
   return Math.round(parseFloat(value) * 16);
 }
 
-export function pxToRem(value) {
+export function pxToRem(value: any) {
   return `${value / 16}rem`;
 }
 
-export function responsiveFontSizes({ sm, md, lg }) {
+export function responsiveFontSizes({
+  sm,
+  md,
+  lg
+}: any) {
   return {
     '@media (min-width:600px)': {
       fontSize: pxToRem(sm),

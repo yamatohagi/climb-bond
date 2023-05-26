@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // ----------------------------------------------------------------------
 
-export default function useCountdown(date) {
+export default function useCountdown(date: any) {
   const [countdown, setCountdown] = useState({
     days: '00',
     hours: '00',

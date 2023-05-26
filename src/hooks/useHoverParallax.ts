@@ -13,10 +13,10 @@ function useHoverParallax(stiffness = 250, damping = 20) {
     damping,
   });
 
-  const offsetX = (force) => useTransform(x, (event) => event / force);
-  const offsetY = (force) => useTransform(y, (event) => event / force);
+  const offsetX = (force: any) => useTransform(x, (event) => event / force);
+  const offsetY = (force: any) => useTransform(y, (event) => event / force);
 
-  const onMouseMoveHandler = (event) => {
+  const onMouseMoveHandler = (event: any) => {
     x.set(event.clientX);
     y.set(event.clientY);
   };

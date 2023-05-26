@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 //
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });

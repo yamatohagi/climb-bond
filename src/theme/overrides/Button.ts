@@ -4,10 +4,10 @@ import { alpha } from '@mui/material/styles';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
-export default function Button(theme) {
+export default function Button(theme: any) {
   const isLight = theme.palette.mode === 'light';
 
-  const rootStyle = (ownerState) => {
+  const rootStyle = (ownerState: any) => {
     const inheritColor = ownerState.color === 'inherit';
 
     const containedVariant = ownerState.variant === 'contained';
@@ -117,7 +117,9 @@ export default function Button(theme) {
       },
 
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
       },
     },
   };

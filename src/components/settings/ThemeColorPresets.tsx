@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+// @ts-expect-error TS(7016): Could not find a declaration file for module 'loda... Remove this comment to see the full error message
 import merge from 'lodash.merge';
 import { useMemo } from 'react';
 // @mui
 import { alpha, ThemeProvider, createTheme, useTheme } from '@mui/material/styles';
 //
+// @ts-expect-error TS(6142): Module './SettingsContext' was resolved to '/Users... Remove this comment to see the full error message
 import { useSettingsContext } from './SettingsContext';
 
 // ----------------------------------------------------------------------
@@ -12,7 +14,9 @@ ThemeColorPresets.propTypes = {
   children: PropTypes.node,
 };
 
-export default function ThemeColorPresets({ children }) {
+export default function ThemeColorPresets({
+  children
+}: any) {
   const outerTheme = useTheme();
 
   const { presetsColor } = useSettingsContext();
@@ -33,5 +37,6 @@ export default function ThemeColorPresets({ children }) {
 
   const theme = createTheme(merge(outerTheme, themeOptions));
 
+  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

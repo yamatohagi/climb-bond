@@ -27,7 +27,9 @@ export const FormSchema = Yup.object().shape({
   slider: Yup.number().required('Slider is required').min(10, 'Mininum value is >= 10'),
   sliderRange: Yup.mixed()
     .required('Slider range is is required')
+    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
     .test('min', 'Range must be between 20 and 80', (value) => value[0] >= 20)
+    // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
     .test('max', 'Range must be between 20 and 80', (value) => value[1] <= 80),
   //
   checkbox: Yup.boolean().oneOf([true], 'Checkbox is required'),

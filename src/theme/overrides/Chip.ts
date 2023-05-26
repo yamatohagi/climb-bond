@@ -6,10 +6,10 @@ import { CloseIcon } from './CustomIcons';
 
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
 
-export default function Chip(theme) {
+export default function Chip(theme: any) {
   const isLight = theme.palette.mode === 'light';
 
-  const rootStyle = (ownerState) => {
+  const rootStyle = (ownerState: any) => {
     const defaultColor = ownerState.color === 'default';
 
     const filledVariant = ownerState.variant === 'filled';
@@ -87,7 +87,9 @@ export default function Chip(theme) {
       },
 
       styleOverrides: {
-        root: ({ ownerState }) => rootStyle(ownerState),
+        root: ({
+          ownerState
+        }: any) => rootStyle(ownerState),
       },
     },
   };

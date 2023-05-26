@@ -41,7 +41,9 @@ export const useSettingsContext = () => {
 
 // ----------------------------------------------------------------------
 
-export function SettingsProvider({ children }) {
+export function SettingsProvider({
+  children
+}: any) {
   const [open, setOpen] = useState(false);
 
   const [themeMode, setThemeMode] = useState(defaultSettings.themeMode);
@@ -73,7 +75,7 @@ export function SettingsProvider({ children }) {
   }, [themeDirection]);
 
   // Color
-  const onChangeColorPresets = useCallback((event) => {
+  const onChangeColorPresets = useCallback((event: any) => {
     const { value } = event.target;
     setThemeColorPresets(value);
     setCookie('themeColorPresets', value);
@@ -151,6 +153,7 @@ export function SettingsProvider({ children }) {
     ]
   );
 
+  // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <SettingsContext.Provider value={memoizedValue}>{children}</SettingsContext.Provider>;
 }
 
@@ -160,7 +163,7 @@ SettingsProvider.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function getCookie(name) {
+function getCookie(name: any) {
   if (typeof document === 'undefined') {
     throw new Error(
       'getCookie() is not supported on the server. Fallback to a different value when rendering on the server.'
@@ -178,13 +181,13 @@ function getCookie(name) {
   return undefined;
 }
 
-function setCookie(name, value, exdays = 3) {
+function setCookie(name: any, value: any, exdays = 3) {
   const date = new Date();
   date.setTime(date.getTime() + exdays * 24 * 60 * 60 * 1000);
   const expires = `expires=${date.toUTCString()}`;
   document.cookie = `${name}=${value};${expires};path=/`;
 }
 
-function removeCookie(name) {
+function removeCookie(name: any) {
   document.cookie = `${name}=;path=/;max-age=0`;
 }

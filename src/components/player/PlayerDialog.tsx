@@ -10,7 +10,12 @@ import { StyledReactPlayer } from './styles';
 
 // ----------------------------------------------------------------------
 
-export default function PlayerDialog({ videoPath, open, onClose, ...other }) {
+export default function PlayerDialog({
+  videoPath,
+  open,
+  onClose,
+  ...other
+}: any) {
   const [loading, setLoading] = useState(true);
 
   const onReady = () => {
@@ -18,6 +23,7 @@ export default function PlayerDialog({ videoPath, open, onClose, ...other }) {
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Dialog
       fullScreen
       open={open}
@@ -25,6 +31,7 @@ export default function PlayerDialog({ videoPath, open, onClose, ...other }) {
         sx: { bgcolor: 'unset' },
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <IconButton
         size="large"
         onClick={onClose}
@@ -40,10 +47,12 @@ export default function PlayerDialog({ videoPath, open, onClose, ...other }) {
           },
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Iconify icon="carbon:close" width={24} />
       </IconButton>
 
       {loading && (
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CircularProgress
           sx={{
             top: 0,
@@ -56,6 +65,7 @@ export default function PlayerDialog({ videoPath, open, onClose, ...other }) {
         />
       )}
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledReactPlayer url={videoPath} playing={!loading} onReady={onReady} {...other} />
     </Dialog>
   );

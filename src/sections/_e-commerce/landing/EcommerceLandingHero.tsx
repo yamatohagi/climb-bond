@@ -4,10 +4,13 @@ import { useRef } from 'react';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // _mock
+// @ts-expect-error TS(2307): Cannot find module 'src/_mock' or its correspondin... Remove this comment to see the full error message
 import { _productsCarousel } from 'src/_mock';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselDots } from 'src/components/carousel';
 //
 import { EcommerceProductItemHero } from '../product/item';
@@ -42,11 +45,13 @@ export default function EcommerceLandingHero() {
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Container
       sx={{
         pt: { xs: 5, md: 8 },
       }}
     >
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Box
         sx={{
           ...bgGradient({
@@ -58,10 +63,10 @@ export default function EcommerceLandingHero() {
           position: 'relative',
         }}
       >
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <Carousel ref={carouselRef} {...carouselSettings}>
-          {_productsCarousel.map((product) => (
-            <EcommerceProductItemHero key={product.id} product={product} />
-          ))}
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          {_productsCarousel.map((product: any) => <EcommerceProductItemHero key={product.id} product={product} />)}
         </Carousel>
       </Box>
     </Container>

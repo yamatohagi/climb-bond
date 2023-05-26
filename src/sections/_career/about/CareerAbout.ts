@@ -2,10 +2,14 @@
 import { styled, alpha } from '@mui/material/styles';
 import { Container, Typography, Stack, Box, Unstable_Grid2 as Grid } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/formatNumber' or its... Remove this comment to see the full error message
 import { fShortenNumber } from 'src/utils/formatNumber';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/count-up' or it... Remove this comment to see the full error message
 import CountUp from 'src/components/count-up';
 
 // ----------------------------------------------------------------------
@@ -54,47 +58,71 @@ const StyledOverlay = styled('div')(({ theme }) => ({
 
 export default function CareerAbout() {
   return (
+    // @ts-expect-error TS(2749): 'Container' refers to a value, but is being used a... Remove this comment to see the full error message
     <Container
+      // @ts-expect-error TS(2304): Cannot find name 'sx'.
       sx={{
+        // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
         pt: 5,
+        // @ts-expect-error TS(2304): Cannot find name 'pb'.
         pb: { xs: 5, md: 10 },
       }}
     >
+      // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
       <Typography
+        // @ts-expect-error TS(2304): Cannot find name 'paragraph'.
         paragraph
+        // @ts-expect-error TS(2304): Cannot find name 'variant'.
         variant="overline"
+        // @ts-expect-error TS(2304): Cannot find name 'sx'.
         sx={{ color: 'primary.main', textAlign: { xs: 'center', md: 'left' } }}
       >
+        // @ts-expect-error TS(2304): Cannot find name 'About'.
         About us
       </Typography>
 
       <Grid
+        // @ts-expect-error TS(2304): Cannot find name 'container'.
         container
+        // @ts-expect-error TS(2304): Cannot find name 'spacing'.
         spacing={3}
+        // @ts-expect-error TS(2304): Cannot find name 'justifyContent'.
         justifyContent="space-between"
+        // @ts-expect-error TS(2304): Cannot find name 'sx'.
         sx={{
+          // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
           textAlign: { xs: 'center', md: 'left' },
         }}
       >
+        // @ts-expect-error TS(2749): 'Grid' refers to a value, but is being used as a t... Remove this comment to see the full error message
         <Grid xs={12} md={6} lg={5}>
+          // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
           <Typography variant="h2">We Make The Best For All Our Customers.</Typography>
         </Grid>
 
+        // @ts-expect-error TS(2304): Cannot find name 'xs'.
         <Grid xs={12} md={6} lg={6} sx={{ color: 'text.secondary' }}>
+          // @ts-expect-error TS(2749): 'Stack' refers to a value, but is being used as a ... Remove this comment to see the full error message
           <Stack spacing={{ xs: 3, md: 10 }} direction={{ xs: 'column', md: 'row' }}>
+            // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
             <Typography>
+              // @ts-expect-error TS(2304): Cannot find name 'Curabitur'.
               Curabitur ullamcorper ultricies nisi. Sed mollis, eros et ultrices tempus, mauris
+              // @ts-expect-error TS(2304): Cannot find name 'ipsum'.
               ipsum aliquam libero, non adipiscing dolor urna a orci.
             </Typography>
 
             <Typography>
+              // @ts-expect-error TS(2304): Cannot find name 'Donec'.
               Donec vitae sapien ut libero venenatis faucibus. Vestibulum fringilla pede sit amet
+              // @ts-expect-error TS(2304): Cannot find name 'augue'.
               augue. Vivamus euismod mauris.
             </Typography>
           </Stack>
         </Grid>
       </Grid>
 
+      // @ts-expect-error TS(2362): The left-hand side of an arithmetic operation must... Remove this comment to see the full error message
       <Section />
     </Container>
   );
@@ -104,70 +132,107 @@ export default function CareerAbout() {
 
 function Section() {
   return (
+    // @ts-expect-error TS(2749): 'StyledSection' refers to a value, but is being us... Remove this comment to see the full error message
     <StyledSection>
+      // @ts-expect-error TS(2749): 'Stack' refers to a value, but is being used as a ... Remove this comment to see the full error message
       <Stack
+        // @ts-expect-error TS(2304): Cannot find name 'sx'.
         sx={{
+          // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
           py: 10,
+          // @ts-expect-error TS(2304): Cannot find name 'zIndex'.
           zIndex: 9,
+          // @ts-expect-error TS(2304): Cannot find name 'ml'.
           ml: 'auto',
+          // @ts-expect-error TS(2304): Cannot find name 'position'.
           position: 'relative',
+          // @ts-expect-error TS(2304): Cannot find name 'px'.
           px: { xs: 2.5, md: 10 },
+          // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
           width: { md: 0.75, lg: 0.5 },
         }}
       >
+        // @ts-expect-error TS(2749): 'Stack' refers to a value, but is being used as a ... Remove this comment to see the full error message
         <Stack
+          // @ts-expect-error TS(2304): Cannot find name 'sx'.
           sx={{
+            // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
             mb: 5,
+            // @ts-expect-error TS(2304): Cannot find name 'color'.
             color: 'common.white',
+            // @ts-expect-error TS(2304): Cannot find name 'textAlign'.
             textAlign: { xs: 'center', md: 'left' },
           }}
         >
+          // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
           <Typography variant="h2" paragraph>
+            // @ts-expect-error TS(2304): Cannot find name 'Our'.
             Our Agency Has Been
           </Typography>
+          // @ts-expect-error TS(2304): Cannot find name 'sx'.
           <Typography sx={{ opacity: 0.72 }}>
+            // @ts-expect-error TS(2304): Cannot find name 'Hello'.
             Hello. Our agency has been present for over 20 years. We make the best for all our
+            // @ts-expect-error TS(2304): Cannot find name 'customers'.
             customers.
           </Typography>
         </Stack>
 
         <Box
+          // @ts-expect-error TS(2304): Cannot find name 'sx'.
           sx={{
+            // @ts-expect-error TS(2695): Left side of comma operator is unused and has no s... Remove this comment to see the full error message
             gap: 5,
+            // @ts-expect-error TS(2304): Cannot find name 'display'.
             display: 'grid',
+            // @ts-expect-error TS(2304): Cannot find name 'gridTemplateColumns'.
             gridTemplateColumns: 'repeat(2, 1fr)',
+            // @ts-expect-error TS(2304): Cannot find name 'textAlign'.
             textAlign: { xs: 'center', md: 'left' },
           }}
         >
-          {SUMMARY.map((value) => (
-            <div key={value.name}>
-              <Typography variant="h2" gutterBottom sx={{ color: 'primary.main' }}>
-                <CountUp
-                  start={value.number / 5}
-                  end={value.number}
-                  formattingFn={(newValue) => fShortenNumber(newValue)}
-                />
+          // @ts-expect-error TS(2304): Cannot find name 'div'.
+          {SUMMARY.map((value: any) => <div key={value.name}>
+            // @ts-expect-error TS(2749): 'Typography' refers to a value, but is being used ... Remove this comment to see the full error message
+            <Typography variant="h2" gutterBottom sx={{ color: 'primary.main' }}>
+              <CountUp
+                // @ts-expect-error TS(2304): Cannot find name 'start'.
+                start={value.number / 5}
+                // @ts-expect-error TS(2304): Cannot find name 'end'.
+                end={value.number}
+                // @ts-expect-error TS(2304): Cannot find name 'formattingFn'.
+                formattingFn={(newValue) => fShortenNumber(newValue)}
+              // @ts-expect-error TS(2365): Operator '<' cannot be applied to types 'RegExp' a... Remove this comment to see the full error message
+              />
 
-                <Typography variant="h3" component="span" sx={{ verticalAlign: 'top', ml: 0.5 }}>
-                  +
-                </Typography>
+              // @ts-expect-error TS(2304): Cannot find name 'variant'.
+              <Typography variant="h3" component="span" sx={{ verticalAlign: 'top', ml: 0.5 }}>
+                +
               </Typography>
+            </Typography>
 
-              <Typography variant="body2" sx={{ color: 'grey.500' }}>
-                {value.name}
-              </Typography>
-            </div>
-          ))}
+            // @ts-expect-error TS(2304): Cannot find name 'variant'.
+            <Typography variant="body2" sx={{ color: 'grey.500' }}>
+              // @ts-expect-error TS(18004): No value exists in scope for the shorthand propert... Remove this comment to see the full error message
+              {value.name}
+            </Typography>
+          </div>)}
         </Box>
       </Stack>
 
+      // @ts-expect-error TS(2362): The left-hand side of an arithmetic operation must... Remove this comment to see the full error message
       <StyledOverlay />
 
+      // @ts-expect-error TS(2749): 'Box' refers to a value, but is being used as a ty... Remove this comment to see the full error message
       <Box sx={{ position: 'absolute', width: 1, height: 1, top: 0 }}>
         <Image
+          // @ts-expect-error TS(2304): Cannot find name 'alt'.
           alt="career about"
+          // @ts-expect-error TS(2304): Cannot find name 'src'.
           src="/assets/images/career/career_about_team.jpg"
+          // @ts-expect-error TS(2304): Cannot find name 'sx'.
           sx={{ width: 1, height: 1 }}
+        // @ts-expect-error TS(2365): Operator '<' cannot be applied to types 'boolean' ... Remove this comment to see the full error message
         />
       </Box>
     </StyledSection>

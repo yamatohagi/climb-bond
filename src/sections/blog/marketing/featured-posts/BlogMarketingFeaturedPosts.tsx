@@ -4,9 +4,12 @@ import { useRef, useState } from 'react';
 import { styled, alpha, useTheme } from '@mui/material/styles';
 import { Container } from '@mui/material';
 // utils
+// @ts-expect-error TS(2307): Cannot find module 'src/utils/cssStyles' or its co... Remove this comment to see the full error message
 import { bgGradient } from 'src/utils/cssStyles';
 // components
+// @ts-expect-error TS(2307): Cannot find module 'src/components/image' or its c... Remove this comment to see the full error message
 import Image from 'src/components/image';
+// @ts-expect-error TS(2307): Cannot find module 'src/components/carousel' or it... Remove this comment to see the full error message
 import Carousel, { CarouselDots, CarouselArrows } from 'src/components/carousel';
 //
 import PostItem from './PostItem';
@@ -39,7 +42,9 @@ const StyledOverlay = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function BlogMarketingFeaturedPosts({ posts }) {
+export default function BlogMarketingFeaturedPosts({
+  posts
+}: any) {
   const theme = useTheme();
 
   const [selected, setSelected] = useState(0);
@@ -53,7 +58,7 @@ export default function BlogMarketingFeaturedPosts({ posts }) {
     slidesToScroll: 1,
     adaptiveHeight: true,
     rtl: Boolean(theme.direction === 'rtl'),
-    beforeChange: (current, next) => setSelected(next),
+    beforeChange: (current: any, next: any) => setSelected(next),
     ...CarouselDots({
       rounded: true,
       sx: { mt: 5 },
@@ -61,16 +66,21 @@ export default function BlogMarketingFeaturedPosts({ posts }) {
   };
 
   const handlePrev = () => {
+    // @ts-expect-error TS(2339): Property 'slickPrev' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickPrev();
   };
 
   const handleNext = () => {
+    // @ts-expect-error TS(2339): Property 'slickNext' does not exist on type 'never... Remove this comment to see the full error message
     carouselRef.current?.slickNext();
   };
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <StyledRoot>
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Container sx={{ position: 'relative', zIndex: 9 }}>
+        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <CarouselArrows
           onNext={handleNext}
           onPrev={handlePrev}
@@ -95,17 +105,18 @@ export default function BlogMarketingFeaturedPosts({ posts }) {
             },
           }}
         >
+          // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Carousel ref={carouselRef} {...carouselSettings}>
-            {posts.map((post) => (
-              <PostItem key={post.id} post={post} />
-            ))}
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            {posts.map((post: any) => <PostItem key={post.id} post={post} />)}
           </Carousel>
         </CarouselArrows>
       </Container>
 
       {posts.map(
-        (post, index) =>
+        (post: any, index: any) =>
           selected === index && (
+            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <Image
               key={post.id}
               alt="post cover"
@@ -115,6 +126,7 @@ export default function BlogMarketingFeaturedPosts({ posts }) {
           )
       )}
 
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <StyledOverlay />
     </StyledRoot>
   );

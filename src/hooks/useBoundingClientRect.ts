@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 
 // ----------------------------------------------------------------------
 
-export default function useBoundingClientRect(containerRef) {
+export default function useBoundingClientRect(containerRef: any) {
   const [container, setContainer] = useState(null);
 
   const handleResize = useCallback(() => {

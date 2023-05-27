@@ -1,8 +1,8 @@
 {
-  "name": "@zone/mui-kit-react",
-  "author": "Minimals",
-  "version": "2.0.0",
-  "description": "Next & JavaScript",
+  "name": "climb-bond",
+  "author": "yamatohagi",
+  "version": "0.0.0",
+  "description": "Next & TypeScript",
   "private": true,
   "scripts": {
     "dev": "next dev -p 5002",

@@ -18,51 +18,47 @@ import { ProductCountdownBlock } from '../../components';
 
 // ----------------------------------------------------------------------
 
-export default function EcommerceProductItemCountDown({
-  product,
-  color = 'primary',
-  sx
-}: any) {
+export default function EcommerceProductItemCountDown({ product, color = 'primary', sx }: any) {
   const theme = useTheme();
 
   return (
-        <Link component={NextLink} href={paths.eCommerce.product} color="inherit" underline="none">
-            <Stack
-                spacing={3}
+    <Link component={NextLink} href={paths.eCommerce.product} color="inherit" underline="none">
+      <Stack
+        spacing={3}
         sx={{
-                    p: 3,
-                    borderRadius: 2,
-                    color: `${color}.darker`,
-                    bgcolor: `${color}.lighter`,
-                    transition: theme.transitions.create('background-color', {
+          p: 3,
+          borderRadius: 2,
+          color: `${color}.darker`,
+          bgcolor: `${color}.lighter`,
+          transition: theme.transitions.create('background-color', {
             easing: theme.transitions.easing.easeIn,
             duration: theme.transitions.duration.shortest,
           }),
           '&:hover': {
-                        color: `${color}.lighter`,
-                        bgcolor: `${color}.main`,
+            color: `${color}.lighter`,
+            bgcolor: `${color}.main`,
           },
-                    ...sx,
+          ...sx,
         }}
       >
         <Image
-                    src={product.coverImg}
-                    sx={{
+          src={product.coverImg}
+          sx={{
             ...filterStyles(
-                            `drop-shadow(20px 20px 24px ${alpha(theme.palette.common.black, 0.16)})`
+              `drop-shadow(20px 20px 24px ${alpha(theme.palette.common.black, 0.16)})`
             ),
           }}
-                />
+        />
 
-                <Stack spacing={1} sx={{ textAlign: 'center' }}>
-                    <TextMaxLine variant="subtitle2" sx={{ opacity: 0.72 }}>
-                        {product.name}
+        <Stack spacing={1} sx={{ textAlign: 'center' }}>
+          <TextMaxLine variant="subtitle2" sx={{ opacity: 0.72 }}>
+            {product.name}
           </TextMaxLine>
 
-                    <Typography variant="h5">{`From ${fCurrency(product.price)}`}</Typography>
+          <Typography variant="h5">{`From ${fCurrency(product.price)}`}</Typography>
         </Stack>
 
-                <ProductCountdownBlock expired={add(new Date: any(), { days: 1, hours: 8 })} />
+        <ProductCountdownBlock expired={add(new Date(), { days: 1, hours: 8 })} />
       </Stack>
     </Link>
   );

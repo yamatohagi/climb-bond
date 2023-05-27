@@ -13,7 +13,7 @@ import FormProvider, { RHFTextField } from 'src/components/hook-form';
 // ----------------------------------------------------------------------
 
 export default function ContactElearningForm() {
-  const isMdUp = useResponsive('up', 'md');
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   const ElearningContactSchema = Yup.object().shape({
     fullName: Yup.string().required('Full name is required'),
@@ -51,59 +51,59 @@ export default function ContactElearningForm() {
   };
 
   return (
-        <Box
-            sx={{
-                bgcolor: 'background.neutral',
-                py: { xs: 10, md: 15 },
+    <Box
+      sx={{
+        bgcolor: 'background.neutral',
+        py: { xs: 10, md: 15 },
       }}
     >
-            <Container>
-                <Grid container spacing={3} justifyContent="space-between">
-                    {isMdUp && (
-                        <Grid xs={12} md={6} lg={5}>
+      <Container>
+        <Grid container spacing={3} justifyContent="space-between">
+          {isMdUp && (
+            <Grid xs={12} md={6} lg={5}>
               <Image
-                                alt="contact"
-                                src="/assets/illustrations/illustration_courses_contact.svg"
-                                sx={{ maxWidth: 260 }}
+                alt="contact"
+                src="/assets/illustrations/illustration_courses_contact.svg"
+                sx={{ maxWidth: 260 }}
               />
             </Grid>
           )}
 
-                    <Grid xs={12} md={6} lg={6}>
-                        <Stack
-                            spacing={2}
-                            sx={{
-                                mb: 5,
-                                textAlign: { xs: 'center', md: 'left' },
+          <Grid xs={12} md={6} lg={6}>
+            <Stack
+              spacing={2}
+              sx={{
+                mb: 5,
+                textAlign: { xs: 'center', md: 'left' },
               }}
             >
-                            <Typography variant="h3">Drop Us A Line</Typography>
+              <Typography variant="h3">Drop Us A Line</Typography>
 
-                            <Typography sx={{ color: 'text.secondary' }}>
-                                We normally respond within 2 business days
+              <Typography sx={{ color: 'text.secondary' }}>
+                We normally respond within 2 business days
               </Typography>
             </Stack>
 
-                        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit: any)}>
-                            <Stack spacing={2.5} alignItems="flex-start">
-                                <RHFTextField name="fullName" label="Full name" />
+            <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+              <Stack spacing={2.5} alignItems="flex-start">
+                <RHFTextField name="fullName" label="Full name" />
 
-                                <RHFTextField name="email" label="Email" />
+                <RHFTextField name="email" label="Email" />
 
-                                <RHFTextField name="subject" label="Subject" />
+                <RHFTextField name="subject" label="Subject" />
 
-                                <RHFTextField name="message" multiline rows={4} label="Message" sx={{ pb: 2.5 }} />
+                <RHFTextField name="message" multiline rows={4} label="Message" sx={{ pb: 2.5 }} />
 
                 <LoadingButton
-                                    size="large"
-                                    type="submit"
-                                    variant="contained"
-                                    loading={isSubmitting}
-                                    sx={{
-                                        mx: { xs: 'auto !important', md: 'unset !important' },
+                  size="large"
+                  type="submit"
+                  variant="contained"
+                  loading={isSubmitting}
+                  sx={{
+                    mx: { xs: 'auto !important', md: 'unset !important' },
                   }}
                 >
-                                    Send Request
+                  Send Request
                 </LoadingButton>
               </Stack>
             </FormProvider>

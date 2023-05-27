@@ -6,26 +6,21 @@ import { fCurrency } from 'src/utils/formatNumber';
 
 // ----------------------------------------------------------------------
 
-export default function ProductPrice({
-  price,
-  priceSale = 0,
-  sx,
-  ...other
-}: any) {
+export default function ProductPrice({ price, priceSale = 0, sx, ...other }: any) {
   return (
-        <Stack direction="row" sx={{ typography: 'subtitle2', ...sx }} {...other}>
-      {fCurrency(price: any)}
+    <Stack direction="row" sx={{ typography: 'subtitle2', ...sx }} {...other}>
+      {fCurrency(price)}
 
       <Box
-                component="span"
-                sx={{
-                    ml: 0.5,
-                    color: 'text.disabled',
-                    textDecoration: 'line-through',
-                    fontWeight: 'fontWeightMedium',
+        component="span"
+        sx={{
+          ml: 0.5,
+          color: 'text.disabled',
+          textDecoration: 'line-through',
+          fontWeight: 'fontWeightMedium',
         }}
-            >
-                {priceSale > 0 && fCurrency(priceSale)}
+      >
+        {priceSale > 0 && fCurrency(priceSale)}
       </Box>
     </Stack>
   );

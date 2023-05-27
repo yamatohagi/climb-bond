@@ -6,36 +6,32 @@ import { fDate } from 'src/utils/formatTime';
 
 // ----------------------------------------------------------------------
 
-export default function TestimonialItem({
-  testimonial,
-  sx,
-  ...other
-}: any) {
+export default function TestimonialItem({ testimonial, sx, ...other }: any) {
   const { name, review, rating, postDate } = testimonial;
 
   return (
-        <Stack
-            spacing={1}
+    <Stack
+      spacing={1}
       sx={{
-                p: 3,
-                borderRadius: 2,
-                bgcolor: 'background.neutral',
-                ...sx,
+        p: 3,
+        borderRadius: 2,
+        bgcolor: 'background.neutral',
+        ...sx,
       }}
-            {...other}
+      {...other}
     >
-            {postDate && (
-                <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-          {fDate(postDate: any)}
+      {postDate && (
+        <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+          {fDate(postDate, undefined)}
         </Typography>
       )}
 
-            <Typography variant="subtitle2">{name}</Typography>
+      <Typography variant="subtitle2">{name}</Typography>
 
-            <Rating size="small" value={rating} readOnly />
+      <Rating size="small" value={rating} readOnly />
 
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {review}
+      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        {review}
       </Typography>
     </Stack>
   );

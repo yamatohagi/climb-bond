@@ -11,65 +11,59 @@ import { paths } from 'src/routes/paths';
 
 // ----------------------------------------------------------------------
 
-export default function EcommerceCartSummary({
-  tax,
-  total,
-  subtotal,
-  shipping,
-  discount
-}: any) {
+export default function EcommerceCartSummary({ tax, total, subtotal, shipping, discount }: any) {
   return (
-        <Stack
-            spacing={3}
-            sx={{
-                p: 5,
-                borderRadius: 2,
-                border: (theme: any) => `solid 1px ${alpha(theme.palette.grey[500], 0.24)}`,
+    <Stack
+      spacing={3}
+      sx={{
+        p: 5,
+        borderRadius: 2,
+        border: (theme: any) => `solid 1px ${alpha(theme.palette.grey[500], 0.24)}`,
       }}
     >
-            <Typography variant="h6"> Summary </Typography>
+      <Typography variant="h6"> Summary </Typography>
 
-            <Stack spacing={2}>
-                <Row label="Subtotal" value={fCurrency(subtotal: any)} />
+      <Stack spacing={2}>
+        <Row label="Subtotal" value={fCurrency(subtotal)} />
 
-                <Row label="Shipping" value={fCurrency(shipping: any)} />
+        <Row label="Shipping" value={fCurrency(shipping)} />
 
-                <Row label="Discount (15%)" value={`-${fCurrency(discount)}`} />
+        <Row label="Discount (15%)" value={`-${fCurrency(discount)}`} />
 
-                <Row label="Tax" value={fPercent(tax: any)} />
+        <Row label="Tax" value={fPercent(tax)} />
       </Stack>
 
       <TextField
-                hiddenLabel
-                placeholder="Discount Code"
-                InputProps={{
+        hiddenLabel
+        placeholder="Discount Code"
+        InputProps={{
           endAdornment: (
-                        <InputAdornment position="end">
-                            <Button>Apply</Button>
+            <InputAdornment position="end">
+              <Button>Apply</Button>
             </InputAdornment>
           ),
         }}
-            />
+      />
 
-            <Divider sx={{ borderStyle: 'dashed' }} />
+      <Divider sx={{ borderStyle: 'dashed' }} />
 
       <Row
-                label="Total"
-                value={fCurrency(total: any)}
-                sx={{
-                    typography: 'h6',
+        label="Total"
+        value={fCurrency(total)}
+        sx={{
+          typography: 'h6',
           '& span': { typography: 'h6' },
         }}
-            />
+      />
 
       <Button
-                component={NextLink}
-                href={paths.eCommerce.checkout}
-                size="large"
-                variant="contained"
-                color="inherit"
+        component={NextLink}
+        href={paths.eCommerce.checkout}
+        size="large"
+        variant="contained"
+        color="inherit"
       >
-                Checkout
+        Checkout
       </Button>
     </Stack>
   );
@@ -85,24 +79,19 @@ EcommerceCartSummary.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function Row({
-  label,
-  value,
-  sx,
-  ...other
-}: any) {
+function Row({ label, value, sx, ...other }: any) {
   return (
-        <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ typography: 'subtitle2', ...sx }}
-            {...other}
+    <Stack
+      direction="row"
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{ typography: 'subtitle2', ...sx }}
+      {...other}
     >
-            <Box component="span" sx={{ typography: 'body2' }}>
-                {label}
+      <Box component="span" sx={{ typography: 'body2' }}>
+        {label}
       </Box>
-            {value}
+      {value}
     </Stack>
   );
 }

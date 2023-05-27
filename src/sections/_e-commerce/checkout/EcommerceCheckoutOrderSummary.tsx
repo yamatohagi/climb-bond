@@ -28,68 +28,70 @@ export default function EcommerceCheckoutOrderSummary({
   shipping,
   discount,
   products,
-  loading
+  loading,
 }: any) {
   return (
-        <Stack
-            spacing={3}
-            sx={{
-                p: 5,
-                borderRadius: 2,
-                border: (theme: any) => `solid 1px ${alpha(theme.palette.grey[500], 0.24)}`,
+    <Stack
+      spacing={3}
+      sx={{
+        p: 5,
+        borderRadius: 2,
+        border: (theme: any) => `solid 1px ${alpha(theme.palette.grey[500], 0.24)}`,
       }}
     >
-            <Typography variant="h6"> Order Summary </Typography>
+      <Typography variant="h6"> Order Summary </Typography>
 
-            {!!products?.length && (
+      {!!products?.length && (
         <>
-                    {products.map((product: any) => <ProductItem key={product.id} product={product} />)}
+          {products.map((product: any) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
 
-                    <Divider sx={{ borderStyle: 'dashed' }} />
+          <Divider sx={{ borderStyle: 'dashed' }} />
         </>
       )}
 
-            <Stack spacing={2}>
-                <Row label="Subtotal" value={fCurrency(subtotal: any)} />
+      <Stack spacing={2}>
+        <Row label="Subtotal" value={fCurrency(subtotal)} />
 
-                <Row label="Shipping" value={fCurrency(shipping: any)} />
+        <Row label="Shipping" value={fCurrency(shipping)} />
 
-                <Row label="Discount (15%)" value={`-${fCurrency(discount)}`} />
+        <Row label="Discount (15%)" value={`-${fCurrency(discount)}`} />
 
-                <Row label="Tax" value={fPercent(tax: any)} />
+        <Row label="Tax" value={fPercent(tax)} />
       </Stack>
 
       <TextField
-                hiddenLabel
-                placeholder="Discount Code"
-                InputProps={{
+        hiddenLabel
+        placeholder="Discount Code"
+        InputProps={{
           endAdornment: (
-                        <InputAdornment position="end">
-                            <Button>Apply</Button>
+            <InputAdornment position="end">
+              <Button>Apply</Button>
             </InputAdornment>
           ),
         }}
-            />
+      />
 
-            <Divider sx={{ borderStyle: 'dashed' }} />
+      <Divider sx={{ borderStyle: 'dashed' }} />
 
       <Row
-                label="Total"
-                value={fCurrency(total: any)}
-                sx={{
-                    typography: 'h6',
+        label="Total"
+        value={fCurrency(total)}
+        sx={{
+          typography: 'h6',
           '& span': { typography: 'h6' },
         }}
-            />
+      />
 
       <LoadingButton
-                size="large"
-                variant="contained"
-                color="inherit"
-                type="submit"
-                loading={loading}
+        size="large"
+        variant="contained"
+        color="inherit"
+        type="submit"
+        loading={loading}
       >
-                Order Now
+        Order Now
       </LoadingButton>
     </Stack>
   );
@@ -107,50 +109,49 @@ EcommerceCheckoutOrderSummary.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function ProductItem({
-  product,
-  ...other
-}: any) {
+function ProductItem({ product, ...other }: any) {
   return (
-        <Stack direction="row" alignItems="flex-start" {...other}>
+    <Stack direction="row" alignItems="flex-start" {...other}>
       <Image
-                src={product.coverImg}
-                sx={{
-                    mr: 2,
-                    width: 64,
-                    height: 64,
-                    flexShrink: 0,
-                    borderRadius: 1.5,
-                    bgcolor: 'background.neutral',
+        src={product.coverImg}
+        sx={{
+          mr: 2,
+          width: 64,
+          height: 64,
+          flexShrink: 0,
+          borderRadius: 1.5,
+          bgcolor: 'background.neutral',
         }}
-            />
+      />
 
-            <Stack flexGrow={1}>
-                <TextMaxLine variant="body2" line={1} sx={{ fontWeight: 'fontWeightMedium' }}>
-                    {product.name}
+      <Stack flexGrow={1}>
+        <TextMaxLine variant="body2" line={1} sx={{ fontWeight: 'fontWeightMedium' }}>
+          {product.name}
         </TextMaxLine>
 
-                <Typography variant="subtitle2" sx={{ mt: 0.5, mb: 1.5 }}>
-                    {fCurrency(product: any.price)}
+        <Typography variant="subtitle2" sx={{ mt: 0.5, mb: 1.5 }}>
+          {fCurrency(product.price)}
         </Typography>
 
         <TextField
-                    select
-                    size="small"
-                    variant="outlined"
-                    SelectProps={{
-                        native: true,
+          select
+          size="small"
+          variant="outlined"
+          SelectProps={{
+            native: true,
           }}
-                    sx={{ width: 80 }}
+          sx={{ width: 80 }}
         >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((option: any) => <option key={option} value={option}>
-                        {option}
-          </option>)}
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((option: any) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
         </TextField>
       </Stack>
 
       <IconButton>
-                <Iconify icon="carbon:trash-can" />
+        <Iconify icon="carbon:trash-can" />
       </IconButton>
     </Stack>
   );
@@ -166,24 +167,19 @@ ProductItem.propTypes = {
 
 // ----------------------------------------------------------------------
 
-function Row({
-  label,
-  value,
-  sx,
-  ...other
-}: any) {
+function Row({ label, value, sx, ...other }: any) {
   return (
-        <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ typography: 'subtitle2', ...sx }}
-            {...other}
+    <Stack
+      direction="row"
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{ typography: 'subtitle2', ...sx }}
+      {...other}
     >
-            <Box component="span" sx={{ typography: 'body2' }}>
-                {label}
+      <Box component="span" sx={{ typography: 'body2' }}>
+        {label}
       </Box>
-            {value}
+      {value}
     </Stack>
   );
 }

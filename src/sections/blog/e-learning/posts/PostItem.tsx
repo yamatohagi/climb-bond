@@ -13,41 +13,39 @@ import TextMaxLine from 'src/components/text-max-line';
 
 // ----------------------------------------------------------------------
 
-export default function PostItem({
-  post
-}: any) {
+export default function PostItem({ post }: any) {
   const { title, duration, coverImg, description, author, createdAt } = post;
 
   return (
-        <Paper variant="outlined" sx={{ borderRadius: 2, overflow: 'hidden' }}>
-            <Image src={coverImg} alt={title} ratio="1/1" />
+    <Paper variant="outlined" sx={{ borderRadius: 2, overflow: 'hidden' }}>
+      <Image src={coverImg} alt={title} ratio="1/1" />
 
-            <Stack direction="row" spacing={3} sx={{ p: 3 }}>
-                <Stack sx={{ textAlign: 'center' }}>
-                    <Typography variant="subtitle2">{fDate(createdAt: any, 'MMM')}</Typography>
+      <Stack direction="row" spacing={3} sx={{ p: 3 }}>
+        <Stack sx={{ textAlign: 'center' }}>
+          <Typography variant="subtitle2">{fDate(createdAt, 'MMM')}</Typography>
 
-                    <Divider sx={{ mt: 1, mb: 0.5 }} />
+          <Divider sx={{ mt: 1, mb: 0.5 }} />
 
-                    <Typography variant="h3">{fDate(createdAt: any, 'dd')}</Typography>
+          <Typography variant="h3">{fDate(createdAt, 'dd')}</Typography>
         </Stack>
 
-                <Stack spacing={1}>
-                    <Link component={NextLink} href={paths.eLearning.post} color="inherit">
-                        <TextMaxLine variant="h6" persistent>
-                            {title}
+        <Stack spacing={1}>
+          <Link component={NextLink} href={paths.eLearning.post} color="inherit">
+            <TextMaxLine variant="h6" persistent>
+              {title}
             </TextMaxLine>
           </Link>
 
-                    <TextMaxLine variant="body2" persistent color="text.secondary">
-                        {description}
+          <TextMaxLine variant="body2" persistent color="text.secondary">
+            {description}
           </TextMaxLine>
 
-                    <Stack spacing={1.5} direction="row" alignItems="center" sx={{ pt: 1.5 }}>
-                        <Avatar src={author.picture} sx={{ width: 40, height: 40 }} />
+          <Stack spacing={1.5} direction="row" alignItems="center" sx={{ pt: 1.5 }}>
+            <Avatar src={author.picture} sx={{ width: 40, height: 40 }} />
             <Stack>
-                            <Typography variant="body2">{author.name}</Typography>
-                            <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-                                {duration}
+              <Typography variant="body2">{author.name}</Typography>
+              <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+                {duration}
               </Typography>
             </Stack>
           </Stack>

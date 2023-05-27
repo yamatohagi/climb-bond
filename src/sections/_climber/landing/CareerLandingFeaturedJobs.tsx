@@ -8,7 +8,7 @@ import { paths } from 'src/routes/paths';
 // components
 import Iconify from 'src/components/iconify';
 //
-import CareerJobItem from '../job/item/CareerJobItem';
+import CareerJobItem from '../posts/item/ClimberPostItem';
 
 // ----------------------------------------------------------------------
 

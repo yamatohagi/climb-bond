@@ -10,12 +10,12 @@ import { paths } from 'src/routes/paths';
 // components
 import Iconify from 'src/components/iconify';
 //
-import { CareerJobItem } from '../item';
+import { ClimberPostItem } from '../item';
 
 // ----------------------------------------------------------------------
 
-export default function CareerJobListSimilar({ jobs }: any) {
-  const isMdUp = useResponsive('up', 'md');
+export default function ClimberPostListSimilar({ jobs }: any) {
+  const isMdUp = useResponsive('up', 'md', undefined);
 
   const viewAllBtn = (
     <Button
@@ -56,7 +56,7 @@ export default function CareerJobListSimilar({ jobs }: any) {
           }}
         >
           {jobs.map((job: any) => (
-            <CareerJobItem key={job.id} job={job} />
+            <ClimberPostItem key={job.id} job={job} />
           ))}
         </Box>
 
@@ -70,6 +70,6 @@ export default function CareerJobListSimilar({ jobs }: any) {
   );
 }
 
-CareerJobListSimilar.propTypes = {
+ClimberPostListSimilar.propTypes = {
   jobs: PropTypes.array,
 };

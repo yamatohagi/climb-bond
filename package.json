@@ -15,7 +15,8 @@
     "prettier": "prettier --write 'src/**/*.{js,jsx}'",
     "clear-all": "rm -rf .next _static node_modules",
     "re-start": "rm -rf .next _static node_modules && yarn install && yarn dev",
-    "re-build": "rm -rf .next _static node_modules && yarn install && yarn build"
+    "re-build": "rm -rf .next _static node_modules && yarn install && yarn build",
+    "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -54,7 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "@babel/eslint-parser": "^7.21.3",
-    "@types/node": "20.2.4",
+    "@types/node": "^20.2.4",
     "eslint": "^8.37.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
@@ -68,6 +69,7 @@
     "prettier": "^2.8.7",
     "prisma": "^4.14.1",
     "ts-migrate": "^0.1.35",
-    "typescript": "^5.0.2"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }

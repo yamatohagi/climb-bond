@@ -3,7 +3,7 @@ import { Skeleton, Stack, Card, Divider, Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-export default function CareerJobItemSkeleton({ ...other }) {
+export default function ClimberPostItemSkeleton({ ...other }) {
   return (
     <Card {...other}>
       <Stack spacing={2} sx={{ p: 3 }}>

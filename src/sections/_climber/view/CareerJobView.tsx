@@ -19,14 +19,14 @@ import LoadingScreen from 'src/components/loading-screen';
 //
 import Advertisement from '../../advertisement';
 import NewsletterCareer from '../../newsletter/career';
-import { CareerJobListSimilar } from '../job/list';
+import { CareerJobListSimilar } from '../posts/list';
 import {
   CareerJobDetailsHero,
   CareerJobDetailsInfo,
   CareerJobDetailsSummary,
   CareerJobDetailsCompanyInfo,
   CareerJobDetailsCompanySimilar,
-} from '../job/details';
+} from '../posts/details';
 
 // ----------------------------------------------------------------------
 

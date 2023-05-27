@@ -23,7 +23,7 @@ import CareerHeroIllustration from 'src/assets/illustrations/CareerHeroIllustrat
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 //
-import { CareerFilterKeyword, CareerFilterLocations } from '../job/filters/components';
+import { CareerFilterKeyword, CareerFilterLocations } from '../posts/filters/components';
 
 // ----------------------------------------------------------------------
 

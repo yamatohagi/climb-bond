@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 // @mui
 import { Pagination, Box } from '@mui/material';
 //
-import { CareerJobItem, CareerJobItemSkeleton } from '../item';
+import { ClimberPostItem, ClimberPostItemSkeleton } from '../item';
 
 // ----------------------------------------------------------------------
 
-export default function CareerJobList({ jobs, loading }: any) {
+export default function ClimberPostList({ posts, loading }: any) {
   return (
     <>
       <Box
@@ -21,8 +21,12 @@ export default function CareerJobList({ jobs, loading }: any) {
           },
         }}
       >
-        {(loading ? [...Array(9)] : jobs).map((job: any, index: any) =>
-          job ? <CareerJobItem key={job.id} job={job} /> : <CareerJobItemSkeleton key={index} />
+        {(loading ? [...Array(9)] : posts).map((post: any, index: any) =>
+          post ? (
+            <ClimberPostItem key={post.id} post={post} />
+          ) : (
+            <ClimberPostItemSkeleton key={index} />
+          )
         )}
       </Box>
 
@@ -41,7 +45,7 @@ export default function CareerJobList({ jobs, loading }: any) {
   );
 }
 
-CareerJobList.propTypes = {
-  jobs: PropTypes.array,
+ClimberPostList.propTypes = {
+  posts: PropTypes.array,
   loading: PropTypes.bool,
 };

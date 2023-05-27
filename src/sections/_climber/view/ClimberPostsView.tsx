@@ -5,8 +5,8 @@ import { Container } from '@mui/material';
 import { _jobs } from 'src/_mock';
 //
 import NewsletterCareer from '../../newsletter/career';
-import { CareerJobList } from '../job/list';
-import CareerFilters from '../job/filters';
+import { ClimberPostList } from '../posts/list';
+import CareerFilters from '../posts/filters';
 import NewsletterClimber from 'src/sections/newsletter/climber/NewsletterCareer';
 
 // ----------------------------------------------------------------------
@@ -22,12 +22,20 @@ export default function ClimberPostsView() {
     fakeLoading();
   }, []);
 
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/posts')
+      .then((response) => response.json())
+      .then((data) => setPosts(data));
+  }, []);
+  console.log(posts);
   return (
     <>
       <Container>
         <CareerFilters />
 
-        <CareerJobList jobs={_jobs} loading={loading} />
+        <ClimberPostList posts={posts} loading={loading} />
       </Container>
 
       <NewsletterClimber />

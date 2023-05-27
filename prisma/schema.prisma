@@ -11,10 +11,34 @@ datasource db {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  uuid      String   @unique @default(uuid())
-  title     String
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                   Int                   @id @default(autoincrement())
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  title                String
+  content              String
+  climbingType         ClimbingType
+  gymId                Int
+  gym                  Gym                   @relation(fields: [gymId], references: [id])
+  preferredDayAndTimes PreferredDayAndTime[]
+}
+
+model Gym {
+  id           Int          @id @default(autoincrement())
+  name         String
+  image        String?
+  climbingType ClimbingType
+  Posts        Post[]
+}
+
+model PreferredDayAndTime {
+  id         Int    @id @default(autoincrement())
+  dayAndTime String
+  postId     Int
+  post       Post   @relation(fields: [postId], references: [id])
+}
+
+enum ClimbingType {
+  BOULDER
+  LEAD
+  BOTH
 }

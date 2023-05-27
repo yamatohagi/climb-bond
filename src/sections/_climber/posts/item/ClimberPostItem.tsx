@@ -22,25 +22,17 @@ import Image from 'src/components/image';
 import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
+import { Gym, Post as PrismaPost } from '@prisma/client';
 
 // ----------------------------------------------------------------------
+interface Post extends PrismaPost {
+  gym: Gym;
+}
 
-export default function CareerJobItem({ job }: any) {
-  const {
-    slug,
-    type,
-    level,
-    salary,
-    location,
-    isUrgent,
-    createdAt,
-    favorited,
-    experience,
-    companyName,
-    companyLogo,
-  } = job;
+export default function ClimberPostItem({ post }: { post: Post }) {
+  const { createdAt, content, title, gym } = post;
 
-  const [favorite, setFavorite] = useState(favorited);
+  const [favorite, setFavorite] = useState(false);
 
   const handleChangeFavorite = (event: any) => {
     setFavorite(event.target.checked);
@@ -50,7 +42,7 @@ export default function CareerJobItem({ job }: any) {
     <Card
       sx={{
         '&:hover': {
-          boxShadow: (theme) => theme.customShadows.z24,
+          boxShadow: (theme) => (theme as any).customShadows.z24,
         },
       }}
     >
@@ -66,23 +58,23 @@ export default function CareerJobItem({ job }: any) {
       <Stack sx={{ p: 3, pb: 0 }}>
         <Stack direction="row" alignItems="center" spacing={2.5}>
           <Image
-            alt={companyName}
-            src={companyLogo}
+            alt={gym.name}
+            src={'companyLogo'}
             sx={{ width: 48, height: 48, borderRadius: 1 }}
           />
 
-          {isUrgent && <Label color="error">Urgent</Label>}
+          {true && <Label color="error">Urgent</Label>}
         </Stack>
 
         <Stack spacing={0.5} sx={{ mt: 3, mb: 2 }}>
           <Link component={NextLink} href={paths.career.job} color="inherit">
             <TextMaxLine variant="h6" line={1}>
-              {slug}
+              {title}
             </TextMaxLine>
           </Link>
 
           <Typography variant="body2" sx={{ color: 'info.main' }}>
-            {companyName}
+            {gym.name}
           </Typography>
 
           <Stack
@@ -91,12 +83,12 @@ export default function CareerJobItem({ job }: any) {
             sx={{ typography: 'body2', color: 'text.secondary' }}
           >
             <Iconify icon="carbon:location" width={18} sx={{ mr: 0.5 }} />
-            {location}
+            {content}
           </Stack>
         </Stack>
 
         <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-          Posted day: {fDate(createdAt)}
+          Posted day: {fDate(createdAt, undefined)}
         </Typography>
       </Stack>
 
@@ -116,28 +108,28 @@ export default function CareerJobItem({ job }: any) {
         <Grid xs={6}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="carbon:increase-level" sx={{ mr: 1 }} />
-            {`${experience} year exp`}
+            {`${content} year exp`}
           </Stack>
         </Grid>
 
         <Grid xs={6}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="carbon:time" sx={{ mr: 1 }} />
-            {type}
+            {content}
           </Stack>
         </Grid>
 
         <Grid xs={6}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="carbon:money" sx={{ mr: 1 }} />
-            {typeof salary === 'number' ? fCurrency(salary) : salary}
+            {typeof content === 'number' ? fCurrency(content) : content}
           </Stack>
         </Grid>
 
         <Grid xs={6}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="carbon:user" sx={{ mr: 1 }} />
-            {level}
+            {content}
           </Stack>
         </Grid>
       </Grid>
@@ -145,8 +137,8 @@ export default function CareerJobItem({ job }: any) {
   );
 }
 
-CareerJobItem.propTypes = {
-  job: PropTypes.shape({
+ClimberPostItem.propTypes = {
+  post: PropTypes.shape({
     companyLogo: PropTypes.string,
     companyName: PropTypes.string,
     createdAt: PropTypes.oneOfType([

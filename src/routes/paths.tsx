@@ -34,6 +34,15 @@ export const paths = {
     about: '/career/about',
     contact: '/career/contact',
   },
+  climber: {
+    landing: '/climber/landing',
+    jobs: '/climber/jobs',
+    job: `/climber/job`,
+    posts: '/climber/posts',
+    post: `/climber/post`,
+    about: '/climber/about',
+    contact: '/climber/contact',
+  },
   // E-learning
   eLearning: {
     landing: '/e-learning/landing',

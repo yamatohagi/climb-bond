@@ -6,13 +6,15 @@ import { Box, Fab } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const FabButtonAnimate = forwardRef(({ size = 'large', children, sx, sxWrap, ...other }, ref) => (
-  <AnimateWrap size={size} sxWrap={sxWrap}>
-    <Fab ref={ref} size={size} sx={sx} {...other}>
-      {children}
-    </Fab>
-  </AnimateWrap>
-));
+const FabButtonAnimate = forwardRef(
+  ({ size = 'large', children, sx, sxWrap, ...other }: any, ref) => (
+    <AnimateWrap size={size} sxWrap={sxWrap}>
+      <Fab ref={ref} size={size} sx={sx} {...other}>
+        {children}
+      </Fab>
+    </AnimateWrap>
+  )
+);
 
 FabButtonAnimate.propTypes = {
   children: PropTypes.node,

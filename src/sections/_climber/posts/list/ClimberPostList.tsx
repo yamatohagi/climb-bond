@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
-// @mui
 import { Pagination, Box } from '@mui/material';
-//
 import { ClimberPostItem, ClimberPostItemSkeleton } from '../item';
-
-// ----------------------------------------------------------------------
 
 export default function ClimberPostList({ posts, loading }: any) {
   return (

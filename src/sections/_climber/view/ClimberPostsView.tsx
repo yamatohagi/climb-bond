@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
-// @mui
 import { Container } from '@mui/material';
-// _mock
 import { _jobs } from 'src/_mock';
-//
-import NewsletterCareer from '../../newsletter/career';
 import { ClimberPostList } from '../posts/list';
 import CareerFilters from '../posts/filters';
 import NewsletterClimber from 'src/sections/newsletter/climber/NewsletterCareer';
+import Button from '@mui/material/Button';
+import { ClimberPostCreateModal } from '../posts/create-edit';
 
 // ----------------------------------------------------------------------
 
 export default function ClimberPostsView() {
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fakeLoading = async () => {
@@ -34,6 +33,10 @@ export default function ClimberPostsView() {
     <>
       <Container>
         <CareerFilters />
+        <Button onClick={() => setOpen(true)} variant="contained" size="large">
+          新規投稿
+        </Button>
+        <ClimberPostCreateModal open={open} onClose={() => setOpen(false)} />
 
         <ClimberPostList posts={posts} loading={loading} />
       </Container>

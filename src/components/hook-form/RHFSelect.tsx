@@ -104,7 +104,7 @@ export function RHFMultiSelect({
       );
     }
 
-    return selectedItems.map((item) => item.label).join(', ');
+    return selectedItems.map((item: any) => item.label).join(', ');
   };
 
   return (

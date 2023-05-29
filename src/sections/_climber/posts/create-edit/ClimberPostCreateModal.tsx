@@ -69,24 +69,24 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
       {gyms.length > 0 && (
         <DialogAnimate open={open} onClose={onClose} variants={getVariant('bounceInUp')}>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            <DialogTitle id="alert-dialog-title">{`Use Google's location service?`}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{`ガンバ！！`}</DialogTitle>
             <DialogContent>
-              <Box sx={{ p: 3 }}>
+              <Box>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <RHFTextField name="title" label="Title" required />
+                    <RHFTextField name="title" label="ひとこと" />
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <RHFTextField name="content" label="Content" multiline rows={4} required />
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12} sm={6}>
                     <RHFSelectBox
                       name="climbingType"
-                      label="Climbing Type"
+                      label="好きな壁"
                       options={[
                         { value: ClimbingType.BOULDER, label: 'ボルダー' },
                         { value: ClimbingType.LEAD, label: 'リード' },
-                        { value: ClimbingType.BOTH, label: '両方' },
+                        { value: ClimbingType.BOTH, label: 'どっちも' },
                       ]}
                     ></RHFSelectBox>
                   </Grid>
@@ -97,24 +97,21 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
                     <RHFSelectBox
                       name="experienceMonths"
                       label="クライミング歴"
-                      options={[{ value: 1, label: '1ヶ月' }]}
+                      options={generateMonths()}
                     ></RHFSelectBox>
                   </Grid>
                   <Grid item xs={6} sm={6}>
                     <RHFSelectBox
                       name="belayMonths"
                       label="ビレイ歴"
-                      options={[{ value: 1, label: '1ヶ月' }]}
+                      options={generateMonths()}
                     ></RHFSelectBox>
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <RHFSelectBox
                       name="grade"
-                      label="グレード"
-                      options={[
-                        { value: '10a', label: '10a' },
-                        { value: '10b', label: '10b' },
-                      ]}
+                      label="頑張ってるグレード"
+                      options={generateGrades()}
                     ></RHFSelectBox>
                   </Grid>
                   <Grid item xs={12}>
@@ -141,4 +138,37 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
       )}
     </>
   );
+}
+
+const generateGrades = () => {
+  const mainGrades = Array.from({ length: 8 }, (_, i) => i + 8);
+  const subGrades = ['a', 'b', 'c', 'd'];
+
+  let grades: { value: string; label: string }[] = [];
+
+  mainGrades.forEach((mainGrade) => {
+    if (mainGrade > 9) {
+      subGrades.forEach((subGrade) => {
+        grades.push({ value: `5.${mainGrade}${subGrade}`, label: `5.${mainGrade}${subGrade}` });
+      });
+    } else {
+      grades.push({ value: `5.${mainGrade}`, label: `5.${mainGrade}` });
+    }
+  });
+
+  return grades;
+};
+
+function generateMonths() {
+  let months = [];
+  for (let i = 1; i <= 12; i++) {
+    months.push({ value: i, label: `${i}ヶ月` });
+  }
+  for (let i = 1.5; i < 2; i += 0.5) {
+    months.push({ value: i * 12, label: `${i}年` });
+  }
+  for (let i = 2; i <= 10; i++) {
+    months.push({ value: i * 12, label: `${i}年` });
+  }
+  return months;
 }

@@ -155,7 +155,7 @@ export default function ClimberPostItem({ post }: { post: Post }) {
                       {v.dayAndTime.replace('・夜', '')}
                       <Iconify
                         icon="icon-park-solid:moon"
-                        sx={{ height: '1.4em', verticalAlign: 'middle', pb: 0.4 }}
+                        sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
                       />
                     </Box>
                   </>
@@ -165,7 +165,7 @@ export default function ClimberPostItem({ post }: { post: Post }) {
                       {v.dayAndTime.replace('・昼', '')}
                       <Iconify
                         icon="ph:sun-bold"
-                        sx={{ height: '1.4em', verticalAlign: 'middle', pb: 0.3 }}
+                        sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
                       />
                     </Box>
                   </>

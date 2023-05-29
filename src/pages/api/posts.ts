@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient, ClimbingType } from '@prisma/client';
+import { create } from 'domain';
 
 const prisma = new PrismaClient();
 
@@ -10,6 +11,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         gym: true,
         preferredDayAndTimes: true,
       },
+      orderBy: { createdAt: 'desc' },
     });
     res.json(posts);
   } else if (req.method === 'POST') {

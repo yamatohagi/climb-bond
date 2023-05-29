@@ -23,15 +23,26 @@ import Image from 'src/components/image';
 import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
-import { Gym, Post as PrismaPost } from '@prisma/client';
+import { Gym, PreferredDayAndTime, Post as PrismaPost } from '@prisma/client';
 
 // ----------------------------------------------------------------------
 interface Post extends PrismaPost {
   gym: Gym;
+  preferredDayAndTimes: PreferredDayAndTime[];
 }
 
 export default function ClimberPostItem({ post }: { post: Post }) {
-  const { createdAt, content, title, gym, climbingType } = post;
+  const {
+    createdAt,
+    content,
+    title,
+    gym,
+    preferredDayAndTimes,
+    climbingType,
+    experienceMonths,
+    belayMonths,
+    grade,
+  } = post;
 
   const [favorite, setFavorite] = useState(false);
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
@@ -121,21 +132,21 @@ export default function ClimberPostItem({ post }: { post: Post }) {
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="fluent:mountain-trail-20-filled" sx={{ mr: 1 }} />
 
-            {' 1年（ﾋﾞﾚｲ歴 5ヵ月）'}
+            {` ${experienceMonths}年（ﾋﾞﾚｲ歴 ${belayMonths}ヵ月）`}
           </Stack>
         </Grid>
 
         <Grid xs={5}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="carbon:upgrade" sx={{ mr: 1 }} />
-            {'11A'}
+            {grade}
           </Stack>
         </Grid>
 
         <Grid xs={7}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
-            {'月・夜'}
+            {preferredDayAndTimes.map((v) => `${v.dayAndTime}, `)}
           </Stack>
         </Grid>
 

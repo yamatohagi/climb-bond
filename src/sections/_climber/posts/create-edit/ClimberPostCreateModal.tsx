@@ -24,8 +24,11 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
           title: params.title,
           content: params.content,
           gymId: params.gymId,
-          preferredDayAndTimes: params.preferredDayAndTimes,
           climbingType: params.climbingType,
+          belayMonths: params.belayMonths,
+          experienceMonths: params.experienceMonths,
+          grade: params.grade,
+          preferredDayAndTimes: params.preferredDayAndTimes,
         }),
       });
 
@@ -89,6 +92,30 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <RHFSelectBox name="gymId" label="ジム名" options={gyms}></RHFSelectBox>
+                  </Grid>
+                  <Grid item xs={6} sm={6}>
+                    <RHFSelectBox
+                      name="experienceMonths"
+                      label="クライミング歴"
+                      options={[{ value: 1, label: '1ヶ月' }]}
+                    ></RHFSelectBox>
+                  </Grid>
+                  <Grid item xs={6} sm={6}>
+                    <RHFSelectBox
+                      name="belayMonths"
+                      label="ビレイ歴"
+                      options={[{ value: 1, label: '1ヶ月' }]}
+                    ></RHFSelectBox>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <RHFSelectBox
+                      name="grade"
+                      label="グレード"
+                      options={[
+                        { value: '10a', label: '10a' },
+                        { value: '10b', label: '10b' },
+                      ]}
+                    ></RHFSelectBox>
                   </Grid>
                   <Grid item xs={12}>
                     <RHFMultiCheckbox

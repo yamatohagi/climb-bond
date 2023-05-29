@@ -13,3 +13,8 @@ npx prisma migrate reset --preview-feature
 
 npx prisma migrate dev --preview-feature
 npm run seed
+
+##カラム追加とか
+npx prisma migrate reset --preview-feature
+npx prisma migrate dev --preview-feature
+npm run seed

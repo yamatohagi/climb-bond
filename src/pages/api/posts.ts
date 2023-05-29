@@ -21,7 +21,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       preferredDayAndTimes,
       climbingType,
       belayMonths,
-      experienceYears,
+      experienceMonths,
       grade,
     } = req.body;
 
@@ -38,7 +38,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         gymId: gymId,
         climbingType: climbingType as ClimbingType,
         belayMonths: belayMonths,
-        experienceYears: experienceYears,
+        experienceMonths: experienceMonths,
         grade: grade,
         preferredDayAndTimes: {
           create: preferredDayAndTimes.map((dayAndTime: any) => ({ dayAndTime: dayAndTime })),

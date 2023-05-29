@@ -11,6 +11,7 @@ import {
   Divider,
   Checkbox,
   Typography,
+  Box,
   Unstable_Grid2 as Grid,
 } from '@mui/material';
 // routes
@@ -146,7 +147,31 @@ export default function ClimberPostItem({ post }: { post: Post }) {
         <Grid xs={7}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
-            {preferredDayAndTimes.map((v) => `${v.dayAndTime}, `)}
+            {preferredDayAndTimes.map((v) => (
+              <>
+                {v.dayAndTime.match(/夜/) ? (
+                  <>
+                    <Box sx={{ mr: 1 }}>
+                      {v.dayAndTime.replace('・夜', '')}
+                      <Iconify
+                        icon="icon-park-solid:moon"
+                        sx={{ height: '1.4em', verticalAlign: 'middle', pb: 0.4 }}
+                      />
+                    </Box>
+                  </>
+                ) : (
+                  <>
+                    <Box sx={{ mr: 1 }}>
+                      {v.dayAndTime.replace('・昼', '')}
+                      <Iconify
+                        icon="ph:sun-bold"
+                        sx={{ height: '1.4em', verticalAlign: 'middle', pb: 0.3 }}
+                      />
+                    </Box>
+                  </>
+                )}
+              </>
+            ))}
           </Stack>
         </Grid>
 

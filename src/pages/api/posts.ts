@@ -14,7 +14,16 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     res.json(posts);
   } else if (req.method === 'POST') {
     // Parse the request body
-    const { title, content, gymId, preferredDayAndTimes, climbingType, gym } = req.body;
+    const {
+      title,
+      content,
+      gymId,
+      preferredDayAndTimes,
+      climbingType,
+      belayMonths,
+      experienceYears,
+      grade,
+    } = req.body;
 
     // Split the preferredDayAndTimes string into an array
 
@@ -28,6 +37,9 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         content: content,
         gymId: gymId,
         climbingType: climbingType as ClimbingType,
+        belayMonths: belayMonths,
+        experienceYears: experienceYears,
+        grade: grade,
         preferredDayAndTimes: {
           create: preferredDayAndTimes.map((dayAndTime: any) => ({ dayAndTime: dayAndTime })),
         },

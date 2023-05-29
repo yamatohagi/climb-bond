@@ -20,6 +20,9 @@ model Post {
   gymId                Int
   gym                  Gym                   @relation(fields: [gymId], references: [id])
   preferredDayAndTimes PreferredDayAndTime[]
+  experienceYears      Int
+  belayMonths          Int
+  grade                String
 }
 
 model Gym {

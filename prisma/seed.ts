@@ -30,12 +30,18 @@ async function main() {
         content: '初めてボルダリングをやってみたいと思います。一緒に行ってくれる方を探しています。',
         climbingType: ClimbingType.BOULDER,
         gymId: 1,
+        experienceYears: 1, // example values
+        belayMonths: 5,
+        grade: '11A',
       },
       {
         title: 'リードクライミングパートナー募集',
         content: '週末のリードクライミングのパートナーを探しています。経験者優先です。',
         climbingType: ClimbingType.LEAD,
         gymId: 2,
+        experienceYears: 2, // example values
+        belayMonths: 6,
+        grade: '11B',
       },
       {
         title: 'ボルダリングとリードの両方を楽しみたい',
@@ -43,6 +49,9 @@ async function main() {
           'ボルダリングとリードの両方をやってみたいです。同じように考えている方、一緒に行きませんか？',
         climbingType: ClimbingType.BOTH,
         gymId: 3,
+        experienceYears: 3, // example values
+        belayMonths: 7,
+        grade: '11C',
       },
     ],
   });

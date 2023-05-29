@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-// next
+import { formatDistanceToNow } from 'date-fns';
+import { ja } from 'date-fns/locale';
 import NextLink from 'next/link';
 // @mui
 import {
@@ -30,9 +31,10 @@ interface Post extends PrismaPost {
 }
 
 export default function ClimberPostItem({ post }: { post: Post }) {
-  const { createdAt, content, title, gym } = post;
+  const { createdAt, content, title, gym, climbingType } = post;
 
   const [favorite, setFavorite] = useState(false);
+  const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
 
   const handleChangeFavorite = (event: any) => {
     setFavorite(event.target.checked);
@@ -73,9 +75,9 @@ export default function ClimberPostItem({ post }: { post: Post }) {
             </TextMaxLine>
           </Link>
 
-          <Typography variant="body2" sx={{ color: 'info.main' }}>
+          {/* <Typography variant="body2" sx={{ color: 'info.main' }}>
             {gym.name}
-          </Typography>
+          </Typography> */}
 
           <Stack
             direction="row"
@@ -83,13 +85,23 @@ export default function ClimberPostItem({ post }: { post: Post }) {
             sx={{ typography: 'body2', color: 'text.secondary' }}
           >
             <Iconify icon="carbon:location" width={18} sx={{ mr: 0.5 }} />
-            {content}
+            {gym.name}
           </Stack>
         </Stack>
 
         <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-          Posted day: {fDate(createdAt, undefined)}
+          <Iconify
+            icon="ion:time"
+            sx={{ pt: 0.1, mb: 0.4, height: '1.4em', verticalAlign: 'middle' }}
+          />{' '}
+          {timeAgo}
         </Typography>
+
+        <Stack spacing={0.5} sx={{ mt: 2 }}>
+          <Typography variant="body1" sx={{ color: 'text.disabled' }}>
+            {content}
+          </Typography>
+        </Stack>
       </Stack>
 
       <Divider sx={{ borderStyle: 'dashed', my: 2 }} />
@@ -105,31 +117,32 @@ export default function ClimberPostItem({ post }: { post: Post }) {
           textTransform: 'capitalize',
         }}
       >
-        <Grid xs={6}>
+        <Grid xs={7}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-            <Iconify icon="carbon:increase-level" sx={{ mr: 1 }} />
-            {`${content} year exp`}
+            <Iconify icon="fluent:mountain-trail-20-filled" sx={{ mr: 1 }} />
+
+            {' 1年（ﾋﾞﾚｲ歴 5ヵ月）'}
           </Stack>
         </Grid>
 
-        <Grid xs={6}>
+        <Grid xs={5}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-            <Iconify icon="carbon:time" sx={{ mr: 1 }} />
-            {content}
+            <Iconify icon="carbon:upgrade" sx={{ mr: 1 }} />
+            {'11A'}
           </Stack>
         </Grid>
 
-        <Grid xs={6}>
+        <Grid xs={7}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-            <Iconify icon="carbon:money" sx={{ mr: 1 }} />
-            {typeof content === 'number' ? fCurrency(content) : content}
+            <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
+            {'月・夜'}
           </Stack>
         </Grid>
 
-        <Grid xs={6}>
+        <Grid xs={5}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-            <Iconify icon="carbon:user" sx={{ mr: 1 }} />
-            {content}
+            <Iconify icon="guidance:climbing-wall" sx={{ mr: 1 }} />
+            {climbingType}
           </Stack>
         </Grid>
       </Grid>

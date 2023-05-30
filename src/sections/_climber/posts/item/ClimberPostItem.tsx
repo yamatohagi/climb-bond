@@ -148,25 +148,25 @@ export default function ClimberPostItem({ post }: { post: Post }) {
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
             {preferredDayAndTimes.map((v) => {
-              console.log(v.dayAndTime[1]);
               return (
                 <>
-                  {v.dayAndTime[1] === '1' ? (
-                    <>
-                      <Box sx={{ mr: 1 }}>
-                        {dayOfWeek[Number(v.dayAndTime[0])]}
-                        <Iconify
-                          icon="icon-park-solid:moon"
-                          sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
-                        />
-                      </Box>
-                    </>
-                  ) : (
+                  {v.dayAndTime[1] === '1' ? ( //'01'なら日曜・昼
                     <>
                       <Box sx={{ mr: 1 }}>
                         {dayOfWeek[Number(v.dayAndTime[0])]}
                         <Iconify
                           icon="ph:sun-bold"
+                          sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
+                        />
+                      </Box>
+                    </>
+                  ) : (
+                    //'12'なら月曜・夜
+                    <>
+                      <Box sx={{ mr: 1 }}>
+                        {dayOfWeek[Number(v.dayAndTime[0])]}
+                        <Iconify
+                          icon="icon-park-solid:moon"
                           sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
                         />
                       </Box>
@@ -209,4 +209,4 @@ ClimberPostItem.propTypes = {
   }),
 };
 
-const dayOfWeek = ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'];
+const dayOfWeek = ['月曜', '火曜', '水曜', '木曜', '金曜', '土曜', '日曜'];

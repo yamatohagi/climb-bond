@@ -36,7 +36,7 @@ model Gym {
 
 model PreferredDayAndTime {
   id         Int    @id @default(autoincrement())
-  dayAndTime String
+  dayAndTime String @db.VarChar(2)
   postId     Int
   post       Post   @relation(fields: [postId], references: [id])
 }

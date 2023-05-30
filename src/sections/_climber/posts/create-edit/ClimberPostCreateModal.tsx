@@ -3,11 +3,17 @@ import { Button, DialogTitle, DialogContent, DialogActions, Grid } from '@mui/ma
 import { DialogAnimate } from 'src/components/animate';
 import getVariant from 'src/sections/examples/animate/getVariant';
 import { Box } from '@mui/system';
-import { RHFMultiCheckbox, RHFSelectBox, RHFTextField } from 'src/components/hook-form';
+import {
+  RHFMultiCheckbox,
+  RHFMultiCheckboxAddGrid,
+  RHFSelectBox,
+  RHFTextField,
+} from 'src/components/hook-form';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { useForm } from 'react-hook-form';
 import { ClimbingType, Gym } from '@prisma/client';
 import { useEffect, useState } from 'react';
+import Iconify from 'src/components/iconify/Iconify';
 
 export default function ClimberPostCreateModal({ open, onClose }: any) {
   const [gyms, setGyms] = useState([]);
@@ -56,7 +62,7 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
       content: '',
       gymId: '',
       preferredDayAndTimes: [],
-      climbingType: [ClimbingType.BOULDER],
+      climbingType: ClimbingType.BOULDER,
     },
   });
   const {
@@ -115,14 +121,11 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
                     ></RHFSelectBox>
                   </Grid>
                   <Grid item xs={12}>
-                    <RHFMultiCheckbox
+                    <RHFMultiCheckboxAddGrid
                       name="preferredDayAndTimes"
                       label="よく行く日時"
-                      options={[
-                        { value: '日・昼', label: '日・昼' },
-                        { value: '日・夜', label: '日・夜' },
-                      ]}
-                    ></RHFMultiCheckbox>
+                      options={options}
+                    ></RHFMultiCheckboxAddGrid>
                   </Grid>
                 </Grid>
               </Box>
@@ -172,3 +175,69 @@ function generateMonths() {
   }
   return months;
 }
+
+const generateLabelWithIcon = (label: string, icon: string) => (
+  <>
+    {label}
+    <Iconify icon={icon} sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5, pl: 0.5 }} />
+  </>
+);
+
+const options = [
+  {
+    value: '01',
+    label: generateLabelWithIcon('月曜', 'ph:sun-bold'),
+  },
+  {
+    value: '02',
+    label: generateLabelWithIcon('月曜', 'icon-park-solid:moon'),
+  },
+  {
+    value: '11',
+    label: generateLabelWithIcon('火曜', 'ph:sun-bold'),
+  },
+  {
+    value: '12',
+    label: generateLabelWithIcon('火曜', 'icon-park-solid:moon'),
+  },
+  {
+    value: '21',
+    label: generateLabelWithIcon('水曜', 'ph:sun-bold'),
+  },
+  {
+    value: '22',
+    label: generateLabelWithIcon('水曜', 'icon-park-solid:moon'),
+  },
+  {
+    value: '31',
+    label: generateLabelWithIcon('木曜', 'ph:sun-bold'),
+  },
+  {
+    value: '32',
+    label: generateLabelWithIcon('木曜', 'icon-park-solid:moon'),
+  },
+  {
+    value: '41',
+    label: generateLabelWithIcon('金曜', 'ph:sun-bold'),
+  },
+  {
+    value: '42',
+    label: generateLabelWithIcon('金曜', 'icon-park-solid:moon'),
+  },
+  {
+    value: '51',
+    label: generateLabelWithIcon('土曜', 'ph:sun-bold'),
+  },
+  {
+    value: '52',
+    label: generateLabelWithIcon('土曜', 'icon-park-solid:moon'),
+  },
+  {
+    value: '61',
+    label: generateLabelWithIcon('日曜', 'ph:sun-bold'),
+  },
+  {
+    value: '62',
+    label: generateLabelWithIcon('日曜', 'icon-park-solid:moon'),
+  },
+];

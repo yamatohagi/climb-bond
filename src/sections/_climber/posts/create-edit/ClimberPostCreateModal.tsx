@@ -80,13 +80,14 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
               <Box>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <RHFTextField name="title" label="ひとこと" />
+                    <RHFTextField size="small" name="title" label="ひとこと" />
                   </Grid>
                   {/* <Grid item xs={12}>
                     <RHFTextField name="content" label="Content" multiline rows={4} required />
                   </Grid> */}
                   <Grid item xs={12} sm={6}>
                     <RHFSelectBox
+                      size="small"
                       name="climbingType"
                       label="好きな壁"
                       options={[
@@ -101,6 +102,7 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
                   </Grid>
                   <Grid item xs={6} sm={6}>
                     <RHFSelectBox
+                      size="small"
                       name="experienceMonths"
                       label="クライミング歴"
                       options={generateMonths()}
@@ -108,6 +110,7 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
                   </Grid>
                   <Grid item xs={6} sm={6}>
                     <RHFSelectBox
+                      size="small"
                       name="belayMonths"
                       label="ビレイ歴"
                       options={generateMonths()}
@@ -115,6 +118,7 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <RHFSelectBox
+                      size="small"
                       name="grade"
                       label="頑張ってるグレード"
                       options={generateGrades()}

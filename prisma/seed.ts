@@ -59,23 +59,23 @@ async function main() {
   const preferredDayAndTimes = await prisma.preferredDayAndTime.createMany({
     data: [
       {
-        dayAndTime: '月・夜',
+        dayAndTime: '12',
         postId: 1,
       },
       {
-        dayAndTime: '水・夜',
+        dayAndTime: '32',
         postId: 1,
       },
       {
-        dayAndTime: '土・昼',
+        dayAndTime: '61',
         postId: 2,
       },
       {
-        dayAndTime: '日・昼',
+        dayAndTime: '01',
         postId: 2,
       },
       {
-        dayAndTime: '日・夜',
+        dayAndTime: '02',
         postId: 3,
       },
     ],

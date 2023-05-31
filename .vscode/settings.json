@@ -31,6 +31,7 @@
     "jexcel",
     "jspreadsheet",
     "libphonenumber",
+    "lightbox",
     "onafterchanges",
     "onbeforechange",
     "radiobutton",
@@ -38,10 +39,14 @@
     "selectbox",
     "signin",
     "signout",
+    "simplebar",
     "textbox",
     "timegrid",
     "USERLIST",
     "vaadin",
     "yamatohagi"
-  ]
+  ],
+  "yaml.schemas": {
+    "https://www.graphql-code-generator.com/config.schema.json": "file:///Users/yamatohagi/Downloads/Zone_JavaScript_v2.0.0/next_JS/codegen.yml"
+  }
 }

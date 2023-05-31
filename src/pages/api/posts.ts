@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient, ClimbingType } from '@prisma/client';
 import { create } from 'domain';
-
+import path from 'path';
 const prisma = new PrismaClient();
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+  console.log(path.resolve(__dirname, '../generated/schema.gql'));
   if (req.method === 'GET') {
     const posts = await prisma.post.findMany({
       include: {

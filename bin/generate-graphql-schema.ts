@@ -1,10 +1,11 @@
 import 'reflect-metadata';
+
+import path from 'path';
 import { buildSchemaSync } from 'type-graphql';
 import { resolvers } from '@generated/type-graphql';
-import path from 'path';
 
-export const schema = buildSchemaSync({
+buildSchemaSync({
   resolvers: resolvers,
   validate: false,
-  // emitSchemaFile: `${path.dirname(__dirname)}/../../../schema/generated/schema.gql`,
+  emitSchemaFile: `${path.dirname(__dirname)}/generated/schema.gql`,
 });

@@ -31,6 +31,7 @@ import createEmotionCache from 'src/utils/createEmotionCache';
 import ProgressBar from 'src/components/progress-bar';
 import { ThemeSettings, SettingsProvider } from 'src/components/settings';
 import MotionLazyContainer from 'src/components/animate/MotionLazyContainer';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 // ----------------------------------------------------------------------
 
@@ -41,24 +42,30 @@ export default function MyApp(props: any) {
 
   const getLayout = Component.getLayout ?? ((page: any) => page);
 
+  const client = new ApolloClient({
+    uri: 'http://localhost:5002/api/graphql', // GraphQLサーバのURLを適切に設定してください
+    cache: new InMemoryCache(),
+  });
   return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <SettingsProvider>
-          <ThemeProvider>
-            <ThemeSettings>
-              <MotionLazyContainer>
-                <ProgressBar />
-                {getLayout(<Component {...pageProps} />)}
-              </MotionLazyContainer>
-            </ThemeSettings>
-          </ThemeProvider>
-        </SettingsProvider>
-      </LocalizationProvider>
-    </CacheProvider>
+    <ApolloProvider client={client}>
+      <CacheProvider value={emotionCache}>
+        <Head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </Head>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <SettingsProvider>
+            <ThemeProvider>
+              <ThemeSettings>
+                <MotionLazyContainer>
+                  <ProgressBar />
+                  {getLayout(<Component {...pageProps} />)}
+                </MotionLazyContainer>
+              </ThemeSettings>
+            </ThemeProvider>
+          </SettingsProvider>
+        </LocalizationProvider>
+      </CacheProvider>
+    </ApolloProvider>
   );
 }
 

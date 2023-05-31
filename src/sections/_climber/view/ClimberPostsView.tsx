@@ -7,9 +7,20 @@ import NewsletterClimber from 'src/sections/newsletter/climber/NewsletterCareer'
 import Button from '@mui/material/Button';
 import { ClimberPostCreateModal } from '../posts/create-edit';
 import { useQuery } from '@apollo/client';
-import { client, GET_POSTS } from './apolloClient'; // 追加
+import { useFindFirstPostQuery } from 'src/generated/graphql';
+import { gql } from '@apollo/client';
 
 // ----------------------------------------------------------------------
+
+gql`
+  query FindFirstPost {
+    findFirstPost {
+      id
+      title
+      grade
+    }
+  }
+`;
 
 export default function ClimberPostsView() {
   const [loading, setLoading] = useState(true);
@@ -24,15 +35,16 @@ export default function ClimberPostsView() {
   }, []);
 
   const [posts, setPosts] = useState([]);
-  const { error, data } = useQuery(GET_POSTS, { client }); // 追加
+  const { error, data } = useFindFirstPostQuery();
   console.log('グラフ');
   console.log({ data, error });
+  console.log('グラフ');
   useEffect(() => {
     fetch('/api/posts')
       .then((response) => response.json())
       .then((data) => setPosts(data));
   }, []);
-
+  console.log(data?.findFirstPost?.grade);
   return (
     <>
       <Container>

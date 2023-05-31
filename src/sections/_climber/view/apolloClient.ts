@@ -6,11 +6,10 @@ export const client = new ApolloClient({
 });
 
 export const GET_POSTS = gql`
-  query GetPosts {
-    posts {
+  query FindFirstPost {
+    findFirstPost {
       id
       title
-      content
     }
   }
 `;

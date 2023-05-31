@@ -46,3 +46,7 @@ enum ClimbingType {
   LEAD
   BOTH
 }
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+}

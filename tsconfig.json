@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "target": "es2018",
     "module": "commonjs",
-    "target": "es6",
+    "lib": ["es2018", "esnext.asynciterable", "dom", "dom.iterable", "esnext"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "sourceMap": false,
     "outDir": "dist/js",
     "noEmitOnError": true,

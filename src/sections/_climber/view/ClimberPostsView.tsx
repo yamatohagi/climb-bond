@@ -6,6 +6,8 @@ import CareerFilters from '../posts/filters';
 import NewsletterClimber from 'src/sections/newsletter/climber/NewsletterCareer';
 import Button from '@mui/material/Button';
 import { ClimberPostCreateModal } from '../posts/create-edit';
+import { useQuery } from '@apollo/client';
+import { client, GET_POSTS } from './apolloClient'; // 追加
 
 // ----------------------------------------------------------------------
 
@@ -22,13 +24,15 @@ export default function ClimberPostsView() {
   }, []);
 
   const [posts, setPosts] = useState([]);
-
+  const { error, data } = useQuery(GET_POSTS, { client }); // 追加
+  console.log('グラフ');
+  console.log({ data, error });
   useEffect(() => {
     fetch('/api/posts')
       .then((response) => response.json())
       .then((data) => setPosts(data));
   }, []);
-  console.log(posts);
+
   return (
     <>
       <Container>

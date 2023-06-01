@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import NextLink from 'next/link';
@@ -25,6 +25,7 @@ import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
 import { Gym, PreferredDayAndTime, Post as PrismaPost } from '@prisma/client';
+import { PostsQuery } from 'src/generated/graphql';
 
 // ----------------------------------------------------------------------
 interface Post extends PrismaPost {
@@ -32,7 +33,7 @@ interface Post extends PrismaPost {
   preferredDayAndTimes: PreferredDayAndTime[];
 }
 
-export default function ClimberPostItem({ post }: { post: Post }) {
+export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][number] }) {
   const {
     createdAt,
     content,
@@ -149,7 +150,7 @@ export default function ClimberPostItem({ post }: { post: Post }) {
             <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
             {preferredDayAndTimes.map((v) => {
               return (
-                <>
+                <Fragment key={v.id}>
                   {v.dayAndTime[1] === '1' ? ( //'01'なら日曜・昼
                     <>
                       <Box sx={{ mr: 1 }}>
@@ -172,7 +173,7 @@ export default function ClimberPostItem({ post }: { post: Post }) {
                       </Box>
                     </>
                   )}
-                </>
+                </Fragment>
               );
             })}
           </Stack>

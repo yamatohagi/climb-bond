@@ -1,8 +1,15 @@
 import PropTypes from 'prop-types';
 import { Pagination, Box } from '@mui/material';
 import { ClimberPostItem, ClimberPostItemSkeleton } from '../item';
+import { PostsQuery, PostsQueryResult } from 'src/generated/graphql';
+import { Fragment } from 'react';
 
-export default function ClimberPostList({ posts, loading }: any) {
+interface ClimberPostListProps {
+  data: PostsQueryResult['data'];
+  loading: PostsQueryResult['loading'];
+}
+
+export default function ClimberPostList({ data, loading }: ClimberPostListProps) {
   return (
     <>
       <Box
@@ -17,13 +24,11 @@ export default function ClimberPostList({ posts, loading }: any) {
           },
         }}
       >
-        {(loading ? [...Array(9)] : posts).map((post: any, index: any) =>
-          post ? (
-            <ClimberPostItem key={post.id} post={post} />
-          ) : (
-            <ClimberPostItemSkeleton key={index} />
-          )
-        )}
+        {(loading || !data ? [...Array(9)] : data.posts).map((post, index) => (
+          <Fragment key={index}>
+            {post ? <ClimberPostItem post={post} /> : <ClimberPostItemSkeleton />}
+          </Fragment>
+        ))}
       </Box>
 
       <Pagination

@@ -6,45 +6,47 @@ import CareerFilters from '../posts/filters';
 import NewsletterClimber from 'src/sections/newsletter/climber/NewsletterCareer';
 import Button from '@mui/material/Button';
 import { ClimberPostCreateModal } from '../posts/create-edit';
-import { useQuery } from '@apollo/client';
-import { useFindFirstPostQuery } from 'src/generated/graphql';
+
+import { SortOrder, usePostsQuery } from 'src/generated/graphql';
 import { gql } from '@apollo/client';
 
 // ----------------------------------------------------------------------
 
 gql`
-  query FindFirstPost {
-    findFirstPost {
+  query Posts($orderBy: [PostOrderByWithRelationInput!]) {
+    posts(orderBy: $orderBy) {
       id
       title
+      content
+      gym {
+        name
+      }
       grade
+      experienceMonths
+      belayMonths
+      createdAt
+      preferredDayAndTimes {
+        id
+        dayAndTime
+      }
+      climbingType
     }
   }
 `;
 
 export default function ClimberPostsView() {
-  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const fakeLoading = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      setLoading(false);
-    };
-    fakeLoading();
-  }, []);
+  const { error, data, loading } = usePostsQuery({
+    variables: {
+      orderBy: [
+        {
+          createdAt: SortOrder.Desc,
+        },
+      ],
+    },
+  });
 
-  const [posts, setPosts] = useState([]);
-  const { error, data } = useFindFirstPostQuery();
-  console.log('グラフ');
-  console.log({ data, error });
-  console.log('グラフ');
-  useEffect(() => {
-    fetch('/api/posts')
-      .then((response) => response.json())
-      .then((data) => setPosts(data));
-  }, []);
-  console.log(data?.findFirstPost?.grade);
   return (
     <>
       <Container>
@@ -53,8 +55,7 @@ export default function ClimberPostsView() {
           新規投稿
         </Button>
         <ClimberPostCreateModal open={open} onClose={() => setOpen(false)} />
-
-        <ClimberPostList posts={posts} loading={loading} />
+        {<ClimberPostList data={data} loading={loading} />}
       </Container>
 
       <NewsletterClimber />

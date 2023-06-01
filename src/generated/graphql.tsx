@@ -1712,45 +1712,60 @@ export type StringWithAggregatesFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type FindFirstPostQueryVariables = Exact<{ [key: string]: never; }>;
+export type PostsQueryVariables = Exact<{
+  orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
+}>;
 
 
-export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, grade: string } | null };
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }> }> };
 
 
-export const FindFirstPostDocument = gql`
-    query FindFirstPost {
-  findFirstPost {
+export const PostsDocument = gql`
+    query Posts($orderBy: [PostOrderByWithRelationInput!]) {
+  posts(orderBy: $orderBy) {
     id
     title
+    content
+    gym {
+      name
+    }
     grade
+    experienceMonths
+    belayMonths
+    createdAt
+    preferredDayAndTimes {
+      id
+      dayAndTime
+    }
+    climbingType
   }
 }
     `;
 
 /**
- * __useFindFirstPostQuery__
+ * __usePostsQuery__
  *
- * To run a query within a React component, call `useFindFirstPostQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindFirstPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useFindFirstPostQuery({
+ * const { data, loading, error } = usePostsQuery({
  *   variables: {
+ *      orderBy: // value for 'orderBy'
  *   },
  * });
  */
-export function useFindFirstPostQuery(baseOptions?: Apollo.QueryHookOptions<FindFirstPostQuery, FindFirstPostQueryVariables>) {
+export function usePostsQuery(baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<FindFirstPostQuery, FindFirstPostQueryVariables>(FindFirstPostDocument, options);
+        return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
       }
-export function useFindFirstPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindFirstPostQuery, FindFirstPostQueryVariables>) {
+export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<FindFirstPostQuery, FindFirstPostQueryVariables>(FindFirstPostDocument, options);
+          return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, options);
         }
-export type FindFirstPostQueryHookResult = ReturnType<typeof useFindFirstPostQuery>;
-export type FindFirstPostLazyQueryHookResult = ReturnType<typeof useFindFirstPostLazyQuery>;
-export type FindFirstPostQueryResult = Apollo.QueryResult<FindFirstPostQuery, FindFirstPostQueryVariables>;
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
+export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>;

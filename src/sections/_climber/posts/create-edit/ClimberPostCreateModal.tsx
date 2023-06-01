@@ -3,51 +3,54 @@ import { Button, DialogTitle, DialogContent, DialogActions, Grid } from '@mui/ma
 import { DialogAnimate } from 'src/components/animate';
 import getVariant from 'src/sections/examples/animate/getVariant';
 import { Box } from '@mui/system';
-import {
-  RHFMultiCheckbox,
-  RHFMultiCheckboxAddGrid,
-  RHFSelectBox,
-  RHFTextField,
-} from 'src/components/hook-form';
+import { RHFMultiCheckboxAddGrid, RHFSelectBox, RHFTextField } from 'src/components/hook-form';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { useForm } from 'react-hook-form';
 import { ClimbingType, Gym } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
+import { gql } from '@apollo/client';
+import { useCreateOnePostMutation } from 'src/generated/graphql';
+
+gql`
+  mutation CreateOnePost($data: PostCreateInput!) {
+    createOnePost(data: $data) {
+      title
+      content
+      gymId
+      climbingType
+      belayMonths
+      experienceMonths
+      grade
+      preferredDayAndTimes {
+        dayAndTime
+      }
+    }
+  }
+`;
 
 export default function ClimberPostCreateModal({ open, onClose }: any) {
   const [gyms, setGyms] = useState([]);
-
+  const [createOnePostMutation] = useCreateOnePostMutation();
   const onSubmit = (params: any) => {
-    console.log(params);
-    const createPost = async () => {
-      const response = await fetch('/api/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+    createOnePostMutation({
+      variables: {
+        data: {
           title: params.title,
           content: params.content,
-          gymId: params.gymId,
+          gym: { connect: { id: params.gymId } },
           climbingType: params.climbingType,
           belayMonths: params.belayMonths,
           experienceMonths: params.experienceMonths,
           grade: params.grade,
-          preferredDayAndTimes: params.preferredDayAndTimes,
-        }),
-      });
-
-      if (!response.ok) {
-        console.error('Failed to create post', response.status, response.statusText);
-        return;
-      }
-
-      const post = await response.json();
-      console.log('Created post', post);
-    };
-
-    createPost();
+          preferredDayAndTimes: {
+            create: params.preferredDayAndTimes.map((dayAndTime: any) => ({
+              dayAndTime: dayAndTime,
+            })),
+          },
+        },
+      },
+    });
   };
 
   useEffect(() => {

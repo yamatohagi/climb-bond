@@ -1712,6 +1712,13 @@ export type StringWithAggregatesFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type CreateOnePostMutationVariables = Exact<{
+  data: PostCreateInput;
+}>;
+
+
+export type CreateOnePostMutation = { __typename?: 'Mutation', createOnePost: { __typename?: 'Post', title: string, content: string, gymId: number, climbingType: ClimbingType, belayMonths: number, experienceMonths: number, grade: string, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', dayAndTime: string }> } };
+
 export type PostsQueryVariables = Exact<{
   orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
 }>;
@@ -1720,6 +1727,48 @@ export type PostsQueryVariables = Exact<{
 export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }> }> };
 
 
+export const CreateOnePostDocument = gql`
+    mutation CreateOnePost($data: PostCreateInput!) {
+  createOnePost(data: $data) {
+    title
+    content
+    gymId
+    climbingType
+    belayMonths
+    experienceMonths
+    grade
+    preferredDayAndTimes {
+      dayAndTime
+    }
+  }
+}
+    `;
+export type CreateOnePostMutationFn = Apollo.MutationFunction<CreateOnePostMutation, CreateOnePostMutationVariables>;
+
+/**
+ * __useCreateOnePostMutation__
+ *
+ * To run a mutation, you first call `useCreateOnePostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOnePostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOnePostMutation, { data, loading, error }] = useCreateOnePostMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateOnePostMutation(baseOptions?: Apollo.MutationHookOptions<CreateOnePostMutation, CreateOnePostMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOnePostMutation, CreateOnePostMutationVariables>(CreateOnePostDocument, options);
+      }
+export type CreateOnePostMutationHookResult = ReturnType<typeof useCreateOnePostMutation>;
+export type CreateOnePostMutationResult = Apollo.MutationResult<CreateOnePostMutation>;
+export type CreateOnePostMutationOptions = Apollo.BaseMutationOptions<CreateOnePostMutation, CreateOnePostMutationVariables>;
 export const PostsDocument = gql`
     query Posts($orderBy: [PostOrderByWithRelationInput!]) {
   posts(orderBy: $orderBy) {

@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   console.log(path.resolve(__dirname, '../generated/schema.gql'));
-  if (req.method === 'GET') {
+  if (req.method === 'GEdT') {
     const posts = await prisma.post.findMany({
       include: {
         gym: true,
@@ -15,7 +15,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       orderBy: { createdAt: 'desc' },
     });
     res.json(posts);
-  } else if (req.method === 'POST') {
+  } else if (req.method === 'POSdT') {
     // Parse the request body
     const {
       title,

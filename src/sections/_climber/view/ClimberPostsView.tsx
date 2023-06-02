@@ -49,7 +49,7 @@ export default function ClimberPostsView() {
           新規投稿
         </Button>
         <ClimberPostCreateModal open={open} onClose={() => setOpen(false)} />
-        {<ClimberPostList data={data} loading={loading} />}
+        <ClimberPostList data={data} loading={loading} />
       </Container>
 
       <NewsletterClimber />

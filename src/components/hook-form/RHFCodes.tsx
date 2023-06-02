@@ -14,7 +14,7 @@ RHFCodes.propTypes = {
   keyName: PropTypes.string,
 };
 
-export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
+export default function RHFCodes({ keyName = '', inputs = [], ...other }: any) {
   const codesRef = useRef(null);
 
   const { control, setValue } = useFormContext();
@@ -24,7 +24,7 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
 
     data = data.split('');
 
-    inputs.map((input, index) => setValue(input, data[index]));
+    inputs.map((input: any, index: any) => setValue(input, data[index]));
 
     event.preventDefault();
   };
@@ -53,7 +53,7 @@ export default function RHFCodes({ keyName = '', inputs = [], ...other }) {
 
   return (
     <Stack direction="row" spacing={2} justifyContent="center" ref={codesRef}>
-      {inputs.map((name, index) => (
+      {inputs.map((name: any, index: any) => (
         <Controller
           key={name}
           name={`${keyName}${index + 1}`}

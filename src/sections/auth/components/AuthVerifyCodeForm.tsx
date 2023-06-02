@@ -43,38 +43,38 @@ export default function AuthVerifyCodeForm() {
   const onSubmit = async (data: any) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 500));
-            console.log('DATA', Object.values(data).join(''));
+      console.log('DATA', Object.values(data).join(''));
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit: any)}>
-            <Stack spacing={3}>
-                <RHFCodes keyName="code" inputs={['code1', 'code2', 'code3', 'code4', 'code5', 'code6']} />
+    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+      <Stack spacing={3}>
+        <RHFCodes keyName="code" inputs={['code1', 'code2', 'code3', 'code4', 'code5', 'code6']} />
 
-                {(!!errors.code1 ||
+        {(!!errors.code1 ||
           !!errors.code2 ||
           !!errors.code3 ||
           !!errors.code4 ||
           !!errors.code5 ||
           !!errors.code6) && (
-                    <FormHelperText error sx={{ px: 2 }}>
-                        Code is required
+          <FormHelperText error sx={{ px: 2 }}>
+            Code is required
           </FormHelperText>
         )}
 
-                <LoadingButton
-                    fullWidth
-                    size="large"
-                    color="inherit"
-                    type="submit"
-                    variant="contained"
-                    loading={isSubmitting}
-                    sx={{ mt: 3 }}
-                >
-                    Verify
+        <LoadingButton
+          fullWidth
+          size="large"
+          color="inherit"
+          type="submit"
+          variant="contained"
+          loading={isSubmitting}
+          sx={{ mt: 3 }}
+        >
+          Verify
         </LoadingButton>
       </Stack>
     </FormProvider>

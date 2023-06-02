@@ -10,7 +10,8 @@ import { ClimbingType, Gym } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
 import { gql } from '@apollo/client';
-import { useCreateOnePostMutation } from 'src/generated/graphql';
+import { useCreateOnePostMutation, useGymsQuery } from 'src/generated/graphql';
+import { SortOrder } from 'src/generated/graphql';
 
 gql`
   mutation CreateOnePost($data: PostCreateInput!) {
@@ -29,11 +30,38 @@ gql`
   }
 `;
 
+gql`
+  query Gyms($orderBy: [GymOrderByWithRelationInput!]) {
+    gyms(orderBy: $orderBy) {
+      id
+      name
+    }
+  }
+`;
+
 export default function ClimberPostCreateModal({ open, onClose }: any) {
-  const [gyms, setGyms] = useState([]);
   const [createOnePostMutation] = useCreateOnePostMutation();
-  const onSubmit = (params: any) => {
-    createOnePostMutation({
+
+  const { error, data, loading } = useGymsQuery({
+    variables: { orderBy: [{ name: SortOrder.Asc }] },
+  });
+
+  const methods = useForm({
+    defaultValues: {
+      title: '',
+      content: '',
+      gymId: '',
+      preferredDayAndTimes: [],
+      climbingType: ClimbingType.BOULDER,
+    },
+  });
+  const {
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = methods;
+
+  const onSubmit = async (params: any) => {
+    const res = await createOnePostMutation({
       variables: {
         data: {
           title: params.title,
@@ -51,101 +79,86 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
         },
       },
     });
+    if (res) onClose();
   };
-
-  useEffect(() => {
-    fetch('/api/gyms')
-      .then((response) => response.json())
-      .then((data) => setGyms(data.map((item: Gym) => ({ value: item.id, label: item.name }))));
-  }, []);
-
-  const methods = useForm({
-    defaultValues: {
-      title: '',
-      content: '',
-      gymId: '',
-      preferredDayAndTimes: [],
-      climbingType: ClimbingType.BOULDER,
-    },
-  });
-  const {
-    handleSubmit,
-    formState: { isSubmitting, errors },
-  } = methods;
 
   return (
     <>
-      {gyms.length > 0 && (
-        <DialogAnimate open={open} onClose={onClose} variants={getVariant('bounceInUp')}>
-          <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            <DialogTitle id="alert-dialog-title">{`ガンバ！！`}</DialogTitle>
-            <DialogContent>
-              <Box>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <RHFTextField size="small" name="title" label="ひとこと" />
-                  </Grid>
-                  {/* <Grid item xs={12}>
+      <DialogAnimate open={open} onClose={onClose} variants={getVariant('bounceInUp')}>
+        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+          <DialogTitle id="alert-dialog-title">{`ガンバ！！`}</DialogTitle>
+          <DialogContent>
+            <Box>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <RHFTextField size="small" name="title" label="ひとこと" />
+                </Grid>
+                {/* <Grid item xs={12}>
                     <RHFTextField name="content" label="Content" multiline rows={4} required />
                   </Grid> */}
-                  <Grid item xs={12} sm={6}>
-                    <RHFSelectBox
-                      size="small"
-                      name="climbingType"
-                      label="好きな壁"
-                      options={[
-                        { value: ClimbingType.BOULDER, label: 'ボルダー' },
-                        { value: ClimbingType.LEAD, label: 'リード' },
-                        { value: ClimbingType.BOTH, label: 'どっちも' },
-                      ]}
-                    ></RHFSelectBox>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <RHFSelectBox name="gymId" label="ジム名" options={gyms}></RHFSelectBox>
-                  </Grid>
-                  <Grid item xs={6} sm={6}>
-                    <RHFSelectBox
-                      size="small"
-                      name="experienceMonths"
-                      label="クライミング歴"
-                      options={generateMonths()}
-                    ></RHFSelectBox>
-                  </Grid>
-                  <Grid item xs={6} sm={6}>
-                    <RHFSelectBox
-                      size="small"
-                      name="belayMonths"
-                      label="ビレイ歴"
-                      options={generateMonths()}
-                    ></RHFSelectBox>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <RHFSelectBox
-                      size="small"
-                      name="grade"
-                      label="頑張ってるグレード"
-                      options={generateGrades()}
-                    ></RHFSelectBox>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <RHFMultiCheckboxAddGrid
-                      name="preferredDayAndTimes"
-                      label="よく行く日時"
-                      options={options}
-                    ></RHFMultiCheckboxAddGrid>
-                  </Grid>
+                <Grid item xs={12} sm={6}>
+                  <RHFSelectBox
+                    size="small"
+                    name="climbingType"
+                    label="好きな壁"
+                    options={[
+                      { value: ClimbingType.BOULDER, label: 'ボルダー' },
+                      { value: ClimbingType.LEAD, label: 'リード' },
+                      { value: ClimbingType.BOTH, label: 'どっちも' },
+                    ]}
+                  ></RHFSelectBox>
                 </Grid>
-              </Box>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={onClose}>Disagree</Button>
-              <Button variant="contained" type="submit" autoFocus>
-                Agree
-              </Button>
-            </DialogActions>
-          </FormProvider>
-        </DialogAnimate>
-      )}
+                <Grid item xs={12} sm={6}>
+                  <RHFSelectBox
+                    name="gymId"
+                    label="ジム名"
+                    options={
+                      data && data.gyms.map((item) => ({ value: item.id, label: item.name }))
+                    }
+                  ></RHFSelectBox>
+                </Grid>
+                <Grid item xs={6} sm={6}>
+                  <RHFSelectBox
+                    size="small"
+                    name="experienceMonths"
+                    label="クライミング歴"
+                    options={generateMonths()}
+                  ></RHFSelectBox>
+                </Grid>
+                <Grid item xs={6} sm={6}>
+                  <RHFSelectBox
+                    size="small"
+                    name="belayMonths"
+                    label="ビレイ歴"
+                    options={generateMonths()}
+                  ></RHFSelectBox>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <RHFSelectBox
+                    size="small"
+                    name="grade"
+                    label="頑張ってるグレード"
+                    options={generateGrades()}
+                  ></RHFSelectBox>
+                </Grid>
+                <Grid item xs={12}>
+                  <RHFMultiCheckboxAddGrid
+                    name="preferredDayAndTimes"
+                    label="よく行く日時"
+                    options={options}
+                  ></RHFMultiCheckboxAddGrid>
+                </Grid>
+              </Grid>
+            </Box>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={onClose}>Disagree</Button>
+            <Button variant="contained" type="submit" autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </FormProvider>
+      </DialogAnimate>
     </>
   );
 }

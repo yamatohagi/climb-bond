@@ -38,13 +38,7 @@ export default function ClimberPostsView() {
   const [open, setOpen] = useState(false);
 
   const { error, data, loading } = usePostsQuery({
-    variables: {
-      orderBy: [
-        {
-          createdAt: SortOrder.Desc,
-        },
-      ],
-    },
+    variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
   });
 
   return (

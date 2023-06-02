@@ -1719,6 +1719,13 @@ export type CreateOnePostMutationVariables = Exact<{
 
 export type CreateOnePostMutation = { __typename?: 'Mutation', createOnePost: { __typename?: 'Post', title: string, content: string, gymId: number, climbingType: ClimbingType, belayMonths: number, experienceMonths: number, grade: string, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', dayAndTime: string }> } };
 
+export type GymsQueryVariables = Exact<{
+  orderBy?: InputMaybe<Array<GymOrderByWithRelationInput> | GymOrderByWithRelationInput>;
+}>;
+
+
+export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string }> };
+
 export type PostsQueryVariables = Exact<{
   orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
 }>;
@@ -1769,6 +1776,42 @@ export function useCreateOnePostMutation(baseOptions?: Apollo.MutationHookOption
 export type CreateOnePostMutationHookResult = ReturnType<typeof useCreateOnePostMutation>;
 export type CreateOnePostMutationResult = Apollo.MutationResult<CreateOnePostMutation>;
 export type CreateOnePostMutationOptions = Apollo.BaseMutationOptions<CreateOnePostMutation, CreateOnePostMutationVariables>;
+export const GymsDocument = gql`
+    query Gyms($orderBy: [GymOrderByWithRelationInput!]) {
+  gyms(orderBy: $orderBy) {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useGymsQuery__
+ *
+ * To run a query within a React component, call `useGymsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGymsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGymsQuery({
+ *   variables: {
+ *      orderBy: // value for 'orderBy'
+ *   },
+ * });
+ */
+export function useGymsQuery(baseOptions?: Apollo.QueryHookOptions<GymsQuery, GymsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GymsQuery, GymsQueryVariables>(GymsDocument, options);
+      }
+export function useGymsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymsQuery, GymsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GymsQuery, GymsQueryVariables>(GymsDocument, options);
+        }
+export type GymsQueryHookResult = ReturnType<typeof useGymsQuery>;
+export type GymsLazyQueryHookResult = ReturnType<typeof useGymsLazyQuery>;
+export type GymsQueryResult = Apollo.QueryResult<GymsQuery, GymsQueryVariables>;
 export const PostsDocument = gql`
     query Posts($orderBy: [PostOrderByWithRelationInput!]) {
   posts(orderBy: $orderBy) {

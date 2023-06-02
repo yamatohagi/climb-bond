@@ -5,9 +5,9 @@ export default function PostReplies({ replies }: { replies: any[] }) {
     <div>
       {replies.map((reply) => (
         <Card key={reply.id} sx={{ mt: 2, p: 2 }}>
-          <Typography variant="h6">{reply.username}</Typography>
+          <Typography variant="h6">{reply.userName}</Typography>
           <Divider sx={{ my: 1 }} />
-          <Typography variant="body1">{reply.replyText}</Typography>
+          <Typography variant="body1">{reply.content}</Typography>
         </Card>
       ))}
     </div>

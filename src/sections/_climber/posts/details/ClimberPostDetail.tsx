@@ -16,26 +16,6 @@ import TextMaxLine from 'src/components/text-max-line';
 import { dayOfWeek } from '../item/ClimberPostItem';
 import { CreateReply, PostReplies } from './reply';
 
-type PostReply = {
-  id: string;
-  username: string;
-  replyText: string;
-};
-
-const mockReplies: PostReply[] = [
-  {
-    id: '1',
-    username: 'User1',
-    replyText: 'これはテスト返信です',
-  },
-  {
-    id: '2',
-    username: 'User2',
-    replyText: 'これもテスト返信です',
-  },
-  // 他の返信をここに追加できます
-];
-
 export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryResult['data'] }) {
   const post = data?.findFirstPost!;
   const {
@@ -49,6 +29,7 @@ export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryRe
     experienceMonths,
     belayMonths,
     grade,
+    replies,
   } = post;
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
   return (
@@ -191,7 +172,7 @@ export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryRe
           </Box>
         </Stack>
       </Link>
-      <PostReplies replies={mockReplies} />
+      <PostReplies replies={replies} />
       <CreateReply />
     </Card>
   );

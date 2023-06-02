@@ -33,6 +33,12 @@ gql`
         dayAndTime
       }
       climbingType
+      replies {
+        id
+        userName
+        createdAt
+        content
+      }
     }
   }
 `;

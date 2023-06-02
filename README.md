@@ -17,4 +17,7 @@ npm run seed
 ##カラム追加とか
 npx prisma migrate reset --preview-feature
 npx prisma migrate dev --preview-feature
+
+npm run generate-graphql-schema
+npx prisma generate
 npm run seed

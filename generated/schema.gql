@@ -31,6 +31,14 @@ type AggregatePreferredDayAndTime {
   _sum: PreferredDayAndTimeSumAggregate
 }
 
+type AggregateReply {
+  _avg: ReplyAvgAggregate
+  _count: ReplyCountAggregate
+  _max: ReplyMaxAggregate
+  _min: ReplyMinAggregate
+  _sum: ReplySumAggregate
+}
+
 enum ClimbingType {
   BOTH
   BOULDER
@@ -360,24 +368,31 @@ type Mutation {
   createManyGym(data: [GymCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPost(data: [PostCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPreferredDayAndTime(data: [PreferredDayAndTimeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyReply(data: [ReplyCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createOneGym(data: GymCreateInput!): Gym!
   createOnePost(data: PostCreateInput!): Post!
   createOnePreferredDayAndTime(data: PreferredDayAndTimeCreateInput!): PreferredDayAndTime!
+  createOneReply(data: ReplyCreateInput!): Reply!
   deleteManyGym(where: GymWhereInput): AffectedRowsOutput!
   deleteManyPost(where: PostWhereInput): AffectedRowsOutput!
   deleteManyPreferredDayAndTime(where: PreferredDayAndTimeWhereInput): AffectedRowsOutput!
+  deleteManyReply(where: ReplyWhereInput): AffectedRowsOutput!
   deleteOneGym(where: GymWhereUniqueInput!): Gym
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteOnePreferredDayAndTime(where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
+  deleteOneReply(where: ReplyWhereUniqueInput!): Reply
   updateManyGym(data: GymUpdateManyMutationInput!, where: GymWhereInput): AffectedRowsOutput!
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): AffectedRowsOutput!
   updateManyPreferredDayAndTime(data: PreferredDayAndTimeUpdateManyMutationInput!, where: PreferredDayAndTimeWhereInput): AffectedRowsOutput!
+  updateManyReply(data: ReplyUpdateManyMutationInput!, where: ReplyWhereInput): AffectedRowsOutput!
   updateOneGym(data: GymUpdateInput!, where: GymWhereUniqueInput!): Gym
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateOnePreferredDayAndTime(data: PreferredDayAndTimeUpdateInput!, where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
+  updateOneReply(data: ReplyUpdateInput!, where: ReplyWhereUniqueInput!): Reply
   upsertOneGym(create: GymCreateInput!, update: GymUpdateInput!, where: GymWhereUniqueInput!): Gym!
   upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   upsertOnePreferredDayAndTime(create: PreferredDayAndTimeCreateInput!, update: PreferredDayAndTimeUpdateInput!, where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime!
+  upsertOneReply(create: ReplyCreateInput!, update: ReplyUpdateInput!, where: ReplyWhereUniqueInput!): Reply!
 }
 
 input NestedDateTimeFilter {
@@ -579,6 +594,7 @@ type Post {
   gymId: Int!
   id: Int!
   preferredDayAndTimes(cursor: PreferredDayAndTimeWhereUniqueInput, distinct: [PreferredDayAndTimeScalarFieldEnum!], orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): [PreferredDayAndTime!]!
+  replies(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): [Reply!]!
   title: String!
   updatedAt: DateTime!
 }
@@ -599,6 +615,7 @@ input PostAvgOrderByAggregateInput {
 
 type PostCount {
   preferredDayAndTimes: Int!
+  replies: Int!
 }
 
 type PostCountAggregate {
@@ -640,6 +657,7 @@ input PostCreateInput {
   grade: String!
   gym: GymCreateNestedOneWithoutPostsInput!
   preferredDayAndTimes: PreferredDayAndTimeCreateNestedManyWithoutPostInput
+  replies: ReplyCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
 }
@@ -689,6 +707,12 @@ input PostCreateNestedOneWithoutPreferredDayAndTimesInput {
   create: PostCreateWithoutPreferredDayAndTimesInput
 }
 
+input PostCreateNestedOneWithoutRepliesInput {
+  connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutRepliesInput
+  create: PostCreateWithoutRepliesInput
+}
+
 input PostCreateOrConnectWithoutGymInput {
   create: PostCreateWithoutGymInput!
   where: PostWhereUniqueInput!
@@ -696,6 +720,11 @@ input PostCreateOrConnectWithoutGymInput {
 
 input PostCreateOrConnectWithoutPreferredDayAndTimesInput {
   create: PostCreateWithoutPreferredDayAndTimesInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostCreateOrConnectWithoutRepliesInput {
+  create: PostCreateWithoutRepliesInput!
   where: PostWhereUniqueInput!
 }
 
@@ -708,6 +737,7 @@ input PostCreateWithoutGymInput {
   experienceMonths: Int!
   grade: String!
   preferredDayAndTimes: PreferredDayAndTimeCreateNestedManyWithoutPostInput
+  replies: ReplyCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
 }
@@ -721,6 +751,21 @@ input PostCreateWithoutPreferredDayAndTimesInput {
   experienceMonths: Int!
   grade: String!
   gym: GymCreateNestedOneWithoutPostsInput!
+  replies: ReplyCreateNestedManyWithoutPostInput
+  title: String!
+  updatedAt: DateTime
+}
+
+input PostCreateWithoutRepliesInput {
+  belayMonths: Int!
+  climbingType: ClimbingType!
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  experienceMonths: Int!
+  grade: String!
+  gym: GymCreateNestedOneWithoutPostsInput!
+  preferredDayAndTimes: PreferredDayAndTimeCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
 }
@@ -841,6 +886,7 @@ input PostOrderByWithRelationInput {
   gymId: SortOrder
   id: SortOrder
   preferredDayAndTimes: PreferredDayAndTimeOrderByRelationAggregateInput
+  replies: ReplyOrderByRelationAggregateInput
   title: SortOrder
   updatedAt: SortOrder
 }
@@ -922,6 +968,7 @@ input PostUpdateInput {
   grade: StringFieldUpdateOperationsInput
   gym: GymUpdateOneRequiredWithoutPostsNestedInput
   preferredDayAndTimes: PreferredDayAndTimeUpdateManyWithoutPostNestedInput
+  replies: ReplyUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -965,6 +1012,14 @@ input PostUpdateOneRequiredWithoutPreferredDayAndTimesNestedInput {
   upsert: PostUpsertWithoutPreferredDayAndTimesInput
 }
 
+input PostUpdateOneRequiredWithoutRepliesNestedInput {
+  connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutRepliesInput
+  create: PostCreateWithoutRepliesInput
+  update: PostUpdateWithoutRepliesInput
+  upsert: PostUpsertWithoutRepliesInput
+}
+
 input PostUpdateWithWhereUniqueWithoutGymInput {
   data: PostUpdateWithoutGymInput!
   where: PostWhereUniqueInput!
@@ -979,6 +1034,7 @@ input PostUpdateWithoutGymInput {
   experienceMonths: IntFieldUpdateOperationsInput
   grade: StringFieldUpdateOperationsInput
   preferredDayAndTimes: PreferredDayAndTimeUpdateManyWithoutPostNestedInput
+  replies: ReplyUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -992,6 +1048,21 @@ input PostUpdateWithoutPreferredDayAndTimesInput {
   experienceMonths: IntFieldUpdateOperationsInput
   grade: StringFieldUpdateOperationsInput
   gym: GymUpdateOneRequiredWithoutPostsNestedInput
+  replies: ReplyUpdateManyWithoutPostNestedInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input PostUpdateWithoutRepliesInput {
+  belayMonths: IntFieldUpdateOperationsInput
+  climbingType: EnumClimbingTypeFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  experienceMonths: IntFieldUpdateOperationsInput
+  grade: StringFieldUpdateOperationsInput
+  gym: GymUpdateOneRequiredWithoutPostsNestedInput
+  preferredDayAndTimes: PreferredDayAndTimeUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -1005,6 +1076,11 @@ input PostUpsertWithWhereUniqueWithoutGymInput {
 input PostUpsertWithoutPreferredDayAndTimesInput {
   create: PostCreateWithoutPreferredDayAndTimesInput!
   update: PostUpdateWithoutPreferredDayAndTimesInput!
+}
+
+input PostUpsertWithoutRepliesInput {
+  create: PostCreateWithoutRepliesInput!
+  update: PostUpdateWithoutRepliesInput!
 }
 
 input PostWhereInput {
@@ -1022,6 +1098,7 @@ input PostWhereInput {
   gymId: IntFilter
   id: IntFilter
   preferredDayAndTimes: PreferredDayAndTimeListRelationFilter
+  replies: ReplyListRelationFilter
   title: StringFilter
   updatedAt: DateTimeFilter
 }
@@ -1255,29 +1332,341 @@ type Query {
   aggregateGym(cursor: GymWhereUniqueInput, orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): AggregateGym!
   aggregatePost(cursor: PostWhereUniqueInput, orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): AggregatePost!
   aggregatePreferredDayAndTime(cursor: PreferredDayAndTimeWhereUniqueInput, orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): AggregatePreferredDayAndTime!
+  aggregateReply(cursor: ReplyWhereUniqueInput, orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): AggregateReply!
   findFirstGym(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): Gym
   findFirstGymOrThrow(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): Gym
   findFirstPost(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): Post
   findFirstPostOrThrow(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): Post
   findFirstPreferredDayAndTime(cursor: PreferredDayAndTimeWhereUniqueInput, distinct: [PreferredDayAndTimeScalarFieldEnum!], orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): PreferredDayAndTime
   findFirstPreferredDayAndTimeOrThrow(cursor: PreferredDayAndTimeWhereUniqueInput, distinct: [PreferredDayAndTimeScalarFieldEnum!], orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): PreferredDayAndTime
+  findFirstReply(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): Reply
+  findFirstReplyOrThrow(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): Reply
   getGym(where: GymWhereUniqueInput!): Gym
   getPost(where: PostWhereUniqueInput!): Post
   getPreferredDayAndTime(where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
+  getReply(where: ReplyWhereUniqueInput!): Reply
   groupByGym(by: [GymScalarFieldEnum!]!, having: GymScalarWhereWithAggregatesInput, orderBy: [GymOrderByWithAggregationInput!], skip: Int, take: Int, where: GymWhereInput): [GymGroupBy!]!
   groupByPost(by: [PostScalarFieldEnum!]!, having: PostScalarWhereWithAggregatesInput, orderBy: [PostOrderByWithAggregationInput!], skip: Int, take: Int, where: PostWhereInput): [PostGroupBy!]!
   groupByPreferredDayAndTime(by: [PreferredDayAndTimeScalarFieldEnum!]!, having: PreferredDayAndTimeScalarWhereWithAggregatesInput, orderBy: [PreferredDayAndTimeOrderByWithAggregationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): [PreferredDayAndTimeGroupBy!]!
+  groupByReply(by: [ReplyScalarFieldEnum!]!, having: ReplyScalarWhereWithAggregatesInput, orderBy: [ReplyOrderByWithAggregationInput!], skip: Int, take: Int, where: ReplyWhereInput): [ReplyGroupBy!]!
   gym(where: GymWhereUniqueInput!): Gym
   gyms(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): [Gym!]!
   post(where: PostWhereUniqueInput!): Post
   posts(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]!
   preferredDayAndTime(where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
   preferredDayAndTimes(cursor: PreferredDayAndTimeWhereUniqueInput, distinct: [PreferredDayAndTimeScalarFieldEnum!], orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): [PreferredDayAndTime!]!
+  replies(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): [Reply!]!
+  reply(where: ReplyWhereUniqueInput!): Reply
 }
 
 enum QueryMode {
   default
   insensitive
+}
+
+type Reply {
+  content: String!
+  createdAt: DateTime!
+  id: Int!
+  post: Post!
+  postId: Int!
+  title: String!
+  updatedAt: DateTime!
+  userName: String!
+}
+
+type ReplyAvgAggregate {
+  id: Float
+  postId: Float
+}
+
+input ReplyAvgOrderByAggregateInput {
+  id: SortOrder
+  postId: SortOrder
+}
+
+type ReplyCountAggregate {
+  _all: Int!
+  content: Int!
+  createdAt: Int!
+  id: Int!
+  postId: Int!
+  title: Int!
+  updatedAt: Int!
+  userName: Int!
+}
+
+input ReplyCountOrderByAggregateInput {
+  content: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  postId: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+input ReplyCreateInput {
+  content: String!
+  createdAt: DateTime
+  post: PostCreateNestedOneWithoutRepliesInput!
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+input ReplyCreateManyInput {
+  content: String!
+  createdAt: DateTime
+  id: Int
+  postId: Int!
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+input ReplyCreateManyPostInput {
+  content: String!
+  createdAt: DateTime
+  id: Int
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+input ReplyCreateManyPostInputEnvelope {
+  data: [ReplyCreateManyPostInput!]!
+  skipDuplicates: Boolean
+}
+
+input ReplyCreateNestedManyWithoutPostInput {
+  connect: [ReplyWhereUniqueInput!]
+  connectOrCreate: [ReplyCreateOrConnectWithoutPostInput!]
+  create: [ReplyCreateWithoutPostInput!]
+  createMany: ReplyCreateManyPostInputEnvelope
+}
+
+input ReplyCreateOrConnectWithoutPostInput {
+  create: ReplyCreateWithoutPostInput!
+  where: ReplyWhereUniqueInput!
+}
+
+input ReplyCreateWithoutPostInput {
+  content: String!
+  createdAt: DateTime
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+type ReplyGroupBy {
+  _avg: ReplyAvgAggregate
+  _count: ReplyCountAggregate
+  _max: ReplyMaxAggregate
+  _min: ReplyMinAggregate
+  _sum: ReplySumAggregate
+  content: String!
+  createdAt: DateTime!
+  id: Int!
+  postId: Int!
+  title: String!
+  updatedAt: DateTime!
+  userName: String!
+}
+
+input ReplyListRelationFilter {
+  every: ReplyWhereInput
+  none: ReplyWhereInput
+  some: ReplyWhereInput
+}
+
+type ReplyMaxAggregate {
+  content: String
+  createdAt: DateTime
+  id: Int
+  postId: Int
+  title: String
+  updatedAt: DateTime
+  userName: String
+}
+
+input ReplyMaxOrderByAggregateInput {
+  content: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  postId: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+type ReplyMinAggregate {
+  content: String
+  createdAt: DateTime
+  id: Int
+  postId: Int
+  title: String
+  updatedAt: DateTime
+  userName: String
+}
+
+input ReplyMinOrderByAggregateInput {
+  content: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  postId: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+input ReplyOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ReplyOrderByWithAggregationInput {
+  _avg: ReplyAvgOrderByAggregateInput
+  _count: ReplyCountOrderByAggregateInput
+  _max: ReplyMaxOrderByAggregateInput
+  _min: ReplyMinOrderByAggregateInput
+  _sum: ReplySumOrderByAggregateInput
+  content: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  postId: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+input ReplyOrderByWithRelationInput {
+  content: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  post: PostOrderByWithRelationInput
+  postId: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+enum ReplyScalarFieldEnum {
+  content
+  createdAt
+  id
+  postId
+  title
+  updatedAt
+  userName
+}
+
+input ReplyScalarWhereInput {
+  AND: [ReplyScalarWhereInput!]
+  NOT: [ReplyScalarWhereInput!]
+  OR: [ReplyScalarWhereInput!]
+  content: StringFilter
+  createdAt: DateTimeFilter
+  id: IntFilter
+  postId: IntFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+  userName: StringFilter
+}
+
+input ReplyScalarWhereWithAggregatesInput {
+  AND: [ReplyScalarWhereWithAggregatesInput!]
+  NOT: [ReplyScalarWhereWithAggregatesInput!]
+  OR: [ReplyScalarWhereWithAggregatesInput!]
+  content: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  postId: IntWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  userName: StringWithAggregatesFilter
+}
+
+type ReplySumAggregate {
+  id: Int
+  postId: Int
+}
+
+input ReplySumOrderByAggregateInput {
+  id: SortOrder
+  postId: SortOrder
+}
+
+input ReplyUpdateInput {
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  post: PostUpdateOneRequiredWithoutRepliesNestedInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userName: StringFieldUpdateOperationsInput
+}
+
+input ReplyUpdateManyMutationInput {
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userName: StringFieldUpdateOperationsInput
+}
+
+input ReplyUpdateManyWithWhereWithoutPostInput {
+  data: ReplyUpdateManyMutationInput!
+  where: ReplyScalarWhereInput!
+}
+
+input ReplyUpdateManyWithoutPostNestedInput {
+  connect: [ReplyWhereUniqueInput!]
+  connectOrCreate: [ReplyCreateOrConnectWithoutPostInput!]
+  create: [ReplyCreateWithoutPostInput!]
+  createMany: ReplyCreateManyPostInputEnvelope
+  delete: [ReplyWhereUniqueInput!]
+  deleteMany: [ReplyScalarWhereInput!]
+  disconnect: [ReplyWhereUniqueInput!]
+  set: [ReplyWhereUniqueInput!]
+  update: [ReplyUpdateWithWhereUniqueWithoutPostInput!]
+  updateMany: [ReplyUpdateManyWithWhereWithoutPostInput!]
+  upsert: [ReplyUpsertWithWhereUniqueWithoutPostInput!]
+}
+
+input ReplyUpdateWithWhereUniqueWithoutPostInput {
+  data: ReplyUpdateWithoutPostInput!
+  where: ReplyWhereUniqueInput!
+}
+
+input ReplyUpdateWithoutPostInput {
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userName: StringFieldUpdateOperationsInput
+}
+
+input ReplyUpsertWithWhereUniqueWithoutPostInput {
+  create: ReplyCreateWithoutPostInput!
+  update: ReplyUpdateWithoutPostInput!
+  where: ReplyWhereUniqueInput!
+}
+
+input ReplyWhereInput {
+  AND: [ReplyWhereInput!]
+  NOT: [ReplyWhereInput!]
+  OR: [ReplyWhereInput!]
+  content: StringFilter
+  createdAt: DateTimeFilter
+  id: IntFilter
+  post: PostRelationFilter
+  postId: IntFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+  userName: StringFilter
+}
+
+input ReplyWhereUniqueInput {
+  id: Int
 }
 
 enum SortOrder {

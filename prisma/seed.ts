@@ -56,6 +56,23 @@ async function main() {
     ],
   });
 
+  const replies = await prisma.reply.createMany({
+    data: [
+      {
+        userName: 'John Doe',
+        title: 'My First Reply',
+        content: 'いいですね、興味があります',
+        postId: 1,
+      },
+      {
+        userName: 'もつ',
+        title: '私も',
+        content: 'みんなで登りましょう！',
+        postId: 1,
+      },
+    ],
+  });
+
   const preferredDayAndTimes = await prisma.preferredDayAndTime.createMany({
     data: [
       {

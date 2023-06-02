@@ -51,6 +51,15 @@ export type AggregatePreferredDayAndTime = {
   _sum?: Maybe<PreferredDayAndTimeSumAggregate>;
 };
 
+export type AggregateReply = {
+  __typename?: 'AggregateReply';
+  _avg?: Maybe<ReplyAvgAggregate>;
+  _count?: Maybe<ReplyCountAggregate>;
+  _max?: Maybe<ReplyMaxAggregate>;
+  _min?: Maybe<ReplyMinAggregate>;
+  _sum?: Maybe<ReplySumAggregate>;
+};
+
 export enum ClimbingType {
   Both = 'BOTH',
   Boulder = 'BOULDER',
@@ -394,24 +403,31 @@ export type Mutation = {
   createManyGym: AffectedRowsOutput;
   createManyPost: AffectedRowsOutput;
   createManyPreferredDayAndTime: AffectedRowsOutput;
+  createManyReply: AffectedRowsOutput;
   createOneGym: Gym;
   createOnePost: Post;
   createOnePreferredDayAndTime: PreferredDayAndTime;
+  createOneReply: Reply;
   deleteManyGym: AffectedRowsOutput;
   deleteManyPost: AffectedRowsOutput;
   deleteManyPreferredDayAndTime: AffectedRowsOutput;
+  deleteManyReply: AffectedRowsOutput;
   deleteOneGym?: Maybe<Gym>;
   deleteOnePost?: Maybe<Post>;
   deleteOnePreferredDayAndTime?: Maybe<PreferredDayAndTime>;
+  deleteOneReply?: Maybe<Reply>;
   updateManyGym: AffectedRowsOutput;
   updateManyPost: AffectedRowsOutput;
   updateManyPreferredDayAndTime: AffectedRowsOutput;
+  updateManyReply: AffectedRowsOutput;
   updateOneGym?: Maybe<Gym>;
   updateOnePost?: Maybe<Post>;
   updateOnePreferredDayAndTime?: Maybe<PreferredDayAndTime>;
+  updateOneReply?: Maybe<Reply>;
   upsertOneGym: Gym;
   upsertOnePost: Post;
   upsertOnePreferredDayAndTime: PreferredDayAndTime;
+  upsertOneReply: Reply;
 };
 
 
@@ -433,6 +449,12 @@ export type MutationCreateManyPreferredDayAndTimeArgs = {
 };
 
 
+export type MutationCreateManyReplyArgs = {
+  data: Array<ReplyCreateManyInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type MutationCreateOneGymArgs = {
   data: GymCreateInput;
 };
@@ -445,6 +467,11 @@ export type MutationCreateOnePostArgs = {
 
 export type MutationCreateOnePreferredDayAndTimeArgs = {
   data: PreferredDayAndTimeCreateInput;
+};
+
+
+export type MutationCreateOneReplyArgs = {
+  data: ReplyCreateInput;
 };
 
 
@@ -463,6 +490,11 @@ export type MutationDeleteManyPreferredDayAndTimeArgs = {
 };
 
 
+export type MutationDeleteManyReplyArgs = {
+  where?: InputMaybe<ReplyWhereInput>;
+};
+
+
 export type MutationDeleteOneGymArgs = {
   where: GymWhereUniqueInput;
 };
@@ -475,6 +507,11 @@ export type MutationDeleteOnePostArgs = {
 
 export type MutationDeleteOnePreferredDayAndTimeArgs = {
   where: PreferredDayAndTimeWhereUniqueInput;
+};
+
+
+export type MutationDeleteOneReplyArgs = {
+  where: ReplyWhereUniqueInput;
 };
 
 
@@ -496,6 +533,12 @@ export type MutationUpdateManyPreferredDayAndTimeArgs = {
 };
 
 
+export type MutationUpdateManyReplyArgs = {
+  data: ReplyUpdateManyMutationInput;
+  where?: InputMaybe<ReplyWhereInput>;
+};
+
+
 export type MutationUpdateOneGymArgs = {
   data: GymUpdateInput;
   where: GymWhereUniqueInput;
@@ -511,6 +554,12 @@ export type MutationUpdateOnePostArgs = {
 export type MutationUpdateOnePreferredDayAndTimeArgs = {
   data: PreferredDayAndTimeUpdateInput;
   where: PreferredDayAndTimeWhereUniqueInput;
+};
+
+
+export type MutationUpdateOneReplyArgs = {
+  data: ReplyUpdateInput;
+  where: ReplyWhereUniqueInput;
 };
 
 
@@ -532,6 +581,13 @@ export type MutationUpsertOnePreferredDayAndTimeArgs = {
   create: PreferredDayAndTimeCreateInput;
   update: PreferredDayAndTimeUpdateInput;
   where: PreferredDayAndTimeWhereUniqueInput;
+};
+
+
+export type MutationUpsertOneReplyArgs = {
+  create: ReplyCreateInput;
+  update: ReplyUpdateInput;
+  where: ReplyWhereUniqueInput;
 };
 
 export type NestedDateTimeFilter = {
@@ -734,6 +790,7 @@ export type Post = {
   gymId: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
   preferredDayAndTimes: Array<PreferredDayAndTime>;
+  replies: Array<Reply>;
   title: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
 };
@@ -746,6 +803,16 @@ export type PostPreferredDayAndTimesArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PreferredDayAndTimeWhereInput>;
+};
+
+
+export type PostRepliesArgs = {
+  cursor?: InputMaybe<ReplyWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ReplyScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ReplyOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ReplyWhereInput>;
 };
 
 export type PostAvgAggregate = {
@@ -766,6 +833,7 @@ export type PostAvgOrderByAggregateInput = {
 export type PostCount = {
   __typename?: 'PostCount';
   preferredDayAndTimes: Scalars['Int']['output'];
+  replies: Scalars['Int']['output'];
 };
 
 export type PostCountAggregate = {
@@ -808,6 +876,7 @@ export type PostCreateInput = {
   grade: Scalars['String']['input'];
   gym: GymCreateNestedOneWithoutPostsInput;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeCreateNestedManyWithoutPostInput>;
+  replies?: InputMaybe<ReplyCreateNestedManyWithoutPostInput>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -857,6 +926,12 @@ export type PostCreateNestedOneWithoutPreferredDayAndTimesInput = {
   create?: InputMaybe<PostCreateWithoutPreferredDayAndTimesInput>;
 };
 
+export type PostCreateNestedOneWithoutRepliesInput = {
+  connect?: InputMaybe<PostWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<PostCreateOrConnectWithoutRepliesInput>;
+  create?: InputMaybe<PostCreateWithoutRepliesInput>;
+};
+
 export type PostCreateOrConnectWithoutGymInput = {
   create: PostCreateWithoutGymInput;
   where: PostWhereUniqueInput;
@@ -864,6 +939,11 @@ export type PostCreateOrConnectWithoutGymInput = {
 
 export type PostCreateOrConnectWithoutPreferredDayAndTimesInput = {
   create: PostCreateWithoutPreferredDayAndTimesInput;
+  where: PostWhereUniqueInput;
+};
+
+export type PostCreateOrConnectWithoutRepliesInput = {
+  create: PostCreateWithoutRepliesInput;
   where: PostWhereUniqueInput;
 };
 
@@ -876,6 +956,7 @@ export type PostCreateWithoutGymInput = {
   experienceMonths: Scalars['Int']['input'];
   grade: Scalars['String']['input'];
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeCreateNestedManyWithoutPostInput>;
+  replies?: InputMaybe<ReplyCreateNestedManyWithoutPostInput>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -889,6 +970,21 @@ export type PostCreateWithoutPreferredDayAndTimesInput = {
   experienceMonths: Scalars['Int']['input'];
   grade: Scalars['String']['input'];
   gym: GymCreateNestedOneWithoutPostsInput;
+  replies?: InputMaybe<ReplyCreateNestedManyWithoutPostInput>;
+  title: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type PostCreateWithoutRepliesInput = {
+  belayMonths: Scalars['Int']['input'];
+  climbingType: ClimbingType;
+  content: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  experienceMonths: Scalars['Int']['input'];
+  grade: Scalars['String']['input'];
+  gym: GymCreateNestedOneWithoutPostsInput;
+  preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeCreateNestedManyWithoutPostInput>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -1012,6 +1108,7 @@ export type PostOrderByWithRelationInput = {
   gymId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeOrderByRelationAggregateInput>;
+  replies?: InputMaybe<ReplyOrderByRelationAggregateInput>;
   title?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
@@ -1094,6 +1191,7 @@ export type PostUpdateInput = {
   grade?: InputMaybe<StringFieldUpdateOperationsInput>;
   gym?: InputMaybe<GymUpdateOneRequiredWithoutPostsNestedInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeUpdateManyWithoutPostNestedInput>;
+  replies?: InputMaybe<ReplyUpdateManyWithoutPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -1137,6 +1235,14 @@ export type PostUpdateOneRequiredWithoutPreferredDayAndTimesNestedInput = {
   upsert?: InputMaybe<PostUpsertWithoutPreferredDayAndTimesInput>;
 };
 
+export type PostUpdateOneRequiredWithoutRepliesNestedInput = {
+  connect?: InputMaybe<PostWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<PostCreateOrConnectWithoutRepliesInput>;
+  create?: InputMaybe<PostCreateWithoutRepliesInput>;
+  update?: InputMaybe<PostUpdateWithoutRepliesInput>;
+  upsert?: InputMaybe<PostUpsertWithoutRepliesInput>;
+};
+
 export type PostUpdateWithWhereUniqueWithoutGymInput = {
   data: PostUpdateWithoutGymInput;
   where: PostWhereUniqueInput;
@@ -1151,6 +1257,7 @@ export type PostUpdateWithoutGymInput = {
   experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
   grade?: InputMaybe<StringFieldUpdateOperationsInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeUpdateManyWithoutPostNestedInput>;
+  replies?: InputMaybe<ReplyUpdateManyWithoutPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -1164,6 +1271,21 @@ export type PostUpdateWithoutPreferredDayAndTimesInput = {
   experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
   grade?: InputMaybe<StringFieldUpdateOperationsInput>;
   gym?: InputMaybe<GymUpdateOneRequiredWithoutPostsNestedInput>;
+  replies?: InputMaybe<ReplyUpdateManyWithoutPostNestedInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type PostUpdateWithoutRepliesInput = {
+  belayMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
+  climbingType?: InputMaybe<EnumClimbingTypeFieldUpdateOperationsInput>;
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
+  grade?: InputMaybe<StringFieldUpdateOperationsInput>;
+  gym?: InputMaybe<GymUpdateOneRequiredWithoutPostsNestedInput>;
+  preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeUpdateManyWithoutPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -1177,6 +1299,11 @@ export type PostUpsertWithWhereUniqueWithoutGymInput = {
 export type PostUpsertWithoutPreferredDayAndTimesInput = {
   create: PostCreateWithoutPreferredDayAndTimesInput;
   update: PostUpdateWithoutPreferredDayAndTimesInput;
+};
+
+export type PostUpsertWithoutRepliesInput = {
+  create: PostCreateWithoutRepliesInput;
+  update: PostUpdateWithoutRepliesInput;
 };
 
 export type PostWhereInput = {
@@ -1194,6 +1321,7 @@ export type PostWhereInput = {
   gymId?: InputMaybe<IntFilter>;
   id?: InputMaybe<IntFilter>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeListRelationFilter>;
+  replies?: InputMaybe<ReplyListRelationFilter>;
   title?: InputMaybe<StringFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
@@ -1435,24 +1563,31 @@ export type Query = {
   aggregateGym: AggregateGym;
   aggregatePost: AggregatePost;
   aggregatePreferredDayAndTime: AggregatePreferredDayAndTime;
+  aggregateReply: AggregateReply;
   findFirstGym?: Maybe<Gym>;
   findFirstGymOrThrow?: Maybe<Gym>;
   findFirstPost?: Maybe<Post>;
   findFirstPostOrThrow?: Maybe<Post>;
   findFirstPreferredDayAndTime?: Maybe<PreferredDayAndTime>;
   findFirstPreferredDayAndTimeOrThrow?: Maybe<PreferredDayAndTime>;
+  findFirstReply?: Maybe<Reply>;
+  findFirstReplyOrThrow?: Maybe<Reply>;
   getGym?: Maybe<Gym>;
   getPost?: Maybe<Post>;
   getPreferredDayAndTime?: Maybe<PreferredDayAndTime>;
+  getReply?: Maybe<Reply>;
   groupByGym: Array<GymGroupBy>;
   groupByPost: Array<PostGroupBy>;
   groupByPreferredDayAndTime: Array<PreferredDayAndTimeGroupBy>;
+  groupByReply: Array<ReplyGroupBy>;
   gym?: Maybe<Gym>;
   gyms: Array<Gym>;
   post?: Maybe<Post>;
   posts: Array<Post>;
   preferredDayAndTime?: Maybe<PreferredDayAndTime>;
   preferredDayAndTimes: Array<PreferredDayAndTime>;
+  replies: Array<Reply>;
+  reply?: Maybe<Reply>;
 };
 
 
@@ -1480,6 +1615,15 @@ export type QueryAggregatePreferredDayAndTimeArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PreferredDayAndTimeWhereInput>;
+};
+
+
+export type QueryAggregateReplyArgs = {
+  cursor?: InputMaybe<ReplyWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<ReplyOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ReplyWhereInput>;
 };
 
 
@@ -1543,6 +1687,26 @@ export type QueryFindFirstPreferredDayAndTimeOrThrowArgs = {
 };
 
 
+export type QueryFindFirstReplyArgs = {
+  cursor?: InputMaybe<ReplyWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ReplyScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ReplyOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ReplyWhereInput>;
+};
+
+
+export type QueryFindFirstReplyOrThrowArgs = {
+  cursor?: InputMaybe<ReplyWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ReplyScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ReplyOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ReplyWhereInput>;
+};
+
+
 export type QueryGetGymArgs = {
   where: GymWhereUniqueInput;
 };
@@ -1555,6 +1719,11 @@ export type QueryGetPostArgs = {
 
 export type QueryGetPreferredDayAndTimeArgs = {
   where: PreferredDayAndTimeWhereUniqueInput;
+};
+
+
+export type QueryGetReplyArgs = {
+  where: ReplyWhereUniqueInput;
 };
 
 
@@ -1585,6 +1754,16 @@ export type QueryGroupByPreferredDayAndTimeArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PreferredDayAndTimeWhereInput>;
+};
+
+
+export type QueryGroupByReplyArgs = {
+  by: Array<ReplyScalarFieldEnum>;
+  having?: InputMaybe<ReplyScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<ReplyOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ReplyWhereInput>;
 };
 
 
@@ -1632,10 +1811,337 @@ export type QueryPreferredDayAndTimesArgs = {
   where?: InputMaybe<PreferredDayAndTimeWhereInput>;
 };
 
+
+export type QueryRepliesArgs = {
+  cursor?: InputMaybe<ReplyWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ReplyScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ReplyOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ReplyWhereInput>;
+};
+
+
+export type QueryReplyArgs = {
+  where: ReplyWhereUniqueInput;
+};
+
 export enum QueryMode {
   Default = 'default',
   Insensitive = 'insensitive'
 }
+
+export type Reply = {
+  __typename?: 'Reply';
+  content: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['Int']['output'];
+  post: Post;
+  postId: Scalars['Int']['output'];
+  title: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+  userName: Scalars['String']['output'];
+};
+
+export type ReplyAvgAggregate = {
+  __typename?: 'ReplyAvgAggregate';
+  id?: Maybe<Scalars['Float']['output']>;
+  postId?: Maybe<Scalars['Float']['output']>;
+};
+
+export type ReplyAvgOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+};
+
+export type ReplyCountAggregate = {
+  __typename?: 'ReplyCountAggregate';
+  _all: Scalars['Int']['output'];
+  content: Scalars['Int']['output'];
+  createdAt: Scalars['Int']['output'];
+  id: Scalars['Int']['output'];
+  postId: Scalars['Int']['output'];
+  title: Scalars['Int']['output'];
+  updatedAt: Scalars['Int']['output'];
+  userName: Scalars['Int']['output'];
+};
+
+export type ReplyCountOrderByAggregateInput = {
+  content?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  userName?: InputMaybe<SortOrder>;
+};
+
+export type ReplyCreateInput = {
+  content: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  post: PostCreateNestedOneWithoutRepliesInput;
+  title: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  userName: Scalars['String']['input'];
+};
+
+export type ReplyCreateManyInput = {
+  content: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  postId: Scalars['Int']['input'];
+  title: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  userName: Scalars['String']['input'];
+};
+
+export type ReplyCreateManyPostInput = {
+  content: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  title: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  userName: Scalars['String']['input'];
+};
+
+export type ReplyCreateManyPostInputEnvelope = {
+  data: Array<ReplyCreateManyPostInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ReplyCreateNestedManyWithoutPostInput = {
+  connect?: InputMaybe<Array<ReplyWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ReplyCreateOrConnectWithoutPostInput>>;
+  create?: InputMaybe<Array<ReplyCreateWithoutPostInput>>;
+  createMany?: InputMaybe<ReplyCreateManyPostInputEnvelope>;
+};
+
+export type ReplyCreateOrConnectWithoutPostInput = {
+  create: ReplyCreateWithoutPostInput;
+  where: ReplyWhereUniqueInput;
+};
+
+export type ReplyCreateWithoutPostInput = {
+  content: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  title: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  userName: Scalars['String']['input'];
+};
+
+export type ReplyGroupBy = {
+  __typename?: 'ReplyGroupBy';
+  _avg?: Maybe<ReplyAvgAggregate>;
+  _count?: Maybe<ReplyCountAggregate>;
+  _max?: Maybe<ReplyMaxAggregate>;
+  _min?: Maybe<ReplyMinAggregate>;
+  _sum?: Maybe<ReplySumAggregate>;
+  content: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['Int']['output'];
+  postId: Scalars['Int']['output'];
+  title: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
+  userName: Scalars['String']['output'];
+};
+
+export type ReplyListRelationFilter = {
+  every?: InputMaybe<ReplyWhereInput>;
+  none?: InputMaybe<ReplyWhereInput>;
+  some?: InputMaybe<ReplyWhereInput>;
+};
+
+export type ReplyMaxAggregate = {
+  __typename?: 'ReplyMaxAggregate';
+  content?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  postId?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type ReplyMaxOrderByAggregateInput = {
+  content?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  userName?: InputMaybe<SortOrder>;
+};
+
+export type ReplyMinAggregate = {
+  __typename?: 'ReplyMinAggregate';
+  content?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  postId?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type ReplyMinOrderByAggregateInput = {
+  content?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  userName?: InputMaybe<SortOrder>;
+};
+
+export type ReplyOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type ReplyOrderByWithAggregationInput = {
+  _avg?: InputMaybe<ReplyAvgOrderByAggregateInput>;
+  _count?: InputMaybe<ReplyCountOrderByAggregateInput>;
+  _max?: InputMaybe<ReplyMaxOrderByAggregateInput>;
+  _min?: InputMaybe<ReplyMinOrderByAggregateInput>;
+  _sum?: InputMaybe<ReplySumOrderByAggregateInput>;
+  content?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  userName?: InputMaybe<SortOrder>;
+};
+
+export type ReplyOrderByWithRelationInput = {
+  content?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  post?: InputMaybe<PostOrderByWithRelationInput>;
+  postId?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  userName?: InputMaybe<SortOrder>;
+};
+
+export enum ReplyScalarFieldEnum {
+  Content = 'content',
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  PostId = 'postId',
+  Title = 'title',
+  UpdatedAt = 'updatedAt',
+  UserName = 'userName'
+}
+
+export type ReplyScalarWhereInput = {
+  AND?: InputMaybe<Array<ReplyScalarWhereInput>>;
+  NOT?: InputMaybe<Array<ReplyScalarWhereInput>>;
+  OR?: InputMaybe<Array<ReplyScalarWhereInput>>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  postId?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  userName?: InputMaybe<StringFilter>;
+};
+
+export type ReplyScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<ReplyScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<ReplyScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<ReplyScalarWhereWithAggregatesInput>>;
+  content?: InputMaybe<StringWithAggregatesFilter>;
+  createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  id?: InputMaybe<IntWithAggregatesFilter>;
+  postId?: InputMaybe<IntWithAggregatesFilter>;
+  title?: InputMaybe<StringWithAggregatesFilter>;
+  updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  userName?: InputMaybe<StringWithAggregatesFilter>;
+};
+
+export type ReplySumAggregate = {
+  __typename?: 'ReplySumAggregate';
+  id?: Maybe<Scalars['Int']['output']>;
+  postId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type ReplySumOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+};
+
+export type ReplyUpdateInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  post?: InputMaybe<PostUpdateOneRequiredWithoutRepliesNestedInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  userName?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type ReplyUpdateManyMutationInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  userName?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type ReplyUpdateManyWithWhereWithoutPostInput = {
+  data: ReplyUpdateManyMutationInput;
+  where: ReplyScalarWhereInput;
+};
+
+export type ReplyUpdateManyWithoutPostNestedInput = {
+  connect?: InputMaybe<Array<ReplyWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<ReplyCreateOrConnectWithoutPostInput>>;
+  create?: InputMaybe<Array<ReplyCreateWithoutPostInput>>;
+  createMany?: InputMaybe<ReplyCreateManyPostInputEnvelope>;
+  delete?: InputMaybe<Array<ReplyWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<ReplyScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<ReplyWhereUniqueInput>>;
+  set?: InputMaybe<Array<ReplyWhereUniqueInput>>;
+  update?: InputMaybe<Array<ReplyUpdateWithWhereUniqueWithoutPostInput>>;
+  updateMany?: InputMaybe<Array<ReplyUpdateManyWithWhereWithoutPostInput>>;
+  upsert?: InputMaybe<Array<ReplyUpsertWithWhereUniqueWithoutPostInput>>;
+};
+
+export type ReplyUpdateWithWhereUniqueWithoutPostInput = {
+  data: ReplyUpdateWithoutPostInput;
+  where: ReplyWhereUniqueInput;
+};
+
+export type ReplyUpdateWithoutPostInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  userName?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type ReplyUpsertWithWhereUniqueWithoutPostInput = {
+  create: ReplyCreateWithoutPostInput;
+  update: ReplyUpdateWithoutPostInput;
+  where: ReplyWhereUniqueInput;
+};
+
+export type ReplyWhereInput = {
+  AND?: InputMaybe<Array<ReplyWhereInput>>;
+  NOT?: InputMaybe<Array<ReplyWhereInput>>;
+  OR?: InputMaybe<Array<ReplyWhereInput>>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  post?: InputMaybe<PostRelationFilter>;
+  postId?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  userName?: InputMaybe<StringFilter>;
+};
+
+export type ReplyWhereUniqueInput = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+};
 
 export enum SortOrder {
   Asc = 'asc',
@@ -1731,7 +2237,7 @@ export type FindFirstPostQueryVariables = Exact<{
 }>;
 
 
-export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }> } | null };
+export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, replies: Array<{ __typename?: 'Reply', id: number, userName: string, createdAt: any, content: string }> } | null };
 
 export type PostsQueryVariables = Exact<{
   orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
@@ -1837,6 +2343,12 @@ export const FindFirstPostDocument = gql`
       dayAndTime
     }
     climbingType
+    replies {
+      id
+      userName
+      createdAt
+      content
+    }
   }
 }
     `;

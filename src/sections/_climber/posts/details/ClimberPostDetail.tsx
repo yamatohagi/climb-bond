@@ -1,39 +1,43 @@
-import PropTypes from 'prop-types';
-import { Fragment, useState } from 'react';
+import { FindFirstPostQueryResult } from 'src/generated/graphql';
+
+import { Fragment } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import NextLink from 'next/link';
 // @mui
-import {
-  Card,
-  Link,
-  Stack,
-  Divider,
-  Checkbox,
-  Typography,
-  Box,
-  Unstable_Grid2 as Grid,
-} from '@mui/material';
+import { Card, Link, Stack, Divider, Typography, Box, Unstable_Grid2 as Grid } from '@mui/material';
 // routes
 import { paths } from 'src/routes/paths';
 // utils
-import { fDate } from 'src/utils/formatTime';
-import { fCurrency } from 'src/utils/formatNumber';
 // components
 import Image from 'src/components/image';
-import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
-import { Gym, PreferredDayAndTime, Post as PrismaPost } from '@prisma/client';
-import { PostsQuery } from 'src/generated/graphql';
+import { dayOfWeek } from '../item/ClimberPostItem';
+import { CreateReply, PostReplies } from './reply';
 
-// ----------------------------------------------------------------------
-interface Post extends PrismaPost {
-  gym: Gym;
-  preferredDayAndTimes: PreferredDayAndTime[];
-}
+type PostReply = {
+  id: string;
+  username: string;
+  replyText: string;
+};
 
-export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][number] }) {
+const mockReplies: PostReply[] = [
+  {
+    id: '1',
+    username: 'User1',
+    replyText: 'これはテスト返信です',
+  },
+  {
+    id: '2',
+    username: 'User2',
+    replyText: 'これもテスト返信です',
+  },
+  // 他の返信をここに追加できます
+];
+
+export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryResult['data'] }) {
+  const post = data?.findFirstPost!;
   const {
     id,
     createdAt,
@@ -46,14 +50,7 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
     belayMonths,
     grade,
   } = post;
-
-  const [favorite, setFavorite] = useState(false);
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
-
-  const handleChangeFavorite = (event: any) => {
-    setFavorite(event.target.checked);
-  };
-
   return (
     <Card
       sx={{
@@ -194,28 +191,8 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
           </Box>
         </Stack>
       </Link>
+      <PostReplies replies={mockReplies} />
+      <CreateReply />
     </Card>
   );
 }
-
-ClimberPostItem.propTypes = {
-  post: PropTypes.shape({
-    companyLogo: PropTypes.string,
-    companyName: PropTypes.string,
-    createdAt: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.instanceOf(Date),
-    ]),
-    experience: PropTypes.number,
-    favorited: PropTypes.bool,
-    isUrgent: PropTypes.bool,
-    level: PropTypes.string,
-    location: PropTypes.string,
-    salary: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    slug: PropTypes.string,
-    type: PropTypes.string,
-  }),
-};
-
-export const dayOfWeek = ['月曜', '火曜', '水曜', '木曜', '金曜', '土曜', '日曜'];

@@ -1726,6 +1726,13 @@ export type GymsQueryVariables = Exact<{
 
 export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string }> };
 
+export type FindFirstPostQueryVariables = Exact<{
+  where?: InputMaybe<PostWhereInput>;
+}>;
+
+
+export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }> } | null };
+
 export type PostsQueryVariables = Exact<{
   orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
 }>;
@@ -1812,6 +1819,55 @@ export function useGymsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymsQ
 export type GymsQueryHookResult = ReturnType<typeof useGymsQuery>;
 export type GymsLazyQueryHookResult = ReturnType<typeof useGymsLazyQuery>;
 export type GymsQueryResult = Apollo.QueryResult<GymsQuery, GymsQueryVariables>;
+export const FindFirstPostDocument = gql`
+    query FindFirstPost($where: PostWhereInput) {
+  findFirstPost(where: $where) {
+    id
+    title
+    content
+    gym {
+      name
+    }
+    grade
+    experienceMonths
+    belayMonths
+    createdAt
+    preferredDayAndTimes {
+      id
+      dayAndTime
+    }
+    climbingType
+  }
+}
+    `;
+
+/**
+ * __useFindFirstPostQuery__
+ *
+ * To run a query within a React component, call `useFindFirstPostQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindFirstPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindFirstPostQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useFindFirstPostQuery(baseOptions?: Apollo.QueryHookOptions<FindFirstPostQuery, FindFirstPostQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FindFirstPostQuery, FindFirstPostQueryVariables>(FindFirstPostDocument, options);
+      }
+export function useFindFirstPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindFirstPostQuery, FindFirstPostQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FindFirstPostQuery, FindFirstPostQueryVariables>(FindFirstPostDocument, options);
+        }
+export type FindFirstPostQueryHookResult = ReturnType<typeof useFindFirstPostQuery>;
+export type FindFirstPostLazyQueryHookResult = ReturnType<typeof useFindFirstPostLazyQuery>;
+export type FindFirstPostQueryResult = Apollo.QueryResult<FindFirstPostQuery, FindFirstPostQueryVariables>;
 export const PostsDocument = gql`
     query Posts($orderBy: [PostOrderByWithRelationInput!]) {
   posts(orderBy: $orderBy) {

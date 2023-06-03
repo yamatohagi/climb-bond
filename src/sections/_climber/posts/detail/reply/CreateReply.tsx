@@ -1,29 +1,25 @@
-import { useState } from 'react';
-import { Button, TextField, Box } from '@mui/material';
+import { Box, Card, Grid } from '@mui/material';
 import { useCreateOneReplyMutation } from 'src/generated/graphql';
-import { ObservableQuery } from '@apollo/client';
+import FormProvider from 'src/components/hook-form/FormProvider';
+import { RHFTextArea, RHFTextField } from 'src/components/hook-form';
+import { LoadingButton } from '@mui/lab';
+import useFormAndValidation, { ReplyInput } from './hooks/useReplyForm';
+import { CreateReplyProps } from './types';
 
-export default function CreateReply({
-  postId,
-  refetch,
-}: {
-  postId: number;
-  refetch: ObservableQuery['refetch'];
-}) {
-  const [replyText, setReplyText] = useState('');
+export default function CreateReply({ postId, refetch }: CreateReplyProps) {
   const [createOneReplyMutation] = useCreateOneReplyMutation();
+  const methods = useFormAndValidation();
+  const {
+    reset,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = methods;
 
-  const handleInputChange = (event: any) => {
-    setReplyText(event.target.value);
-  };
-
-  const handleReplySubmit = async () => {
-    const { data, errors } = await createOneReplyMutation({
+  const handleReplySubmit = async (fv: ReplyInput) => {
+    const { errors } = await createOneReplyMutation({
       variables: {
         data: {
-          title: '',
-          userName: '',
-          content: replyText,
+          ...fv,
           post: {
             connect: { id: postId },
           },
@@ -31,30 +27,35 @@ export default function CreateReply({
       },
     });
     if (errors) return;
-    setReplyText('');
+    reset();
     refetch();
   };
 
   return (
-    <Box sx={{ mt: 2 }}>
-      <TextField
-        value={replyText}
-        onChange={handleInputChange}
-        multiline
-        rows={4}
-        fullWidth
-        variant="outlined"
-        placeholder="ここに返信を入力してください..."
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleReplySubmit}
-        sx={{ mt: 2 }}
-        disabled={!replyText.trim()}
-      >
-        返信を送信
-      </Button>
+    <Box sx={{ mt: 2, mb: 3 }}>
+      <Card sx={{ padding: 2 }}>
+        <FormProvider methods={methods} onSubmit={handleSubmit(handleReplySubmit)}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
+              <RHFTextField size="small" name="userName" label="なまえ" />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <RHFTextArea size="small" name="content" label="内容" />
+            </Grid>
+          </Grid>
+
+          <LoadingButton
+            loading={isSubmitting}
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ mt: 3 }}
+            disabled={Object.keys(errors).length > 0}
+          >
+            送信
+          </LoadingButton>
+        </FormProvider>
+      </Card>
     </Box>
   );
 }

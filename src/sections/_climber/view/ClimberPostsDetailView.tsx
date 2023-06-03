@@ -8,7 +8,6 @@ export default function CreateReply() {
       <Container>
         <ClimberPostDetail />
       </Container>
-
       <NewsletterClimber />
     </>
   );

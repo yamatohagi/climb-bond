@@ -1,8 +1,9 @@
 import { SortOrder, useFindFirstPostQuery, useRepliesQuery } from 'src/generated/graphql';
-import { CreateReply, PostReplies } from './reply';
+import { CreateReply } from './reply';
 import { useRouter } from 'next/router';
 import { ClimberPostItemSkeleton } from '../item';
 import DetailCard from './component/DetailCard';
+import ReplyCards from './reply/ReplyCards';
 
 export default function ClimberPostDetail({}: {}) {
   const router = useRouter();
@@ -33,7 +34,7 @@ export default function ClimberPostDetail({}: {}) {
     <>
       {!loading && data ? <DetailCard post={data?.findFirstPost} /> : <ClimberPostItemSkeleton />}
 
-      {repliesData ? <PostReplies replies={repliesData?.replies} /> : <></>}
+      {repliesData ? <ReplyCards replies={repliesData?.replies} /> : <></>}
 
       <CreateReply postId={postId} refetch={repliesRefetch} />
     </>

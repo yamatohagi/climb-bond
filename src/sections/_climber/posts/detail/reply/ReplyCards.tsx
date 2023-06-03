@@ -1,7 +1,7 @@
 import { Card, Typography, Divider } from '@mui/material';
 import { RepliesQuery, RepliesQueryResult } from 'src/generated/graphql';
 
-export default function PostReplies({ replies }: { replies: RepliesQuery['replies'] }) {
+export default function ReplyCards({ replies }: { replies: RepliesQuery['replies'] }) {
   return (
     <div>
       {replies.map((reply) => (

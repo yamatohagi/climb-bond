@@ -2651,6 +2651,13 @@ export type CreateOnePostLikeMutationVariables = Exact<{
 
 export type CreateOnePostLikeMutation = { __typename?: 'Mutation', createOnePostLike: { __typename?: 'PostLike', userId: string, postId: number } };
 
+export type DeleteManyPostLikeMutationVariables = Exact<{
+  where?: InputMaybe<PostLikeWhereInput>;
+}>;
+
+
+export type DeleteManyPostLikeMutation = { __typename?: 'Mutation', deleteManyPostLike: { __typename?: 'AffectedRowsOutput', count: number } };
+
 export type CreateOnePostMutationVariables = Exact<{
   data: PostCreateInput;
 }>;
@@ -2692,7 +2699,7 @@ export type PostsQueryVariables = Exact<{
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, _count?: { __typename?: 'PostCount', like: number, replies: number } | null }> };
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, like: Array<{ __typename?: 'PostLike', id: number, postId: number, userId: string }>, _count?: { __typename?: 'PostCount', replies: number } | null }> };
 
 
 export const CreateOnePostLikeDocument = gql`
@@ -2729,6 +2736,39 @@ export function useCreateOnePostLikeMutation(baseOptions?: Apollo.MutationHookOp
 export type CreateOnePostLikeMutationHookResult = ReturnType<typeof useCreateOnePostLikeMutation>;
 export type CreateOnePostLikeMutationResult = Apollo.MutationResult<CreateOnePostLikeMutation>;
 export type CreateOnePostLikeMutationOptions = Apollo.BaseMutationOptions<CreateOnePostLikeMutation, CreateOnePostLikeMutationVariables>;
+export const DeleteManyPostLikeDocument = gql`
+    mutation DeleteManyPostLike($where: PostLikeWhereInput) {
+  deleteManyPostLike(where: $where) {
+    count
+  }
+}
+    `;
+export type DeleteManyPostLikeMutationFn = Apollo.MutationFunction<DeleteManyPostLikeMutation, DeleteManyPostLikeMutationVariables>;
+
+/**
+ * __useDeleteManyPostLikeMutation__
+ *
+ * To run a mutation, you first call `useDeleteManyPostLikeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteManyPostLikeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteManyPostLikeMutation, { data, loading, error }] = useDeleteManyPostLikeMutation({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useDeleteManyPostLikeMutation(baseOptions?: Apollo.MutationHookOptions<DeleteManyPostLikeMutation, DeleteManyPostLikeMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteManyPostLikeMutation, DeleteManyPostLikeMutationVariables>(DeleteManyPostLikeDocument, options);
+      }
+export type DeleteManyPostLikeMutationHookResult = ReturnType<typeof useDeleteManyPostLikeMutation>;
+export type DeleteManyPostLikeMutationResult = Apollo.MutationResult<DeleteManyPostLikeMutation>;
+export type DeleteManyPostLikeMutationOptions = Apollo.BaseMutationOptions<DeleteManyPostLikeMutation, DeleteManyPostLikeMutationVariables>;
 export const CreateOnePostDocument = gql`
     mutation CreateOnePost($data: PostCreateInput!) {
   createOnePost(data: $data) {
@@ -2950,8 +2990,12 @@ export const PostsDocument = gql`
       dayAndTime
     }
     climbingType
+    like {
+      id
+      postId
+      userId
+    }
     _count {
-      like
       replies
     }
   }

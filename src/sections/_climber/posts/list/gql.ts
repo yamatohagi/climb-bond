@@ -18,8 +18,12 @@ gql`
         dayAndTime
       }
       climbingType
+      like {
+        id
+        postId
+        userId
+      }
       _count {
-        like
         replies
       }
     }

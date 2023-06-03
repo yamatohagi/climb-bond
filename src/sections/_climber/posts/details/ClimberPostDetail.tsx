@@ -1,4 +1,4 @@
-import { FindFirstPostQueryResult } from 'src/generated/graphql';
+import { FindFirstPostQueryResult, RepliesQueryResult } from 'src/generated/graphql';
 
 import { Fragment } from 'react';
 import { formatDistanceToNow } from 'date-fns';
@@ -15,8 +15,17 @@ import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
 import { dayOfWeek } from '../item/ClimberPostItem';
 import { CreateReply, PostReplies } from './reply';
+import { ObservableQuery } from '@apollo/client';
 
-export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryResult['data'] }) {
+export default function ClimberPostDetail({
+  data,
+  repliesData,
+  repliesRefetch,
+}: {
+  data: FindFirstPostQueryResult['data'];
+  repliesData: RepliesQueryResult['data'];
+  repliesRefetch: ObservableQuery['refetch'];
+}) {
   const post = data?.findFirstPost!;
   const {
     id,
@@ -29,8 +38,8 @@ export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryRe
     experienceMonths,
     belayMonths,
     grade,
-    replies,
   } = post;
+
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
   return (
     <Card
@@ -40,140 +49,134 @@ export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryRe
         },
       }}
     >
-      <Link
-        component={NextLink}
-        href={`${paths.climber.posts}/${id}`}
-        color="inherit"
-        underline="none"
-      >
-        <Stack sx={{ p: 3, pb: 0 }}>
-          <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2.5}>
-            <TextMaxLine variant="h6" line={1}>
-              {title}
-            </TextMaxLine>
-            <Image
-              alt={gym.name}
-              src={'companyLogo'}
-              sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }}
-            />
-          </Stack>
+      <Stack sx={{ p: 3, pb: 0 }}>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2.5}>
+          <TextMaxLine variant="h6" line={1}>
+            {title}
+          </TextMaxLine>
+          <Image
+            alt={gym.name}
+            src={'companyLogo'}
+            sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }}
+          />
+        </Stack>
 
-          <Stack spacing={0.5} sx={{ mt: 3, mb: 2 }}>
-            <Stack
-              direction="row"
-              alignItems="center"
-              sx={{ typography: 'body2', color: 'text.secondary' }}
-            >
-              <Iconify icon="carbon:location" width={18} sx={{ mr: 0.5 }} />
-              {gym.name}
-            </Stack>
-          </Stack>
-
-          <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-            <Iconify
-              icon="ion:time"
-              sx={{ pt: 0.1, mb: 0.4, height: '1.4em', verticalAlign: 'middle' }}
-            />{' '}
-            {timeAgo}
-          </Typography>
-
-          <Stack spacing={0.5} sx={{ mt: 2 }}>
-            <Typography variant="body1" sx={{ color: 'text.disabled' }}>
-              {content}
-            </Typography>
+        <Stack spacing={0.5} sx={{ mt: 3, mb: 2 }}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            sx={{ typography: 'body2', color: 'text.secondary' }}
+          >
+            <Iconify icon="carbon:location" width={18} sx={{ mr: 0.5 }} />
+            {gym.name}
           </Stack>
         </Stack>
 
-        <Divider sx={{ borderStyle: 'dashed', my: 2 }} />
+        <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+          <Iconify
+            icon="ion:time"
+            sx={{ pt: 0.1, mb: 0.4, height: '1.4em', verticalAlign: 'middle' }}
+          />{' '}
+          {timeAgo}
+        </Typography>
 
-        <Grid
-          container
-          spacing={1.5}
-          sx={{
-            p: 3,
-            pt: 0,
-            pb: 0,
-            typography: 'body2',
-            color: 'text.secondary',
-            textTransform: 'capitalize',
-          }}
-        >
-          <Grid xs={7}>
-            <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="fluent:mountain-trail-20-filled" sx={{ mr: 1 }} />
+        <Stack spacing={0.5} sx={{ mt: 2 }}>
+          <Typography variant="body1" sx={{ color: 'text.disabled' }}>
+            {content}
+          </Typography>
+        </Stack>
+      </Stack>
 
-              {` ${experienceMonths}年（ﾋﾞﾚｲ歴 ${belayMonths}ヵ月）`}
-            </Stack>
-          </Grid>
+      <Divider sx={{ borderStyle: 'dashed', my: 2 }} />
 
-          <Grid xs={5}>
-            <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="carbon:upgrade" sx={{ mr: 1 }} />
-              {grade}
-            </Stack>
-          </Grid>
+      <Grid
+        container
+        spacing={1.5}
+        sx={{
+          p: 3,
+          pt: 0,
+          pb: 0,
+          typography: 'body2',
+          color: 'text.secondary',
+          textTransform: 'capitalize',
+        }}
+      >
+        <Grid xs={7}>
+          <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
+            <Iconify icon="fluent:mountain-trail-20-filled" sx={{ mr: 1 }} />
 
-          <Grid xs={7}>
-            <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
-              {preferredDayAndTimes.map((v) => {
-                return (
-                  <Fragment key={v.id}>
-                    {v.dayAndTime[1] === '1' ? ( //'01'なら日曜・昼
-                      <>
-                        <Box sx={{ mr: 1 }}>
-                          {dayOfWeek[Number(v.dayAndTime[0])]}
-                          <Iconify
-                            icon="ph:sun-bold"
-                            sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
-                          />
-                        </Box>
-                      </>
-                    ) : (
-                      //'12'なら月曜・夜
-                      <>
-                        <Box sx={{ mr: 1 }}>
-                          {dayOfWeek[Number(v.dayAndTime[0])]}
-                          <Iconify
-                            icon="icon-park-solid:moon"
-                            sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
-                          />
-                        </Box>
-                      </>
-                    )}
-                  </Fragment>
-                );
-              })}
-            </Stack>
-          </Grid>
-
-          <Grid xs={5}>
-            <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="guidance:climbing-wall" sx={{ mr: 1 }} />
-              {climbingType}
-            </Stack>
-          </Grid>
+            {` ${experienceMonths}年（ﾋﾞﾚｲ歴 ${belayMonths}ヵ月）`}
+          </Stack>
         </Grid>
 
-        <Stack
-          spacing={0.5}
-          sx={{ px: 3, pb: 2, pt: 2.3, mx: 4, color: 'text.secondary' }}
-          direction="row"
-          justifyContent="space-between"
-        >
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />1
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />1
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="mdi:heart-outline" width={17} sx={{ mr: 1 }} />1
-          </Box>
-        </Stack>
-      </Link>
-      <PostReplies replies={replies} />
-      <CreateReply postId={id} />
+        <Grid xs={5}>
+          <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
+            <Iconify icon="carbon:upgrade" sx={{ mr: 1 }} />
+            {grade}
+          </Stack>
+        </Grid>
+
+        <Grid xs={7}>
+          <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
+            <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
+            {preferredDayAndTimes.map((v) => {
+              return (
+                <Fragment key={v.id}>
+                  {v.dayAndTime[1] === '1' ? ( //'01'なら日曜・昼
+                    <>
+                      <Box sx={{ mr: 1 }}>
+                        {dayOfWeek[Number(v.dayAndTime[0])]}
+                        <Iconify
+                          icon="ph:sun-bold"
+                          sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
+                        />
+                      </Box>
+                    </>
+                  ) : (
+                    //'12'なら月曜・夜
+                    <>
+                      <Box sx={{ mr: 1 }}>
+                        {dayOfWeek[Number(v.dayAndTime[0])]}
+                        <Iconify
+                          icon="icon-park-solid:moon"
+                          sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
+                        />
+                      </Box>
+                    </>
+                  )}
+                </Fragment>
+              );
+            })}
+          </Stack>
+        </Grid>
+
+        <Grid xs={5}>
+          <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
+            <Iconify icon="guidance:climbing-wall" sx={{ mr: 1 }} />
+            {climbingType}
+          </Stack>
+        </Grid>
+      </Grid>
+
+      <Stack
+        spacing={0.5}
+        sx={{ px: 3, pb: 2, pt: 2.3, mx: 4, color: 'text.secondary' }}
+        direction="row"
+        justifyContent="space-between"
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />1
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />1
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Iconify icon="mdi:heart-outline" width={17} sx={{ mr: 1 }} />1
+        </Box>
+      </Stack>
+      {repliesData ? <PostReplies replies={repliesData?.replies} /> : <></>}
+
+      <CreateReply postId={id} refetch={repliesRefetch} />
     </Card>
   );
 }

@@ -2244,7 +2244,15 @@ export type FindFirstPostQueryVariables = Exact<{
 }>;
 
 
-export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, replies: Array<{ __typename?: 'Reply', id: number, userName: string, createdAt: any, content: string }> } | null };
+export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }> } | null };
+
+export type RepliesQueryVariables = Exact<{
+  where?: InputMaybe<ReplyWhereInput>;
+  orderBy?: InputMaybe<Array<ReplyOrderByWithRelationInput> | ReplyOrderByWithRelationInput>;
+}>;
+
+
+export type RepliesQuery = { __typename?: 'Query', replies: Array<{ __typename?: 'Reply', id: number, userName: string, title: string, content: string, createdAt: any }> };
 
 export type PostsQueryVariables = Exact<{
   orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
@@ -2386,12 +2394,6 @@ export const FindFirstPostDocument = gql`
       dayAndTime
     }
     climbingType
-    replies {
-      id
-      userName
-      createdAt
-      content
-    }
   }
 }
     `;
@@ -2423,6 +2425,46 @@ export function useFindFirstPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type FindFirstPostQueryHookResult = ReturnType<typeof useFindFirstPostQuery>;
 export type FindFirstPostLazyQueryHookResult = ReturnType<typeof useFindFirstPostLazyQuery>;
 export type FindFirstPostQueryResult = Apollo.QueryResult<FindFirstPostQuery, FindFirstPostQueryVariables>;
+export const RepliesDocument = gql`
+    query Replies($where: ReplyWhereInput, $orderBy: [ReplyOrderByWithRelationInput!]) {
+  replies(where: $where, orderBy: $orderBy) {
+    id
+    userName
+    title
+    content
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useRepliesQuery__
+ *
+ * To run a query within a React component, call `useRepliesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRepliesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRepliesQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
+ *   },
+ * });
+ */
+export function useRepliesQuery(baseOptions?: Apollo.QueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, options);
+      }
+export function useRepliesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RepliesQuery, RepliesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RepliesQuery, RepliesQueryVariables>(RepliesDocument, options);
+        }
+export type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
+export type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
+export type RepliesQueryResult = Apollo.QueryResult<RepliesQuery, RepliesQueryVariables>;
 export const PostsDocument = gql`
     query Posts($orderBy: [PostOrderByWithRelationInput!]) {
   posts(orderBy: $orderBy) {

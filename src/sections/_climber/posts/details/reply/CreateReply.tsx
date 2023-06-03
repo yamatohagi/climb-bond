@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import { Button, TextField, Box } from '@mui/material';
 import { useCreateOneReplyMutation } from 'src/generated/graphql';
+import { ObservableQuery } from '@apollo/client';
 
-export default function PostReply({ postId }: { postId: number }) {
+export default function CreateReply({
+  postId,
+  refetch,
+}: {
+  postId: number;
+  refetch: ObservableQuery['refetch'];
+}) {
   const [replyText, setReplyText] = useState('');
   const [createOneReplyMutation] = useCreateOneReplyMutation();
 
@@ -24,7 +31,8 @@ export default function PostReply({ postId }: { postId: number }) {
       },
     });
     if (errors) return;
-    setReplyText(''); // テキストフィールドをリセットします。
+    setReplyText('');
+    refetch();
   };
 
   return (

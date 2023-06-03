@@ -98,9 +98,23 @@ async function main() {
     ],
   });
 
+  const postLike = await prisma.postLike.createMany({
+    data: [
+      {
+        userId: 'ba4485fb-d976-3df1-414d-7ad587f8ed61',
+        postId: 1,
+      },
+      {
+        userId: '967de4f7-a857-c5ff-0b2d-8abf95eab7c3',
+        postId: 1,
+      },
+    ],
+  });
+
   console.log('Created gyms:', gyms);
   console.log('Created posts:', posts);
   console.log('Created preferredDayAndTimes:', preferredDayAndTimes);
+  console.log('Created postLike:', postLike);
 }
 
 main()

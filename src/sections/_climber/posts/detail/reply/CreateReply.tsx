@@ -3,12 +3,12 @@ import { useCreateOneReplyMutation } from 'src/generated/graphql';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { RHFTextArea, RHFTextField } from 'src/components/hook-form';
 import { LoadingButton } from '@mui/lab';
-import useFormAndValidation, { ReplyInput } from './hooks/useReplyForm';
-import { CreateReplyProps } from './types';
+import useReplyForm, { ReplyInput } from './hooks/useReplyForm';
+import { CreateReplyProps } from './ service/types';
 
 export default function CreateReply({ postId, refetch }: CreateReplyProps) {
   const [createOneReplyMutation] = useCreateOneReplyMutation();
-  const methods = useFormAndValidation();
+  const methods = useReplyForm();
   const {
     reset,
     handleSubmit,

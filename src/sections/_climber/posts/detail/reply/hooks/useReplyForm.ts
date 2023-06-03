@@ -11,7 +11,7 @@ const replySchema = z.object({
 
 export type ReplyInput = z.infer<typeof replySchema>;
 
-export default function useFormAndValidation() {
+export default function useReplyForm() {
   const replyMethods = useForm({
     resolver: zodResolver(replySchema),
     defaultValues: createDefaultValues(replySchema),

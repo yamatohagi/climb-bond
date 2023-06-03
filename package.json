@@ -60,6 +60,7 @@
     "stylis": "^4.1.1",
     "stylis-plugin-rtl": "^2.0.2",
     "tslib": "^2.5.2",
+    "uuid": "^9.0.0",
     "yet-another-react-lightbox": "^3.2.0",
     "yup": "^1.0.2"
   },
@@ -68,10 +69,13 @@
     "@babel/core": "^7.21.3",
     "@babel/eslint-parser": "^7.21.3",
     "@graphql-codegen/cli": "4.0.0",
+    "@graphql-codegen/client-preset": "4.0.0",
+    "@graphql-codegen/introspection": "4.0.0",
     "@graphql-codegen/typescript": "^4.0.0",
     "@graphql-codegen/typescript-operations": "^4.0.0",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@types/node": "^20.2.4",
+    "@types/uuid": "^9.0.1",
     "eslint": "^8.37.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
@@ -88,8 +92,6 @@
     "ts-migrate": "^0.1.35",
     "ts-node": "^10.9.1",
     "typegraphql-prisma": "^0.25.1",
-    "typescript": "^5.0.4",
-    "@graphql-codegen/introspection": "4.0.0",
-    "@graphql-codegen/client-preset": "4.0.0"
+    "typescript": "^5.0.4"
   }
 }

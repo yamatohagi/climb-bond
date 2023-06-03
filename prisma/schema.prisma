@@ -25,6 +25,14 @@ model Post {
   belayMonths          Int
   grade                String
   replies              Reply[]
+  like                 PostLike[]
+}
+
+model PostLike {
+  id     Int    @id @default(autoincrement())
+  userId String
+  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
 }
 
 model Gym {

@@ -45,6 +45,7 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
     experienceMonths,
     belayMonths,
     grade,
+    _count,
   } = post;
 
   const [favorite, setFavorite] = useState(false);
@@ -184,13 +185,15 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
           justifyContent="space-between"
         >
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />1
+            <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />
+            {_count ? _count.replies : 0}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />1
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="mdi:heart-outline" width={17} sx={{ mr: 1 }} />1
+            <Iconify icon="mdi:heart-outline" width={17} sx={{ mr: 1 }} />
+            {_count ? _count.like : 0}
           </Box>
         </Stack>
       </Link>

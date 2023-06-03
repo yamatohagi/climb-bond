@@ -42,6 +42,15 @@ export type AggregatePost = {
   _sum?: Maybe<PostSumAggregate>;
 };
 
+export type AggregatePostLike = {
+  __typename?: 'AggregatePostLike';
+  _avg?: Maybe<PostLikeAvgAggregate>;
+  _count?: Maybe<PostLikeCountAggregate>;
+  _max?: Maybe<PostLikeMaxAggregate>;
+  _min?: Maybe<PostLikeMinAggregate>;
+  _sum?: Maybe<PostLikeSumAggregate>;
+};
+
 export type AggregatePreferredDayAndTime = {
   __typename?: 'AggregatePreferredDayAndTime';
   _avg?: Maybe<PreferredDayAndTimeAvgAggregate>;
@@ -402,30 +411,37 @@ export type Mutation = {
   __typename?: 'Mutation';
   createManyGym: AffectedRowsOutput;
   createManyPost: AffectedRowsOutput;
+  createManyPostLike: AffectedRowsOutput;
   createManyPreferredDayAndTime: AffectedRowsOutput;
   createManyReply: AffectedRowsOutput;
   createOneGym: Gym;
   createOnePost: Post;
+  createOnePostLike: PostLike;
   createOnePreferredDayAndTime: PreferredDayAndTime;
   createOneReply: Reply;
   deleteManyGym: AffectedRowsOutput;
   deleteManyPost: AffectedRowsOutput;
+  deleteManyPostLike: AffectedRowsOutput;
   deleteManyPreferredDayAndTime: AffectedRowsOutput;
   deleteManyReply: AffectedRowsOutput;
   deleteOneGym?: Maybe<Gym>;
   deleteOnePost?: Maybe<Post>;
+  deleteOnePostLike?: Maybe<PostLike>;
   deleteOnePreferredDayAndTime?: Maybe<PreferredDayAndTime>;
   deleteOneReply?: Maybe<Reply>;
   updateManyGym: AffectedRowsOutput;
   updateManyPost: AffectedRowsOutput;
+  updateManyPostLike: AffectedRowsOutput;
   updateManyPreferredDayAndTime: AffectedRowsOutput;
   updateManyReply: AffectedRowsOutput;
   updateOneGym?: Maybe<Gym>;
   updateOnePost?: Maybe<Post>;
+  updateOnePostLike?: Maybe<PostLike>;
   updateOnePreferredDayAndTime?: Maybe<PreferredDayAndTime>;
   updateOneReply?: Maybe<Reply>;
   upsertOneGym: Gym;
   upsertOnePost: Post;
+  upsertOnePostLike: PostLike;
   upsertOnePreferredDayAndTime: PreferredDayAndTime;
   upsertOneReply: Reply;
 };
@@ -439,6 +455,12 @@ export type MutationCreateManyGymArgs = {
 
 export type MutationCreateManyPostArgs = {
   data: Array<PostCreateManyInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MutationCreateManyPostLikeArgs = {
+  data: Array<PostLikeCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -465,6 +487,11 @@ export type MutationCreateOnePostArgs = {
 };
 
 
+export type MutationCreateOnePostLikeArgs = {
+  data: PostLikeCreateInput;
+};
+
+
 export type MutationCreateOnePreferredDayAndTimeArgs = {
   data: PreferredDayAndTimeCreateInput;
 };
@@ -482,6 +509,11 @@ export type MutationDeleteManyGymArgs = {
 
 export type MutationDeleteManyPostArgs = {
   where?: InputMaybe<PostWhereInput>;
+};
+
+
+export type MutationDeleteManyPostLikeArgs = {
+  where?: InputMaybe<PostLikeWhereInput>;
 };
 
 
@@ -505,6 +537,11 @@ export type MutationDeleteOnePostArgs = {
 };
 
 
+export type MutationDeleteOnePostLikeArgs = {
+  where: PostLikeWhereUniqueInput;
+};
+
+
 export type MutationDeleteOnePreferredDayAndTimeArgs = {
   where: PreferredDayAndTimeWhereUniqueInput;
 };
@@ -524,6 +561,12 @@ export type MutationUpdateManyGymArgs = {
 export type MutationUpdateManyPostArgs = {
   data: PostUpdateManyMutationInput;
   where?: InputMaybe<PostWhereInput>;
+};
+
+
+export type MutationUpdateManyPostLikeArgs = {
+  data: PostLikeUpdateManyMutationInput;
+  where?: InputMaybe<PostLikeWhereInput>;
 };
 
 
@@ -551,6 +594,12 @@ export type MutationUpdateOnePostArgs = {
 };
 
 
+export type MutationUpdateOnePostLikeArgs = {
+  data: PostLikeUpdateInput;
+  where: PostLikeWhereUniqueInput;
+};
+
+
 export type MutationUpdateOnePreferredDayAndTimeArgs = {
   data: PreferredDayAndTimeUpdateInput;
   where: PreferredDayAndTimeWhereUniqueInput;
@@ -574,6 +623,13 @@ export type MutationUpsertOnePostArgs = {
   create: PostCreateInput;
   update: PostUpdateInput;
   where: PostWhereUniqueInput;
+};
+
+
+export type MutationUpsertOnePostLikeArgs = {
+  create: PostLikeCreateInput;
+  update: PostLikeUpdateInput;
+  where: PostLikeWhereUniqueInput;
 };
 
 
@@ -789,10 +845,21 @@ export type Post = {
   gym: Gym;
   gymId: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
+  like: Array<PostLike>;
   preferredDayAndTimes: Array<PreferredDayAndTime>;
   replies: Array<Reply>;
   title: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
+};
+
+
+export type PostLikeArgs = {
+  cursor?: InputMaybe<PostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<PostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<PostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PostLikeWhereInput>;
 };
 
 
@@ -832,6 +899,7 @@ export type PostAvgOrderByAggregateInput = {
 
 export type PostCount = {
   __typename?: 'PostCount';
+  like: Scalars['Int']['output'];
   preferredDayAndTimes: Scalars['Int']['output'];
   replies: Scalars['Int']['output'];
 };
@@ -875,6 +943,7 @@ export type PostCreateInput = {
   experienceMonths: Scalars['Int']['input'];
   grade: Scalars['String']['input'];
   gym: GymCreateNestedOneWithoutPostsInput;
+  like?: InputMaybe<PostLikeCreateNestedManyWithoutPostInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeCreateNestedManyWithoutPostInput>;
   replies?: InputMaybe<ReplyCreateNestedManyWithoutPostInput>;
   title: Scalars['String']['input'];
@@ -920,6 +989,12 @@ export type PostCreateNestedManyWithoutGymInput = {
   createMany?: InputMaybe<PostCreateManyGymInputEnvelope>;
 };
 
+export type PostCreateNestedOneWithoutLikeInput = {
+  connect?: InputMaybe<PostWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<PostCreateOrConnectWithoutLikeInput>;
+  create?: InputMaybe<PostCreateWithoutLikeInput>;
+};
+
 export type PostCreateNestedOneWithoutPreferredDayAndTimesInput = {
   connect?: InputMaybe<PostWhereUniqueInput>;
   connectOrCreate?: InputMaybe<PostCreateOrConnectWithoutPreferredDayAndTimesInput>;
@@ -934,6 +1009,11 @@ export type PostCreateNestedOneWithoutRepliesInput = {
 
 export type PostCreateOrConnectWithoutGymInput = {
   create: PostCreateWithoutGymInput;
+  where: PostWhereUniqueInput;
+};
+
+export type PostCreateOrConnectWithoutLikeInput = {
+  create: PostCreateWithoutLikeInput;
   where: PostWhereUniqueInput;
 };
 
@@ -955,6 +1035,22 @@ export type PostCreateWithoutGymInput = {
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   experienceMonths: Scalars['Int']['input'];
   grade: Scalars['String']['input'];
+  like?: InputMaybe<PostLikeCreateNestedManyWithoutPostInput>;
+  preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeCreateNestedManyWithoutPostInput>;
+  replies?: InputMaybe<ReplyCreateNestedManyWithoutPostInput>;
+  title: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type PostCreateWithoutLikeInput = {
+  belayMonths: Scalars['Int']['input'];
+  climbingType: ClimbingType;
+  content: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  experienceMonths: Scalars['Int']['input'];
+  grade: Scalars['String']['input'];
+  gym: GymCreateNestedOneWithoutPostsInput;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeCreateNestedManyWithoutPostInput>;
   replies?: InputMaybe<ReplyCreateNestedManyWithoutPostInput>;
   title: Scalars['String']['input'];
@@ -970,6 +1066,7 @@ export type PostCreateWithoutPreferredDayAndTimesInput = {
   experienceMonths: Scalars['Int']['input'];
   grade: Scalars['String']['input'];
   gym: GymCreateNestedOneWithoutPostsInput;
+  like?: InputMaybe<PostLikeCreateNestedManyWithoutPostInput>;
   replies?: InputMaybe<ReplyCreateNestedManyWithoutPostInput>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -984,6 +1081,7 @@ export type PostCreateWithoutRepliesInput = {
   experienceMonths: Scalars['Int']['input'];
   grade: Scalars['String']['input'];
   gym: GymCreateNestedOneWithoutPostsInput;
+  like?: InputMaybe<PostLikeCreateNestedManyWithoutPostInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeCreateNestedManyWithoutPostInput>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1007,6 +1105,234 @@ export type PostGroupBy = {
   id: Scalars['Int']['output'];
   title: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
+};
+
+export type PostLike = {
+  __typename?: 'PostLike';
+  id: Scalars['Int']['output'];
+  post: Post;
+  postId: Scalars['Int']['output'];
+  userId: Scalars['String']['output'];
+};
+
+export type PostLikeAvgAggregate = {
+  __typename?: 'PostLikeAvgAggregate';
+  id?: Maybe<Scalars['Float']['output']>;
+  postId?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PostLikeAvgOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+};
+
+export type PostLikeCountAggregate = {
+  __typename?: 'PostLikeCountAggregate';
+  _all: Scalars['Int']['output'];
+  id: Scalars['Int']['output'];
+  postId: Scalars['Int']['output'];
+  userId: Scalars['Int']['output'];
+};
+
+export type PostLikeCountOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type PostLikeCreateInput = {
+  post: PostCreateNestedOneWithoutLikeInput;
+  userId: Scalars['String']['input'];
+};
+
+export type PostLikeCreateManyInput = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+  postId: Scalars['Int']['input'];
+  userId: Scalars['String']['input'];
+};
+
+export type PostLikeCreateManyPostInput = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+  userId: Scalars['String']['input'];
+};
+
+export type PostLikeCreateManyPostInputEnvelope = {
+  data: Array<PostLikeCreateManyPostInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PostLikeCreateNestedManyWithoutPostInput = {
+  connect?: InputMaybe<Array<PostLikeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<PostLikeCreateOrConnectWithoutPostInput>>;
+  create?: InputMaybe<Array<PostLikeCreateWithoutPostInput>>;
+  createMany?: InputMaybe<PostLikeCreateManyPostInputEnvelope>;
+};
+
+export type PostLikeCreateOrConnectWithoutPostInput = {
+  create: PostLikeCreateWithoutPostInput;
+  where: PostLikeWhereUniqueInput;
+};
+
+export type PostLikeCreateWithoutPostInput = {
+  userId: Scalars['String']['input'];
+};
+
+export type PostLikeGroupBy = {
+  __typename?: 'PostLikeGroupBy';
+  _avg?: Maybe<PostLikeAvgAggregate>;
+  _count?: Maybe<PostLikeCountAggregate>;
+  _max?: Maybe<PostLikeMaxAggregate>;
+  _min?: Maybe<PostLikeMinAggregate>;
+  _sum?: Maybe<PostLikeSumAggregate>;
+  id: Scalars['Int']['output'];
+  postId: Scalars['Int']['output'];
+  userId: Scalars['String']['output'];
+};
+
+export type PostLikeListRelationFilter = {
+  every?: InputMaybe<PostLikeWhereInput>;
+  none?: InputMaybe<PostLikeWhereInput>;
+  some?: InputMaybe<PostLikeWhereInput>;
+};
+
+export type PostLikeMaxAggregate = {
+  __typename?: 'PostLikeMaxAggregate';
+  id?: Maybe<Scalars['Int']['output']>;
+  postId?: Maybe<Scalars['Int']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostLikeMaxOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type PostLikeMinAggregate = {
+  __typename?: 'PostLikeMinAggregate';
+  id?: Maybe<Scalars['Int']['output']>;
+  postId?: Maybe<Scalars['Int']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+};
+
+export type PostLikeMinOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type PostLikeOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type PostLikeOrderByWithAggregationInput = {
+  _avg?: InputMaybe<PostLikeAvgOrderByAggregateInput>;
+  _count?: InputMaybe<PostLikeCountOrderByAggregateInput>;
+  _max?: InputMaybe<PostLikeMaxOrderByAggregateInput>;
+  _min?: InputMaybe<PostLikeMinOrderByAggregateInput>;
+  _sum?: InputMaybe<PostLikeSumOrderByAggregateInput>;
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type PostLikeOrderByWithRelationInput = {
+  id?: InputMaybe<SortOrder>;
+  post?: InputMaybe<PostOrderByWithRelationInput>;
+  postId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export enum PostLikeScalarFieldEnum {
+  Id = 'id',
+  PostId = 'postId',
+  UserId = 'userId'
+}
+
+export type PostLikeScalarWhereInput = {
+  AND?: InputMaybe<Array<PostLikeScalarWhereInput>>;
+  NOT?: InputMaybe<Array<PostLikeScalarWhereInput>>;
+  OR?: InputMaybe<Array<PostLikeScalarWhereInput>>;
+  id?: InputMaybe<IntFilter>;
+  postId?: InputMaybe<IntFilter>;
+  userId?: InputMaybe<StringFilter>;
+};
+
+export type PostLikeScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<PostLikeScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<PostLikeScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<PostLikeScalarWhereWithAggregatesInput>>;
+  id?: InputMaybe<IntWithAggregatesFilter>;
+  postId?: InputMaybe<IntWithAggregatesFilter>;
+  userId?: InputMaybe<StringWithAggregatesFilter>;
+};
+
+export type PostLikeSumAggregate = {
+  __typename?: 'PostLikeSumAggregate';
+  id?: Maybe<Scalars['Int']['output']>;
+  postId?: Maybe<Scalars['Int']['output']>;
+};
+
+export type PostLikeSumOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  postId?: InputMaybe<SortOrder>;
+};
+
+export type PostLikeUpdateInput = {
+  post?: InputMaybe<PostUpdateOneRequiredWithoutLikeNestedInput>;
+  userId?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type PostLikeUpdateManyMutationInput = {
+  userId?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type PostLikeUpdateManyWithWhereWithoutPostInput = {
+  data: PostLikeUpdateManyMutationInput;
+  where: PostLikeScalarWhereInput;
+};
+
+export type PostLikeUpdateManyWithoutPostNestedInput = {
+  connect?: InputMaybe<Array<PostLikeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<PostLikeCreateOrConnectWithoutPostInput>>;
+  create?: InputMaybe<Array<PostLikeCreateWithoutPostInput>>;
+  createMany?: InputMaybe<PostLikeCreateManyPostInputEnvelope>;
+  delete?: InputMaybe<Array<PostLikeWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<PostLikeScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<PostLikeWhereUniqueInput>>;
+  set?: InputMaybe<Array<PostLikeWhereUniqueInput>>;
+  update?: InputMaybe<Array<PostLikeUpdateWithWhereUniqueWithoutPostInput>>;
+  updateMany?: InputMaybe<Array<PostLikeUpdateManyWithWhereWithoutPostInput>>;
+  upsert?: InputMaybe<Array<PostLikeUpsertWithWhereUniqueWithoutPostInput>>;
+};
+
+export type PostLikeUpdateWithWhereUniqueWithoutPostInput = {
+  data: PostLikeUpdateWithoutPostInput;
+  where: PostLikeWhereUniqueInput;
+};
+
+export type PostLikeUpdateWithoutPostInput = {
+  userId?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type PostLikeUpsertWithWhereUniqueWithoutPostInput = {
+  create: PostLikeCreateWithoutPostInput;
+  update: PostLikeUpdateWithoutPostInput;
+  where: PostLikeWhereUniqueInput;
+};
+
+export type PostLikeWhereInput = {
+  AND?: InputMaybe<Array<PostLikeWhereInput>>;
+  NOT?: InputMaybe<Array<PostLikeWhereInput>>;
+  OR?: InputMaybe<Array<PostLikeWhereInput>>;
+  id?: InputMaybe<IntFilter>;
+  post?: InputMaybe<PostRelationFilter>;
+  postId?: InputMaybe<IntFilter>;
+  userId?: InputMaybe<StringFilter>;
+};
+
+export type PostLikeWhereUniqueInput = {
+  id?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type PostListRelationFilter = {
@@ -1107,6 +1433,7 @@ export type PostOrderByWithRelationInput = {
   gym?: InputMaybe<GymOrderByWithRelationInput>;
   gymId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  like?: InputMaybe<PostLikeOrderByRelationAggregateInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeOrderByRelationAggregateInput>;
   replies?: InputMaybe<ReplyOrderByRelationAggregateInput>;
   title?: InputMaybe<SortOrder>;
@@ -1190,6 +1517,7 @@ export type PostUpdateInput = {
   experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
   grade?: InputMaybe<StringFieldUpdateOperationsInput>;
   gym?: InputMaybe<GymUpdateOneRequiredWithoutPostsNestedInput>;
+  like?: InputMaybe<PostLikeUpdateManyWithoutPostNestedInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeUpdateManyWithoutPostNestedInput>;
   replies?: InputMaybe<ReplyUpdateManyWithoutPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -1227,6 +1555,14 @@ export type PostUpdateManyWithoutGymNestedInput = {
   upsert?: InputMaybe<Array<PostUpsertWithWhereUniqueWithoutGymInput>>;
 };
 
+export type PostUpdateOneRequiredWithoutLikeNestedInput = {
+  connect?: InputMaybe<PostWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<PostCreateOrConnectWithoutLikeInput>;
+  create?: InputMaybe<PostCreateWithoutLikeInput>;
+  update?: InputMaybe<PostUpdateWithoutLikeInput>;
+  upsert?: InputMaybe<PostUpsertWithoutLikeInput>;
+};
+
 export type PostUpdateOneRequiredWithoutPreferredDayAndTimesNestedInput = {
   connect?: InputMaybe<PostWhereUniqueInput>;
   connectOrCreate?: InputMaybe<PostCreateOrConnectWithoutPreferredDayAndTimesInput>;
@@ -1256,6 +1592,22 @@ export type PostUpdateWithoutGymInput = {
   deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
   grade?: InputMaybe<StringFieldUpdateOperationsInput>;
+  like?: InputMaybe<PostLikeUpdateManyWithoutPostNestedInput>;
+  preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeUpdateManyWithoutPostNestedInput>;
+  replies?: InputMaybe<ReplyUpdateManyWithoutPostNestedInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type PostUpdateWithoutLikeInput = {
+  belayMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
+  climbingType?: InputMaybe<EnumClimbingTypeFieldUpdateOperationsInput>;
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
+  grade?: InputMaybe<StringFieldUpdateOperationsInput>;
+  gym?: InputMaybe<GymUpdateOneRequiredWithoutPostsNestedInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeUpdateManyWithoutPostNestedInput>;
   replies?: InputMaybe<ReplyUpdateManyWithoutPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -1271,6 +1623,7 @@ export type PostUpdateWithoutPreferredDayAndTimesInput = {
   experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
   grade?: InputMaybe<StringFieldUpdateOperationsInput>;
   gym?: InputMaybe<GymUpdateOneRequiredWithoutPostsNestedInput>;
+  like?: InputMaybe<PostLikeUpdateManyWithoutPostNestedInput>;
   replies?: InputMaybe<ReplyUpdateManyWithoutPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -1285,6 +1638,7 @@ export type PostUpdateWithoutRepliesInput = {
   experienceMonths?: InputMaybe<IntFieldUpdateOperationsInput>;
   grade?: InputMaybe<StringFieldUpdateOperationsInput>;
   gym?: InputMaybe<GymUpdateOneRequiredWithoutPostsNestedInput>;
+  like?: InputMaybe<PostLikeUpdateManyWithoutPostNestedInput>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeUpdateManyWithoutPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -1294,6 +1648,11 @@ export type PostUpsertWithWhereUniqueWithoutGymInput = {
   create: PostCreateWithoutGymInput;
   update: PostUpdateWithoutGymInput;
   where: PostWhereUniqueInput;
+};
+
+export type PostUpsertWithoutLikeInput = {
+  create: PostCreateWithoutLikeInput;
+  update: PostUpdateWithoutLikeInput;
 };
 
 export type PostUpsertWithoutPreferredDayAndTimesInput = {
@@ -1320,6 +1679,7 @@ export type PostWhereInput = {
   gym?: InputMaybe<GymRelationFilter>;
   gymId?: InputMaybe<IntFilter>;
   id?: InputMaybe<IntFilter>;
+  like?: InputMaybe<PostLikeListRelationFilter>;
   preferredDayAndTimes?: InputMaybe<PreferredDayAndTimeListRelationFilter>;
   replies?: InputMaybe<ReplyListRelationFilter>;
   title?: InputMaybe<StringFilter>;
@@ -1562,11 +1922,14 @@ export type Query = {
   __typename?: 'Query';
   aggregateGym: AggregateGym;
   aggregatePost: AggregatePost;
+  aggregatePostLike: AggregatePostLike;
   aggregatePreferredDayAndTime: AggregatePreferredDayAndTime;
   aggregateReply: AggregateReply;
   findFirstGym?: Maybe<Gym>;
   findFirstGymOrThrow?: Maybe<Gym>;
   findFirstPost?: Maybe<Post>;
+  findFirstPostLike?: Maybe<PostLike>;
+  findFirstPostLikeOrThrow?: Maybe<PostLike>;
   findFirstPostOrThrow?: Maybe<Post>;
   findFirstPreferredDayAndTime?: Maybe<PreferredDayAndTime>;
   findFirstPreferredDayAndTimeOrThrow?: Maybe<PreferredDayAndTime>;
@@ -1574,15 +1937,19 @@ export type Query = {
   findFirstReplyOrThrow?: Maybe<Reply>;
   getGym?: Maybe<Gym>;
   getPost?: Maybe<Post>;
+  getPostLike?: Maybe<PostLike>;
   getPreferredDayAndTime?: Maybe<PreferredDayAndTime>;
   getReply?: Maybe<Reply>;
   groupByGym: Array<GymGroupBy>;
   groupByPost: Array<PostGroupBy>;
+  groupByPostLike: Array<PostLikeGroupBy>;
   groupByPreferredDayAndTime: Array<PreferredDayAndTimeGroupBy>;
   groupByReply: Array<ReplyGroupBy>;
   gym?: Maybe<Gym>;
   gyms: Array<Gym>;
   post?: Maybe<Post>;
+  postLike?: Maybe<PostLike>;
+  postLikes: Array<PostLike>;
   posts: Array<Post>;
   preferredDayAndTime?: Maybe<PreferredDayAndTime>;
   preferredDayAndTimes: Array<PreferredDayAndTime>;
@@ -1606,6 +1973,15 @@ export type QueryAggregatePostArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PostWhereInput>;
+};
+
+
+export type QueryAggregatePostLikeArgs = {
+  cursor?: InputMaybe<PostLikeWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<PostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PostLikeWhereInput>;
 };
 
 
@@ -1654,6 +2030,26 @@ export type QueryFindFirstPostArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PostWhereInput>;
+};
+
+
+export type QueryFindFirstPostLikeArgs = {
+  cursor?: InputMaybe<PostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<PostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<PostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PostLikeWhereInput>;
+};
+
+
+export type QueryFindFirstPostLikeOrThrowArgs = {
+  cursor?: InputMaybe<PostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<PostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<PostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PostLikeWhereInput>;
 };
 
 
@@ -1717,6 +2113,11 @@ export type QueryGetPostArgs = {
 };
 
 
+export type QueryGetPostLikeArgs = {
+  where: PostLikeWhereUniqueInput;
+};
+
+
 export type QueryGetPreferredDayAndTimeArgs = {
   where: PreferredDayAndTimeWhereUniqueInput;
 };
@@ -1744,6 +2145,16 @@ export type QueryGroupByPostArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PostWhereInput>;
+};
+
+
+export type QueryGroupByPostLikeArgs = {
+  by: Array<PostLikeScalarFieldEnum>;
+  having?: InputMaybe<PostLikeScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<PostLikeOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PostLikeWhereInput>;
 };
 
 
@@ -1784,6 +2195,21 @@ export type QueryGymsArgs = {
 
 export type QueryPostArgs = {
   where: PostWhereUniqueInput;
+};
+
+
+export type QueryPostLikeArgs = {
+  where: PostLikeWhereUniqueInput;
+};
+
+
+export type QueryPostLikesArgs = {
+  cursor?: InputMaybe<PostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<PostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<PostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PostLikeWhereInput>;
 };
 
 
@@ -2232,13 +2658,6 @@ export type GymsQueryVariables = Exact<{
 
 export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string }> };
 
-export type CreateOneReplyMutationVariables = Exact<{
-  data: ReplyCreateInput;
-}>;
-
-
-export type CreateOneReplyMutation = { __typename?: 'Mutation', createOneReply: { __typename?: 'Reply', content: string, postId: number, title: string, userName: string } };
-
 export type FindFirstPostQueryVariables = Exact<{
   where?: InputMaybe<PostWhereInput>;
 }>;
@@ -2254,12 +2673,19 @@ export type RepliesQueryVariables = Exact<{
 
 export type RepliesQuery = { __typename?: 'Query', replies: Array<{ __typename?: 'Reply', id: number, userName: string, title: string, content: string, createdAt: any }> };
 
+export type CreateOneReplyMutationVariables = Exact<{
+  data: ReplyCreateInput;
+}>;
+
+
+export type CreateOneReplyMutation = { __typename?: 'Mutation', createOneReply: { __typename?: 'Reply', content: string, postId: number, title: string, userName: string } };
+
 export type PostsQueryVariables = Exact<{
   orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }> }> };
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, _count?: { __typename?: 'PostCount', like: number, replies: number } | null }> };
 
 
 export const CreateOnePostDocument = gql`
@@ -2340,42 +2766,6 @@ export function useGymsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymsQ
 export type GymsQueryHookResult = ReturnType<typeof useGymsQuery>;
 export type GymsLazyQueryHookResult = ReturnType<typeof useGymsLazyQuery>;
 export type GymsQueryResult = Apollo.QueryResult<GymsQuery, GymsQueryVariables>;
-export const CreateOneReplyDocument = gql`
-    mutation CreateOneReply($data: ReplyCreateInput!) {
-  createOneReply(data: $data) {
-    content
-    postId
-    title
-    userName
-  }
-}
-    `;
-export type CreateOneReplyMutationFn = Apollo.MutationFunction<CreateOneReplyMutation, CreateOneReplyMutationVariables>;
-
-/**
- * __useCreateOneReplyMutation__
- *
- * To run a mutation, you first call `useCreateOneReplyMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateOneReplyMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createOneReplyMutation, { data, loading, error }] = useCreateOneReplyMutation({
- *   variables: {
- *      data: // value for 'data'
- *   },
- * });
- */
-export function useCreateOneReplyMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneReplyMutation, CreateOneReplyMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateOneReplyMutation, CreateOneReplyMutationVariables>(CreateOneReplyDocument, options);
-      }
-export type CreateOneReplyMutationHookResult = ReturnType<typeof useCreateOneReplyMutation>;
-export type CreateOneReplyMutationResult = Apollo.MutationResult<CreateOneReplyMutation>;
-export type CreateOneReplyMutationOptions = Apollo.BaseMutationOptions<CreateOneReplyMutation, CreateOneReplyMutationVariables>;
 export const FindFirstPostDocument = gql`
     query FindFirstPost($where: PostWhereInput) {
   findFirstPost(where: $where) {
@@ -2465,6 +2855,42 @@ export function useRepliesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Re
 export type RepliesQueryHookResult = ReturnType<typeof useRepliesQuery>;
 export type RepliesLazyQueryHookResult = ReturnType<typeof useRepliesLazyQuery>;
 export type RepliesQueryResult = Apollo.QueryResult<RepliesQuery, RepliesQueryVariables>;
+export const CreateOneReplyDocument = gql`
+    mutation CreateOneReply($data: ReplyCreateInput!) {
+  createOneReply(data: $data) {
+    content
+    postId
+    title
+    userName
+  }
+}
+    `;
+export type CreateOneReplyMutationFn = Apollo.MutationFunction<CreateOneReplyMutation, CreateOneReplyMutationVariables>;
+
+/**
+ * __useCreateOneReplyMutation__
+ *
+ * To run a mutation, you first call `useCreateOneReplyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOneReplyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOneReplyMutation, { data, loading, error }] = useCreateOneReplyMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateOneReplyMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneReplyMutation, CreateOneReplyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOneReplyMutation, CreateOneReplyMutationVariables>(CreateOneReplyDocument, options);
+      }
+export type CreateOneReplyMutationHookResult = ReturnType<typeof useCreateOneReplyMutation>;
+export type CreateOneReplyMutationResult = Apollo.MutationResult<CreateOneReplyMutation>;
+export type CreateOneReplyMutationOptions = Apollo.BaseMutationOptions<CreateOneReplyMutation, CreateOneReplyMutationVariables>;
 export const PostsDocument = gql`
     query Posts($orderBy: [PostOrderByWithRelationInput!]) {
   posts(orderBy: $orderBy) {
@@ -2483,6 +2909,10 @@ export const PostsDocument = gql`
       dayAndTime
     }
     climbingType
+    _count {
+      like
+      replies
+    }
   }
 }
     `;

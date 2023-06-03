@@ -26,8 +26,14 @@ import ProgressBar from 'src/components/progress-bar';
 import { ThemeSettings, SettingsProvider } from 'src/components/settings';
 import MotionLazyContainer from 'src/components/animate/MotionLazyContainer';
 import { ApolloProvider, apolloClient, clientSideEmotionCache } from 'src/lib/apollo/client';
+import { login } from 'src/service/login';
+import { useEffect } from 'react';
 
 export default function MyApp(props: any) {
+  useEffect(() => {
+    login();
+  }, []);
+
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
   const getLayout = Component.getLayout ?? ((page: any) => page);

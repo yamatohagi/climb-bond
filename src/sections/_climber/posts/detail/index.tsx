@@ -1,9 +1,10 @@
 import { SortOrder, useFindFirstPostQuery, useRepliesQuery } from 'src/generated/graphql';
-import { CreateReply } from './reply';
+
 import { useRouter } from 'next/router';
 import { ClimberPostItemSkeleton } from '../item';
 import DetailCard from './component/DetailCard';
 import ReplyCards from './reply/ReplyCards';
+import CreateReply from './reply/CreateReply';
 
 export default function ClimberPostDetail({}: {}) {
   const router = useRouter();

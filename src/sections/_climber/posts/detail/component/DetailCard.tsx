@@ -1,32 +1,15 @@
-import { FindFirstPostQueryResult, RepliesQueryResult } from 'src/generated/graphql';
-
+import { FindFirstPostQuery } from 'src/generated/graphql';
 import { Fragment } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
-import NextLink from 'next/link';
-// @mui
-import { Card, Link, Stack, Divider, Typography, Box, Unstable_Grid2 as Grid } from '@mui/material';
-// routes
-import { paths } from 'src/routes/paths';
-// utils
-// components
+import { Card, Stack, Divider, Typography, Box, Unstable_Grid2 as Grid } from '@mui/material';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
-import { dayOfWeek } from '../item/ClimberPostItem';
-import { CreateReply, PostReplies } from './reply';
-import { ObservableQuery } from '@apollo/client';
+import { dayOfWeek } from '../../item/ClimberPostItem';
 
-export default function ClimberPostDetail({
-  data,
-  repliesData,
-  repliesRefetch,
-}: {
-  data: FindFirstPostQueryResult['data'];
-  repliesData: RepliesQueryResult['data'];
-  repliesRefetch: ObservableQuery['refetch'];
-}) {
-  const post = data?.findFirstPost!;
+const DetailCard = ({ post }: { post: FindFirstPostQuery['findFirstPost'] }) => {
+  if (!post) return null;
   const {
     id,
     createdAt,
@@ -174,9 +157,8 @@ export default function ClimberPostDetail({
           <Iconify icon="mdi:heart-outline" width={17} sx={{ mr: 1 }} />1
         </Box>
       </Stack>
-      {repliesData ? <PostReplies replies={repliesData?.replies} /> : <></>}
-
-      <CreateReply postId={id} refetch={repliesRefetch} />
     </Card>
   );
-}
+};
+
+export default DetailCard;

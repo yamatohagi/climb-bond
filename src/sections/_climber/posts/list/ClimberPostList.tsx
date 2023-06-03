@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types';
 import { Pagination, Box } from '@mui/material';
 import { ClimberPostItem, ClimberPostItemSkeleton } from '../item';
-import { PostsQuery, PostsQueryResult } from 'src/generated/graphql';
 import { Fragment } from 'react';
-
-interface ClimberPostListProps {
-  data: PostsQueryResult['data'];
-  loading: PostsQueryResult['loading'];
-}
-
-export default function ClimberPostList({ data, loading }: ClimberPostListProps) {
+import { SortOrder, usePostsQuery } from 'src/generated/graphql';
+export default function ClimberPostList() {
+  const { error, data, loading } = usePostsQuery({
+    variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
+  });
   return (
     <>
       <Box

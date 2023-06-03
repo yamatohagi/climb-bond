@@ -26,7 +26,7 @@ import {
   CareerJobDetailsSummary,
   CareerJobDetailsCompanyInfo,
   CareerJobDetailsCompanySimilar,
-} from '../posts/details';
+} from '../posts/detail';
 
 // ----------------------------------------------------------------------
 

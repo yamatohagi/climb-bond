@@ -2,7 +2,7 @@
 import Head from 'next/head';
 // layouts
 import MainLayout from 'src/layouts/main';
-import { ClimberPostDetail } from 'src/sections/_climber/posts/details';
+import { ClimberPostDetail } from 'src/sections/_climber/posts/detail';
 import ClimberPostsDetailView from 'src/sections/_climber/view/ClimberPostsDetailView';
 // sections
 

@@ -9,35 +9,9 @@ import { useForm } from 'react-hook-form';
 import { ClimbingType, Gym } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
-import { gql } from '@apollo/client';
+
 import { useCreateOnePostMutation, useGymsQuery } from 'src/generated/graphql';
 import { SortOrder } from 'src/generated/graphql';
-
-gql`
-  mutation CreateOnePost($data: PostCreateInput!) {
-    createOnePost(data: $data) {
-      title
-      content
-      gymId
-      climbingType
-      belayMonths
-      experienceMonths
-      grade
-      preferredDayAndTimes {
-        dayAndTime
-      }
-    }
-  }
-`;
-
-gql`
-  query Gyms($orderBy: [GymOrderByWithRelationInput!]) {
-    gyms(orderBy: $orderBy) {
-      id
-      name
-    }
-  }
-`;
 
 export default function ClimberPostCreateModal({ open, onClose }: any) {
   const [createOnePostMutation] = useCreateOnePostMutation();

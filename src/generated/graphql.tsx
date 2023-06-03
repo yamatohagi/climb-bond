@@ -2649,7 +2649,7 @@ export type CreateOnePostLikeMutationVariables = Exact<{
 }>;
 
 
-export type CreateOnePostLikeMutation = { __typename?: 'Mutation', createOnePostLike: { __typename?: 'PostLike', userId: string, postId: number } };
+export type CreateOnePostLikeMutation = { __typename?: 'Mutation', createOnePostLike: { __typename?: 'PostLike', id: number, userId: string, postId: number } };
 
 export type DeleteManyPostLikeMutationVariables = Exact<{
   where?: InputMaybe<PostLikeWhereInput>;
@@ -2705,6 +2705,7 @@ export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Po
 export const CreateOnePostLikeDocument = gql`
     mutation CreateOnePostLike($data: PostLikeCreateInput!) {
   createOnePostLike(data: $data) {
+    id
     userId
     postId
   }

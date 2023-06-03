@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 gql`
   mutation CreateOnePostLike($data: PostLikeCreateInput!) {
     createOnePostLike(data: $data) {
+      id
       userId
       postId
     }

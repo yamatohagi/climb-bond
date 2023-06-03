@@ -1,8 +1,12 @@
+import { useApolloClient } from '@apollo/client';
 import { IconButton, Typography } from '@mui/material';
 import { useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
 import {
+  PostsDocument,
   PostsQuery,
+  PostsQueryResult,
+  SortOrder,
   useCreateOnePostLikeMutation,
   useDeleteManyPostLikeMutation,
 } from 'src/generated/graphql';
@@ -16,6 +20,7 @@ export const LikeButton = ({
 }) => {
   const [createOnePostLike] = useCreateOnePostLikeMutation();
   const [deleteManyPostLike] = useDeleteManyPostLikeMutation();
+  const client = useApolloClient();
   const gestInfo = JSON.parse(localStorage.getItem('gestInfo') || 'null');
   const [checked, setChecked] = useState(likes.some((like) => like.userId === gestInfo.key));
   console.log(gestInfo.key);
@@ -27,8 +32,20 @@ export const LikeButton = ({
       const { data } = await deleteManyPostLike({
         variables: {
           where: {
-            postId: { equals: postId },
+            userId: { equals: gestInfo.key },
           },
+        },
+        onCompleted: (data) => {
+          const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
+            query: PostsDocument,
+            variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
+          });
+          const updatedPosts = cacheData?.posts.map((post) =>
+            post.id === postId
+              ? { ...post, like: post.like.filter((like) => like.userId !== gestInfo.key) }
+              : post
+          );
+          client.cache.writeQuery({ query: PostsDocument, data: { posts: updatedPosts } });
         },
       });
       setChecked(false);
@@ -43,6 +60,18 @@ export const LikeButton = ({
               },
             },
           },
+        },
+
+        onCompleted: (data) => {
+          const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
+            query: PostsDocument,
+            variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
+          });
+          const updatedPosts = cacheData?.posts.map((post) =>
+            post.id === postId ? { ...post, like: [...post.like, data.createOnePostLike] } : post
+          );
+          console.log(updatedPosts);
+          client.cache.writeQuery({ query: PostsDocument, data: { posts: updatedPosts } });
         },
       });
       setChecked(true);

@@ -61,7 +61,7 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
   } = methods;
 
   const onSubmit = async (params: any) => {
-    const res = await createOnePostMutation({
+    const { data, errors } = await createOnePostMutation({
       variables: {
         data: {
           title: params.title,
@@ -79,7 +79,8 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
         },
       },
     });
-    if (res) onClose();
+    if (errors) return;
+    onClose();
   };
 
   return (

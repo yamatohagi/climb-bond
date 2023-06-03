@@ -18,36 +18,22 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import PropTypes from 'prop-types';
 import { CacheProvider } from '@emotion/react';
-// next
 import Head from 'next/head';
-// @mui
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// theme
 import ThemeProvider from 'src/theme';
-// utils
-import createEmotionCache from 'src/utils/createEmotionCache';
-// components
 import ProgressBar from 'src/components/progress-bar';
 import { ThemeSettings, SettingsProvider } from 'src/components/settings';
 import MotionLazyContainer from 'src/components/animate/MotionLazyContainer';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-
-// ----------------------------------------------------------------------
-
-const clientSideEmotionCache = createEmotionCache();
+import { ApolloProvider, apolloClient, clientSideEmotionCache } from 'src/lib/apollo/client';
 
 export default function MyApp(props: any) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
   const getLayout = Component.getLayout ?? ((page: any) => page);
 
-  const client = new ApolloClient({
-    uri: 'http://localhost:5002/api/graphql', // GraphQLサーバのURLを適切に設定してください
-    cache: new InMemoryCache(),
-  });
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <CacheProvider value={emotionCache}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />

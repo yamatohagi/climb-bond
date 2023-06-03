@@ -11,7 +11,7 @@ export default function PostReply({ postId }: { postId: number }) {
   };
 
   const handleReplySubmit = async () => {
-    const res = await createOneReplyMutation({
+    const { data, errors } = await createOneReplyMutation({
       variables: {
         data: {
           title: '',
@@ -23,6 +23,7 @@ export default function PostReply({ postId }: { postId: number }) {
         },
       },
     });
+    if (errors) return;
     setReplyText(''); // テキストフィールドをリセットします。
   };
 

@@ -173,7 +173,7 @@ export default function ClimberPostDetail({ data }: { data: FindFirstPostQueryRe
         </Stack>
       </Link>
       <PostReplies replies={replies} />
-      <CreateReply />
+      <CreateReply postId={id} />
     </Card>
   );
 }

@@ -2232,6 +2232,13 @@ export type GymsQueryVariables = Exact<{
 
 export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string }> };
 
+export type CreateOneReplyMutationVariables = Exact<{
+  data: ReplyCreateInput;
+}>;
+
+
+export type CreateOneReplyMutation = { __typename?: 'Mutation', createOneReply: { __typename?: 'Reply', content: string, postId: number, title: string, userName: string } };
+
 export type FindFirstPostQueryVariables = Exact<{
   where?: InputMaybe<PostWhereInput>;
 }>;
@@ -2325,6 +2332,42 @@ export function useGymsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymsQ
 export type GymsQueryHookResult = ReturnType<typeof useGymsQuery>;
 export type GymsLazyQueryHookResult = ReturnType<typeof useGymsLazyQuery>;
 export type GymsQueryResult = Apollo.QueryResult<GymsQuery, GymsQueryVariables>;
+export const CreateOneReplyDocument = gql`
+    mutation CreateOneReply($data: ReplyCreateInput!) {
+  createOneReply(data: $data) {
+    content
+    postId
+    title
+    userName
+  }
+}
+    `;
+export type CreateOneReplyMutationFn = Apollo.MutationFunction<CreateOneReplyMutation, CreateOneReplyMutationVariables>;
+
+/**
+ * __useCreateOneReplyMutation__
+ *
+ * To run a mutation, you first call `useCreateOneReplyMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOneReplyMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOneReplyMutation, { data, loading, error }] = useCreateOneReplyMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateOneReplyMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneReplyMutation, CreateOneReplyMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOneReplyMutation, CreateOneReplyMutationVariables>(CreateOneReplyDocument, options);
+      }
+export type CreateOneReplyMutationHookResult = ReturnType<typeof useCreateOneReplyMutation>;
+export type CreateOneReplyMutationResult = Apollo.MutationResult<CreateOneReplyMutation>;
+export type CreateOneReplyMutationOptions = Apollo.BaseMutationOptions<CreateOneReplyMutation, CreateOneReplyMutationVariables>;
 export const FindFirstPostDocument = gql`
     query FindFirstPost($where: PostWhereInput) {
   findFirstPost(where: $where) {

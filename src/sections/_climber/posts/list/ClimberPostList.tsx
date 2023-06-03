@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Pagination, Box } from '@mui/material';
-import { ClimberPostItem, ClimberPostItemSkeleton } from '../item';
+import { ClimberPostItem, ClimberPostItemSkeleton } from '../components';
 import { Fragment } from 'react';
 import { SortOrder, usePostsQuery } from 'src/generated/graphql';
 export default function ClimberPostList() {

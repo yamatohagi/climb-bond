@@ -6,7 +6,7 @@ import { Card, Stack, Divider, Typography, Box, Unstable_Grid2 as Grid } from '@
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
-import { dayOfWeek } from '../../item/ClimberPostItem';
+import { dayOfWeek } from '../../components/ClimberPostItem';
 
 const DetailCard = ({ post }: { post: FindFirstPostQuery['findFirstPost'] }) => {
   if (!post) return null;

@@ -10,7 +10,7 @@ import { paths } from 'src/routes/paths';
 // components
 import Iconify from 'src/components/iconify';
 //
-import { ClimberPostItem } from '../item';
+import { ClimberPostItem } from '../components';
 
 // ----------------------------------------------------------------------
 

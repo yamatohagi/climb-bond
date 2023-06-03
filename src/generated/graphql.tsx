@@ -2644,6 +2644,13 @@ export type StringWithAggregatesFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type CreateOnePostLikeMutationVariables = Exact<{
+  data: PostLikeCreateInput;
+}>;
+
+
+export type CreateOnePostLikeMutation = { __typename?: 'Mutation', createOnePostLike: { __typename?: 'PostLike', userId: string, postId: number } };
+
 export type CreateOnePostMutationVariables = Exact<{
   data: PostCreateInput;
 }>;
@@ -2688,6 +2695,40 @@ export type PostsQueryVariables = Exact<{
 export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, _count?: { __typename?: 'PostCount', like: number, replies: number } | null }> };
 
 
+export const CreateOnePostLikeDocument = gql`
+    mutation CreateOnePostLike($data: PostLikeCreateInput!) {
+  createOnePostLike(data: $data) {
+    userId
+    postId
+  }
+}
+    `;
+export type CreateOnePostLikeMutationFn = Apollo.MutationFunction<CreateOnePostLikeMutation, CreateOnePostLikeMutationVariables>;
+
+/**
+ * __useCreateOnePostLikeMutation__
+ *
+ * To run a mutation, you first call `useCreateOnePostLikeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOnePostLikeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOnePostLikeMutation, { data, loading, error }] = useCreateOnePostLikeMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateOnePostLikeMutation(baseOptions?: Apollo.MutationHookOptions<CreateOnePostLikeMutation, CreateOnePostLikeMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOnePostLikeMutation, CreateOnePostLikeMutationVariables>(CreateOnePostLikeDocument, options);
+      }
+export type CreateOnePostLikeMutationHookResult = ReturnType<typeof useCreateOnePostLikeMutation>;
+export type CreateOnePostLikeMutationResult = Apollo.MutationResult<CreateOnePostLikeMutation>;
+export type CreateOnePostLikeMutationOptions = Apollo.BaseMutationOptions<CreateOnePostLikeMutation, CreateOnePostLikeMutationVariables>;
 export const CreateOnePostDocument = gql`
     mutation CreateOnePost($data: PostCreateInput!) {
   createOnePost(data: $data) {

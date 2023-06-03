@@ -1,7 +1,7 @@
 import { SortOrder, useFindFirstPostQuery, useRepliesQuery } from 'src/generated/graphql';
 
 import { useRouter } from 'next/router';
-import { ClimberPostItemSkeleton } from '../item';
+import { ClimberPostItemSkeleton } from '../components';
 import DetailCard from './component/DetailCard';
 import ReplyCards from './reply/ReplyCards';
 import CreateReply from './reply/CreateReply';

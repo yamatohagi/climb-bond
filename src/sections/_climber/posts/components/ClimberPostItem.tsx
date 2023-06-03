@@ -13,6 +13,8 @@ import {
   Typography,
   Box,
   Unstable_Grid2 as Grid,
+  Button,
+  IconButton,
 } from '@mui/material';
 // routes
 import { paths } from 'src/routes/paths';
@@ -26,6 +28,7 @@ import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
 import { Gym, PreferredDayAndTime, Post as PrismaPost } from '@prisma/client';
 import { PostsQuery } from 'src/generated/graphql';
+import { LikeButton } from './LikeButton';
 
 // ----------------------------------------------------------------------
 interface Post extends PrismaPost {
@@ -192,8 +195,7 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
             <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />1
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="mdi:heart-outline" width={17} sx={{ mr: 1 }} />
-            {_count ? _count.like : 0}
+            <LikeButton likeCount={_count ? _count.like : 0} postId={id} />
           </Box>
         </Stack>
       </Link>

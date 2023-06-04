@@ -7,7 +7,7 @@ export default function CreateButton() {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)} variant="contained" size="large">
+      <Button onClick={() => setOpen(true)} variant="contained" size="medium" sx={{ mb: 2 }}>
         新規投稿
       </Button>
       <ClimberPostCreateModal open={open} onClose={() => setOpen(false)} />

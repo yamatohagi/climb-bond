@@ -7,6 +7,7 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
 import { dayOfWeek } from '../../components/ClimberPostItem';
+import { LikeButton } from '../../components/like-button';
 
 const DetailCard = ({ post }: { post: FindFirstPostQuery['findFirstPost'] }) => {
   if (!post) return null;
@@ -21,6 +22,8 @@ const DetailCard = ({ post }: { post: FindFirstPostQuery['findFirstPost'] }) => 
     experienceMonths,
     belayMonths,
     grade,
+    like,
+    _count,
   } = post;
 
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
@@ -148,13 +151,13 @@ const DetailCard = ({ post }: { post: FindFirstPostQuery['findFirstPost'] }) => 
         justifyContent="space-between"
       >
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />1
+          <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} /> {_count ? _count.replies : 0}
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />1
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Iconify icon="mdi:heart-outline" width={17} sx={{ mr: 1 }} />1
+          <LikeButton likes={like} postId={id} />
         </Box>
       </Stack>
     </Card>

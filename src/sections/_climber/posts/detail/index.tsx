@@ -10,7 +10,7 @@ export default function ClimberPostDetail({}: {}) {
   const router = useRouter();
   const postId = Number(router.query.id);
 
-  const { error, data, loading } = useFindFirstPostQuery({
+  const { error, data, loading, refetch } = useFindFirstPostQuery({
     variables: {
       where: {
         id: { equals: postId },
@@ -37,7 +37,14 @@ export default function ClimberPostDetail({}: {}) {
 
       {repliesData ? <ReplyCards replies={repliesData?.replies} /> : <></>}
 
-      <CreateReply postId={postId} refetch={repliesRefetch} />
+      <CreateReply
+        postId={postId}
+        refetch={() => {
+          repliesRefetch();
+          refetch();
+        }}
+        replyCount={repliesData?.replies.length || 0}
+      />
     </>
   );
 }

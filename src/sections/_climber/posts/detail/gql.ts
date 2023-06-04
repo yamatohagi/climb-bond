@@ -18,6 +18,14 @@ gql`
         dayAndTime
       }
       climbingType
+      like {
+        id
+        postId
+        userId
+      }
+      _count {
+        replies
+      }
     }
   }
 `;

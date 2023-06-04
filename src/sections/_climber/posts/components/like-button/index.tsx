@@ -23,7 +23,7 @@ export const LikeButton = ({
   const client = useApolloClient();
   const gestInfo = JSON.parse(localStorage.getItem('gestInfo') || 'null');
   const [checked, setChecked] = useState(likes.some((like) => like.userId === gestInfo.key));
-  console.log(gestInfo.key);
+
   const handleOnClick = async (checked: boolean, event: any) => {
     event.preventDefault();
     if (!gestInfo) return;

@@ -193,7 +193,8 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
             {_count ? _count.replies : 0}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />1
+            <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />{' '}
+            {_count ? _count.viewHistory : 0}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <LikeButton likes={like} postId={id} />

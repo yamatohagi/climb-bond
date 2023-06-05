@@ -33,7 +33,17 @@ export default function ClimberPostDetail({}: {}) {
 
   return (
     <>
-      {!loading && data ? <DetailCard post={data?.findFirstPost} /> : <ClimberPostItemSkeleton />}
+      {!loading && data ? (
+        <DetailCard
+          post={data?.findFirstPost}
+          refetch={() => {
+            repliesRefetch();
+            refetch();
+          }}
+        />
+      ) : (
+        <ClimberPostItemSkeleton />
+      )}
 
       {repliesData ? <ReplyCards replies={repliesData?.replies} /> : <></>}
 

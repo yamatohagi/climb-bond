@@ -9,7 +9,13 @@ import TextMaxLine from 'src/components/text-max-line';
 import { dayOfWeek } from '../../components/ClimberPostItem';
 import { LikeButton } from '../../components/like-button';
 
-const DetailCard = ({ post }: { post: FindFirstPostQuery['findFirstPost'] }) => {
+const DetailCard = ({
+  post,
+  refetch,
+}: {
+  post: FindFirstPostQuery['findFirstPost'];
+  refetch: () => void;
+}) => {
   if (!post) return null;
   const {
     id,
@@ -154,10 +160,11 @@ const DetailCard = ({ post }: { post: FindFirstPostQuery['findFirstPost'] }) => 
           <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} /> {_count ? _count.replies : 0}
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />1
+          <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />
+          {_count ? _count.viewHistory : 0}
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <LikeButton likes={like} postId={id} />
+          <LikeButton likes={like} postId={id} refetch={refetch} />
         </Box>
       </Stack>
     </Card>

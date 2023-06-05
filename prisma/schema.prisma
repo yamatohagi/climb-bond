@@ -26,6 +26,14 @@ model Post {
   grade                String
   replies              Reply[]
   like                 PostLike[]
+  viewHistory          ViewHistory[]
+}
+
+model ViewHistory {
+  id     Int    @id @default(autoincrement())
+  userId String
+  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
 }
 
 model PostLike {

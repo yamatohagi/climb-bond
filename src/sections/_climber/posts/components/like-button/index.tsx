@@ -14,9 +14,11 @@ import {
 export const LikeButton = ({
   likes,
   postId,
+  refetch,
 }: {
   likes: PostsQuery['posts'][0]['like'];
   postId: number;
+  refetch: () => void;
 }) => {
   const [createOnePostLike] = useCreateOnePostLikeMutation();
   const [deleteManyPostLike] = useDeleteManyPostLikeMutation();
@@ -36,6 +38,7 @@ export const LikeButton = ({
           },
         },
         onCompleted: (data) => {
+          refetch();
           const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
             query: PostsDocument,
             variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
@@ -63,6 +66,7 @@ export const LikeButton = ({
         },
 
         onCompleted: (data) => {
+          refetch();
           const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
             query: PostsDocument,
             variables: { orderBy: [{ createdAt: SortOrder.Desc }] },

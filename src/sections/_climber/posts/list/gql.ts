@@ -25,6 +25,7 @@ gql`
       }
       _count {
         replies
+        viewHistory
       }
     }
   }

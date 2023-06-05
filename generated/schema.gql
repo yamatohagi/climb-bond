@@ -47,6 +47,14 @@ type AggregateReply {
   _sum: ReplySumAggregate
 }
 
+type AggregateViewHistory {
+  _avg: ViewHistoryAvgAggregate
+  _count: ViewHistoryCountAggregate
+  _max: ViewHistoryMaxAggregate
+  _min: ViewHistoryMinAggregate
+  _sum: ViewHistorySumAggregate
+}
+
 enum ClimbingType {
   BOTH
   BOULDER
@@ -378,36 +386,43 @@ type Mutation {
   createManyPostLike(data: [PostLikeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPreferredDayAndTime(data: [PreferredDayAndTimeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyReply(data: [ReplyCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyViewHistory(data: [ViewHistoryCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createOneGym(data: GymCreateInput!): Gym!
   createOnePost(data: PostCreateInput!): Post!
   createOnePostLike(data: PostLikeCreateInput!): PostLike!
   createOnePreferredDayAndTime(data: PreferredDayAndTimeCreateInput!): PreferredDayAndTime!
   createOneReply(data: ReplyCreateInput!): Reply!
+  createOneViewHistory(data: ViewHistoryCreateInput!): ViewHistory!
   deleteManyGym(where: GymWhereInput): AffectedRowsOutput!
   deleteManyPost(where: PostWhereInput): AffectedRowsOutput!
   deleteManyPostLike(where: PostLikeWhereInput): AffectedRowsOutput!
   deleteManyPreferredDayAndTime(where: PreferredDayAndTimeWhereInput): AffectedRowsOutput!
   deleteManyReply(where: ReplyWhereInput): AffectedRowsOutput!
+  deleteManyViewHistory(where: ViewHistoryWhereInput): AffectedRowsOutput!
   deleteOneGym(where: GymWhereUniqueInput!): Gym
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteOnePostLike(where: PostLikeWhereUniqueInput!): PostLike
   deleteOnePreferredDayAndTime(where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
   deleteOneReply(where: ReplyWhereUniqueInput!): Reply
+  deleteOneViewHistory(where: ViewHistoryWhereUniqueInput!): ViewHistory
   updateManyGym(data: GymUpdateManyMutationInput!, where: GymWhereInput): AffectedRowsOutput!
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): AffectedRowsOutput!
   updateManyPostLike(data: PostLikeUpdateManyMutationInput!, where: PostLikeWhereInput): AffectedRowsOutput!
   updateManyPreferredDayAndTime(data: PreferredDayAndTimeUpdateManyMutationInput!, where: PreferredDayAndTimeWhereInput): AffectedRowsOutput!
   updateManyReply(data: ReplyUpdateManyMutationInput!, where: ReplyWhereInput): AffectedRowsOutput!
+  updateManyViewHistory(data: ViewHistoryUpdateManyMutationInput!, where: ViewHistoryWhereInput): AffectedRowsOutput!
   updateOneGym(data: GymUpdateInput!, where: GymWhereUniqueInput!): Gym
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateOnePostLike(data: PostLikeUpdateInput!, where: PostLikeWhereUniqueInput!): PostLike
   updateOnePreferredDayAndTime(data: PreferredDayAndTimeUpdateInput!, where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
   updateOneReply(data: ReplyUpdateInput!, where: ReplyWhereUniqueInput!): Reply
+  updateOneViewHistory(data: ViewHistoryUpdateInput!, where: ViewHistoryWhereUniqueInput!): ViewHistory
   upsertOneGym(create: GymCreateInput!, update: GymUpdateInput!, where: GymWhereUniqueInput!): Gym!
   upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   upsertOnePostLike(create: PostLikeCreateInput!, update: PostLikeUpdateInput!, where: PostLikeWhereUniqueInput!): PostLike!
   upsertOnePreferredDayAndTime(create: PreferredDayAndTimeCreateInput!, update: PreferredDayAndTimeUpdateInput!, where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime!
   upsertOneReply(create: ReplyCreateInput!, update: ReplyUpdateInput!, where: ReplyWhereUniqueInput!): Reply!
+  upsertOneViewHistory(create: ViewHistoryCreateInput!, update: ViewHistoryUpdateInput!, where: ViewHistoryWhereUniqueInput!): ViewHistory!
 }
 
 input NestedDateTimeFilter {
@@ -613,6 +628,7 @@ type Post {
   replies(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): [Reply!]!
   title: String!
   updatedAt: DateTime!
+  viewHistory(cursor: ViewHistoryWhereUniqueInput, distinct: [ViewHistoryScalarFieldEnum!], orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): [ViewHistory!]!
 }
 
 type PostAvgAggregate {
@@ -633,6 +649,7 @@ type PostCount {
   like: Int!
   preferredDayAndTimes: Int!
   replies: Int!
+  viewHistory: Int!
 }
 
 type PostCountAggregate {
@@ -678,6 +695,7 @@ input PostCreateInput {
   replies: ReplyCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
+  viewHistory: ViewHistoryCreateNestedManyWithoutPostInput
 }
 
 input PostCreateManyGymInput {
@@ -737,6 +755,12 @@ input PostCreateNestedOneWithoutRepliesInput {
   create: PostCreateWithoutRepliesInput
 }
 
+input PostCreateNestedOneWithoutViewHistoryInput {
+  connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutViewHistoryInput
+  create: PostCreateWithoutViewHistoryInput
+}
+
 input PostCreateOrConnectWithoutGymInput {
   create: PostCreateWithoutGymInput!
   where: PostWhereUniqueInput!
@@ -757,6 +781,11 @@ input PostCreateOrConnectWithoutRepliesInput {
   where: PostWhereUniqueInput!
 }
 
+input PostCreateOrConnectWithoutViewHistoryInput {
+  create: PostCreateWithoutViewHistoryInput!
+  where: PostWhereUniqueInput!
+}
+
 input PostCreateWithoutGymInput {
   belayMonths: Int!
   climbingType: ClimbingType!
@@ -770,6 +799,7 @@ input PostCreateWithoutGymInput {
   replies: ReplyCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
+  viewHistory: ViewHistoryCreateNestedManyWithoutPostInput
 }
 
 input PostCreateWithoutLikeInput {
@@ -785,6 +815,7 @@ input PostCreateWithoutLikeInput {
   replies: ReplyCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
+  viewHistory: ViewHistoryCreateNestedManyWithoutPostInput
 }
 
 input PostCreateWithoutPreferredDayAndTimesInput {
@@ -800,6 +831,7 @@ input PostCreateWithoutPreferredDayAndTimesInput {
   replies: ReplyCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
+  viewHistory: ViewHistoryCreateNestedManyWithoutPostInput
 }
 
 input PostCreateWithoutRepliesInput {
@@ -813,6 +845,23 @@ input PostCreateWithoutRepliesInput {
   gym: GymCreateNestedOneWithoutPostsInput!
   like: PostLikeCreateNestedManyWithoutPostInput
   preferredDayAndTimes: PreferredDayAndTimeCreateNestedManyWithoutPostInput
+  title: String!
+  updatedAt: DateTime
+  viewHistory: ViewHistoryCreateNestedManyWithoutPostInput
+}
+
+input PostCreateWithoutViewHistoryInput {
+  belayMonths: Int!
+  climbingType: ClimbingType!
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  experienceMonths: Int!
+  grade: String!
+  gym: GymCreateNestedOneWithoutPostsInput!
+  like: PostLikeCreateNestedManyWithoutPostInput
+  preferredDayAndTimes: PreferredDayAndTimeCreateNestedManyWithoutPostInput
+  replies: ReplyCreateNestedManyWithoutPostInput
   title: String!
   updatedAt: DateTime
 }
@@ -1158,6 +1207,7 @@ input PostOrderByWithRelationInput {
   replies: ReplyOrderByRelationAggregateInput
   title: SortOrder
   updatedAt: SortOrder
+  viewHistory: ViewHistoryOrderByRelationAggregateInput
 }
 
 input PostRelationFilter {
@@ -1241,6 +1291,7 @@ input PostUpdateInput {
   replies: ReplyUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  viewHistory: ViewHistoryUpdateManyWithoutPostNestedInput
 }
 
 input PostUpdateManyMutationInput {
@@ -1298,6 +1349,14 @@ input PostUpdateOneRequiredWithoutRepliesNestedInput {
   upsert: PostUpsertWithoutRepliesInput
 }
 
+input PostUpdateOneRequiredWithoutViewHistoryNestedInput {
+  connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutViewHistoryInput
+  create: PostCreateWithoutViewHistoryInput
+  update: PostUpdateWithoutViewHistoryInput
+  upsert: PostUpsertWithoutViewHistoryInput
+}
+
 input PostUpdateWithWhereUniqueWithoutGymInput {
   data: PostUpdateWithoutGymInput!
   where: PostWhereUniqueInput!
@@ -1316,6 +1375,7 @@ input PostUpdateWithoutGymInput {
   replies: ReplyUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  viewHistory: ViewHistoryUpdateManyWithoutPostNestedInput
 }
 
 input PostUpdateWithoutLikeInput {
@@ -1331,6 +1391,7 @@ input PostUpdateWithoutLikeInput {
   replies: ReplyUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  viewHistory: ViewHistoryUpdateManyWithoutPostNestedInput
 }
 
 input PostUpdateWithoutPreferredDayAndTimesInput {
@@ -1346,6 +1407,7 @@ input PostUpdateWithoutPreferredDayAndTimesInput {
   replies: ReplyUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  viewHistory: ViewHistoryUpdateManyWithoutPostNestedInput
 }
 
 input PostUpdateWithoutRepliesInput {
@@ -1359,6 +1421,23 @@ input PostUpdateWithoutRepliesInput {
   gym: GymUpdateOneRequiredWithoutPostsNestedInput
   like: PostLikeUpdateManyWithoutPostNestedInput
   preferredDayAndTimes: PreferredDayAndTimeUpdateManyWithoutPostNestedInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  viewHistory: ViewHistoryUpdateManyWithoutPostNestedInput
+}
+
+input PostUpdateWithoutViewHistoryInput {
+  belayMonths: IntFieldUpdateOperationsInput
+  climbingType: EnumClimbingTypeFieldUpdateOperationsInput
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  experienceMonths: IntFieldUpdateOperationsInput
+  grade: StringFieldUpdateOperationsInput
+  gym: GymUpdateOneRequiredWithoutPostsNestedInput
+  like: PostLikeUpdateManyWithoutPostNestedInput
+  preferredDayAndTimes: PreferredDayAndTimeUpdateManyWithoutPostNestedInput
+  replies: ReplyUpdateManyWithoutPostNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
@@ -1384,6 +1463,11 @@ input PostUpsertWithoutRepliesInput {
   update: PostUpdateWithoutRepliesInput!
 }
 
+input PostUpsertWithoutViewHistoryInput {
+  create: PostCreateWithoutViewHistoryInput!
+  update: PostUpdateWithoutViewHistoryInput!
+}
+
 input PostWhereInput {
   AND: [PostWhereInput!]
   NOT: [PostWhereInput!]
@@ -1403,6 +1487,7 @@ input PostWhereInput {
   replies: ReplyListRelationFilter
   title: StringFilter
   updatedAt: DateTimeFilter
+  viewHistory: ViewHistoryListRelationFilter
 }
 
 input PostWhereUniqueInput {
@@ -1636,6 +1721,7 @@ type Query {
   aggregatePostLike(cursor: PostLikeWhereUniqueInput, orderBy: [PostLikeOrderByWithRelationInput!], skip: Int, take: Int, where: PostLikeWhereInput): AggregatePostLike!
   aggregatePreferredDayAndTime(cursor: PreferredDayAndTimeWhereUniqueInput, orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): AggregatePreferredDayAndTime!
   aggregateReply(cursor: ReplyWhereUniqueInput, orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): AggregateReply!
+  aggregateViewHistory(cursor: ViewHistoryWhereUniqueInput, orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): AggregateViewHistory!
   findFirstGym(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): Gym
   findFirstGymOrThrow(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): Gym
   findFirstPost(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): Post
@@ -1646,16 +1732,20 @@ type Query {
   findFirstPreferredDayAndTimeOrThrow(cursor: PreferredDayAndTimeWhereUniqueInput, distinct: [PreferredDayAndTimeScalarFieldEnum!], orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): PreferredDayAndTime
   findFirstReply(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): Reply
   findFirstReplyOrThrow(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): Reply
+  findFirstViewHistory(cursor: ViewHistoryWhereUniqueInput, distinct: [ViewHistoryScalarFieldEnum!], orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): ViewHistory
+  findFirstViewHistoryOrThrow(cursor: ViewHistoryWhereUniqueInput, distinct: [ViewHistoryScalarFieldEnum!], orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): ViewHistory
   getGym(where: GymWhereUniqueInput!): Gym
   getPost(where: PostWhereUniqueInput!): Post
   getPostLike(where: PostLikeWhereUniqueInput!): PostLike
   getPreferredDayAndTime(where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
   getReply(where: ReplyWhereUniqueInput!): Reply
+  getViewHistory(where: ViewHistoryWhereUniqueInput!): ViewHistory
   groupByGym(by: [GymScalarFieldEnum!]!, having: GymScalarWhereWithAggregatesInput, orderBy: [GymOrderByWithAggregationInput!], skip: Int, take: Int, where: GymWhereInput): [GymGroupBy!]!
   groupByPost(by: [PostScalarFieldEnum!]!, having: PostScalarWhereWithAggregatesInput, orderBy: [PostOrderByWithAggregationInput!], skip: Int, take: Int, where: PostWhereInput): [PostGroupBy!]!
   groupByPostLike(by: [PostLikeScalarFieldEnum!]!, having: PostLikeScalarWhereWithAggregatesInput, orderBy: [PostLikeOrderByWithAggregationInput!], skip: Int, take: Int, where: PostLikeWhereInput): [PostLikeGroupBy!]!
   groupByPreferredDayAndTime(by: [PreferredDayAndTimeScalarFieldEnum!]!, having: PreferredDayAndTimeScalarWhereWithAggregatesInput, orderBy: [PreferredDayAndTimeOrderByWithAggregationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): [PreferredDayAndTimeGroupBy!]!
   groupByReply(by: [ReplyScalarFieldEnum!]!, having: ReplyScalarWhereWithAggregatesInput, orderBy: [ReplyOrderByWithAggregationInput!], skip: Int, take: Int, where: ReplyWhereInput): [ReplyGroupBy!]!
+  groupByViewHistory(by: [ViewHistoryScalarFieldEnum!]!, having: ViewHistoryScalarWhereWithAggregatesInput, orderBy: [ViewHistoryOrderByWithAggregationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): [ViewHistoryGroupBy!]!
   gym(where: GymWhereUniqueInput!): Gym
   gyms(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): [Gym!]!
   post(where: PostWhereUniqueInput!): Post
@@ -1666,6 +1756,8 @@ type Query {
   preferredDayAndTimes(cursor: PreferredDayAndTimeWhereUniqueInput, distinct: [PreferredDayAndTimeScalarFieldEnum!], orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): [PreferredDayAndTime!]!
   replies(cursor: ReplyWhereUniqueInput, distinct: [ReplyScalarFieldEnum!], orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): [Reply!]!
   reply(where: ReplyWhereUniqueInput!): Reply
+  viewHistories(cursor: ViewHistoryWhereUniqueInput, distinct: [ViewHistoryScalarFieldEnum!], orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): [ViewHistory!]!
+  viewHistory(where: ViewHistoryWhereUniqueInput!): ViewHistory
 }
 
 enum QueryMode {
@@ -2051,4 +2143,225 @@ input StringWithAggregatesFilter {
   not: NestedStringWithAggregatesFilter
   notIn: [String!]
   startsWith: String
+}
+
+type ViewHistory {
+  id: Int!
+  post: Post!
+  postId: Int!
+  userId: String!
+}
+
+type ViewHistoryAvgAggregate {
+  id: Float
+  postId: Float
+}
+
+input ViewHistoryAvgOrderByAggregateInput {
+  id: SortOrder
+  postId: SortOrder
+}
+
+type ViewHistoryCountAggregate {
+  _all: Int!
+  id: Int!
+  postId: Int!
+  userId: Int!
+}
+
+input ViewHistoryCountOrderByAggregateInput {
+  id: SortOrder
+  postId: SortOrder
+  userId: SortOrder
+}
+
+input ViewHistoryCreateInput {
+  post: PostCreateNestedOneWithoutViewHistoryInput!
+  userId: String!
+}
+
+input ViewHistoryCreateManyInput {
+  id: Int
+  postId: Int!
+  userId: String!
+}
+
+input ViewHistoryCreateManyPostInput {
+  id: Int
+  userId: String!
+}
+
+input ViewHistoryCreateManyPostInputEnvelope {
+  data: [ViewHistoryCreateManyPostInput!]!
+  skipDuplicates: Boolean
+}
+
+input ViewHistoryCreateNestedManyWithoutPostInput {
+  connect: [ViewHistoryWhereUniqueInput!]
+  connectOrCreate: [ViewHistoryCreateOrConnectWithoutPostInput!]
+  create: [ViewHistoryCreateWithoutPostInput!]
+  createMany: ViewHistoryCreateManyPostInputEnvelope
+}
+
+input ViewHistoryCreateOrConnectWithoutPostInput {
+  create: ViewHistoryCreateWithoutPostInput!
+  where: ViewHistoryWhereUniqueInput!
+}
+
+input ViewHistoryCreateWithoutPostInput {
+  userId: String!
+}
+
+type ViewHistoryGroupBy {
+  _avg: ViewHistoryAvgAggregate
+  _count: ViewHistoryCountAggregate
+  _max: ViewHistoryMaxAggregate
+  _min: ViewHistoryMinAggregate
+  _sum: ViewHistorySumAggregate
+  id: Int!
+  postId: Int!
+  userId: String!
+}
+
+input ViewHistoryListRelationFilter {
+  every: ViewHistoryWhereInput
+  none: ViewHistoryWhereInput
+  some: ViewHistoryWhereInput
+}
+
+type ViewHistoryMaxAggregate {
+  id: Int
+  postId: Int
+  userId: String
+}
+
+input ViewHistoryMaxOrderByAggregateInput {
+  id: SortOrder
+  postId: SortOrder
+  userId: SortOrder
+}
+
+type ViewHistoryMinAggregate {
+  id: Int
+  postId: Int
+  userId: String
+}
+
+input ViewHistoryMinOrderByAggregateInput {
+  id: SortOrder
+  postId: SortOrder
+  userId: SortOrder
+}
+
+input ViewHistoryOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ViewHistoryOrderByWithAggregationInput {
+  _avg: ViewHistoryAvgOrderByAggregateInput
+  _count: ViewHistoryCountOrderByAggregateInput
+  _max: ViewHistoryMaxOrderByAggregateInput
+  _min: ViewHistoryMinOrderByAggregateInput
+  _sum: ViewHistorySumOrderByAggregateInput
+  id: SortOrder
+  postId: SortOrder
+  userId: SortOrder
+}
+
+input ViewHistoryOrderByWithRelationInput {
+  id: SortOrder
+  post: PostOrderByWithRelationInput
+  postId: SortOrder
+  userId: SortOrder
+}
+
+enum ViewHistoryScalarFieldEnum {
+  id
+  postId
+  userId
+}
+
+input ViewHistoryScalarWhereInput {
+  AND: [ViewHistoryScalarWhereInput!]
+  NOT: [ViewHistoryScalarWhereInput!]
+  OR: [ViewHistoryScalarWhereInput!]
+  id: IntFilter
+  postId: IntFilter
+  userId: StringFilter
+}
+
+input ViewHistoryScalarWhereWithAggregatesInput {
+  AND: [ViewHistoryScalarWhereWithAggregatesInput!]
+  NOT: [ViewHistoryScalarWhereWithAggregatesInput!]
+  OR: [ViewHistoryScalarWhereWithAggregatesInput!]
+  id: IntWithAggregatesFilter
+  postId: IntWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+}
+
+type ViewHistorySumAggregate {
+  id: Int
+  postId: Int
+}
+
+input ViewHistorySumOrderByAggregateInput {
+  id: SortOrder
+  postId: SortOrder
+}
+
+input ViewHistoryUpdateInput {
+  post: PostUpdateOneRequiredWithoutViewHistoryNestedInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input ViewHistoryUpdateManyMutationInput {
+  userId: StringFieldUpdateOperationsInput
+}
+
+input ViewHistoryUpdateManyWithWhereWithoutPostInput {
+  data: ViewHistoryUpdateManyMutationInput!
+  where: ViewHistoryScalarWhereInput!
+}
+
+input ViewHistoryUpdateManyWithoutPostNestedInput {
+  connect: [ViewHistoryWhereUniqueInput!]
+  connectOrCreate: [ViewHistoryCreateOrConnectWithoutPostInput!]
+  create: [ViewHistoryCreateWithoutPostInput!]
+  createMany: ViewHistoryCreateManyPostInputEnvelope
+  delete: [ViewHistoryWhereUniqueInput!]
+  deleteMany: [ViewHistoryScalarWhereInput!]
+  disconnect: [ViewHistoryWhereUniqueInput!]
+  set: [ViewHistoryWhereUniqueInput!]
+  update: [ViewHistoryUpdateWithWhereUniqueWithoutPostInput!]
+  updateMany: [ViewHistoryUpdateManyWithWhereWithoutPostInput!]
+  upsert: [ViewHistoryUpsertWithWhereUniqueWithoutPostInput!]
+}
+
+input ViewHistoryUpdateWithWhereUniqueWithoutPostInput {
+  data: ViewHistoryUpdateWithoutPostInput!
+  where: ViewHistoryWhereUniqueInput!
+}
+
+input ViewHistoryUpdateWithoutPostInput {
+  userId: StringFieldUpdateOperationsInput
+}
+
+input ViewHistoryUpsertWithWhereUniqueWithoutPostInput {
+  create: ViewHistoryCreateWithoutPostInput!
+  update: ViewHistoryUpdateWithoutPostInput!
+  where: ViewHistoryWhereUniqueInput!
+}
+
+input ViewHistoryWhereInput {
+  AND: [ViewHistoryWhereInput!]
+  NOT: [ViewHistoryWhereInput!]
+  OR: [ViewHistoryWhereInput!]
+  id: IntFilter
+  post: PostRelationFilter
+  postId: IntFilter
+  userId: StringFilter
+}
+
+input ViewHistoryWhereUniqueInput {
+  id: Int
 }

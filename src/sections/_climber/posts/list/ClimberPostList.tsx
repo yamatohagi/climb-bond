@@ -3,12 +3,14 @@ import { Pagination, Box } from '@mui/material';
 import { ClimberPostItem, ClimberPostItemSkeleton } from '../components';
 import { Fragment } from 'react';
 import { SortOrder, usePostsQuery } from 'src/generated/graphql';
+import CreateButton from '../create/CreateButton';
 export default function ClimberPostList() {
-  const { error, data, loading } = usePostsQuery({
+  const { error, data, loading, refetch } = usePostsQuery({
     variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
   });
   return (
     <>
+      <CreateButton refetch={refetch} />
       <Box
         sx={{
           columnGap: 4,

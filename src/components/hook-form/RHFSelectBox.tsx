@@ -15,7 +15,7 @@ export default function RHFSelectBox({ options, name, ...other }: any) {
           {...field}
           select
           fullWidth
-          value={typeof field.value === 'number' && field.value === 0 ? '' : field.value}
+          value={field.value}
           error={!!error}
           helperText={error?.message}
           {...other}

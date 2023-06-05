@@ -1,5 +1,5 @@
 import { _jobs } from 'src/_mock';
-import { Button, DialogTitle, DialogContent, DialogActions, Grid } from '@mui/material';
+import { Button, DialogTitle, DialogContent, DialogActions, Grid, Dialog } from '@mui/material';
 import { DialogAnimate } from 'src/components/animate';
 import getVariant from 'src/sections/examples/animate/getVariant';
 import { Box } from '@mui/system';
@@ -12,41 +12,39 @@ import Iconify from 'src/components/iconify/Iconify';
 
 import { useCreateOnePostMutation, useGymsQuery } from 'src/generated/graphql';
 import { SortOrder } from 'src/generated/graphql';
+import usePostForm, { PostInput } from './hooks/usePostForm';
+import { LoadingButton } from '@mui/lab';
 
-export default function ClimberPostCreateModal({ open, onClose }: any) {
+export default function ClimberPostCreateModal({
+  open,
+  onClose,
+  refetch,
+}: {
+  open: boolean;
+  onClose: () => void;
+  refetch: () => void;
+}) {
   const [createOnePostMutation] = useCreateOnePostMutation();
+  const methods = usePostForm();
 
   const { error, data, loading } = useGymsQuery({
     variables: { orderBy: [{ name: SortOrder.Asc }] },
   });
 
-  const methods = useForm({
-    defaultValues: {
-      title: '',
-      content: '',
-      gymId: '',
-      preferredDayAndTimes: [],
-      climbingType: ClimbingType.BOULDER,
-    },
-  });
   const {
     handleSubmit,
     formState: { isSubmitting, errors },
   } = methods;
 
-  const onSubmit = async (params: any) => {
+  const onSubmit = async (params: PostInput) => {
+    const { gymId, ...otherParams } = params;
     const { data, errors } = await createOnePostMutation({
       variables: {
         data: {
-          title: params.title,
-          content: params.content,
+          ...otherParams,
           gym: { connect: { id: params.gymId } },
-          climbingType: params.climbingType,
-          belayMonths: params.belayMonths,
-          experienceMonths: params.experienceMonths,
-          grade: params.grade,
           preferredDayAndTimes: {
-            create: params.preferredDayAndTimes.map((dayAndTime: any) => ({
+            create: params.preferredDayAndTimes.map((dayAndTime) => ({
               dayAndTime: dayAndTime,
             })),
           },
@@ -54,12 +52,13 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
       },
     });
     if (errors) return;
+    refetch();
     onClose();
   };
 
   return (
     <>
-      <DialogAnimate open={open} onClose={onClose} variants={getVariant('bounceInUp')}>
+      <Dialog open={open} onClose={onClose} transitionDuration={350}>
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle id="alert-dialog-title">{`ガンバ！！`}</DialogTitle>
           <DialogContent>
@@ -127,13 +126,13 @@ export default function ClimberPostCreateModal({ open, onClose }: any) {
             </Box>
           </DialogContent>
           <DialogActions>
-            <Button onClick={onClose}>Disagree</Button>
-            <Button variant="contained" type="submit" autoFocus>
-              Agree
-            </Button>
+            <Button onClick={onClose}>キャンセル</Button>
+            <LoadingButton variant="contained" type="submit" loading={isSubmitting}>
+              投稿！
+            </LoadingButton>
           </DialogActions>
         </FormProvider>
-      </DialogAnimate>
+      </Dialog>
     </>
   );
 }
@@ -159,7 +158,7 @@ const generateGrades = () => {
 
 function generateMonths() {
   let months = [];
-  for (let i = 1; i <= 12; i++) {
+  for (let i = 0; i <= 12; i++) {
     months.push({ value: i, label: `${i}ヶ月` });
   }
   for (let i = 1.5; i < 2; i += 0.5) {

@@ -3125,11 +3125,18 @@ export type CreateOneReplyMutationVariables = Exact<{
 export type CreateOneReplyMutation = { __typename?: 'Mutation', createOneReply: { __typename?: 'Reply', content: string, postId: number, title: string, userName: string } };
 
 export type PostsQueryVariables = Exact<{
+  take?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<PostOrderByWithRelationInput> | PostOrderByWithRelationInput>;
 }>;
 
 
 export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, like: Array<{ __typename?: 'PostLike', id: number, postId: number, userId: string }>, _count?: { __typename?: 'PostCount', replies: number, viewHistory: number } | null }> };
+
+export type _CountQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type _CountQuery = { __typename?: 'Query', aggregatePost: { __typename?: 'AggregatePost', _count?: { __typename?: 'PostCountAggregate', _all: number } | null } };
 
 
 export const CreateOnePostLikeDocument = gql`
@@ -3413,8 +3420,8 @@ export type CreateOneReplyMutationHookResult = ReturnType<typeof useCreateOneRep
 export type CreateOneReplyMutationResult = Apollo.MutationResult<CreateOneReplyMutation>;
 export type CreateOneReplyMutationOptions = Apollo.BaseMutationOptions<CreateOneReplyMutation, CreateOneReplyMutationVariables>;
 export const PostsDocument = gql`
-    query Posts($orderBy: [PostOrderByWithRelationInput!]) {
-  posts(orderBy: $orderBy) {
+    query Posts($take: Int, $skip: Int, $orderBy: [PostOrderByWithRelationInput!]) {
+  posts(take: $take, skip: $skip, orderBy: $orderBy) {
     id
     title
     content
@@ -3455,6 +3462,8 @@ export const PostsDocument = gql`
  * @example
  * const { data, loading, error } = usePostsQuery({
  *   variables: {
+ *      take: // value for 'take'
+ *      skip: // value for 'skip'
  *      orderBy: // value for 'orderBy'
  *   },
  * });
@@ -3470,3 +3479,39 @@ export function usePostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Post
 export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>;
 export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>;
 export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>;
+export const _CountDocument = gql`
+    query _count {
+  aggregatePost {
+    _count {
+      _all
+    }
+  }
+}
+    `;
+
+/**
+ * __use_CountQuery__
+ *
+ * To run a query within a React component, call `use_CountQuery` and pass it any options that fit your needs.
+ * When your component renders, `use_CountQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = use_CountQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function use_CountQuery(baseOptions?: Apollo.QueryHookOptions<_CountQuery, _CountQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<_CountQuery, _CountQueryVariables>(_CountDocument, options);
+      }
+export function use_CountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<_CountQuery, _CountQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<_CountQuery, _CountQueryVariables>(_CountDocument, options);
+        }
+export type _CountQueryHookResult = ReturnType<typeof use_CountQuery>;
+export type _CountLazyQueryHookResult = ReturnType<typeof use_CountLazyQuery>;
+export type _CountQueryResult = Apollo.QueryResult<_CountQuery, _CountQueryVariables>;

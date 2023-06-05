@@ -1,13 +1,26 @@
 import PropTypes from 'prop-types';
 import { Pagination, Box } from '@mui/material';
 import { ClimberPostItem, ClimberPostItemSkeleton } from '../components';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { SortOrder, usePostsQuery } from 'src/generated/graphql';
 import CreateButton from '../create/CreateButton';
+import { use_CountQuery } from 'src/generated/graphql';
+import { useRouter } from 'next/router';
 export default function ClimberPostList() {
+  const router = useRouter();
+  const { query } = router;
+  const page = query.page ? parseInt(query.page.toString()) : 1;
+
+  const itemsPerPage = 5;
+
   const { error, data, loading, refetch } = usePostsQuery({
-    variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
+    variables: {
+      orderBy: [{ createdAt: SortOrder.Desc }],
+      take: itemsPerPage,
+      skip: (page - 1) * itemsPerPage,
+    },
   });
+  const { data: postCountDate, loading: postCountLoading } = use_CountQuery();
   return (
     <>
       <CreateButton refetch={refetch} />
@@ -31,9 +44,18 @@ export default function ClimberPostList() {
       </Box>
 
       <Pagination
-        count={10}
+        count={
+          postCountDate && !postCountLoading
+            ? postCountDate?.aggregatePost._count?._all! / itemsPerPage
+            : 100
+        }
         color="primary"
         size="large"
+        page={page} // Set the current page
+        onChange={(event, value) => {
+          router.push(`?page=${value}`, undefined, { shallow: true });
+          window.scrollTo(0, 0);
+        }}
         sx={{
           my: 10,
           '& .MuiPagination-ul': {

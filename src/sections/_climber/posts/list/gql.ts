@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 gql`
-  query Posts($orderBy: [PostOrderByWithRelationInput!]) {
-    posts(orderBy: $orderBy) {
+  query Posts($take: Int, $skip: Int, $orderBy: [PostOrderByWithRelationInput!]) {
+    posts(take: $take, skip: $skip, orderBy: $orderBy) {
       id
       title
       content
@@ -26,6 +26,16 @@ gql`
       _count {
         replies
         viewHistory
+      }
+    }
+  }
+`;
+
+gql`
+  query _count {
+    aggregatePost {
+      _count {
+        _all
       }
     }
   }

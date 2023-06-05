@@ -5,6 +5,7 @@ import { ClimberPostItemSkeleton } from '../components';
 import DetailCard from './component/DetailCard';
 import ReplyCards from './reply/ReplyCards';
 import CreateReply from './reply/CreateReply';
+import ReplyItemSkeleton from './reply/ReplyItemSkeleton';
 
 export default function ClimberPostDetail({}: {}) {
   const router = useRouter();
@@ -18,7 +19,11 @@ export default function ClimberPostDetail({}: {}) {
     },
   });
 
-  const { data: repliesData, refetch: repliesRefetch } = useRepliesQuery({
+  const {
+    data: repliesData,
+    loading: repliesLoading,
+    refetch: repliesRefetch,
+  } = useRepliesQuery({
     variables: {
       where: {
         postId: { equals: postId },
@@ -45,7 +50,7 @@ export default function ClimberPostDetail({}: {}) {
         <ClimberPostItemSkeleton />
       )}
 
-      {repliesData ? <ReplyCards replies={repliesData?.replies} /> : <></>}
+      {repliesData ? <ReplyCards replies={repliesData?.replies} /> : <ReplyItemSkeleton />}
 
       <CreateReply
         postId={postId}

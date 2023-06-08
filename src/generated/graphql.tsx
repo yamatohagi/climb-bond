@@ -3279,6 +3279,13 @@ export type _CountQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type _CountQuery = { __typename?: 'Query', aggregatePost: { __typename?: 'AggregatePost', _count?: { __typename?: 'PostCountAggregate', _all: number } | null } };
 
+export type CreateOneGymMutationVariables = Exact<{
+  data: GymCreateInput;
+}>;
+
+
+export type CreateOneGymMutation = { __typename?: 'Mutation', createOneGym: { __typename?: 'Gym', id: number, name: string, image?: string | null, createdAt: any, climbingType: ClimbingType } };
+
 export type GymsQueryVariables = Exact<{
   take?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
@@ -3670,6 +3677,43 @@ export function use_CountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<_Co
 export type _CountQueryHookResult = ReturnType<typeof use_CountQuery>;
 export type _CountLazyQueryHookResult = ReturnType<typeof use_CountLazyQuery>;
 export type _CountQueryResult = Apollo.QueryResult<_CountQuery, _CountQueryVariables>;
+export const CreateOneGymDocument = gql`
+    mutation CreateOneGym($data: GymCreateInput!) {
+  createOneGym(data: $data) {
+    id
+    name
+    image
+    createdAt
+    climbingType
+  }
+}
+    `;
+export type CreateOneGymMutationFn = Apollo.MutationFunction<CreateOneGymMutation, CreateOneGymMutationVariables>;
+
+/**
+ * __useCreateOneGymMutation__
+ *
+ * To run a mutation, you first call `useCreateOneGymMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOneGymMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOneGymMutation, { data, loading, error }] = useCreateOneGymMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateOneGymMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneGymMutation, CreateOneGymMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOneGymMutation, CreateOneGymMutationVariables>(CreateOneGymDocument, options);
+      }
+export type CreateOneGymMutationHookResult = ReturnType<typeof useCreateOneGymMutation>;
+export type CreateOneGymMutationResult = Apollo.MutationResult<CreateOneGymMutation>;
+export type CreateOneGymMutationOptions = Apollo.BaseMutationOptions<CreateOneGymMutation, CreateOneGymMutationVariables>;
 export const GymsDocument = gql`
     query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
   gyms(take: $take, skip: $skip, orderBy: $orderBy) {

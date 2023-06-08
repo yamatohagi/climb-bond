@@ -36,7 +36,7 @@ interface Post extends PrismaPost {
 }
 
 export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
-  const { id, name, createdAt, climbingType } = gym;
+  const { id, name, createdAt, climbingType, image } = gym;
 
   const [favorite, setFavorite] = useState(false);
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
@@ -64,11 +64,13 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
             <TextMaxLine variant="h6" line={1}>
               {name}
             </TextMaxLine>
-            <Image
-              alt={gym.name}
-              src={'companyLogo'}
-              sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }}
-            />
+            {image && (
+              <Image
+                alt={gym.name}
+                src={image}
+                sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }}
+              />
+            )}
           </Stack>
 
           <Stack spacing={0.5} sx={{ mt: 3, mb: 2 }}>

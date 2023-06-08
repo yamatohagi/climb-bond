@@ -10,11 +10,39 @@ import { ClimbingType, Gym } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
 
-import { useCreateOnePostMutation, useGymOptionsQuery, useGymsQuery } from 'src/generated/graphql';
+import {
+  useCreateOneGymMutation,
+  useCreateOnePostMutation,
+  useGymOptionsQuery,
+  useGymsQuery,
+} from 'src/generated/graphql';
 import { SortOrder } from 'src/generated/graphql';
 import usePostForm, { PostInput } from './hooks/usePostForm';
 import { LoadingButton } from '@mui/lab';
 
+import { v4 as uuidv4 } from 'uuid';
+import { supabase } from 'src/lib/supabase/supabaseClient';
+
+// 画像アップロード機能
+const uploadImage = async (imageFile: File) => {
+  const filePath = `topImages/${uuidv4()}`;
+  const { error, data } = await supabase.storage.from('gymImages').upload(filePath, imageFile);
+  if (error) throw error;
+  return data.path;
+};
+
+// 画像表示機能
+const getImageUrl = async (path: string) => {
+  const { data } = supabase.storage.from('gymImages').getPublicUrl(path);
+
+  return data.publicUrl;
+};
+// ローカルで画像をプレビューするための関数
+const previewImage = (imageFile: File) => {
+  return URL.createObjectURL(imageFile);
+};
+
+// 画像アップロードと表示機能を組み込んだコード
 export default function GymCreateModal({
   open,
   onClose,
@@ -24,26 +52,32 @@ export default function GymCreateModal({
   onClose: () => void;
   refetch: () => void;
 }) {
-  const [createOnePostMutation] = useCreateOnePostMutation();
+  const [createOneGymMutation] = useCreateOneGymMutation();
   const methods = usePostForm();
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const {
     handleSubmit,
     formState: { isSubmitting },
+    register,
   } = methods;
 
   const onSubmit = async (params: PostInput) => {
-    const { gymId, ...otherParams } = params;
-    const { errors } = await createOnePostMutation({
+    const { name, climbingType } = params;
+    let imagePath = null;
+    let imageUrl;
+    if (imageFile) {
+      imagePath = await uploadImage(imageFile);
+      imageUrl = await getImageUrl(imagePath);
+    }
+
+    const { errors } = await createOneGymMutation({
       variables: {
         data: {
-          ...otherParams,
-          gym: { connect: { id: params.gymId } },
-          preferredDayAndTimes: {
-            create: params.preferredDayAndTimes.map((dayAndTime) => ({
-              dayAndTime: dayAndTime,
-            })),
-          },
+          climbingType: climbingType,
+          name: name,
+          image: imageUrl,
         },
       },
     });
@@ -63,9 +97,21 @@ export default function GymCreateModal({
                 <Grid item xs={12}>
                   <RHFTextField size="small" name="name" label="なまえ" />
                 </Grid>
-                {/* <Grid item xs={12}>
-                    <RHFTextField name="content" label="Content" multiline rows={4} required />
-                  </Grid> */}
+                <Grid item xs={12}>
+                  <input
+                    {...register('imageFile')}
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.item(0);
+                      if (file) {
+                        setImageFile(file);
+                        setPreviewUrl(previewImage(file));
+                      }
+                    }}
+                  />
+                  {previewUrl && <img src={previewUrl} alt="Preview" />}
+                </Grid>
                 <Grid item xs={12} sm={6}>
                   <RHFSelectBox
                     size="small"

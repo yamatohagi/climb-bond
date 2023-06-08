@@ -42,9 +42,11 @@
     "signin",
     "signout",
     "simplebar",
+    "supabase",
     "textbox",
     "timegrid",
     "USERLIST",
+    "uuidv",
     "vaadin",
     "yamatohagi"
   ],

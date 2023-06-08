@@ -1,15 +1,9 @@
 import PropTypes from 'prop-types';
 import { Pagination, Box } from '@mui/material';
 
-import { Fragment, useState } from 'react';
-import {
-  SortOrder,
-  useAggregateGymQuery,
-  useGymsQuery,
-  usePostsQuery,
-} from 'src/generated/graphql';
+import { Fragment } from 'react';
+import { SortOrder, useAggregateGymQuery, useGymsQuery } from 'src/generated/graphql';
 
-import { use_CountQuery } from 'src/generated/graphql';
 import { useRouter } from 'next/router';
 import CreateButton from 'src/sections/_climber/posts/create/CreateButton';
 import GymItem from '../components/GymItem';

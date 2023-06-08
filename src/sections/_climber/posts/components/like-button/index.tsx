@@ -10,6 +10,7 @@ import {
   useCreateOnePostLikeMutation,
   useDeleteManyPostLikeMutation,
 } from 'src/generated/graphql';
+import { usePostsQueryVariables } from '../../list/hooks/usePostsQueryVariables';
 
 export const LikeButton = ({
   likes,
@@ -25,6 +26,7 @@ export const LikeButton = ({
   const client = useApolloClient();
   const gestInfo = JSON.parse(localStorage.getItem('gestInfo') || 'null');
   const [checked, setChecked] = useState(likes.some((like) => like.userId === gestInfo.key));
+  const { postsQueryVariables, router, page } = usePostsQueryVariables(5);
 
   const handleOnClick = async (checked: boolean, event: any) => {
     event.preventDefault();
@@ -41,7 +43,7 @@ export const LikeButton = ({
           refetch && refetch();
           const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
             query: PostsDocument,
-            variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
+            variables: postsQueryVariables,
           });
           const updatedPosts = cacheData?.posts.map((post) =>
             post.id === postId
@@ -69,12 +71,11 @@ export const LikeButton = ({
           refetch && refetch();
           const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
             query: PostsDocument,
-            variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
+            variables: postsQueryVariables,
           });
           const updatedPosts = cacheData?.posts.map((post) =>
             post.id === postId ? { ...post, like: [...post.like, data.createOnePostLike] } : post
           );
-          console.log(updatedPosts);
           client.cache.writeQuery({ query: PostsDocument, data: { posts: updatedPosts } });
         },
       });

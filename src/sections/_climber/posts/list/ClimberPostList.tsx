@@ -6,19 +6,12 @@ import { SortOrder, usePostsQuery } from 'src/generated/graphql';
 import CreateButton from '../create/CreateButton';
 import { use_CountQuery } from 'src/generated/graphql';
 import { useRouter } from 'next/router';
+import { usePostsQueryVariables } from './hooks/usePostsQueryVariables';
 export default function ClimberPostList() {
-  const router = useRouter();
-  const { query } = router;
-  const page = query.page ? parseInt(query.page.toString()) : 1;
-
   const itemsPerPage = 5;
-
+  const { postsQueryVariables, router, page } = usePostsQueryVariables(itemsPerPage);
   const { error, data, loading, refetch } = usePostsQuery({
-    variables: {
-      orderBy: [{ createdAt: SortOrder.Desc }],
-      take: itemsPerPage,
-      skip: (page - 1) * itemsPerPage,
-    },
+    variables: postsQueryVariables,
   });
   const { data: postCountDate, loading: postCountLoading } = use_CountQuery();
   return (
@@ -46,7 +39,7 @@ export default function ClimberPostList() {
       <Pagination
         count={
           postCountDate && !postCountLoading
-            ? postCountDate?.aggregatePost._count?._all! / itemsPerPage
+            ? Math.floor(postCountDate?.aggregatePost._count?._all! / itemsPerPage)
             : 100
         }
         color="primary"

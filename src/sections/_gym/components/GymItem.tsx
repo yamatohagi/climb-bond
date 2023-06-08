@@ -78,7 +78,7 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
               sx={{ typography: 'body2', color: 'text.secondary' }}
             >
               <Iconify icon="carbon:location" width={18} sx={{ mr: 0.5 }} />
-              {gym.name}
+              {name}
             </Stack>
           </Stack>
 

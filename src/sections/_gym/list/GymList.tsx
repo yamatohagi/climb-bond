@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import CreateButton from 'src/sections/_climber/posts/create/CreateButton';
 import GymItem from '../components/GymItem';
 import GymItemSkeleton from '../components/GymItemSkeleton';
+import GymCreateButton from '../create/GymCreateButton';
 export default function GymList() {
   const router = useRouter();
   const { query } = router;
@@ -27,7 +28,7 @@ export default function GymList() {
 
   return (
     <>
-      <CreateButton refetch={refetch} />
+      <GymCreateButton refetch={refetch} />
       <Box
         sx={{
           columnGap: 4,

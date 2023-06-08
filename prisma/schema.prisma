@@ -45,6 +45,9 @@ model PostLike {
 
 model Gym {
   id           Int          @id @default(autoincrement())
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  deletedAt    DateTime?
   name         String
   image        String?
   climbingType ClimbingType
@@ -52,21 +55,25 @@ model Gym {
 }
 
 model PreferredDayAndTime {
-  id         Int    @id @default(autoincrement())
-  dayAndTime String @db.VarChar(2)
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+  dayAndTime String    @db.VarChar(2)
   postId     Int
-  post       Post   @relation(fields: [postId], references: [id])
+  post       Post      @relation(fields: [postId], references: [id])
 }
 
 model Reply {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
   userName  String
   title     String
   content   String
   postId    Int
-  post      Post     @relation(fields: [postId], references: [id])
+  post      Post      @relation(fields: [postId], references: [id])
 }
 
 enum ClimbingType {

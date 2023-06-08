@@ -145,9 +145,12 @@ type Gym {
   Posts(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]!
   _count: GymCount
   climbingType: ClimbingType!
+  createdAt: DateTime!
+  deletedAt: DateTime
   id: Int!
   image: String
   name: String!
+  updatedAt: DateTime!
 }
 
 type GymAvgAggregate {
@@ -165,30 +168,42 @@ type GymCount {
 type GymCountAggregate {
   _all: Int!
   climbingType: Int!
+  createdAt: Int!
+  deletedAt: Int!
   id: Int!
   image: Int!
   name: Int!
+  updatedAt: Int!
 }
 
 input GymCountOrderByAggregateInput {
   climbingType: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  updatedAt: SortOrder
 }
 
 input GymCreateInput {
   Posts: PostCreateNestedManyWithoutGymInput
   climbingType: ClimbingType!
+  createdAt: DateTime
+  deletedAt: DateTime
   image: String
   name: String!
+  updatedAt: DateTime
 }
 
 input GymCreateManyInput {
   climbingType: ClimbingType!
+  createdAt: DateTime
+  deletedAt: DateTime
   id: Int
   image: String
   name: String!
+  updatedAt: DateTime
 }
 
 input GymCreateNestedOneWithoutPostsInput {
@@ -204,8 +219,11 @@ input GymCreateOrConnectWithoutPostsInput {
 
 input GymCreateWithoutPostsInput {
   climbingType: ClimbingType!
+  createdAt: DateTime
+  deletedAt: DateTime
   image: String
   name: String!
+  updatedAt: DateTime
 }
 
 type GymGroupBy {
@@ -215,37 +233,52 @@ type GymGroupBy {
   _min: GymMinAggregate
   _sum: GymSumAggregate
   climbingType: ClimbingType!
+  createdAt: DateTime!
+  deletedAt: DateTime
   id: Int!
   image: String
   name: String!
+  updatedAt: DateTime!
 }
 
 type GymMaxAggregate {
   climbingType: ClimbingType
+  createdAt: DateTime
+  deletedAt: DateTime
   id: Int
   image: String
   name: String
+  updatedAt: DateTime
 }
 
 input GymMaxOrderByAggregateInput {
   climbingType: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  updatedAt: SortOrder
 }
 
 type GymMinAggregate {
   climbingType: ClimbingType
+  createdAt: DateTime
+  deletedAt: DateTime
   id: Int
   image: String
   name: String
+  updatedAt: DateTime
 }
 
 input GymMinOrderByAggregateInput {
   climbingType: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  updatedAt: SortOrder
 }
 
 input GymOrderByWithAggregationInput {
@@ -255,17 +288,23 @@ input GymOrderByWithAggregationInput {
   _min: GymMinOrderByAggregateInput
   _sum: GymSumOrderByAggregateInput
   climbingType: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  updatedAt: SortOrder
 }
 
 input GymOrderByWithRelationInput {
   Posts: PostOrderByRelationAggregateInput
   climbingType: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   image: SortOrder
   name: SortOrder
+  updatedAt: SortOrder
 }
 
 input GymRelationFilter {
@@ -275,9 +314,12 @@ input GymRelationFilter {
 
 enum GymScalarFieldEnum {
   climbingType
+  createdAt
+  deletedAt
   id
   image
   name
+  updatedAt
 }
 
 input GymScalarWhereWithAggregatesInput {
@@ -285,9 +327,12 @@ input GymScalarWhereWithAggregatesInput {
   NOT: [GymScalarWhereWithAggregatesInput!]
   OR: [GymScalarWhereWithAggregatesInput!]
   climbingType: EnumClimbingTypeWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  deletedAt: DateTimeNullableWithAggregatesFilter
   id: IntWithAggregatesFilter
   image: StringNullableWithAggregatesFilter
   name: StringWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
 }
 
 type GymSumAggregate {
@@ -301,14 +346,20 @@ input GymSumOrderByAggregateInput {
 input GymUpdateInput {
   Posts: PostUpdateManyWithoutGymNestedInput
   climbingType: EnumClimbingTypeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input GymUpdateManyMutationInput {
   climbingType: EnumClimbingTypeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input GymUpdateOneRequiredWithoutPostsNestedInput {
@@ -321,8 +372,11 @@ input GymUpdateOneRequiredWithoutPostsNestedInput {
 
 input GymUpdateWithoutPostsInput {
   climbingType: EnumClimbingTypeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input GymUpsertWithoutPostsInput {
@@ -336,9 +390,12 @@ input GymWhereInput {
   OR: [GymWhereInput!]
   Posts: PostListRelationFilter
   climbingType: EnumClimbingTypeFilter
+  createdAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
   id: IntFilter
   image: StringNullableFilter
   name: StringFilter
+  updatedAt: DateTimeFilter
 }
 
 input GymWhereUniqueInput {
@@ -1495,10 +1552,13 @@ input PostWhereUniqueInput {
 }
 
 type PreferredDayAndTime {
+  createdAt: DateTime!
   dayAndTime: String!
+  deletedAt: DateTime
   id: Int!
   post: Post!
   postId: Int!
+  updatedAt: DateTime!
 }
 
 type PreferredDayAndTimeAvgAggregate {
@@ -1513,31 +1573,46 @@ input PreferredDayAndTimeAvgOrderByAggregateInput {
 
 type PreferredDayAndTimeCountAggregate {
   _all: Int!
+  createdAt: Int!
   dayAndTime: Int!
+  deletedAt: Int!
   id: Int!
   postId: Int!
+  updatedAt: Int!
 }
 
 input PreferredDayAndTimeCountOrderByAggregateInput {
+  createdAt: SortOrder
   dayAndTime: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
+  updatedAt: SortOrder
 }
 
 input PreferredDayAndTimeCreateInput {
+  createdAt: DateTime
   dayAndTime: String!
+  deletedAt: DateTime
   post: PostCreateNestedOneWithoutPreferredDayAndTimesInput!
+  updatedAt: DateTime
 }
 
 input PreferredDayAndTimeCreateManyInput {
+  createdAt: DateTime
   dayAndTime: String!
+  deletedAt: DateTime
   id: Int
   postId: Int!
+  updatedAt: DateTime
 }
 
 input PreferredDayAndTimeCreateManyPostInput {
+  createdAt: DateTime
   dayAndTime: String!
+  deletedAt: DateTime
   id: Int
+  updatedAt: DateTime
 }
 
 input PreferredDayAndTimeCreateManyPostInputEnvelope {
@@ -1558,7 +1633,10 @@ input PreferredDayAndTimeCreateOrConnectWithoutPostInput {
 }
 
 input PreferredDayAndTimeCreateWithoutPostInput {
+  createdAt: DateTime
   dayAndTime: String!
+  deletedAt: DateTime
+  updatedAt: DateTime
 }
 
 type PreferredDayAndTimeGroupBy {
@@ -1567,9 +1645,12 @@ type PreferredDayAndTimeGroupBy {
   _max: PreferredDayAndTimeMaxAggregate
   _min: PreferredDayAndTimeMinAggregate
   _sum: PreferredDayAndTimeSumAggregate
+  createdAt: DateTime!
   dayAndTime: String!
+  deletedAt: DateTime
   id: Int!
   postId: Int!
+  updatedAt: DateTime!
 }
 
 input PreferredDayAndTimeListRelationFilter {
@@ -1579,27 +1660,39 @@ input PreferredDayAndTimeListRelationFilter {
 }
 
 type PreferredDayAndTimeMaxAggregate {
+  createdAt: DateTime
   dayAndTime: String
+  deletedAt: DateTime
   id: Int
   postId: Int
+  updatedAt: DateTime
 }
 
 input PreferredDayAndTimeMaxOrderByAggregateInput {
+  createdAt: SortOrder
   dayAndTime: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
+  updatedAt: SortOrder
 }
 
 type PreferredDayAndTimeMinAggregate {
+  createdAt: DateTime
   dayAndTime: String
+  deletedAt: DateTime
   id: Int
   postId: Int
+  updatedAt: DateTime
 }
 
 input PreferredDayAndTimeMinOrderByAggregateInput {
+  createdAt: SortOrder
   dayAndTime: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
+  updatedAt: SortOrder
 }
 
 input PreferredDayAndTimeOrderByRelationAggregateInput {
@@ -1612,40 +1705,55 @@ input PreferredDayAndTimeOrderByWithAggregationInput {
   _max: PreferredDayAndTimeMaxOrderByAggregateInput
   _min: PreferredDayAndTimeMinOrderByAggregateInput
   _sum: PreferredDayAndTimeSumOrderByAggregateInput
+  createdAt: SortOrder
   dayAndTime: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
+  updatedAt: SortOrder
 }
 
 input PreferredDayAndTimeOrderByWithRelationInput {
+  createdAt: SortOrder
   dayAndTime: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   post: PostOrderByWithRelationInput
   postId: SortOrder
+  updatedAt: SortOrder
 }
 
 enum PreferredDayAndTimeScalarFieldEnum {
+  createdAt
   dayAndTime
+  deletedAt
   id
   postId
+  updatedAt
 }
 
 input PreferredDayAndTimeScalarWhereInput {
   AND: [PreferredDayAndTimeScalarWhereInput!]
   NOT: [PreferredDayAndTimeScalarWhereInput!]
   OR: [PreferredDayAndTimeScalarWhereInput!]
+  createdAt: DateTimeFilter
   dayAndTime: StringFilter
+  deletedAt: DateTimeNullableFilter
   id: IntFilter
   postId: IntFilter
+  updatedAt: DateTimeFilter
 }
 
 input PreferredDayAndTimeScalarWhereWithAggregatesInput {
   AND: [PreferredDayAndTimeScalarWhereWithAggregatesInput!]
   NOT: [PreferredDayAndTimeScalarWhereWithAggregatesInput!]
   OR: [PreferredDayAndTimeScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
   dayAndTime: StringWithAggregatesFilter
+  deletedAt: DateTimeNullableWithAggregatesFilter
   id: IntWithAggregatesFilter
   postId: IntWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
 }
 
 type PreferredDayAndTimeSumAggregate {
@@ -1659,12 +1767,18 @@ input PreferredDayAndTimeSumOrderByAggregateInput {
 }
 
 input PreferredDayAndTimeUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
   dayAndTime: StringFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
   post: PostUpdateOneRequiredWithoutPreferredDayAndTimesNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input PreferredDayAndTimeUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
   dayAndTime: StringFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input PreferredDayAndTimeUpdateManyWithWhereWithoutPostInput {
@@ -1692,7 +1806,10 @@ input PreferredDayAndTimeUpdateWithWhereUniqueWithoutPostInput {
 }
 
 input PreferredDayAndTimeUpdateWithoutPostInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
   dayAndTime: StringFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input PreferredDayAndTimeUpsertWithWhereUniqueWithoutPostInput {
@@ -1705,10 +1822,13 @@ input PreferredDayAndTimeWhereInput {
   AND: [PreferredDayAndTimeWhereInput!]
   NOT: [PreferredDayAndTimeWhereInput!]
   OR: [PreferredDayAndTimeWhereInput!]
+  createdAt: DateTimeFilter
   dayAndTime: StringFilter
+  deletedAt: DateTimeNullableFilter
   id: IntFilter
   post: PostRelationFilter
   postId: IntFilter
+  updatedAt: DateTimeFilter
 }
 
 input PreferredDayAndTimeWhereUniqueInput {
@@ -1768,6 +1888,7 @@ enum QueryMode {
 type Reply {
   content: String!
   createdAt: DateTime!
+  deletedAt: DateTime
   id: Int!
   post: Post!
   postId: Int!
@@ -1790,6 +1911,7 @@ type ReplyCountAggregate {
   _all: Int!
   content: Int!
   createdAt: Int!
+  deletedAt: Int!
   id: Int!
   postId: Int!
   title: Int!
@@ -1800,6 +1922,7 @@ type ReplyCountAggregate {
 input ReplyCountOrderByAggregateInput {
   content: SortOrder
   createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
   title: SortOrder
@@ -1810,6 +1933,7 @@ input ReplyCountOrderByAggregateInput {
 input ReplyCreateInput {
   content: String!
   createdAt: DateTime
+  deletedAt: DateTime
   post: PostCreateNestedOneWithoutRepliesInput!
   title: String!
   updatedAt: DateTime
@@ -1819,6 +1943,7 @@ input ReplyCreateInput {
 input ReplyCreateManyInput {
   content: String!
   createdAt: DateTime
+  deletedAt: DateTime
   id: Int
   postId: Int!
   title: String!
@@ -1829,6 +1954,7 @@ input ReplyCreateManyInput {
 input ReplyCreateManyPostInput {
   content: String!
   createdAt: DateTime
+  deletedAt: DateTime
   id: Int
   title: String!
   updatedAt: DateTime
@@ -1855,6 +1981,7 @@ input ReplyCreateOrConnectWithoutPostInput {
 input ReplyCreateWithoutPostInput {
   content: String!
   createdAt: DateTime
+  deletedAt: DateTime
   title: String!
   updatedAt: DateTime
   userName: String!
@@ -1868,6 +1995,7 @@ type ReplyGroupBy {
   _sum: ReplySumAggregate
   content: String!
   createdAt: DateTime!
+  deletedAt: DateTime
   id: Int!
   postId: Int!
   title: String!
@@ -1884,6 +2012,7 @@ input ReplyListRelationFilter {
 type ReplyMaxAggregate {
   content: String
   createdAt: DateTime
+  deletedAt: DateTime
   id: Int
   postId: Int
   title: String
@@ -1894,6 +2023,7 @@ type ReplyMaxAggregate {
 input ReplyMaxOrderByAggregateInput {
   content: SortOrder
   createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
   title: SortOrder
@@ -1904,6 +2034,7 @@ input ReplyMaxOrderByAggregateInput {
 type ReplyMinAggregate {
   content: String
   createdAt: DateTime
+  deletedAt: DateTime
   id: Int
   postId: Int
   title: String
@@ -1914,6 +2045,7 @@ type ReplyMinAggregate {
 input ReplyMinOrderByAggregateInput {
   content: SortOrder
   createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
   title: SortOrder
@@ -1933,6 +2065,7 @@ input ReplyOrderByWithAggregationInput {
   _sum: ReplySumOrderByAggregateInput
   content: SortOrder
   createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   postId: SortOrder
   title: SortOrder
@@ -1943,6 +2076,7 @@ input ReplyOrderByWithAggregationInput {
 input ReplyOrderByWithRelationInput {
   content: SortOrder
   createdAt: SortOrder
+  deletedAt: SortOrder
   id: SortOrder
   post: PostOrderByWithRelationInput
   postId: SortOrder
@@ -1954,6 +2088,7 @@ input ReplyOrderByWithRelationInput {
 enum ReplyScalarFieldEnum {
   content
   createdAt
+  deletedAt
   id
   postId
   title
@@ -1967,6 +2102,7 @@ input ReplyScalarWhereInput {
   OR: [ReplyScalarWhereInput!]
   content: StringFilter
   createdAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
   id: IntFilter
   postId: IntFilter
   title: StringFilter
@@ -1980,6 +2116,7 @@ input ReplyScalarWhereWithAggregatesInput {
   OR: [ReplyScalarWhereWithAggregatesInput!]
   content: StringWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
+  deletedAt: DateTimeNullableWithAggregatesFilter
   id: IntWithAggregatesFilter
   postId: IntWithAggregatesFilter
   title: StringWithAggregatesFilter
@@ -2000,6 +2137,7 @@ input ReplySumOrderByAggregateInput {
 input ReplyUpdateInput {
   content: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
   post: PostUpdateOneRequiredWithoutRepliesNestedInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -2009,6 +2147,7 @@ input ReplyUpdateInput {
 input ReplyUpdateManyMutationInput {
   content: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   userName: StringFieldUpdateOperationsInput
@@ -2041,6 +2180,7 @@ input ReplyUpdateWithWhereUniqueWithoutPostInput {
 input ReplyUpdateWithoutPostInput {
   content: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   userName: StringFieldUpdateOperationsInput
@@ -2058,6 +2198,7 @@ input ReplyWhereInput {
   OR: [ReplyWhereInput!]
   content: StringFilter
   createdAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
   id: IntFilter
   post: PostRelationFilter
   postId: IntFilter

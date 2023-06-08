@@ -10,7 +10,7 @@ import { ClimbingType, Gym } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
 
-import { useCreateOnePostMutation, useGymsQuery } from 'src/generated/graphql';
+import { useCreateOnePostMutation, useGymOptionsQuery, useGymsQuery } from 'src/generated/graphql';
 import { SortOrder } from 'src/generated/graphql';
 import usePostForm, { PostInput } from './hooks/usePostForm';
 import { LoadingButton } from '@mui/lab';
@@ -27,7 +27,7 @@ export default function ClimberPostCreateModal({
   const [createOnePostMutation] = useCreateOnePostMutation();
   const methods = usePostForm();
 
-  const { error, data, loading } = useGymsQuery({
+  const { error, data, loading } = useGymOptionsQuery({
     variables: { orderBy: [{ name: SortOrder.Asc }] },
   });
 

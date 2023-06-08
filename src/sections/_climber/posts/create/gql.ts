@@ -18,7 +18,7 @@ gql`
 `;
 
 gql`
-  query Gyms($orderBy: [GymOrderByWithRelationInput!]) {
+  query GymOptions($orderBy: [GymOrderByWithRelationInput!]) {
     gyms(orderBy: $orderBy) {
       id
       name

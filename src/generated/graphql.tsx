@@ -164,9 +164,12 @@ export type Gym = {
   Posts: Array<Post>;
   _count?: Maybe<GymCount>;
   climbingType: ClimbingType;
+  createdAt: Scalars['DateTime']['output'];
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['Int']['output'];
   image?: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 
@@ -197,30 +200,42 @@ export type GymCountAggregate = {
   __typename?: 'GymCountAggregate';
   _all: Scalars['Int']['output'];
   climbingType: Scalars['Int']['output'];
+  createdAt: Scalars['Int']['output'];
+  deletedAt: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
   image: Scalars['Int']['output'];
   name: Scalars['Int']['output'];
+  updatedAt: Scalars['Int']['output'];
 };
 
 export type GymCountOrderByAggregateInput = {
   climbingType?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   image?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type GymCreateInput = {
   Posts?: InputMaybe<PostCreateNestedManyWithoutGymInput>;
   climbingType: ClimbingType;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type GymCreateManyInput = {
   climbingType: ClimbingType;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type GymCreateNestedOneWithoutPostsInput = {
@@ -236,8 +251,11 @@ export type GymCreateOrConnectWithoutPostsInput = {
 
 export type GymCreateWithoutPostsInput = {
   climbingType: ClimbingType;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type GymGroupBy = {
@@ -248,39 +266,54 @@ export type GymGroupBy = {
   _min?: Maybe<GymMinAggregate>;
   _sum?: Maybe<GymSumAggregate>;
   climbingType: ClimbingType;
+  createdAt: Scalars['DateTime']['output'];
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['Int']['output'];
   image?: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 export type GymMaxAggregate = {
   __typename?: 'GymMaxAggregate';
   climbingType?: Maybe<ClimbingType>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   image?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type GymMaxOrderByAggregateInput = {
   climbingType?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   image?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type GymMinAggregate = {
   __typename?: 'GymMinAggregate';
   climbingType?: Maybe<ClimbingType>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   image?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type GymMinOrderByAggregateInput = {
   climbingType?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   image?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type GymOrderByWithAggregationInput = {
@@ -290,17 +323,23 @@ export type GymOrderByWithAggregationInput = {
   _min?: InputMaybe<GymMinOrderByAggregateInput>;
   _sum?: InputMaybe<GymSumOrderByAggregateInput>;
   climbingType?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   image?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type GymOrderByWithRelationInput = {
   Posts?: InputMaybe<PostOrderByRelationAggregateInput>;
   climbingType?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   image?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type GymRelationFilter = {
@@ -310,9 +349,12 @@ export type GymRelationFilter = {
 
 export enum GymScalarFieldEnum {
   ClimbingType = 'climbingType',
+  CreatedAt = 'createdAt',
+  DeletedAt = 'deletedAt',
   Id = 'id',
   Image = 'image',
-  Name = 'name'
+  Name = 'name',
+  UpdatedAt = 'updatedAt'
 }
 
 export type GymScalarWhereWithAggregatesInput = {
@@ -320,9 +362,12 @@ export type GymScalarWhereWithAggregatesInput = {
   NOT?: InputMaybe<Array<GymScalarWhereWithAggregatesInput>>;
   OR?: InputMaybe<Array<GymScalarWhereWithAggregatesInput>>;
   climbingType?: InputMaybe<EnumClimbingTypeWithAggregatesFilter>;
+  createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
   id?: InputMaybe<IntWithAggregatesFilter>;
   image?: InputMaybe<StringNullableWithAggregatesFilter>;
   name?: InputMaybe<StringWithAggregatesFilter>;
+  updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
 };
 
 export type GymSumAggregate = {
@@ -337,14 +382,20 @@ export type GymSumOrderByAggregateInput = {
 export type GymUpdateInput = {
   Posts?: InputMaybe<PostUpdateManyWithoutGymNestedInput>;
   climbingType?: InputMaybe<EnumClimbingTypeFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   image?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type GymUpdateManyMutationInput = {
   climbingType?: InputMaybe<EnumClimbingTypeFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   image?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type GymUpdateOneRequiredWithoutPostsNestedInput = {
@@ -357,8 +408,11 @@ export type GymUpdateOneRequiredWithoutPostsNestedInput = {
 
 export type GymUpdateWithoutPostsInput = {
   climbingType?: InputMaybe<EnumClimbingTypeFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   image?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type GymUpsertWithoutPostsInput = {
@@ -372,9 +426,12 @@ export type GymWhereInput = {
   OR?: InputMaybe<Array<GymWhereInput>>;
   Posts?: InputMaybe<PostListRelationFilter>;
   climbingType?: InputMaybe<EnumClimbingTypeFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<IntFilter>;
   image?: InputMaybe<StringNullableFilter>;
   name?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type GymWhereUniqueInput = {
@@ -1828,10 +1885,13 @@ export type PostWhereUniqueInput = {
 
 export type PreferredDayAndTime = {
   __typename?: 'PreferredDayAndTime';
+  createdAt: Scalars['DateTime']['output'];
   dayAndTime: Scalars['String']['output'];
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['Int']['output'];
   post: Post;
   postId: Scalars['Int']['output'];
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 export type PreferredDayAndTimeAvgAggregate = {
@@ -1848,31 +1908,46 @@ export type PreferredDayAndTimeAvgOrderByAggregateInput = {
 export type PreferredDayAndTimeCountAggregate = {
   __typename?: 'PreferredDayAndTimeCountAggregate';
   _all: Scalars['Int']['output'];
+  createdAt: Scalars['Int']['output'];
   dayAndTime: Scalars['Int']['output'];
+  deletedAt: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
   postId: Scalars['Int']['output'];
+  updatedAt: Scalars['Int']['output'];
 };
 
 export type PreferredDayAndTimeCountOrderByAggregateInput = {
+  createdAt?: InputMaybe<SortOrder>;
   dayAndTime?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type PreferredDayAndTimeCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   dayAndTime: Scalars['String']['input'];
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   post: PostCreateNestedOneWithoutPreferredDayAndTimesInput;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type PreferredDayAndTimeCreateManyInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   dayAndTime: Scalars['String']['input'];
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   postId: Scalars['Int']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type PreferredDayAndTimeCreateManyPostInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   dayAndTime: Scalars['String']['input'];
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type PreferredDayAndTimeCreateManyPostInputEnvelope = {
@@ -1893,7 +1968,10 @@ export type PreferredDayAndTimeCreateOrConnectWithoutPostInput = {
 };
 
 export type PreferredDayAndTimeCreateWithoutPostInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   dayAndTime: Scalars['String']['input'];
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type PreferredDayAndTimeGroupBy = {
@@ -1903,9 +1981,12 @@ export type PreferredDayAndTimeGroupBy = {
   _max?: Maybe<PreferredDayAndTimeMaxAggregate>;
   _min?: Maybe<PreferredDayAndTimeMinAggregate>;
   _sum?: Maybe<PreferredDayAndTimeSumAggregate>;
+  createdAt: Scalars['DateTime']['output'];
   dayAndTime: Scalars['String']['output'];
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['Int']['output'];
   postId: Scalars['Int']['output'];
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 export type PreferredDayAndTimeListRelationFilter = {
@@ -1916,28 +1997,40 @@ export type PreferredDayAndTimeListRelationFilter = {
 
 export type PreferredDayAndTimeMaxAggregate = {
   __typename?: 'PreferredDayAndTimeMaxAggregate';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
   dayAndTime?: Maybe<Scalars['String']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   postId?: Maybe<Scalars['Int']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type PreferredDayAndTimeMaxOrderByAggregateInput = {
+  createdAt?: InputMaybe<SortOrder>;
   dayAndTime?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type PreferredDayAndTimeMinAggregate = {
   __typename?: 'PreferredDayAndTimeMinAggregate';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
   dayAndTime?: Maybe<Scalars['String']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   postId?: Maybe<Scalars['Int']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type PreferredDayAndTimeMinOrderByAggregateInput = {
+  createdAt?: InputMaybe<SortOrder>;
   dayAndTime?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type PreferredDayAndTimeOrderByRelationAggregateInput = {
@@ -1950,40 +2043,55 @@ export type PreferredDayAndTimeOrderByWithAggregationInput = {
   _max?: InputMaybe<PreferredDayAndTimeMaxOrderByAggregateInput>;
   _min?: InputMaybe<PreferredDayAndTimeMinOrderByAggregateInput>;
   _sum?: InputMaybe<PreferredDayAndTimeSumOrderByAggregateInput>;
+  createdAt?: InputMaybe<SortOrder>;
   dayAndTime?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export type PreferredDayAndTimeOrderByWithRelationInput = {
+  createdAt?: InputMaybe<SortOrder>;
   dayAndTime?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   post?: InputMaybe<PostOrderByWithRelationInput>;
   postId?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
 };
 
 export enum PreferredDayAndTimeScalarFieldEnum {
+  CreatedAt = 'createdAt',
   DayAndTime = 'dayAndTime',
+  DeletedAt = 'deletedAt',
   Id = 'id',
-  PostId = 'postId'
+  PostId = 'postId',
+  UpdatedAt = 'updatedAt'
 }
 
 export type PreferredDayAndTimeScalarWhereInput = {
   AND?: InputMaybe<Array<PreferredDayAndTimeScalarWhereInput>>;
   NOT?: InputMaybe<Array<PreferredDayAndTimeScalarWhereInput>>;
   OR?: InputMaybe<Array<PreferredDayAndTimeScalarWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
   dayAndTime?: InputMaybe<StringFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<IntFilter>;
   postId?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type PreferredDayAndTimeScalarWhereWithAggregatesInput = {
   AND?: InputMaybe<Array<PreferredDayAndTimeScalarWhereWithAggregatesInput>>;
   NOT?: InputMaybe<Array<PreferredDayAndTimeScalarWhereWithAggregatesInput>>;
   OR?: InputMaybe<Array<PreferredDayAndTimeScalarWhereWithAggregatesInput>>;
+  createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
   dayAndTime?: InputMaybe<StringWithAggregatesFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
   id?: InputMaybe<IntWithAggregatesFilter>;
   postId?: InputMaybe<IntWithAggregatesFilter>;
+  updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
 };
 
 export type PreferredDayAndTimeSumAggregate = {
@@ -1998,12 +2106,18 @@ export type PreferredDayAndTimeSumOrderByAggregateInput = {
 };
 
 export type PreferredDayAndTimeUpdateInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   dayAndTime?: InputMaybe<StringFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   post?: InputMaybe<PostUpdateOneRequiredWithoutPreferredDayAndTimesNestedInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type PreferredDayAndTimeUpdateManyMutationInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   dayAndTime?: InputMaybe<StringFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type PreferredDayAndTimeUpdateManyWithWhereWithoutPostInput = {
@@ -2031,7 +2145,10 @@ export type PreferredDayAndTimeUpdateWithWhereUniqueWithoutPostInput = {
 };
 
 export type PreferredDayAndTimeUpdateWithoutPostInput = {
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   dayAndTime?: InputMaybe<StringFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type PreferredDayAndTimeUpsertWithWhereUniqueWithoutPostInput = {
@@ -2044,10 +2161,13 @@ export type PreferredDayAndTimeWhereInput = {
   AND?: InputMaybe<Array<PreferredDayAndTimeWhereInput>>;
   NOT?: InputMaybe<Array<PreferredDayAndTimeWhereInput>>;
   OR?: InputMaybe<Array<PreferredDayAndTimeWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
   dayAndTime?: InputMaybe<StringFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<IntFilter>;
   post?: InputMaybe<PostRelationFilter>;
   postId?: InputMaybe<IntFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
 export type PreferredDayAndTimeWhereUniqueInput = {
@@ -2463,6 +2583,7 @@ export type Reply = {
   __typename?: 'Reply';
   content: Scalars['String']['output'];
   createdAt: Scalars['DateTime']['output'];
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['Int']['output'];
   post: Post;
   postId: Scalars['Int']['output'];
@@ -2487,6 +2608,7 @@ export type ReplyCountAggregate = {
   _all: Scalars['Int']['output'];
   content: Scalars['Int']['output'];
   createdAt: Scalars['Int']['output'];
+  deletedAt: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
   postId: Scalars['Int']['output'];
   title: Scalars['Int']['output'];
@@ -2497,6 +2619,7 @@ export type ReplyCountAggregate = {
 export type ReplyCountOrderByAggregateInput = {
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
   title?: InputMaybe<SortOrder>;
@@ -2507,6 +2630,7 @@ export type ReplyCountOrderByAggregateInput = {
 export type ReplyCreateInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   post: PostCreateNestedOneWithoutRepliesInput;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2516,6 +2640,7 @@ export type ReplyCreateInput = {
 export type ReplyCreateManyInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   postId: Scalars['Int']['input'];
   title: Scalars['String']['input'];
@@ -2526,6 +2651,7 @@ export type ReplyCreateManyInput = {
 export type ReplyCreateManyPostInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   id?: InputMaybe<Scalars['Int']['input']>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2552,6 +2678,7 @@ export type ReplyCreateOrConnectWithoutPostInput = {
 export type ReplyCreateWithoutPostInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   userName: Scalars['String']['input'];
@@ -2566,6 +2693,7 @@ export type ReplyGroupBy = {
   _sum?: Maybe<ReplySumAggregate>;
   content: Scalars['String']['output'];
   createdAt: Scalars['DateTime']['output'];
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['Int']['output'];
   postId: Scalars['Int']['output'];
   title: Scalars['String']['output'];
@@ -2583,6 +2711,7 @@ export type ReplyMaxAggregate = {
   __typename?: 'ReplyMaxAggregate';
   content?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   postId?: Maybe<Scalars['Int']['output']>;
   title?: Maybe<Scalars['String']['output']>;
@@ -2593,6 +2722,7 @@ export type ReplyMaxAggregate = {
 export type ReplyMaxOrderByAggregateInput = {
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
   title?: InputMaybe<SortOrder>;
@@ -2604,6 +2734,7 @@ export type ReplyMinAggregate = {
   __typename?: 'ReplyMinAggregate';
   content?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   postId?: Maybe<Scalars['Int']['output']>;
   title?: Maybe<Scalars['String']['output']>;
@@ -2614,6 +2745,7 @@ export type ReplyMinAggregate = {
 export type ReplyMinOrderByAggregateInput = {
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
   title?: InputMaybe<SortOrder>;
@@ -2633,6 +2765,7 @@ export type ReplyOrderByWithAggregationInput = {
   _sum?: InputMaybe<ReplySumOrderByAggregateInput>;
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   postId?: InputMaybe<SortOrder>;
   title?: InputMaybe<SortOrder>;
@@ -2643,6 +2776,7 @@ export type ReplyOrderByWithAggregationInput = {
 export type ReplyOrderByWithRelationInput = {
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   post?: InputMaybe<PostOrderByWithRelationInput>;
   postId?: InputMaybe<SortOrder>;
@@ -2654,6 +2788,7 @@ export type ReplyOrderByWithRelationInput = {
 export enum ReplyScalarFieldEnum {
   Content = 'content',
   CreatedAt = 'createdAt',
+  DeletedAt = 'deletedAt',
   Id = 'id',
   PostId = 'postId',
   Title = 'title',
@@ -2667,6 +2802,7 @@ export type ReplyScalarWhereInput = {
   OR?: InputMaybe<Array<ReplyScalarWhereInput>>;
   content?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<IntFilter>;
   postId?: InputMaybe<IntFilter>;
   title?: InputMaybe<StringFilter>;
@@ -2680,6 +2816,7 @@ export type ReplyScalarWhereWithAggregatesInput = {
   OR?: InputMaybe<Array<ReplyScalarWhereWithAggregatesInput>>;
   content?: InputMaybe<StringWithAggregatesFilter>;
   createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
   id?: InputMaybe<IntWithAggregatesFilter>;
   postId?: InputMaybe<IntWithAggregatesFilter>;
   title?: InputMaybe<StringWithAggregatesFilter>;
@@ -2701,6 +2838,7 @@ export type ReplySumOrderByAggregateInput = {
 export type ReplyUpdateInput = {
   content?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   post?: InputMaybe<PostUpdateOneRequiredWithoutRepliesNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -2710,6 +2848,7 @@ export type ReplyUpdateInput = {
 export type ReplyUpdateManyMutationInput = {
   content?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   userName?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -2742,6 +2881,7 @@ export type ReplyUpdateWithWhereUniqueWithoutPostInput = {
 export type ReplyUpdateWithoutPostInput = {
   content?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   userName?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -2759,6 +2899,7 @@ export type ReplyWhereInput = {
   OR?: InputMaybe<Array<ReplyWhereInput>>;
   content?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
+  deletedAt?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<IntFilter>;
   post?: InputMaybe<PostRelationFilter>;
   postId?: InputMaybe<IntFilter>;
@@ -3095,12 +3236,12 @@ export type CreateOnePostMutationVariables = Exact<{
 
 export type CreateOnePostMutation = { __typename?: 'Mutation', createOnePost: { __typename?: 'Post', title: string, content: string, gymId: number, climbingType: ClimbingType, belayMonths: number, experienceMonths: number, grade: string, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', dayAndTime: string }> } };
 
-export type GymsQueryVariables = Exact<{
+export type GymOptionsQueryVariables = Exact<{
   orderBy?: InputMaybe<Array<GymOrderByWithRelationInput> | GymOrderByWithRelationInput>;
 }>;
 
 
-export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string }> };
+export type GymOptionsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string }> };
 
 export type FindFirstPostQueryVariables = Exact<{
   where?: InputMaybe<PostWhereInput>;
@@ -3137,6 +3278,20 @@ export type _CountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type _CountQuery = { __typename?: 'Query', aggregatePost: { __typename?: 'AggregatePost', _count?: { __typename?: 'PostCountAggregate', _all: number } | null } };
+
+export type GymsQueryVariables = Exact<{
+  take?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<GymOrderByWithRelationInput> | GymOrderByWithRelationInput>;
+}>;
+
+
+export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string, image?: string | null, createdAt: any, climbingType: ClimbingType }> };
+
+export type AggregateGymQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AggregateGymQuery = { __typename?: 'Query', aggregateGym: { __typename?: 'AggregateGym', _count?: { __typename?: 'GymCountAggregate', _all: number } | null } };
 
 
 export const CreateOnePostLikeDocument = gql`
@@ -3249,8 +3404,8 @@ export function useCreateOnePostMutation(baseOptions?: Apollo.MutationHookOption
 export type CreateOnePostMutationHookResult = ReturnType<typeof useCreateOnePostMutation>;
 export type CreateOnePostMutationResult = Apollo.MutationResult<CreateOnePostMutation>;
 export type CreateOnePostMutationOptions = Apollo.BaseMutationOptions<CreateOnePostMutation, CreateOnePostMutationVariables>;
-export const GymsDocument = gql`
-    query Gyms($orderBy: [GymOrderByWithRelationInput!]) {
+export const GymOptionsDocument = gql`
+    query GymOptions($orderBy: [GymOrderByWithRelationInput!]) {
   gyms(orderBy: $orderBy) {
     id
     name
@@ -3259,32 +3414,32 @@ export const GymsDocument = gql`
     `;
 
 /**
- * __useGymsQuery__
+ * __useGymOptionsQuery__
  *
- * To run a query within a React component, call `useGymsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGymsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGymOptionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGymOptionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGymsQuery({
+ * const { data, loading, error } = useGymOptionsQuery({
  *   variables: {
  *      orderBy: // value for 'orderBy'
  *   },
  * });
  */
-export function useGymsQuery(baseOptions?: Apollo.QueryHookOptions<GymsQuery, GymsQueryVariables>) {
+export function useGymOptionsQuery(baseOptions?: Apollo.QueryHookOptions<GymOptionsQuery, GymOptionsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GymsQuery, GymsQueryVariables>(GymsDocument, options);
+        return Apollo.useQuery<GymOptionsQuery, GymOptionsQueryVariables>(GymOptionsDocument, options);
       }
-export function useGymsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymsQuery, GymsQueryVariables>) {
+export function useGymOptionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymOptionsQuery, GymOptionsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GymsQuery, GymsQueryVariables>(GymsDocument, options);
+          return Apollo.useLazyQuery<GymOptionsQuery, GymOptionsQueryVariables>(GymOptionsDocument, options);
         }
-export type GymsQueryHookResult = ReturnType<typeof useGymsQuery>;
-export type GymsLazyQueryHookResult = ReturnType<typeof useGymsLazyQuery>;
-export type GymsQueryResult = Apollo.QueryResult<GymsQuery, GymsQueryVariables>;
+export type GymOptionsQueryHookResult = ReturnType<typeof useGymOptionsQuery>;
+export type GymOptionsLazyQueryHookResult = ReturnType<typeof useGymOptionsLazyQuery>;
+export type GymOptionsQueryResult = Apollo.QueryResult<GymOptionsQuery, GymOptionsQueryVariables>;
 export const FindFirstPostDocument = gql`
     query FindFirstPost($where: PostWhereInput) {
   findFirstPost(where: $where) {
@@ -3515,3 +3670,80 @@ export function use_CountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<_Co
 export type _CountQueryHookResult = ReturnType<typeof use_CountQuery>;
 export type _CountLazyQueryHookResult = ReturnType<typeof use_CountLazyQuery>;
 export type _CountQueryResult = Apollo.QueryResult<_CountQuery, _CountQueryVariables>;
+export const GymsDocument = gql`
+    query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
+  gyms(take: $take, skip: $skip, orderBy: $orderBy) {
+    id
+    name
+    image
+    createdAt
+    climbingType
+  }
+}
+    `;
+
+/**
+ * __useGymsQuery__
+ *
+ * To run a query within a React component, call `useGymsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGymsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGymsQuery({
+ *   variables: {
+ *      take: // value for 'take'
+ *      skip: // value for 'skip'
+ *      orderBy: // value for 'orderBy'
+ *   },
+ * });
+ */
+export function useGymsQuery(baseOptions?: Apollo.QueryHookOptions<GymsQuery, GymsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GymsQuery, GymsQueryVariables>(GymsDocument, options);
+      }
+export function useGymsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymsQuery, GymsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GymsQuery, GymsQueryVariables>(GymsDocument, options);
+        }
+export type GymsQueryHookResult = ReturnType<typeof useGymsQuery>;
+export type GymsLazyQueryHookResult = ReturnType<typeof useGymsLazyQuery>;
+export type GymsQueryResult = Apollo.QueryResult<GymsQuery, GymsQueryVariables>;
+export const AggregateGymDocument = gql`
+    query AggregateGym {
+  aggregateGym {
+    _count {
+      _all
+    }
+  }
+}
+    `;
+
+/**
+ * __useAggregateGymQuery__
+ *
+ * To run a query within a React component, call `useAggregateGymQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAggregateGymQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAggregateGymQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAggregateGymQuery(baseOptions?: Apollo.QueryHookOptions<AggregateGymQuery, AggregateGymQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AggregateGymQuery, AggregateGymQueryVariables>(AggregateGymDocument, options);
+      }
+export function useAggregateGymLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AggregateGymQuery, AggregateGymQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AggregateGymQuery, AggregateGymQueryVariables>(AggregateGymDocument, options);
+        }
+export type AggregateGymQueryHookResult = ReturnType<typeof useAggregateGymQuery>;
+export type AggregateGymLazyQueryHookResult = ReturnType<typeof useAggregateGymLazyQuery>;
+export type AggregateGymQueryResult = Apollo.QueryResult<AggregateGymQuery, AggregateGymQueryVariables>;

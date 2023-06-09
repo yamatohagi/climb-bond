@@ -11,4 +11,5 @@ export { default as RHFTextArea } from './RHFTextArea';
 export { default as RHFRadioGroup } from './RHFRadioGroup';
 export { default as RHFAutocomplete } from './RHFAutocomplete';
 export { default as RHFSelectBox } from './RHFSelectBox';
+export { default as RHFAutocompleteAddItem } from './RHFAutocompleteAddItem';
 export * from './RHFMultiCheckboxAddGrid';

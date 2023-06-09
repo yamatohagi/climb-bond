@@ -4,14 +4,15 @@ import { Box } from '@mui/system';
 import { RHFSelectBox, RHFTextField } from 'src/components/hook-form';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { ClimbingType } from '@prisma/client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { useCreateOneGymMutation } from 'src/generated/graphql';
-import usePostForm, { PostInput } from './hooks/usePostForm';
+import { GymOptionsQueryResult, useCreateOneGymMutation } from 'src/generated/graphql';
+import useGymForm, { GymInput } from './hooks/usePostForm';
 import { LoadingButton } from '@mui/lab';
 
 import { v4 as uuidv4 } from 'uuid';
 import { supabase } from 'src/lib/supabase/supabaseClient';
+import { ObservableQuery } from '@apollo/client';
 
 // 画像アップロード機能
 const uploadImage = async (imageFile: File) => {
@@ -37,13 +38,17 @@ export default function GymCreateModal({
   open,
   onClose,
   refetch,
+  afterSubmit,
+  defaultName,
 }: {
   open: boolean;
   onClose: () => void;
-  refetch: () => void;
+  refetch: ObservableQuery['refetch'];
+  afterSubmit?: (o: any) => void;
+  defaultName?: string;
 }) {
   const [createOneGymMutation] = useCreateOneGymMutation();
-  const methods = usePostForm();
+  const methods = useGymForm();
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -53,7 +58,12 @@ export default function GymCreateModal({
     register,
   } = methods;
 
-  const onSubmit = async (params: PostInput) => {
+  useEffect(() => {
+    if (!defaultName) return undefined;
+    methods.reset({ ...methods.getValues(), name: defaultName });
+  }, [defaultName]);
+
+  const onSubmit = async (params: GymInput) => {
     const { name, climbingType } = params;
     let imagePath = null;
     let imageUrl;
@@ -62,7 +72,7 @@ export default function GymCreateModal({
       imageUrl = await getImageUrl(imagePath);
     }
 
-    const { errors } = await createOneGymMutation({
+    const { errors, data } = await createOneGymMutation({
       variables: {
         data: {
           climbingType: climbingType,
@@ -72,7 +82,8 @@ export default function GymCreateModal({
       },
     });
     if (errors) return;
-    refetch();
+    await refetch();
+    afterSubmit && afterSubmit(data);
     onClose();
   };
 

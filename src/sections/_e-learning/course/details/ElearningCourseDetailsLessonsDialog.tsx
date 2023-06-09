@@ -46,7 +46,7 @@ export default function ElearningCourseDetailsLessonsDialog({
         </Box>
 
         <Scrollbar sx={{ p: 1, maxHeight: 640 }}>
-          {lessons?.map((lesson) => (
+          {lessons?.map((lesson: any) => (
             <LessonItem
               key={lesson.id}
               lesson={lesson}

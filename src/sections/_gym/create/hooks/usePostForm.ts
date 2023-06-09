@@ -5,18 +5,18 @@ import { ClimbingType } from 'src/generated/graphql';
 import { createDefaultValues } from 'src/service/zodHelper';
 import { z } from 'zod';
 
-const postSchema = z.object({
+const gymSchema = z.object({
   name: z.string().nonempty({ message: '何でもいいよ！' }),
   climbingType: z.nativeEnum(ClimbingType, { required_error: '好きな方を入れてね' }),
   imageFile: z.any(),
 });
 
-export type PostInput = z.infer<typeof postSchema>;
+export type GymInput = z.infer<typeof gymSchema>;
 
-export default function usePostForm() {
-  const postMethods = useForm({
-    resolver: zodResolver(postSchema),
-    defaultValues: createDefaultValues(postSchema),
+export default function useGymForm() {
+  const gymMethods = useForm({
+    resolver: zodResolver(gymSchema),
+    defaultValues: createDefaultValues(gymSchema),
   });
-  return postMethods;
+  return gymMethods;
 }

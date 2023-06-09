@@ -1,19 +1,40 @@
 import { _jobs } from 'src/_mock';
-import { Button, DialogTitle, DialogContent, DialogActions, Grid, Dialog } from '@mui/material';
+import {
+  Button,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Grid,
+  Dialog,
+  Typography,
+} from '@mui/material';
 import { DialogAnimate } from 'src/components/animate';
 import getVariant from 'src/sections/examples/animate/getVariant';
 import { Box } from '@mui/system';
-import { RHFMultiCheckboxAddGrid, RHFSelectBox, RHFTextField } from 'src/components/hook-form';
+import {
+  RHFAutocompleteAddItem,
+  RHFMultiCheckboxAddGrid,
+  RHFSelectBox,
+  RHFTextField,
+} from 'src/components/hook-form';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { useForm } from 'react-hook-form';
 import { ClimbingType, Gym } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
 
-import { useCreateOnePostMutation, useGymOptionsQuery, useGymsQuery } from 'src/generated/graphql';
+import {
+  CreateOneGymMutation,
+  useCreateOnePostMutation,
+  useGymOptionsQuery,
+  useGymsQuery,
+} from 'src/generated/graphql';
 import { SortOrder } from 'src/generated/graphql';
 import usePostForm, { PostInput } from './hooks/usePostForm';
 import { LoadingButton } from '@mui/lab';
+import GymCreateModal from 'src/sections/_gym/create/GymCreateModal';
+import { GymSelectInput } from './gym-select/GymSelectInput';
+import { GymInput } from 'src/sections/_gym/create/hooks/usePostForm';
 
 export default function ClimberPostCreateModal({
   open,
@@ -27,7 +48,12 @@ export default function ClimberPostCreateModal({
   const [createOnePostMutation] = useCreateOnePostMutation();
   const methods = usePostForm();
 
-  const { error, data, loading } = useGymOptionsQuery({
+  const {
+    error,
+    data,
+    loading,
+    refetch: gymsOptionsRefetch,
+  } = useGymOptionsQuery({
     variables: { orderBy: [{ name: SortOrder.Asc }] },
   });
 
@@ -42,7 +68,7 @@ export default function ClimberPostCreateModal({
       variables: {
         data: {
           ...otherParams,
-          gym: { connect: { id: params.gymId } },
+          gym: { connect: { id: Number(params.gymId) } },
           preferredDayAndTimes: {
             create: params.preferredDayAndTimes.map((dayAndTime) => ({
               dayAndTime: dayAndTime,
@@ -82,14 +108,28 @@ export default function ClimberPostCreateModal({
                     ]}
                   ></RHFSelectBox>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <RHFSelectBox
-                    name="gymId"
-                    label="ジム名"
-                    options={
-                      data && data.gyms.map((item) => ({ value: item.id, label: item.name }))
-                    }
-                  ></RHFSelectBox>
+                <Grid item xs={8} sm={6}>
+                  {data && (
+                    <GymSelectInput
+                      gyms={data.gyms}
+                      refetch={gymsOptionsRefetch}
+                      setFormValue={(value: CreateOneGymMutation) => {
+                        methods.setValue('gymId', value.createOneGym.id.toString(), {
+                          shouldValidate: true,
+                        });
+                      }}
+                    />
+                  )}
+                </Grid>
+                <Grid item xs={4} sm={6}>
+                  <Button
+                    sx={{ my: 1 }}
+                    size="medium"
+                    variant="contained"
+                    startIcon={<Iconify icon="eva:plus-fill" sx={{ with: 3 }} />}
+                  >
+                    <Typography variant="subtitle2"> {'登録'}</Typography>
+                  </Button>
                 </Grid>
                 <Grid item xs={6} sm={6}>
                   <RHFSelectBox

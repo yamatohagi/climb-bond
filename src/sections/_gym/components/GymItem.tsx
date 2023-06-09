@@ -1,33 +1,14 @@
 import PropTypes from 'prop-types';
-import { Fragment, useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import NextLink from 'next/link';
-// @mui
-import {
-  Card,
-  Link,
-  Stack,
-  Divider,
-  Checkbox,
-  Typography,
-  Box,
-  Unstable_Grid2 as Grid,
-  Button,
-  IconButton,
-} from '@mui/material';
-// routes
+import { Card, Link, Stack, Typography } from '@mui/material';
 import { paths } from 'src/routes/paths';
-// utils
-import { fDate } from 'src/utils/formatTime';
-import { fCurrency } from 'src/utils/formatNumber';
-// components
 import Image from 'src/components/image';
-import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
 import { Gym, PreferredDayAndTime, Post as PrismaPost } from '@prisma/client';
-import { GymsQuery, PostsQuery } from 'src/generated/graphql';
+import { GymsQuery } from 'src/generated/graphql';
 
 // ----------------------------------------------------------------------
 interface Post extends PrismaPost {
@@ -38,12 +19,7 @@ interface Post extends PrismaPost {
 export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
   const { id, name, createdAt, climbingType, image } = gym;
 
-  const [favorite, setFavorite] = useState(false);
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
-
-  const handleChangeFavorite = (event: any) => {
-    setFavorite(event.target.checked);
-  };
 
   return (
     <Card
@@ -53,12 +29,7 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
         },
       }}
     >
-      <Link
-        component={NextLink}
-        href={`${paths.climber.posts}/${id}`}
-        color="inherit"
-        underline="none"
-      >
+      <Link component={NextLink} href={`${paths.gym.index}/${id}`} color="inherit" underline="none">
         <Stack sx={{ p: 3, pb: 0 }}>
           <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2.5}>
             <TextMaxLine variant="h6" line={1}>
@@ -68,27 +39,16 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
               <Image
                 alt={gym.name}
                 src={image}
-                sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }}
+                sx={{ width: 78, height: 78, borderRadius: 1, mr: 3 }}
               />
             )}
-          </Stack>
-
-          <Stack spacing={0.5} sx={{ mt: 3, mb: 2 }}>
-            <Stack
-              direction="row"
-              alignItems="center"
-              sx={{ typography: 'body2', color: 'text.secondary' }}
-            >
-              <Iconify icon="carbon:location" width={18} sx={{ mr: 0.5 }} />
-              {name}
-            </Stack>
           </Stack>
 
           <Typography variant="caption" sx={{ color: 'text.disabled' }}>
             <Iconify
               icon="ion:time"
               sx={{ pt: 0.1, mb: 0.4, height: '1.4em', verticalAlign: 'middle' }}
-            />{' '}
+            />
             {timeAgo}
           </Typography>
 
@@ -99,92 +59,12 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
           </Stack>
         </Stack>
 
-        <Divider sx={{ borderStyle: 'dashed', my: 2 }} />
-
-        <Grid
-          container
-          spacing={1.5}
-          sx={{
-            p: 3,
-            pt: 0,
-            pb: 0,
-            typography: 'body2',
-            color: 'text.secondary',
-            textTransform: 'capitalize',
-          }}
-        >
-          <Grid xs={7}>
-            <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="fluent:mountain-trail-20-filled" sx={{ mr: 1 }} />
-
-              {` ${climbingType}年（ﾋﾞﾚｲ歴 ${climbingType}ヵ月）`}
-            </Stack>
-          </Grid>
-
-          <Grid xs={5}>
-            <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="carbon:upgrade" sx={{ mr: 1 }} />
-              {climbingType}
-            </Stack>
-          </Grid>
-
-          <Grid xs={7}>
-            {/* <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
-              {preferredDayAndTimes.map((v) => {
-                return (
-                  <Fragment key={v.id}>
-                    {v.dayAndTime[1] === '1' ? ( //'01'なら日曜・昼
-                      <>
-                        <Box sx={{ mr: 1 }}>
-                          {dayOfWeek[Number(v.dayAndTime[0])]}
-                          <Iconify
-                            icon="ph:sun-bold"
-                            sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
-                          />
-                        </Box>
-                      </>
-                    ) : (
-                      //'12'なら月曜・夜
-                      <>
-                        <Box sx={{ mr: 1 }}>
-                          {dayOfWeek[Number(v.dayAndTime[0])]}
-                          <Iconify
-                            icon="icon-park-solid:moon"
-                            sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
-                          />
-                        </Box>
-                      </>
-                    )}
-                  </Fragment>
-                );
-              })}
-            </Stack> */}
-          </Grid>
-
-          <Grid xs={5}>
-            <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-              <Iconify icon="guidance:climbing-wall" sx={{ mr: 1 }} />
-              {climbingType}
-            </Stack>
-          </Grid>
-        </Grid>
-
         <Stack
           spacing={0.5}
           sx={{ px: 3, pb: 2, pt: 2.3, mx: 4, color: 'text.secondary' }}
           direction="row"
           justifyContent="space-between"
-        >
-          {/* <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />
-            {_count ? _count.replies : 0}
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />{' '}
-            {_count ? _count.viewHistory : 0}
-          </Box> */}
-        </Stack>
+        ></Stack>
       </Link>
     </Card>
   );

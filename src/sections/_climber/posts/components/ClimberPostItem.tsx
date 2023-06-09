@@ -80,8 +80,8 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
             </TextMaxLine>
             <Image
               alt={gym.name}
-              src={'companyLogo'}
-              sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }}
+              src={gym.image}
+              sx={{ width: 78, height: 78, borderRadius: 1, mr: 3 }}
             />
           </Stack>
 

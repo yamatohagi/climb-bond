@@ -1,23 +1,21 @@
 import Head from 'next/head';
 import MainLayout from 'src/layouts/main';
-import ClimberPostsDetailView from 'src/sections/_climber/view/ClimberPostsDetailView';
-
-import ClimberPostsView from 'src/sections/_climber/view/ClimberPostsView';
+import GymDetailView from 'src/sections/_gym/view/GymDetailView';
 
 // ----------------------------------------------------------------------
 
-ClimberPostsPage.getLayout = (page: any) => <MainLayout>{page}</MainLayout>;
+GymDetailPage.getLayout = (page: any) => <MainLayout>{page}</MainLayout>;
 
 // ----------------------------------------------------------------------
 
-export default function ClimberPostsPage() {
+export default function GymDetailPage() {
   return (
     <>
       <Head>
         <title>Posts | ZONE UI</title>
       </Head>
 
-      <ClimberPostsDetailView />
+      <GymDetailView />
     </>
   );
 }

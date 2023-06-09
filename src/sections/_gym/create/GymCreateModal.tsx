@@ -1,22 +1,12 @@
 import { _jobs } from 'src/_mock';
 import { Button, DialogTitle, DialogContent, DialogActions, Grid, Dialog } from '@mui/material';
-import { DialogAnimate } from 'src/components/animate';
-import getVariant from 'src/sections/examples/animate/getVariant';
 import { Box } from '@mui/system';
-import { RHFMultiCheckboxAddGrid, RHFSelectBox, RHFTextField } from 'src/components/hook-form';
+import { RHFSelectBox, RHFTextField } from 'src/components/hook-form';
 import FormProvider from 'src/components/hook-form/FormProvider';
-import { useForm } from 'react-hook-form';
-import { ClimbingType, Gym } from '@prisma/client';
-import { useEffect, useState } from 'react';
-import Iconify from 'src/components/iconify/Iconify';
+import { ClimbingType } from '@prisma/client';
+import { useState } from 'react';
 
-import {
-  useCreateOneGymMutation,
-  useCreateOnePostMutation,
-  useGymOptionsQuery,
-  useGymsQuery,
-} from 'src/generated/graphql';
-import { SortOrder } from 'src/generated/graphql';
+import { useCreateOneGymMutation } from 'src/generated/graphql';
 import usePostForm, { PostInput } from './hooks/usePostForm';
 import { LoadingButton } from '@mui/lab';
 

@@ -43,6 +43,15 @@ export const paths = {
     about: '/climber/about',
     contact: '/climber/contact',
   },
+  gym: {
+    index: '/gyms',
+    jobs: '/climber/jobs',
+    job: `/climber/job`,
+    posts: '/climber/posts',
+    post: `/climber/post`,
+    about: '/climber/about',
+    contact: '/climber/contact',
+  },
   // E-learning
   eLearning: {
     landing: '/e-learning/landing',

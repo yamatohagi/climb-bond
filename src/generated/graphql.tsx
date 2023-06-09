@@ -3272,7 +3272,7 @@ export type PostsQueryVariables = Exact<{
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, like: Array<{ __typename?: 'PostLike', id: number, postId: number, userId: string }>, _count?: { __typename?: 'PostCount', replies: number, viewHistory: number } | null }> };
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string, image?: string | null }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, like: Array<{ __typename?: 'PostLike', id: number, postId: number, userId: string }>, _count?: { __typename?: 'PostCount', replies: number, viewHistory: number } | null }> };
 
 export type _CountQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3285,6 +3285,13 @@ export type CreateOneGymMutationVariables = Exact<{
 
 
 export type CreateOneGymMutation = { __typename?: 'Mutation', createOneGym: { __typename?: 'Gym', id: number, name: string, image?: string | null, createdAt: any, climbingType: ClimbingType } };
+
+export type FindFirstGymQueryVariables = Exact<{
+  where?: InputMaybe<GymWhereInput>;
+}>;
+
+
+export type FindFirstGymQuery = { __typename?: 'Query', findFirstGym?: { __typename?: 'Gym', id: number, image?: string | null, name: string, updatedAt: any, createdAt: any, climbingType: ClimbingType } | null };
 
 export type GymsQueryVariables = Exact<{
   take?: InputMaybe<Scalars['Int']['input']>;
@@ -3589,6 +3596,7 @@ export const PostsDocument = gql`
     content
     gym {
       name
+      image
     }
     grade
     experienceMonths
@@ -3714,6 +3722,46 @@ export function useCreateOneGymMutation(baseOptions?: Apollo.MutationHookOptions
 export type CreateOneGymMutationHookResult = ReturnType<typeof useCreateOneGymMutation>;
 export type CreateOneGymMutationResult = Apollo.MutationResult<CreateOneGymMutation>;
 export type CreateOneGymMutationOptions = Apollo.BaseMutationOptions<CreateOneGymMutation, CreateOneGymMutationVariables>;
+export const FindFirstGymDocument = gql`
+    query FindFirstGym($where: GymWhereInput) {
+  findFirstGym(where: $where) {
+    id
+    image
+    name
+    updatedAt
+    createdAt
+    climbingType
+  }
+}
+    `;
+
+/**
+ * __useFindFirstGymQuery__
+ *
+ * To run a query within a React component, call `useFindFirstGymQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindFirstGymQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindFirstGymQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useFindFirstGymQuery(baseOptions?: Apollo.QueryHookOptions<FindFirstGymQuery, FindFirstGymQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FindFirstGymQuery, FindFirstGymQueryVariables>(FindFirstGymDocument, options);
+      }
+export function useFindFirstGymLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindFirstGymQuery, FindFirstGymQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FindFirstGymQuery, FindFirstGymQueryVariables>(FindFirstGymDocument, options);
+        }
+export type FindFirstGymQueryHookResult = ReturnType<typeof useFindFirstGymQuery>;
+export type FindFirstGymLazyQueryHookResult = ReturnType<typeof useFindFirstGymLazyQuery>;
+export type FindFirstGymQueryResult = Apollo.QueryResult<FindFirstGymQuery, FindFirstGymQueryVariables>;
 export const GymsDocument = gql`
     query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
   gyms(take: $take, skip: $skip, orderBy: $orderBy) {

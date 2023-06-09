@@ -46,11 +46,13 @@ const DetailCard = ({
           <TextMaxLine variant="h6" line={1}>
             {title}
           </TextMaxLine>
-          <Image
-            alt={gym.name}
-            src={'companyLogo'}
-            sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }}
-          />
+          {gym.image && (
+            <Image
+              alt={gym.name}
+              src={gym.image}
+              sx={{ width: 78, height: 78, borderRadius: 1, mr: 3 }}
+            />
+          )}
         </Stack>
 
         <Stack spacing={0.5} sx={{ mt: 3, mb: 2 }}>

@@ -47,6 +47,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:5002/api/graphql', // adjust your GraphQL server URL accordingly
+  // uri: 'http://10.20.1.19:5002/api/graphql',
 });
 
 export const apolloClient = new ApolloClient({

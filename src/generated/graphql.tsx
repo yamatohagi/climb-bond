@@ -3248,7 +3248,7 @@ export type FindFirstPostQueryVariables = Exact<{
 }>;
 
 
-export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, like: Array<{ __typename?: 'PostLike', id: number, postId: number, userId: string }>, _count?: { __typename?: 'PostCount', replies: number, viewHistory: number } | null } | null };
+export type FindFirstPostQuery = { __typename?: 'Query', findFirstPost?: { __typename?: 'Post', id: number, title: string, content: string, grade: string, experienceMonths: number, belayMonths: number, createdAt: any, climbingType: ClimbingType, gym: { __typename?: 'Gym', name: string, image?: string | null }, preferredDayAndTimes: Array<{ __typename?: 'PreferredDayAndTime', id: number, dayAndTime: string }>, like: Array<{ __typename?: 'PostLike', id: number, postId: number, userId: string }>, _count?: { __typename?: 'PostCount', replies: number, viewHistory: number } | null } | null };
 
 export type RepliesQueryVariables = Exact<{
   where?: InputMaybe<ReplyWhereInput>;
@@ -3462,6 +3462,7 @@ export const FindFirstPostDocument = gql`
     content
     gym {
       name
+      image
     }
     grade
     experienceMonths

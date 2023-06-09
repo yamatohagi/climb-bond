@@ -8,6 +8,7 @@ gql`
       content
       gym {
         name
+        image
       }
       grade
       experienceMonths

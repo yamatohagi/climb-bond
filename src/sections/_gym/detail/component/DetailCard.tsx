@@ -15,17 +15,20 @@ const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
   return (
     <Card
       sx={{
+        mb: 2,
         '&:hover': {
           boxShadow: (theme) => (theme as any).customShadows.z24,
         },
       }}
     >
-      <Stack sx={{ p: 3, pb: 0 }}>
+      <Stack sx={{ p: 3, mb: 3 }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2.5}>
           <TextMaxLine variant="h6" line={1}>
             {name}
           </TextMaxLine>
-          <Image alt={name} src={image} sx={{ width: 48, height: 48, borderRadius: 1, mr: 3 }} />
+          {image && (
+            <Image alt={name} src={image} sx={{ width: 78, height: 78, borderRadius: 1, mr: 3 }} />
+          )}
         </Stack>
 
         <Stack spacing={0.5} sx={{ mt: 3, mb: 2 }}>
@@ -47,27 +50,12 @@ const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
           {timeAgo}
         </Typography>
 
-        <Stack spacing={0.5} sx={{ mt: 2 }}>
+        <Stack spacing={0.5} sx={{ mt: 2, pb: 2 }}>
           <Typography variant="body1" sx={{ color: 'text.disabled' }}>
             {climbingType}
           </Typography>
         </Stack>
       </Stack>
-
-      <Divider sx={{ borderStyle: 'dashed', my: 2 }} />
-
-      <Grid
-        container
-        spacing={1.5}
-        sx={{
-          p: 3,
-          pt: 0,
-          pb: 0,
-          typography: 'body2',
-          color: 'text.secondary',
-          textTransform: 'capitalize',
-        }}
-      ></Grid>
     </Card>
   );
 };

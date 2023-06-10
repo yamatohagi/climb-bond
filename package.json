@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev -p 8002",
     "start": "next start",
-    "build": "prisma generate && prisma db push && npm run generate-graphql-schema && next build",
+    "build": "prisma generate && prisma db push && next build",
     "build-netlify": "next build && cp -r .next _next && mv _next .next/",
     "export": "yarn build && next export -o _static",
     "lint": "eslint --ext .ts,.tsx .",

@@ -108,29 +108,19 @@ export default function ClimberPostCreateModal({
                     ]}
                   ></RHFSelectBox>
                 </Grid>
-                <Grid item xs={8} sm={6}>
-                  {data && (
-                    <GymSelectInput
-                      gyms={data.gyms}
-                      refetch={gymsOptionsRefetch}
-                      setFormValue={(value: CreateOneGymMutation) => {
-                        methods.setValue('gymId', value.createOneGym.id.toString(), {
-                          shouldValidate: true,
-                        });
-                      }}
-                    />
-                  )}
-                </Grid>
-                <Grid item xs={4} sm={6}>
-                  <Button
-                    sx={{ my: 1 }}
-                    size="medium"
-                    variant="contained"
-                    startIcon={<Iconify icon="eva:plus-fill" sx={{ with: 3 }} />}
-                  >
-                    <Typography variant="subtitle2"> {'登録'}</Typography>
-                  </Button>
-                </Grid>
+
+                {data && (
+                  <GymSelectInput
+                    gyms={data.gyms}
+                    refetch={gymsOptionsRefetch}
+                    setFormValue={(value: CreateOneGymMutation) => {
+                      methods.setValue('gymId', value.createOneGym.id.toString(), {
+                        shouldValidate: true,
+                      });
+                    }}
+                  />
+                )}
+
                 <Grid item xs={6} sm={6}>
                   <RHFSelectBox
                     size="small"

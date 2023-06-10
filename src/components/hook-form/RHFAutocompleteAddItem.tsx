@@ -2,6 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { Controller, useFormContext } from 'react-hook-form';
+import { v4 as uuidv4 } from 'uuid';
 
 const filter = createFilterOptions<FilmOptionType>();
 
@@ -40,6 +41,7 @@ export default function RHFAutocompleteAddItem({
                 filtered.push({
                   inputValue: params.inputValue,
                   label: `Add "${params.inputValue}"`,
+                  value: uuidv4(),
                 });
               }
 

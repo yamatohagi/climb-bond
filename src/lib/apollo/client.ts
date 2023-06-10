@@ -49,7 +49,6 @@ const httpLink = createHttpLink({
   uri: process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}/api/graphql`
     : 'http://localhost:8002/api/graphql',
-
   // uri: 'http://10.20.1.19:5002/api/graphql',
 });
 

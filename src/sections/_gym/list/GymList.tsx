@@ -47,8 +47,9 @@ export default function GymList() {
 
       <Pagination
         count={
-          postCountDate && !postCountLoading
-            ? Math.floor((postCountDate?.aggregateGym._count?._all ?? 0) / itemsPerPage)
+          postCountDate?.aggregateGym?._count?._all && !postCountLoading
+            ? Math.floor(postCountDate.aggregateGym._count._all / itemsPerPage) +
+              (postCountDate.aggregateGym._count._all % itemsPerPage > 0 ? 1 : 0)
             : 100
         }
         color="primary"

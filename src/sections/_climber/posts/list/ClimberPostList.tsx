@@ -36,8 +36,9 @@ export default function ClimberPostList() {
 
       <Pagination
         count={
-          postCountDate && !postCountLoading
-            ? Math.floor(postCountDate?.aggregatePost._count?._all ?? 0 / itemsPerPage)
+          postCountDate?.aggregatePost?._count?._all && !postCountLoading
+            ? Math.floor(postCountDate.aggregatePost._count._all / itemsPerPage) +
+              (postCountDate.aggregatePost._count._all % itemsPerPage > 0 ? 1 : 0)
             : 100
         }
         color="primary"

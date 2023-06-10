@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id                   Int                   @id @default(autoincrement())
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  deletedAt            DateTime?
+  title                String
+  content              String
+  climbingType         ClimbingType
+  gymId                Int
+  gym                  Gym                   @relation(fields: [gymId], references: [id])
+  preferredDayAndTimes PreferredDayAndTime[]
+  experienceMonths     Int
+  belayMonths          Int
+  grade                String
+  replies              Reply[]
+  like                 PostLike[]
+  viewHistory          ViewHistory[]
+}
+
+model ViewHistory {
+  id     Int    @id @default(autoincrement())
+  userId String
+  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
+}
+
+model PostLike {
+  id     Int    @id @default(autoincrement())
+  userId String
+  postId Int
+  post   Post   @relation(fields: [postId], references: [id])
+}
+
+model Gym {
+  id           Int          @id @default(autoincrement())
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  deletedAt    DateTime?
+  name         String
+  image        String?
+  climbingType ClimbingType
+  Posts        Post[]
+}
+
+model PreferredDayAndTime {
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+  dayAndTime String    @db.VarChar(2)
+  postId     Int
+  post       Post      @relation(fields: [postId], references: [id])
+}
+
+model Reply {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  userName  String
+  title     String
+  content   String
+  postId    Int
+  post      Post      @relation(fields: [postId], references: [id])
+}
+
+enum ClimbingType {
+  BOULDER
+  LEAD
+  BOTH
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+}

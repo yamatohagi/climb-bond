@@ -1,0 +1,60 @@
+import { Pagination, Box } from '@mui/material';
+import { Fragment, useState } from 'react';
+import { SortOrder, usePostsQuery, use_CountQuery } from 'src/generated/graphql';
+import { useRouter } from 'next/router';
+import CreateButton from '../create/CreateButton';
+import { ClimberPostItem, ClimberPostItemSkeleton } from '../components';
+import { usePostsQueryVariables } from './hooks/usePostsQueryVariables';
+
+export default function ClimberPostList() {
+  const itemsPerPage = 5;
+  const { postsQueryVariables, router, page } = usePostsQueryVariables(itemsPerPage);
+  const { error, data, loading, refetch } = usePostsQuery({
+    variables: postsQueryVariables,
+  });
+  const { data: postCountDate, loading: postCountLoading } = use_CountQuery();
+  return (
+    <>
+      <CreateButton refetch={refetch} />
+      <Box
+        sx={{
+          columnGap: 4,
+          display: 'grid',
+          rowGap: { xs: 4, md: 5 },
+          gridTemplateColumns: {
+            xs: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+          },
+        }}
+      >
+        {(loading || !data ? [...Array(9)] : data.posts).map((post, index) => (
+          <Fragment key={index}>
+            {post ? <ClimberPostItem post={post} /> : <ClimberPostItemSkeleton />}
+          </Fragment>
+        ))}
+      </Box>
+
+      <Pagination
+        count={
+          postCountDate && !postCountLoading
+            ? Math.floor(postCountDate?.aggregatePost._count?._all! / itemsPerPage)
+            : 100
+        }
+        color="primary"
+        size="large"
+        page={page} // Set the current page
+        onChange={(event, value) => {
+          router.push(`?page=${value}`, undefined, { shallow: true });
+          window.scrollTo(0, 0);
+        }}
+        sx={{
+          my: 10,
+          '& .MuiPagination-ul': {
+            justifyContent: 'center',
+          },
+        }}
+      />
+    </>
+  );
+}

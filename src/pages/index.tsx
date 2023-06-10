@@ -2,8 +2,8 @@
 import Head from 'next/head';
 // layouts
 import MainLayout from 'src/layouts/main';
+import ClimberPostsView from 'src/sections/_climber/view/ClimberPostsView';
 // sections
-import HomeView from 'src/sections/_home/view';
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ export default function HomePage() {
         <title>The starting point for your next project | ZONE UI</title>
       </Head>
 
-      <HomeView />
+      <ClimberPostsView />
     </>
   );
 }

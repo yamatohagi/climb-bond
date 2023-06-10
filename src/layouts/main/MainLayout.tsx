@@ -12,7 +12,7 @@ import Footer from './footer/Footer';
 
 const pathsOnDark = ['/career/landing', '/travel/landing'];
 
-const spacingLayout = [...pathsOnDark, '/', '/e-learning/landing', '/marketing/landing'];
+const spacingLayout = [...pathsOnDark, '/e-learning/landing', '/marketing/landing'];
 
 // ----------------------------------------------------------------------
 

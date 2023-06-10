@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es2018",
+    "lib": ["es2018", "esnext.asynciterable", "dom", "dom.iterable", "esnext"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "strict": true,
     "noEmit": true,
     "allowJs": true,
     "jsx": "preserve",
-    "module": "esnext",
+    "module": "commonjs",
     "incremental": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,15 +17,8 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "jsxImportSource": "@emotion/react",
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/**/*"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/**/*"]
 }

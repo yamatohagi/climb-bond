@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 // @mui
 import { Slider, FormControl, Typography, Popover, Select } from '@mui/material';
@@ -82,8 +81,3 @@ export default function CareerFilterSalary({ filterSalary, onChangeSalary }: any
     </>
   );
 }
-
-CareerFilterSalary.propTypes = {
-  filterSalary: PropTypes.array,
-  onChangeSalary: PropTypes.func,
-};

@@ -6,7 +6,6 @@ import {
   PostsDocument,
   PostsQuery,
   PostsQueryResult,
-  SortOrder,
   useCreateOnePostLikeMutation,
   useDeleteManyPostLikeMutation,
 } from 'src/generated/graphql';
@@ -26,21 +25,21 @@ export const LikeButton = ({
   const client = useApolloClient();
   const gestInfo = JSON.parse(localStorage.getItem('gestInfo') || 'null');
   const [checked, setChecked] = useState(likes.some((like) => like.userId === gestInfo.key));
-  const { postsQueryVariables, router, page } = usePostsQueryVariables(5);
+  const { postsQueryVariables } = usePostsQueryVariables(5);
 
   const handleOnClick = async (checked: boolean, event: any) => {
     event.preventDefault();
     if (!gestInfo) return;
 
     if (checked) {
-      const { data } = await deleteManyPostLike({
+      await deleteManyPostLike({
         variables: {
           where: {
             userId: { equals: gestInfo.key },
           },
         },
         onCompleted: (data) => {
-          refetch && refetch();
+          if (refetch) refetch();
           const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
             query: PostsDocument,
             variables: postsQueryVariables,
@@ -55,7 +54,7 @@ export const LikeButton = ({
       });
       setChecked(false);
     } else {
-      const { data } = await createOnePostLike({
+      await createOnePostLike({
         variables: {
           data: {
             userId: gestInfo.key,
@@ -68,7 +67,7 @@ export const LikeButton = ({
         },
 
         onCompleted: (data) => {
-          refetch && refetch();
+          if (refetch) refetch();
           const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
             query: PostsDocument,
             variables: postsQueryVariables,

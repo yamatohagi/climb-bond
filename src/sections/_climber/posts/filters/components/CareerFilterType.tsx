@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { MenuItem, Checkbox, FormControl, Typography } from '@mui/material';
 import Select from '@mui/material/Select';
@@ -45,8 +44,3 @@ export default function CareerFilterType({ filterType, onChangeJobType }: any) {
     </FormControl>
   );
 }
-
-CareerFilterType.propTypes = {
-  filterType: PropTypes.array,
-  onChangeJobType: PropTypes.func,
-};

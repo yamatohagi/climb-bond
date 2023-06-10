@@ -1,12 +1,10 @@
-import { _jobs } from 'src/_mock';
 import { Button, DialogTitle, DialogContent, DialogActions, Grid, Dialog } from '@mui/material';
 import { Box } from '@mui/system';
 import { RHFSelectBox, RHFTextField } from 'src/components/hook-form';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { ClimbingType } from '@prisma/client';
 import { useEffect, useState } from 'react';
-
-import { GymOptionsQueryResult, useCreateOneGymMutation } from 'src/generated/graphql';
+import { useCreateOneGymMutation } from 'src/generated/graphql';
 import { LoadingButton } from '@mui/lab';
 
 import { v4 as uuidv4 } from 'uuid';

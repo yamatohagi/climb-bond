@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { Autocomplete, InputAdornment, TextField } from '@mui/material';
 // _mock
@@ -37,9 +36,3 @@ export default function CareerFilterKeyword({ filterKeyword, onChangeKeyword, sx
     />
   );
 }
-
-CareerFilterKeyword.propTypes = {
-  filterKeyword: PropTypes.string,
-  onChangeKeyword: PropTypes.func,
-  sx: PropTypes.object,
-};

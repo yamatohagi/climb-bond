@@ -1,3 +1,4 @@
+/* eslint-disable import/no-duplicates */
 import { FindFirstPostQuery } from 'src/generated/graphql';
 import { Fragment } from 'react';
 import { formatDistanceToNow } from 'date-fns';
@@ -113,34 +114,28 @@ const DetailCard = ({
         <Grid xs={7}>
           <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
             <Iconify icon="ic:outline-today" sx={{ mr: 1 }} />
-            {preferredDayAndTimes.map((v) => {
-              return (
-                <Fragment key={v.id}>
-                  {v.dayAndTime[1] === '1' ? ( //'01'なら日曜・昼
-                    <>
-                      <Box sx={{ mr: 1 }}>
-                        {dayOfWeek[Number(v.dayAndTime[0])]}
-                        <Iconify
-                          icon="ph:sun-bold"
-                          sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
-                        />
-                      </Box>
-                    </>
-                  ) : (
-                    //'12'なら月曜・夜
-                    <>
-                      <Box sx={{ mr: 1 }}>
-                        {dayOfWeek[Number(v.dayAndTime[0])]}
-                        <Iconify
-                          icon="icon-park-solid:moon"
-                          sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
-                        />
-                      </Box>
-                    </>
-                  )}
-                </Fragment>
-              );
-            })}
+            {preferredDayAndTimes.map((v) => (
+              <Fragment key={v.id}>
+                {v.dayAndTime[1] === '1' ? ( // '01'なら日曜・昼
+                  <Box sx={{ mr: 1 }}>
+                    {dayOfWeek[Number(v.dayAndTime[0])]}
+                    <Iconify
+                      icon="ph:sun-bold"
+                      sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
+                    />
+                  </Box>
+                ) : (
+                  // '12'なら月曜・夜
+                  <Box sx={{ mr: 1 }}>
+                    {dayOfWeek[Number(v.dayAndTime[0])]}
+                    <Iconify
+                      icon="icon-park-solid:moon"
+                      sx={{ height: '1.5em', verticalAlign: 'middle', pb: 0.5 }}
+                    />
+                  </Box>
+                )}
+              </Fragment>
+            ))}
           </Stack>
         </Grid>
 

@@ -1,7 +1,6 @@
 import { Pagination, Box } from '@mui/material';
-import { Fragment, useState } from 'react';
-import { SortOrder, usePostsQuery, use_CountQuery } from 'src/generated/graphql';
-import { useRouter } from 'next/router';
+import { Fragment } from 'react';
+import { usePostsQuery, use_CountQuery } from 'src/generated/graphql';
 import CreateButton from '../create/CreateButton';
 import { ClimberPostItem, ClimberPostItemSkeleton } from '../components';
 import { usePostsQueryVariables } from './hooks/usePostsQueryVariables';
@@ -9,7 +8,7 @@ import { usePostsQueryVariables } from './hooks/usePostsQueryVariables';
 export default function ClimberPostList() {
   const itemsPerPage = 5;
   const { postsQueryVariables, router, page } = usePostsQueryVariables(itemsPerPage);
-  const { error, data, loading, refetch } = usePostsQuery({
+  const { data, loading, refetch } = usePostsQuery({
     variables: postsQueryVariables,
   });
   const { data: postCountDate, loading: postCountLoading } = use_CountQuery();
@@ -38,7 +37,7 @@ export default function ClimberPostList() {
       <Pagination
         count={
           postCountDate && !postCountLoading
-            ? Math.floor(postCountDate?.aggregatePost._count?._all! / itemsPerPage)
+            ? Math.floor(postCountDate?.aggregatePost._count?._all ?? 0 / itemsPerPage)
             : 100
         }
         color="primary"

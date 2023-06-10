@@ -11,7 +11,7 @@ export default function ClimberPostDetail() {
   const router = useRouter();
   const postId = Number(router.query.id);
 
-  const { error, data, loading, refetch } = useFindFirstPostQuery({
+  const { data, loading, refetch } = useFindFirstPostQuery({
     variables: {
       where: {
         id: { equals: postId },
@@ -19,11 +19,7 @@ export default function ClimberPostDetail() {
     },
   });
 
-  const {
-    data: repliesData,
-    loading: repliesLoading,
-    refetch: repliesRefetch,
-  } = useRepliesQuery({
+  const { data: repliesData, refetch: repliesRefetch } = useRepliesQuery({
     variables: {
       where: {
         postId: { equals: postId },

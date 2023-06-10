@@ -2,9 +2,10 @@ import { z } from 'zod';
 
 export const createDefaultValues = (schema: z.ZodObject<any>) => {
   const fields = schema.shape;
-  let defaults: any = {};
+  const defaults: any = {};
 
-  for (const key in fields) {
+  const keys = Object.keys(fields);
+  keys.forEach((key) => {
     const field = fields[key];
 
     if (field instanceof z.ZodString) {
@@ -26,7 +27,7 @@ export const createDefaultValues = (schema: z.ZodObject<any>) => {
     } else {
       defaults[key] = undefined;
     }
-  }
+  });
 
   return defaults;
 };

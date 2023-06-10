@@ -36,10 +36,6 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
   const [favorite, setFavorite] = useState(false);
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
 
-  const handleChangeFavorite = (event: any) => {
-    setFavorite(event.target.checked);
-  };
-
   return (
     <Card
       sx={{

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+/* eslint-disable import/no-duplicates */
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import NextLink from 'next/link';
@@ -7,14 +7,10 @@ import { paths } from 'src/routes/paths';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
-import { Gym, PreferredDayAndTime, Post as PrismaPost } from '@prisma/client';
+
 import { GymsQuery } from 'src/generated/graphql';
 
 // ----------------------------------------------------------------------
-interface Post extends PrismaPost {
-  gym: Gym;
-  preferredDayAndTimes: PreferredDayAndTime[];
-}
 
 export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
   const { id, name, createdAt, climbingType, image } = gym;
@@ -64,30 +60,10 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
           sx={{ px: 3, pb: 2, pt: 2.3, mx: 4, color: 'text.secondary' }}
           direction="row"
           justifyContent="space-between"
-        ></Stack>
+        />
       </Link>
     </Card>
   );
 }
-
-GymItem.propTypes = {
-  post: PropTypes.shape({
-    companyLogo: PropTypes.string,
-    companyName: PropTypes.string,
-    createdAt: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.instanceOf(Date),
-    ]),
-    experience: PropTypes.number,
-    favorited: PropTypes.bool,
-    isUrgent: PropTypes.bool,
-    level: PropTypes.string,
-    location: PropTypes.string,
-    salary: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    slug: PropTypes.string,
-    type: PropTypes.string,
-  }),
-};
 
 export const dayOfWeek = ['月曜', '火曜', '水曜', '木曜', '金曜', '土曜', '日曜'];

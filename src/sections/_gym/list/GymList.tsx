@@ -1,22 +1,21 @@
-import PropTypes from 'prop-types';
 import { Pagination, Box } from '@mui/material';
 
 import { Fragment } from 'react';
 import { SortOrder, useAggregateGymQuery, useGymsQuery } from 'src/generated/graphql';
 
 import { useRouter } from 'next/router';
-import CreateButton from 'src/sections/_climber/posts/create/CreateButton';
 import GymItem from '../components/GymItem';
 import GymItemSkeleton from '../components/GymItemSkeleton';
 import GymCreateButton from '../create/GymCreateButton';
+
 export default function GymList() {
   const router = useRouter();
   const { query } = router;
-  const page = query.page ? parseInt(query.page.toString()) : 1;
+  const page = query.page ? parseInt(query.page.toString(), 10) : 1;
 
   const itemsPerPage = 5;
 
-  const { error, data, loading, refetch } = useGymsQuery({
+  const { data, loading, refetch } = useGymsQuery({
     variables: {
       orderBy: [{ createdAt: SortOrder.Desc }],
       take: itemsPerPage,
@@ -49,7 +48,7 @@ export default function GymList() {
       <Pagination
         count={
           postCountDate && !postCountLoading
-            ? Math.floor(postCountDate?.aggregateGym._count?._all! / itemsPerPage)
+            ? Math.floor((postCountDate?.aggregateGym._count?._all ?? 0) / itemsPerPage)
             : 100
         }
         color="primary"
@@ -69,8 +68,3 @@ export default function GymList() {
     </>
   );
 }
-
-GymList.propTypes = {
-  posts: PropTypes.array,
-  loading: PropTypes.bool,
-};

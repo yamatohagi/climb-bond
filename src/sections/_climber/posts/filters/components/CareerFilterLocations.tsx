@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { Autocomplete, InputAdornment, TextField } from '@mui/material';
 // assets
@@ -49,9 +48,3 @@ export default function CareerFilterLocations({ filterLocation, onChangeLocation
     />
   );
 }
-
-CareerFilterLocations.propTypes = {
-  filterLocation: PropTypes.string,
-  onChangeLocation: PropTypes.func,
-  sx: PropTypes.object,
-};

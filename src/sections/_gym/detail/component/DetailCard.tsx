@@ -10,7 +10,7 @@ import TextMaxLine from 'src/components/text-max-line';
 
 const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
   if (!gym) return null;
-  const { id, createdAt, climbingType, image, name } = gym;
+  const { createdAt, climbingType, image, name } = gym;
 
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
   return (

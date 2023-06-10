@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 import DetailCard from './component/DetailCard';
 import GymItemSkeleton from '../components/GymItemSkeleton';
 
-export default function ClimberPostDetail({}: {}) {
+export default function ClimberPostDetail() {
   const router = useRouter();
   const gymId = Number(router.query.id);
 
-  const { error, data, loading, refetch } = useFindFirstGymQuery({
+  const { data, loading } = useFindFirstGymQuery({
     variables: {
       where: {
         id: { equals: gymId },

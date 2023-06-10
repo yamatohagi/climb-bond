@@ -59,12 +59,6 @@ export default function NavMobile({ data }: NavProps) {
               <NavList key={link.title} item={link} />
             ))}
           </List>
-
-          <Stack spacing={1.5} sx={{ p: 3 }}>
-            <Button fullWidth variant="contained" color="inherit">
-              Buy Now
-            </Button>
-          </Stack>
         </Scrollbar>
       </Drawer>
     </>

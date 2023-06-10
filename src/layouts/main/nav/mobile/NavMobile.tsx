@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 // next
 import { useRouter } from 'next/router';
 // @mui
-import { List, Drawer, IconButton, Button, Stack } from '@mui/material';
+import { List, Drawer, IconButton } from '@mui/material';
 // config
 import { NAV } from 'src/config-global';
 // components

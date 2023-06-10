@@ -112,10 +112,10 @@ export const navConfig = [
   { title: 'Home', path: '/' },
   { title: 'Gyms', path: paths.gym.index },
   // { title: 'Components', path: paths.components.root },
-  // {
-  //   title: 'Pages',
-  //   path: paths.pages,
-  //   children: [pageLinks[0], pageLinks[1], pageLinks[2], pageLinks[3], pageLinks[4], pageLinks[5]],
-  // },
+  {
+    title: 'Pages',
+    path: paths.pages,
+    children: [pageLinks[0], pageLinks[1], pageLinks[2], pageLinks[3], pageLinks[4], pageLinks[5]],
+  },
   // { title: 'Documentation', path: paths.docs },
 ];

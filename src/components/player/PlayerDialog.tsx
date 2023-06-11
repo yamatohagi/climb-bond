@@ -7,8 +7,6 @@ import Iconify from '../iconify';
 //
 import { StyledReactPlayer } from './styles';
 
-// ----------------------------------------------------------------------
-
 interface Props extends ReactPlayerProps {
   open: boolean;
   videoPath: string;

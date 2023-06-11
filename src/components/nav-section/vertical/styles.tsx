@@ -6,8 +6,6 @@ import { ICON, NAV } from 'src/config-global';
 //
 import { NavItemProps } from '../types';
 
-// ----------------------------------------------------------------------
-
 type StyledItemProps = Omit<NavItemProps, 'item'> & {
   caption?: boolean;
   disabled?: boolean;
@@ -76,8 +74,6 @@ export const StyledItem = styled(ListItemButton, {
   };
 });
 
-// ----------------------------------------------------------------------
-
 export const StyledIcon = styled(ListItemIcon)({
   display: 'flex',
   alignItems: 'center',
@@ -85,8 +81,6 @@ export const StyledIcon = styled(ListItemIcon)({
   width: ICON.NAV_ITEM,
   height: ICON.NAV_ITEM,
 });
-
-// ----------------------------------------------------------------------
 
 type StyledDotIconProps = {
   active?: boolean;
@@ -107,8 +101,6 @@ export const StyledDotIcon = styled('span', {
     backgroundColor: theme.palette.primary.main,
   }),
 }));
-
-// ----------------------------------------------------------------------
 
 export const StyledSubheader = styled(ListSubheader)(({ theme }) => ({
   ...theme.typography.overline,

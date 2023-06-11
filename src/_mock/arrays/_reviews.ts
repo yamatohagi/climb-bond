@@ -1,7 +1,5 @@
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 const users = [...Array(12)].map((_, index) => ({
   id: _mock.id(index),
   name: _mock.name.fullName(index),

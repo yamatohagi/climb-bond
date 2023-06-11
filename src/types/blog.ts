@@ -1,8 +1,6 @@
 import { IAuthorProps } from './author';
 import { ISocialLinks } from './socials';
 
-// ----------------------------------------------------------------------
-
 export type IBlogTagsProps = {
   label: string;
   path: string;

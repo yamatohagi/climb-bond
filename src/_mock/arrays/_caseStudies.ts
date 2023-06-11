@@ -1,14 +1,12 @@
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 const TITLE = [
   'Bank of America',
   'Technology Nixon',
   'Turn Key Smart',
   'Digital Shose',
   'Action Car',
-  'The Zone UI',
+  'The Climb Bond',
   'Minimal UI',
   'Network Firefox',
 ];

@@ -11,15 +11,11 @@ import SvgColor from 'src/components/svg-color';
 // pattern
 import { Icon, Label, Character, Pattern01, Pattern02 } from './pattern';
 
-// ----------------------------------------------------------------------
-
 const stylesIcon = {
   width: 40,
   height: 40,
   color: 'common.black',
 };
-
-// ----------------------------------------------------------------------
 
 function CareerHeroIllustration({ sx, ...other }: BoxProps) {
   const theme = useTheme();

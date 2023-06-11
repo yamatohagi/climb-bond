@@ -6,8 +6,6 @@ import { useWidth } from 'src/hooks/useResponsive';
 // theme
 import { remToPx } from 'src/theme/typography';
 
-// ----------------------------------------------------------------------
-
 export default function useTypography(variant: Variant) {
   const theme = useTheme();
 

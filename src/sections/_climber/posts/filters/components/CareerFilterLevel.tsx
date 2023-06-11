@@ -4,8 +4,6 @@ import Select from '@mui/material/Select';
 //
 import { inputStyle, menuItemStyle, MenuProps } from '../styles';
 
-// ----------------------------------------------------------------------
-
 const JOB_LEVELS = [
   'Manager',
   'Intern/Student',
@@ -14,8 +12,6 @@ const JOB_LEVELS = [
   'Supervisor',
   'Director',
 ];
-
-// ----------------------------------------------------------------------
 
 export default function CareerFilterLevel({ filterLevel, onChangeJobType }: any) {
   return (

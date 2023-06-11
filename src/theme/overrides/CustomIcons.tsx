@@ -3,8 +3,6 @@ import { SvgIcon, SvgIconProps } from '@mui/material';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 // Close
 export const CloseIcon = <Iconify icon="carbon:close-filled" />;
 

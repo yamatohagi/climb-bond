@@ -1,8 +1,6 @@
 // @mui
 import { alpha } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
-
 type BgBlurProps = {
   blur?: number;
   opacity?: number;
@@ -42,8 +40,6 @@ export function bgBlur(props?: BgBlurProps) {
   };
 }
 
-// ----------------------------------------------------------------------
-
 type BgGradientProps = {
   direction?: string;
   color?: string;
@@ -75,8 +71,6 @@ export function bgGradient(props?: BgGradientProps) {
   };
 }
 
-// ----------------------------------------------------------------------
-
 export function textGradient(value: string) {
   return {
     background: `-webkit-linear-gradient(${value})`,
@@ -84,8 +78,6 @@ export function textGradient(value: string) {
     WebkitTextFillColor: 'transparent',
   };
 }
-
-// ----------------------------------------------------------------------
 
 export function filterStyles(value: string) {
   return {
@@ -95,8 +87,6 @@ export function filterStyles(value: string) {
   };
 }
 
-// ----------------------------------------------------------------------
-
 export const hideScrollbarY = {
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
@@ -105,8 +95,6 @@ export const hideScrollbarY = {
     display: 'none',
   },
 } as const;
-
-// ----------------------------------------------------------------------
 
 export const hideScrollbarX = {
   msOverflowStyle: 'none',

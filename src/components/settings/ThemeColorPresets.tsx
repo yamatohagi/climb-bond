@@ -5,8 +5,6 @@ import { alpha, ThemeProvider, createTheme, useTheme } from '@mui/material/style
 //
 import { useSettingsContext } from './SettingsContext';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   children: React.ReactNode;
 };

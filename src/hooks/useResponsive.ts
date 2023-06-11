@@ -2,8 +2,6 @@
 import { useTheme, Breakpoint } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-// ----------------------------------------------------------------------
-
 type ReturnType = boolean;
 
 type Query = 'up' | 'down' | 'between' | 'only';
@@ -35,8 +33,6 @@ export default function useResponsive(query: Query, start?: Value, end?: Value):
 
   return mediaOnly;
 }
-
-// ----------------------------------------------------------------------
 
 type BreakpointOrNull = Breakpoint | null;
 

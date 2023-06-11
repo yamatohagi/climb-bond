@@ -2,8 +2,6 @@ import { m, useScroll, useSpring } from 'framer-motion';
 // @mui
 import { Box, BoxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export interface ScrollProgressProps extends BoxProps {
   color?: 'inherit' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
   size?: number;

@@ -26,8 +26,6 @@ import Logo from '../logo';
 import Iconify from '../iconify';
 import Scrollbar from '../scrollbar';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   data: MegaMenuItemProps[];
   open: boolean;
@@ -72,8 +70,6 @@ export default function MegaMenuMobile({ data, open, action, onOpen, onClose }: 
   );
 }
 
-// ----------------------------------------------------------------------
-
 const ParentItem = forwardRef<HTMLDivElement, ParentItemProps>(
   ({ icon, title, hasSub, ...other }, ref) => (
     <ListItemButton ref={ref} sx={{ height: 44, textTransform: 'capitalize' }} {...other}>
@@ -90,8 +86,6 @@ const ParentItem = forwardRef<HTMLDivElement, ParentItemProps>(
     </ListItemButton>
   )
 );
-
-// ----------------------------------------------------------------------
 
 type SubMenuProps = {
   parent: MegaMenuItemProps;

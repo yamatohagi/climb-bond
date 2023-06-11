@@ -4,8 +4,6 @@ import { Dialog, Box, Paper, DialogProps } from '@mui/material';
 //
 import { varFade } from './variants';
 
-// ----------------------------------------------------------------------
-
 export interface Props extends DialogProps {
   variants?: Record<string, unknown>;
   onClose?: VoidFunction;

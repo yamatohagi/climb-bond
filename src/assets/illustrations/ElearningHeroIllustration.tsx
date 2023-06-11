@@ -8,8 +8,6 @@ import Image from 'src/components/image';
 // pattern
 import { Icon, Label, Shape, Pattern01, Pattern02 } from './pattern';
 
-// ----------------------------------------------------------------------
-
 const varUp = {
   animate: { y: [-8, 8, -8], x: [-4, 4, -4] },
   transition: { duration: 8, repeat: Infinity },
@@ -29,8 +27,6 @@ const varRight = {
   animate: { x: [8, -8, 8], y: [4, -4, 4] },
   transition: { duration: 7, repeat: Infinity },
 };
-
-// ----------------------------------------------------------------------
 
 function ElearningHeroIllustration({ sx, ...other }: BoxProps) {
   const theme = useTheme();

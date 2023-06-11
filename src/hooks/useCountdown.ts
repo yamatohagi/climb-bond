@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// ----------------------------------------------------------------------
-
 type ReturnType = {
   days: string;
   hours: string;

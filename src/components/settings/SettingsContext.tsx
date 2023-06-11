@@ -10,8 +10,6 @@ import {
   ThemeColorPresetsValue,
 } from './types';
 
-// ----------------------------------------------------------------------
-
 const initialState: SettingsContextProps = {
   ...defaultSettings,
   // Mode
@@ -33,8 +31,6 @@ const initialState: SettingsContextProps = {
   notDefault: false,
 };
 
-// ----------------------------------------------------------------------
-
 export const SettingsContext = createContext(initialState);
 
 export const useSettingsContext = () => {
@@ -44,8 +40,6 @@ export const useSettingsContext = () => {
 
   return context;
 };
-
-// ----------------------------------------------------------------------
 
 type SettingsProviderProps = {
   children: React.ReactNode;
@@ -163,8 +157,6 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
 
   return <SettingsContext.Provider value={memoizedValue}>{children}</SettingsContext.Provider>;
 }
-
-// ----------------------------------------------------------------------
 
 function getCookie(name: string) {
   if (typeof document === 'undefined') {

@@ -4,8 +4,6 @@ import { Box, BoxProps } from '@mui/material';
 // theme
 import { ColorSchema } from 'src/theme/palette';
 
-// ----------------------------------------------------------------------
-
 interface Props extends BoxProps {
   size?: number;
   color?: ColorSchema;

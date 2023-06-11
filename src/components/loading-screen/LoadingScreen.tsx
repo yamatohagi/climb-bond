@@ -7,8 +7,6 @@ import { bgBlur } from 'src/utils/cssStyles';
 //
 import Logo from '../logo';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   ...bgBlur({
     blur: 2,
@@ -24,8 +22,6 @@ const StyledRoot = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
 }));
-
-// ----------------------------------------------------------------------
 
 type Props = {
   sx?: SxProps<Theme>;

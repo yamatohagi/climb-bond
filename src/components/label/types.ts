@@ -1,7 +1,5 @@
 import { BoxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export type LabelColor =
   | 'default'
   | 'primary'

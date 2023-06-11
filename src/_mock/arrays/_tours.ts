@@ -2,8 +2,6 @@ import { add } from 'date-fns';
 //
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 const CONTINENTS = [
   'Asia',
   'Europe',

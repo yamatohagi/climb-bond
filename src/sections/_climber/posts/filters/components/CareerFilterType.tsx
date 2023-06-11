@@ -4,11 +4,7 @@ import Select from '@mui/material/Select';
 //
 import { inputStyle, menuItemStyle, MenuProps } from '../styles';
 
-// ----------------------------------------------------------------------
-
 const JOB_TYPES = ['Part time', 'Full time', 'Freelance'];
-
-// ----------------------------------------------------------------------
 
 export default function CareerFilterType({ filterType, onChangeJobType }: any) {
   return (

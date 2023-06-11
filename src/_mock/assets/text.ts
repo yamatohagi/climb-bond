@@ -1,4 +1,3 @@
-// ----------------------------------------------------------------------
 // https://www.convertsimple.com/convert-markdown-to-html/
 
 export const jobContent = `
@@ -41,8 +40,6 @@ export const brandsName = [
   'vimeo',
 ];
 
-// ----------------------------------------------------------------------
-
 export const jobTitle = [
   'Marketing Coordinator',
   'Medical Assistant',
@@ -61,8 +58,6 @@ export const jobTitle = [
   'Regional Brand Associate',
   'Interactive Creative Supervisor',
 ];
-
-// ----------------------------------------------------------------------
 
 export const jobCategories = [
   'Design',
@@ -83,8 +78,6 @@ export const jobCategories = [
   'Transport, distribution and logistics',
 ];
 
-// ----------------------------------------------------------------------
-
 export const tourName = [
   'Italian Delights - 12 Days',
   'Best of Sicily - 8 Days (Small Group Tour)',
@@ -104,8 +97,6 @@ export const tourName = [
   'National Parks Tour 3 Days Small Group Tour from Las Vegas',
 ];
 
-// ----------------------------------------------------------------------
-
 export const courseTitle = [
   'Design Masterclass Course',
   'Fitness For Beginners (2020)',
@@ -124,8 +115,6 @@ export const courseTitle = [
   'Instagram Marketing 2021: Complete Guide To Instagram Growth',
   'Python for Finance and Algorithmic Trading with QuantConnect',
 ];
-
-// ----------------------------------------------------------------------
 
 export const blogTitle = [
   'Apply These 7 Secret Techniques To Improve Event',
@@ -170,8 +159,6 @@ export const blogTitle = [
   'How To Make More Event By Doing Less',
 ];
 
-// ----------------------------------------------------------------------
-
 export const sentence = [
   'Assumenda nam repudiandae rerum fugiat vel maxime.',
   'Quis veniam aut saepe aliquid nulla.',
@@ -215,8 +202,6 @@ export const sentence = [
   'Vero corrupti nam voluptatum excepturi est et.',
 ];
 
-// ----------------------------------------------------------------------
-
 export const description = [
   'Occaecati est et illo quibusdam accusamus qui. Incidunt aut et molestiae ut facere aut. Est quidem iusto praesentium excepturi harum nihil tenetur facilis. Ut omnis voluptates nihil accusantium doloribus eaque debitis.',
   'Atque eaque ducimus minima distinctio velit. Laborum et veniam officiis. Delectus ex saepe hic id laboriosam officia. Odit nostrum qui illum saepe debitis ullam. Laudantium beatae modi fugit ut. Dolores consequatur beatae nihil voluptates rem maiores.',
@@ -259,5 +244,3 @@ export const description = [
   'Dolor numquam maiores praesentium dolorem nihil minus praesentium rem dolorem. Est rerum placeat. Numquam sed magni aliquam laborum enim facere ducimus.',
   'In sint enim nam et itaque et qui. Molestiae a iusto quidem quia temporibus id quia eaque eius. Quis quia consectetur saepe vero et molestias. Rem minima accusamus vitae adipisci molestiae unde voluptate consequatur molestiae. Rerum exercitationem quisquam vitae.',
 ];
-
-// ----------------------------------------------------------------------

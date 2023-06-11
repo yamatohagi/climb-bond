@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useSpring, useTransform, MotionValue } from 'framer-motion';
 
-// ----------------------------------------------------------------------
-
 type ReturnType = {
   offsetX: (force: number) => MotionValue<number>;
   offsetY: (force: number) => MotionValue<number>;

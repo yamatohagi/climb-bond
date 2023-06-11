@@ -13,8 +13,6 @@ import ToggleButton from './components/ToggleButton';
 import DirectionOptions from './components/DirectionOptions';
 import ColorPresetsOptions from './components/ColorPresetsOptions';
 
-// ----------------------------------------------------------------------
-
 export default function SettingsDrawer() {
   const { open, onToggle, onClose, onResetSetting, notDefault } = useSettingsContext();
 

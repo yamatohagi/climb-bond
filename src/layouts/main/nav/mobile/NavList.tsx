@@ -11,8 +11,6 @@ import { NavSectionVertical } from 'src/components/nav-section';
 import { NavItemBaseProps } from '../types';
 import NavItem from './NavItem';
 
-// ----------------------------------------------------------------------
-
 type NavListProps = {
   item: NavItemBaseProps;
 };

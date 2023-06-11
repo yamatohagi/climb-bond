@@ -12,8 +12,6 @@ import {
 //
 import { useSettingsContext } from '../../SettingsContext';
 
-// ----------------------------------------------------------------------
-
 const BOX_BORDER_RADIUS = 1.5;
 
 const StyledBoxWrap = styled('div')(() => ({
@@ -48,8 +46,6 @@ const StyledBoxSecondary = styled('div')(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
-
 export default function ColorPresetsOptions() {
   const { themeColorPresets, onChangeColorPresets, presetsOption } = useSettingsContext();
 
@@ -78,8 +74,6 @@ export default function ColorPresetsOptions() {
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type PresetsOptionsProps = {
   colorName: string;

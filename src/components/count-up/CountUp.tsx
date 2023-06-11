@@ -5,8 +5,6 @@ import ReactCountUp, { CountUpProps as ReactCountUpProps } from 'react-countup';
 import { Theme } from '@mui/material/styles';
 import { Box, SxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export interface CountUpNumberProps extends ReactCountUpProps {
   sx?: SxProps<Theme>;
 }

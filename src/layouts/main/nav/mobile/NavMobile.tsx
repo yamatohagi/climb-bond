@@ -13,8 +13,6 @@ import Scrollbar from 'src/components/scrollbar';
 import { NavProps } from '../types';
 import NavList from './NavList';
 
-// ----------------------------------------------------------------------
-
 export default function NavMobile({ data }: NavProps) {
   const { pathname } = useRouter();
 

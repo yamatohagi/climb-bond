@@ -5,8 +5,6 @@ import { NavSectionProps } from '../types';
 import { StyledSubheader } from './styles';
 import NavList from './NavList';
 
-// ----------------------------------------------------------------------
-
 export default function NavSectionVertical({ data, sx, ...other }: NavSectionProps) {
   return (
     <Stack sx={sx} {...other}>

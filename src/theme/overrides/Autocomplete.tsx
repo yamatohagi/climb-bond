@@ -2,8 +2,6 @@ import { alpha, Theme } from '@mui/material/styles';
 //
 import { AutocompleteIcon } from './CustomIcons';
 
-// ----------------------------------------------------------------------
-
 export default function Autocomplete(theme: Theme) {
   return {
     MuiAutocomplete: {

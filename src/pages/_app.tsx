@@ -50,7 +50,10 @@ export default function MyApp(props: any) {
     <ApolloProvider client={apolloClient}>
       <CacheProvider value={emotionCache}>
         <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <meta
+            name="viewport"
+            content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=0"
+          />
         </Head>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <SettingsProvider>

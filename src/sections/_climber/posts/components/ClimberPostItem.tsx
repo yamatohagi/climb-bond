@@ -108,7 +108,11 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
             <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
               <Iconify icon="fluent:mountain-trail-20-filled" sx={{ mr: 1 }} />
 
-              {` ${experienceMonths}年（ﾋﾞﾚｲ歴 ${belayMonths}ヵ月）`}
+              {experienceMonths < 12
+                ? ` ${experienceMonths}ヶ月`
+                : ` ${Math.floor(experienceMonths / 12)}年`}
+              {`（ビレイ歴 `}
+              {belayMonths < 12 ? ` ${belayMonths}ヶ月）` : ` ${Math.floor(belayMonths / 12)}年）`}
             </Stack>
           </Grid>
 

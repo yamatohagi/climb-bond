@@ -11,7 +11,7 @@ export default function Page404() {
   return (
     <>
       <Head>
-        <title>404 Page Not Found | ZONE UI</title>
+        <title>404 Page Not Found | Climb Bond</title>
       </Head>
 
       <Error404View />

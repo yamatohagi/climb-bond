@@ -8,7 +8,7 @@ export default function ClimberPostsPage() {
   return (
     <>
       <Head>
-        <title>Posts | ZONE UI</title>
+        <title>Posts | Climb Bond</title>
       </Head>
 
       <ClimberPostsDetailView />

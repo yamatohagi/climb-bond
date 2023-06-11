@@ -1,8 +1,6 @@
 // @mui
 import { styled } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
-
 const MARGIN = {
   marginTop: 0,
   marginBottom: 16,

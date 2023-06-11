@@ -9,8 +9,6 @@ import useActiveLink from 'src/hooks/useActiveLink';
 import { NavListProps } from '../types';
 import NavItem from './NavItem';
 
-// ----------------------------------------------------------------------
-
 type NavListRootProps = {
   data: NavListProps;
   depth: number;
@@ -58,8 +56,6 @@ export default function NavList({ data, depth, hasChild }: NavListRootProps) {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type NavListSubProps = {
   data: NavListProps[];

@@ -14,8 +14,6 @@ import { NavItemBaseProps, NavListProps } from '../types';
 import { StyledMenu, StyledSubheader } from './styles';
 import { NavItem } from './NavItem';
 
-// ----------------------------------------------------------------------
-
 export default function NavList({ item }: { item: NavItemBaseProps }) {
   const { pathname } = useRouter();
 
@@ -101,8 +99,6 @@ export default function NavList({ item }: { item: NavItemBaseProps }) {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function NavSubList({ subheader, isNew, cover, items }: NavListProps) {
   const { pathname } = useRouter();

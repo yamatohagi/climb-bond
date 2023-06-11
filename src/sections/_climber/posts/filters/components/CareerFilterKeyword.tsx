@@ -5,8 +5,6 @@ import _mock from 'src/_mock';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 export default function CareerFilterKeyword({ filterKeyword, onChangeKeyword, sx }: any) {
   return (
     <Autocomplete

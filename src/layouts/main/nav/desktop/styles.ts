@@ -4,8 +4,6 @@ import { Paper, ListSubheader, ListItemButton } from '@mui/material';
 //
 import { NavItemProps } from '../types';
 
-// ----------------------------------------------------------------------
-
 type StyledNavItemProps = Omit<NavItemProps, 'item'>;
 
 export const StyledNavItem = styled(ListItemButton, {
@@ -62,8 +60,6 @@ export const StyledNavItem = styled(ListItemButton, {
   };
 });
 
-// ----------------------------------------------------------------------
-
 export const StyledMenu = styled(Paper)(({ theme }) => ({
   top: 72,
   width: '100%',
@@ -73,8 +69,6 @@ export const StyledMenu = styled(Paper)(({ theme }) => ({
   boxShadow: theme.customShadows.dialog,
   backgroundColor: theme.palette.background.default,
 }));
-
-// ----------------------------------------------------------------------
 
 export const StyledSubheader = styled(ListSubheader)(({ theme }) => ({
   ...theme.typography.h6,

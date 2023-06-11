@@ -11,8 +11,6 @@ import {
   FormControlLabel,
 } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 type Props = RadioGroupProps & {
   name: string;
   options: { label: string; value: any }[];

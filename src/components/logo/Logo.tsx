@@ -5,8 +5,6 @@ import NextLink from 'next/link';
 import { useTheme } from '@mui/material/styles';
 import { Box, BoxProps, Link } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 interface LogoProps extends BoxProps {
   single?: boolean;
 }

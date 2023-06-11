@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 export type ColorVariants = {
   lighter: string;
   light: string;

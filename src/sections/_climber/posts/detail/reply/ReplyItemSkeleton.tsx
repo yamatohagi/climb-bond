@@ -1,8 +1,6 @@
 // @mui
 import { Skeleton, Card, Box } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export default function ReplyItemSkeleton({ ...other }) {
   return (
     <Card {...other} sx={{ mt: 3 }}>

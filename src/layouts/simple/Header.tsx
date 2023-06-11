@@ -1,21 +1,14 @@
-// next
-import NextLink from 'next/link';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { AppBar, Toolbar, Link, Stack } from '@mui/material';
+import { AppBar, Toolbar, Stack } from '@mui/material';
 // config
 import { HEADER } from 'src/config-global';
 // utils
 import { bgBlur } from 'src/utils/cssStyles';
-// routes
-import { paths } from 'src/routes/paths';
-// components
 import Logo from 'src/components/logo';
 import SettingsDrawer from 'src/components/settings/drawer';
 //
 import HeaderShadow from '../components/HeaderShadow';
-
-// ----------------------------------------------------------------------
 
 type Props = {
   isOffset: boolean;
@@ -49,10 +42,6 @@ export default function Header({ isOffset }: Props) {
 
         <Stack spacing={1} direction="row" alignItems="center">
           <SettingsDrawer />
-
-          <Link href={paths.support} component={NextLink} variant="subtitle2" color="inherit">
-            Need Help?
-          </Link>
         </Stack>
       </Toolbar>
 

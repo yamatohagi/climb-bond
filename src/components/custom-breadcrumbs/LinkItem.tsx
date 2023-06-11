@@ -5,8 +5,6 @@ import { Box, Link } from '@mui/material';
 //
 import { BreadcrumbsLinkProps } from './types';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   link: BreadcrumbsLinkProps;
   activeLast?: boolean;

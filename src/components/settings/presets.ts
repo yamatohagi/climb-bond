@@ -3,8 +3,6 @@ import palette from 'src/theme/palette';
 // types
 import { ThemeColorPresetsValue } from './types';
 
-// ----------------------------------------------------------------------
-
 const themePalette = palette('light');
 
 export const presets = [
@@ -120,8 +118,6 @@ export const presets = [
     },
   },
 ];
-
-// ----------------------------------------------------------------------
 
 export const defaultPreset = presets[0];
 

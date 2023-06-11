@@ -6,8 +6,6 @@ import { countries } from 'src/assets/data';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 export default function CareerFilterLocations({ filterLocation, onChangeLocation, sx }: any) {
   return (
     <Autocomplete

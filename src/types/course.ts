@@ -2,8 +2,6 @@
 import { ICountriesProps } from './contact';
 import { ISocialLinks } from './socials';
 
-// ----------------------------------------------------------------------
-
 export type ICourseTeacherProp = {
   id: string;
   name: string;

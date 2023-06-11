@@ -4,8 +4,6 @@ import { ToggleButton, Typography } from '@mui/material';
 import Iconify from '../../../iconify';
 import { useSettingsContext } from '../../SettingsContext';
 
-// ----------------------------------------------------------------------
-
 export default function DirectionOptions() {
   const { themeDirection, onToggleDirection } = useSettingsContext();
 

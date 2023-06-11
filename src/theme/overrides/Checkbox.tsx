@@ -3,8 +3,6 @@ import { CheckboxProps } from '@mui/material';
 //
 import { CheckboxIcon, CheckboxCheckedIcon, CheckboxIndeterminateIcon } from './CustomIcons';
 
-// ----------------------------------------------------------------------
-
 export default function Checkbox(theme: Theme) {
   return {
     MuiCheckbox: {

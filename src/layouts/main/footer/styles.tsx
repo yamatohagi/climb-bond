@@ -4,8 +4,6 @@ import NextLink, { LinkProps } from 'next/link';
 import { styled } from '@mui/material/styles';
 import { Link, LinkProps as MUILinkProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export const StyledLink = styled((props: LinkProps & MUILinkProps) => (
   <Link component={NextLink} {...props} />
 ))(({ theme }) => ({

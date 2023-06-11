@@ -1,7 +1,5 @@
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 export const _categories = [
   { label: 'Marketing', path: '' },
   { label: 'Community', path: '' },
@@ -9,8 +7,6 @@ export const _categories = [
   { label: 'Business', path: '' },
   { label: 'Management', path: '' },
 ];
-
-// ----------------------------------------------------------------------
 
 export const _tags = [
   { label: 'Marketing', path: '' },
@@ -24,8 +20,6 @@ export const _tags = [
   { label: 'Tutorials', path: '' },
 ];
 
-// ----------------------------------------------------------------------
-
 export const _testimonials = [...Array(8)].map((_, index) => ({
   id: _mock.id(index),
   name: _mock.name.fullName(index),
@@ -36,8 +30,6 @@ export const _testimonials = [...Array(8)].map((_, index) => ({
   review:
     'Amazing experience i love it a lot. Thanks to the team that dreams come true, great! I appreciate there attitude and approach.',
 }));
-
-// ----------------------------------------------------------------------
 
 export const _socials = [
   {
@@ -66,8 +58,6 @@ export const _socials = [
   },
 ];
 
-// ----------------------------------------------------------------------
-
 const LAT_LONG = [
   [33, 65],
   [-12.5, 18.5],
@@ -83,8 +73,6 @@ export const _offices = ['Jordan', 'Canada', 'Portugal'].map((office, index) => 
   photo: _mock.image.travel(index + 4),
   latlng: LAT_LONG[index],
 }));
-
-// ----------------------------------------------------------------------
 
 const BRANDS_NAME = [
   'airbnb',
@@ -112,8 +100,6 @@ export const _brandsColor = BRANDS_NAME.map((brand, index) => ({
   name: brand,
   image: `/assets/logo/${brand}_original.svg`,
 }));
-
-// ----------------------------------------------------------------------
 
 export const _faqs = [
   'Sed augue ipsum, egestas nec, vestibulum et',

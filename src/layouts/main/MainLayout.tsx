@@ -8,13 +8,9 @@ import { HEADER } from 'src/config-global';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 
-// ----------------------------------------------------------------------
-
 const pathsOnDark = ['/career/landing', '/travel/landing'];
 
 const spacingLayout = [...pathsOnDark, '/e-learning/landing', '/marketing/landing'];
-
-// ----------------------------------------------------------------------
 
 type Props = {
   children: React.ReactNode;
@@ -43,8 +39,6 @@ export default function MainLayout({ children }: Props) {
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function Spacing() {
   return (

@@ -4,8 +4,6 @@ import { Box, Link, Stack, Typography, Breadcrumbs } from '@mui/material';
 import { CustomBreadcrumbsProps } from './types';
 import LinkItem from './LinkItem';
 
-// ----------------------------------------------------------------------
-
 export default function CustomBreadcrumbs({
   links,
   action,
@@ -67,8 +65,6 @@ export default function CustomBreadcrumbs({
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function Separator() {
   return (

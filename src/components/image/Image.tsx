@@ -6,8 +6,6 @@ import { Box } from '@mui/material';
 import getRatio from './getRatio';
 import { ImageProps } from './types';
 
-// ----------------------------------------------------------------------
-
 const Image = forwardRef<unknown | undefined, ImageProps>(
   ({ ratio, disabledEffect = false, effect = 'blur', sx, ...other }, ref) => {
     const content = (

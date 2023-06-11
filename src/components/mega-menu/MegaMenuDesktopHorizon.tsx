@@ -12,8 +12,6 @@ import Iconify from '../iconify';
 import MenuHotProducts from './MenuHotProducts';
 import MenuCarousel from './MenuCarousel';
 
-// ----------------------------------------------------------------------
-
 const ITEM_SPACING = 4;
 const PARENT_ITEM_HEIGHT = 64;
 
@@ -30,8 +28,6 @@ export default function MegaMenuDesktopHorizon({ data, ...other }: Props) {
     </Stack>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function MegaMenuItem({ parent }: { parent: MegaMenuItemProps }) {
   const { title, path, icon, more, products, tags, children } = parent;
@@ -136,8 +132,6 @@ function MegaMenuItem({ parent }: { parent: MegaMenuItemProps }) {
 
   return <ParentItem path={path} title={title} icon={icon} />;
 }
-
-// ----------------------------------------------------------------------
 
 function ParentItem({ title, path = '', icon, open, hasSub, ...other }: ParentItemProps) {
   const activeStyle = {

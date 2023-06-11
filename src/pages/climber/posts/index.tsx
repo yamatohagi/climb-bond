@@ -6,17 +6,13 @@ import MainLayout from 'src/layouts/main';
 
 import ClimberPostsView from 'src/sections/_climber/view/ClimberPostsView';
 
-// ----------------------------------------------------------------------
-
 ClimberPostsPage.getLayout = (page: any) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function ClimberPostsPage() {
   return (
     <>
       <Head>
-        <title>Posts | ZONE UI</title>
+        <title>Posts | Climb Bond</title>
       </Head>
 
       <ClimberPostsView />

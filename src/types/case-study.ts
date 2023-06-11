@@ -1,7 +1,5 @@
 import { ISocialLinks } from './socials';
 
-// ----------------------------------------------------------------------
-
 export type ICaseStudyProps = {
   id: string;
   title: string;

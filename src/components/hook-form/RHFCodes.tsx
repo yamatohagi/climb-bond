@@ -6,8 +6,6 @@ import { Stack, TextField, TextFieldProps } from '@mui/material';
 // hooks
 import useEventListener from 'src/hooks/useEventListener';
 
-// ----------------------------------------------------------------------
-
 type Props = TextFieldProps & {
   keyName: string;
   inputs: string[];

@@ -5,8 +5,6 @@ import { Link, Typography, Box } from '@mui/material';
 // types
 import { MenuHotProductsProps } from './types';
 
-// ----------------------------------------------------------------------
-
 export default function MenuHotProducts({ tags, ...other }: MenuHotProductsProps) {
   return (
     <Box {...other}>

@@ -7,8 +7,6 @@ import { bgGradient } from 'src/utils/cssStyles';
 //
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
-// ----------------------------------------------------------------------
-
 export const StyledReactPlayer = styled(ReactPlayer)(() => ({
   width: '100% !important',
   height: '100% !important',

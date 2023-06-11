@@ -6,8 +6,6 @@ import { Box, BoxProps } from '@mui/material';
 import Dot from './Dots';
 import Circle from './Circle';
 
-// ----------------------------------------------------------------------
-
 const animateDown = (duration = 60) => ({
   animate: { rotate: [360, 0] },
   transition: { duration, repeat: Infinity, ease: 'linear' },

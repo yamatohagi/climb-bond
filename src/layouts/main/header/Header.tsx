@@ -19,8 +19,6 @@ import { NavMobile, NavDesktop, navConfig } from '../nav';
 import Searchbar from '../../components/Searchbar';
 import HeaderShadow from '../../components/HeaderShadow';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   headerOnDark: boolean;
 };
@@ -94,18 +92,6 @@ export default function Header({ headerOnDark }: Props) {
 
               <SettingsDrawer />
             </Stack>
-
-            {isMdUp && (
-              <Button
-                variant="contained"
-                color="inherit"
-                href={paths.zoneStore}
-                target="_blank"
-                rel="noopener"
-              >
-                Buy Now
-              </Button>
-            )}
           </Stack>
 
           {!isMdUp && <NavMobile data={navConfig} />}

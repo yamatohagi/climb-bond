@@ -5,8 +5,6 @@ import { fCurrency } from 'src/utils/formatNumber';
 //
 import { inputStyle } from '../styles';
 
-// ----------------------------------------------------------------------
-
 export default function CareerFilterSalary({ filterSalary, onChangeSalary }: any) {
   const [open, setOpen] = useState(null);
 

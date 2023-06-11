@@ -11,8 +11,6 @@ import {
   FormControlLabelProps,
 } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 interface RHFCheckboxProps extends Omit<FormControlLabelProps, 'control'> {
   name: string;
   helperText?: React.ReactNode;
@@ -37,8 +35,6 @@ export function RHFCheckbox({ name, helperText, ...other }: RHFCheckboxProps) {
     />
   );
 }
-
-// ----------------------------------------------------------------------
 
 interface RHFMultiCheckboxProps extends Omit<FormControlLabelProps, 'control' | 'label'> {
   name: string;

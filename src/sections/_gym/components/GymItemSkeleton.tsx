@@ -1,8 +1,6 @@
 // @mui
 import { Skeleton, Stack, Card, Divider, Box } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export default function GymItemSkeleton({ ...other }) {
   return (
     <Card {...other}>

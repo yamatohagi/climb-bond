@@ -1,8 +1,6 @@
 import { Theme } from '@mui/material/styles';
 import { ListItemButtonProps, SxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export type NavItemBaseProps = {
   title: string;
   path: string;

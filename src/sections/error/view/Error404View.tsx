@@ -7,8 +7,6 @@ import { Button, Typography } from '@mui/material';
 import Image from 'src/components/image';
 import { MotionContainer, varBounce } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 export default function Error404View() {
   return (
     <MotionContainer>

@@ -4,8 +4,6 @@ import { SxProps } from '@mui/material';
 //
 import StyledMarkdown from './styles';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   firstLetter?: boolean;
   content: string;

@@ -14,8 +14,6 @@ import 'slick-carousel/slick/slick-theme.css';
 // lazy image
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-// ----------------------------------------------------------------------
-
 // next
 // @mui
 // theme

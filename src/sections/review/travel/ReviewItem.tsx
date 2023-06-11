@@ -6,8 +6,6 @@ import { fDate } from 'src/utils/formatTime';
 // types
 import { IReviewItemProp } from 'src/types/review';
 
-// ----------------------------------------------------------------------
-
 const AVATAR_SIZE = 48;
 
 const WIDTH = `calc(100% - ${AVATAR_SIZE + 20}px)`;
@@ -126,8 +124,6 @@ export default function ReviewItem({
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 const getHelpful = (helpful: number, isHelpful: boolean) => {
   if (helpful > 0) {

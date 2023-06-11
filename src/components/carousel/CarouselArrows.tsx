@@ -6,8 +6,6 @@ import { IconifyProps } from '../iconify';
 //
 import { LeftIcon, RightIcon } from './Icon';
 
-// ----------------------------------------------------------------------
-
 interface StyledIconButtonProps extends IconButtonProps {
   filled?: boolean;
   shape?: 'circular' | 'rounded';
@@ -45,8 +43,6 @@ const StyledIconButton = styled(IconButton, {
     marginTop: theme.spacing(-2.5),
   }),
 }));
-
-// ----------------------------------------------------------------------
 
 interface Props extends StackProps {
   shape?: 'circular' | 'rounded';

@@ -8,8 +8,6 @@ import { IAdvertisementProps } from 'src/types/advertisement';
 // components
 import Image from 'src/components/image';
 
-// ----------------------------------------------------------------------
-
 const StyledOverlay = styled('div')(({ theme }) => ({
   ...bgGradient({
     startColor: `${alpha(theme.palette.common.black, 0)} 0%`,
@@ -22,8 +20,6 @@ const StyledOverlay = styled('div')(({ theme }) => ({
   height: '100%',
   position: 'absolute',
 }));
-
-// ----------------------------------------------------------------------
 
 interface Props extends BoxProps {
   advertisement: IAdvertisementProps;

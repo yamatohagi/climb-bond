@@ -7,8 +7,6 @@ import { IReviewItemProp } from 'src/types/review';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type Props = Partial<IReviewItemProp>;
 
 export default function ReviewItem({ name, rating, message, postedAt, avatarUrl }: Props) {

@@ -6,8 +6,6 @@ import { IBrandProps } from 'src/types/brand';
 // components
 import SvgColor from 'src/components/svg-color';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   brands: IBrandProps[];
 };

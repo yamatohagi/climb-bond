@@ -5,8 +5,6 @@ import _mock from 'src/_mock';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 export default function CareerFilterCategories({ filterCategories, onChangeCategory }: any) {
   return (
     <Autocomplete

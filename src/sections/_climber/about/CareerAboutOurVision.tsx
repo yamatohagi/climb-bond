@@ -5,8 +5,6 @@ import useResponsive from 'src/hooks/useResponsive';
 // components
 import Image from 'src/components/image';
 
-// ----------------------------------------------------------------------
-
 export default function CareerAboutOurVision() {
   const isMdUp = useResponsive('up', 'md');
 

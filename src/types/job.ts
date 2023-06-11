@@ -1,8 +1,6 @@
 import { IOfficeMapProps, ICountriesProps } from './contact';
 import { ISocialLinks } from './socials';
 
-// ----------------------------------------------------------------------
-
 export type IJobByCompanyProps = {
   id: string;
   companyLogo: string;

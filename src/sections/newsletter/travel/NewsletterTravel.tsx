@@ -14,8 +14,6 @@ import { bgGradient } from 'src/utils/cssStyles';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   padding: theme.spacing(10, 0),
   ...bgGradient({
@@ -34,8 +32,6 @@ const StyledRoot = styled('div')(({ theme }) => ({
     backgroundSize: 'cover, auto 100%',
   },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function NewsletterTravel() {
   return (

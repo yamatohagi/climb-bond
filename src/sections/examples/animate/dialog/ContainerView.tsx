@@ -12,8 +12,6 @@ import { DialogAnimate } from 'src/components/animate';
 //
 import getVariant from '../getVariant';
 
-// ----------------------------------------------------------------------
-
 type ContainerViewProps = {
   isOpen: boolean;
   onOpen: VoidFunction;

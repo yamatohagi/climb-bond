@@ -34,8 +34,6 @@ import FormProvider, {
 import { FormSchema } from './schema';
 import ValuesPreview from './ValuesPreview';
 
-// ----------------------------------------------------------------------
-
 const OPTIONS = [
   { value: 'option 1', label: 'Option 1' },
   { value: 'option 2', label: 'Option 2' },
@@ -324,8 +322,6 @@ export default function ReactHookForm({ debug }: Props) {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 interface BlockProps extends StackProps {
   label?: string;

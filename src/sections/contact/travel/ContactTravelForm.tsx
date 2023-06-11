@@ -10,16 +10,12 @@ import useResponsive from 'src/hooks/useResponsive';
 import Image from 'src/components/image';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
-// ----------------------------------------------------------------------
-
 type FormValuesProps = {
   fullName: string;
   email: string;
   subject: string;
   message: string;
 };
-
-// ----------------------------------------------------------------------
 
 export default function ContactTravelForm() {
   const isMdUp = useResponsive('up', 'md');

@@ -12,8 +12,6 @@ import {
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 interface Props extends DialogProps {
   onClose: VoidFunction;
 }

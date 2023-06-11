@@ -1,7 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
 
-// ----------------------------------------------------------------------
-
 type ContainerProps = {
   bottom: number;
   height: number;

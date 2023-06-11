@@ -12,15 +12,9 @@ import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-// ----------------------------------------------------------------------
-
 const COLORS = ['default', 'primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
 
-// ----------------------------------------------------------------------
-
 DemoLabelPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoLabelPage() {
   return (
@@ -108,8 +102,6 @@ export default function DemoLabelPage() {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type BlockProps = {
   title?: string;

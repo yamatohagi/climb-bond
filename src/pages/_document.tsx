@@ -19,8 +19,6 @@ import { primaryFont } from 'src/theme/typography';
 //
 import { MyAppProps } from './_app';
 
-// ----------------------------------------------------------------------
-
 const Favicon = () => (
   <>
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
@@ -63,8 +61,6 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
     </Html>
   );
 }
-
-// ----------------------------------------------------------------------
 
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   const originalRenderPage = ctx.renderPage;

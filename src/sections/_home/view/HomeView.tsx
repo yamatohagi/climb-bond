@@ -15,8 +15,6 @@ import {
   HomeFlexibleComponents,
 } from '../components';
 
-// ----------------------------------------------------------------------
-
 export default function HomeView() {
   return (
     <>

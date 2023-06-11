@@ -9,8 +9,6 @@ import Iconify from 'src/components/iconify';
 import { NavItemProps } from '../types';
 import { StyledNavItem } from './styles';
 
-// ----------------------------------------------------------------------
-
 export const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
   ({ item, open, active, subItem, isExternalLink, ...other }, ref) => {
     const { title, path, children } = item;

@@ -6,8 +6,6 @@ import { bgGradient } from 'src/utils/cssStyles';
 // routes
 import { paths } from 'src/routes/paths';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   ...bgGradient({
     imgUrl: '/assets/images/home/advertisement.jpg',
@@ -30,8 +28,6 @@ const StyledContent = styled('div')(({ theme }) => ({
   padding: theme.spacing(2.5),
   color: theme.palette.common.white,
 }));
-
-// ----------------------------------------------------------------------
 
 export default function HomeAdvertisement() {
   return (

@@ -14,8 +14,6 @@ import Carousel, { CarouselArrows, CarouselDots } from 'src/components/carousel'
 //
 import TeamMember from './TeamMember';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   overflow: 'hidden',
   padding: theme.spacing(10, 0),
@@ -40,8 +38,6 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     height: 'calc(100% - 320px)',
   },
 }));
-
-// ----------------------------------------------------------------------
 
 type Props = {
   members: ITeamMemberProps[];

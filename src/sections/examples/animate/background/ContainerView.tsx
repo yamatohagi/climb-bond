@@ -6,8 +6,6 @@ import _mock from 'src/_mock';
 //
 import getVariant from '../getVariant';
 
-// ----------------------------------------------------------------------
-
 type ContainerViewProps = {
   selectVariant: string;
 };

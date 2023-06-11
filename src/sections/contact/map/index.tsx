@@ -11,8 +11,6 @@ import MapPopup from './MapPopup';
 import MapMarker from './MapMarker';
 import { mapStyle } from './styles';
 
-// ----------------------------------------------------------------------
-
 interface Props extends BoxProps {
   offices: IOfficeMapProps[];
 }

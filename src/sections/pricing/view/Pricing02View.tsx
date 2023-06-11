@@ -9,8 +9,6 @@ import Iconify from 'src/components/iconify';
 //
 import { PlanHeader, PlanContentMobile, PlanContentDesktop } from '../pricing-02';
 
-// ----------------------------------------------------------------------
-
 export default function Pricing02View() {
   const isMdUp = useResponsive('up', 'md');
 

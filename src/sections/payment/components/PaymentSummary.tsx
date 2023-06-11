@@ -5,8 +5,6 @@ import { LoadingButton } from '@mui/lab';
 import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 export default function PaymentSummary({ sx, ...other }: BoxProps) {
   return (
     <Box

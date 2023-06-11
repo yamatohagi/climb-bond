@@ -10,8 +10,6 @@ import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
 import Carousel, { CarouselArrows } from 'src/components/carousel';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   data: {
     id: string;
@@ -74,8 +72,6 @@ export default function CarouselCenterMode({ data }: Props) {
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type CarouselItemProps = {
   title: string;

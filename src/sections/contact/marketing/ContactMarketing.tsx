@@ -4,8 +4,6 @@ import { Container, Typography, Unstable_Grid2 as Grid } from '@mui/material';
 import ContactMarketingInfo from './ContactMarketingInfo';
 import ContactMarketingForm from './ContactMarketingForm';
 
-// ----------------------------------------------------------------------
-
 export default function ContactMarketing() {
   return (
     <Container

@@ -5,8 +5,6 @@ import { ITestimonialProps } from 'src/types/testimonial';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 interface Props extends StackProps {
   testimonial: ITestimonialProps;
 }

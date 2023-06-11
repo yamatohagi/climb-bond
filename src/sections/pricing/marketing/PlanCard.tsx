@@ -7,8 +7,6 @@ import Image from 'src/components/image';
 import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   plan: IPricingMarketingProps;
 };

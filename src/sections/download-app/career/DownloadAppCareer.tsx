@@ -5,8 +5,6 @@ import { Container, Typography, Stack, Button, StackProps } from '@mui/material'
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   overflow: 'hidden',
   backgroundColor: theme.palette.primary.lighter,
@@ -24,8 +22,6 @@ const StyledAppStoreButton = styled(Button)(({ theme }) => ({
     marginLeft: 0,
   },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function DownloadAppCareer() {
   return (
@@ -67,8 +63,6 @@ export default function DownloadAppCareer() {
     </StyledRoot>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function AppStoreButton({ ...other }: StackProps) {
   return (

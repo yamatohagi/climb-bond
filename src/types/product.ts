@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 export type IProductItemHeroProps = {
   title: string;
   caption: string;

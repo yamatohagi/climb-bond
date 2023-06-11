@@ -5,8 +5,6 @@ import useResponsive from 'src/hooks/useResponsive';
 //
 import { PaymentSummary, PaymentMethods, PaymentBillingAddress } from '../components';
 
-// ----------------------------------------------------------------------
-
 export default function PaymentView() {
   const isMdUp = useResponsive('up', 'md');
 

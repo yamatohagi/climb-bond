@@ -18,8 +18,6 @@ import {
   CareerFilterCategories,
 } from './components';
 
-// ----------------------------------------------------------------------
-
 const defaultValues = {
   filterKeyword: null,
   filterCategories: null,

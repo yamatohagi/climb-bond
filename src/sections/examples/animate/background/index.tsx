@@ -6,8 +6,6 @@ import Toolbar from './Toolbar';
 import ControlPanel from '../ControlPanel';
 import ContainerView from './ContainerView';
 
-// ----------------------------------------------------------------------
-
 export default function BackgroundView() {
   const [count, setCount] = useState(0);
   const [selectVariant, setSelectVariant] = useState('kenburnsTop');
@@ -40,8 +38,6 @@ export default function BackgroundView() {
     </Card>
   );
 }
-
-// ----------------------------------------------------------------------
 
 const variantKey = [
   {

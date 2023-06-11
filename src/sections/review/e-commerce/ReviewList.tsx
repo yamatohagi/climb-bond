@@ -5,8 +5,6 @@ import { IReviewItemProp } from 'src/types/review';
 //
 import ReviewItem from './ReviewItem';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   reviews: IReviewItemProp[];
 };

@@ -5,8 +5,6 @@ import { IPricing02Props } from 'src/types/pricing';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   plan: IPricing02Props;
 };

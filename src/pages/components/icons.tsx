@@ -12,8 +12,6 @@ import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-// ----------------------------------------------------------------------
-
 const style = {
   display: 'flex',
   alignItems: 'center',
@@ -22,11 +20,7 @@ const style = {
   '& > *': { m: '8px !important' },
 } as const;
 
-// ----------------------------------------------------------------------
-
 DemoIconsPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoIconsPage() {
   return (
@@ -106,8 +100,6 @@ export default function DemoIconsPage() {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type BlockProps = {
   title?: string;

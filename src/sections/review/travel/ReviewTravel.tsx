@@ -9,8 +9,6 @@ import ReviewList from './ReviewList';
 import ReviewToolbar from './ReviewToolbar';
 import ReviewTourGuideInfo from './ReviewTourGuideInfo';
 
-// ----------------------------------------------------------------------
-
 const _mockTour = _tours[0];
 
 export default function ReviewTravel() {

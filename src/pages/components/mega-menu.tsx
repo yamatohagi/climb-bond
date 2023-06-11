@@ -21,11 +21,7 @@ import {
   MegaMenuItemProps,
 } from 'src/components/mega-menu';
 
-// ----------------------------------------------------------------------
-
 DemoMegaMenuPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoMegaMenuPage() {
   const [openMenuMobile, setOpenMenuMobile] = useState(false);
@@ -113,7 +109,6 @@ export default function DemoMegaMenuPage() {
 }
 
 // MOCK DATA
-// ----------------------------------------------------------------------
 
 const PRODUCTS = [...Array(10)].map((_, index) => ({
   name: _mock.text.blogTitle(index),

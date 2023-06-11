@@ -5,11 +5,7 @@ import SimpleLayout from 'src/layouts/simple';
 // sections
 import { Pricing01View } from 'src/sections/pricing/view';
 
-// ----------------------------------------------------------------------
-
 Pricing01Page.getLayout = (page: React.ReactElement) => <SimpleLayout>{page}</SimpleLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function Pricing01Page() {
   return (

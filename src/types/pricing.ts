@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 export type IPricingHomeProps = {
   license: string;
   price: string;

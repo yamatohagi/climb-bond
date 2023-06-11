@@ -5,8 +5,6 @@ import { ITestimonialProps } from 'src/types/testimonial';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type TestimonialItemContentProps = {
   testimonial: ITestimonialProps;
 };
@@ -35,8 +33,6 @@ export function TestimonialItemContent({ testimonial }: TestimonialItemContentPr
     </Stack>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type TestimonialItemThumbnailProps = {
   testimonial: ITestimonialProps;

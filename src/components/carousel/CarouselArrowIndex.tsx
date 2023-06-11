@@ -8,8 +8,6 @@ import { IconifyProps } from '../iconify';
 //
 import { LeftIcon, RightIcon } from './Icon';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled(Box)(({ theme }) => ({
   ...bgBlur({
     opacity: 0.48,
@@ -33,8 +31,6 @@ const StyledIconButton = styled(IconButton)({
   opacity: 0.48,
   '&:hover': { opacity: 1 },
 });
-
-// ----------------------------------------------------------------------
 
 type Props = {
   index: number;

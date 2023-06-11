@@ -7,8 +7,6 @@ import { IBrandProps } from 'src/types/brand';
 import Image from 'src/components/image';
 import Carousel from 'src/components/carousel';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   brands: IBrandProps[];
 };

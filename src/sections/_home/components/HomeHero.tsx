@@ -16,8 +16,6 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   ...bgGradient({
     color: alpha(theme.palette.background.default, 0.9),
@@ -29,8 +27,6 @@ const StyledRoot = styled('div')(({ theme }) => ({
     height: `calc(100vh - ${HEADER.H_MAIN_DESKTOP}px)`,
   },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function HomeHero() {
   const containerRef = useRef<HTMLDivElement>(null);

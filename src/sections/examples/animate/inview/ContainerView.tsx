@@ -8,8 +8,6 @@ import { MotionContainer } from 'src/components/animate';
 //
 import getVariant from '../getVariant';
 
-// ----------------------------------------------------------------------
-
 const TEXT = 'Minimals';
 
 const IMG = [

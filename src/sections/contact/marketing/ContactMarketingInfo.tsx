@@ -6,8 +6,6 @@ import useResponsive from 'src/hooks/useResponsive';
 import Iconify from 'src/components/iconify';
 import Image from 'src/components/image';
 
-// ----------------------------------------------------------------------
-
 export default function ContactMarketingInfo() {
   const isMdUp = useResponsive('up', 'md');
 

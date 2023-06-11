@@ -5,8 +5,6 @@ import { Container, Typography, Box, Unstable_Grid2 as Grid } from '@mui/materia
 import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 const FEATURE_HIGHLIGHTS = [
   { title: '5 Prebuilt Websites', icon: 'carbon:application-web' },
   { title: '60+ Demo Page', icon: 'carbon:stacked-scrolling-2' },
@@ -23,8 +21,6 @@ const FEATURE_HIGHLIGHTS = [
   { title: 'Fast Support', icon: 'carbon:headset' },
   { title: 'Well Documented', icon: 'carbon:notebook' },
 ];
-
-// ----------------------------------------------------------------------
 
 export default function HomeFeatureHighlights() {
   return (

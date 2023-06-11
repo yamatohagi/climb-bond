@@ -3,8 +3,6 @@ import { Stack, RadioGroup, StackProps } from '@mui/material';
 //
 import ReviewProgressItem from './ReviewProgressItem';
 
-// ----------------------------------------------------------------------
-
 const RATINGS = [
   { value: '5start', number: 5212 },
   { value: '4start', number: 2442 },
@@ -12,8 +10,6 @@ const RATINGS = [
   { value: '2start', number: 423 },
   { value: '1start', number: 80 },
 ];
-
-// ----------------------------------------------------------------------
 
 export default function ReviewProgress({ ...other }: StackProps) {
   const totals = RATINGS.map((rating) => rating.number).reduce(

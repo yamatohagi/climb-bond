@@ -13,11 +13,7 @@ import Iconify from 'src/components/iconify';
 import { NavSectionVertical } from 'src/components/nav-section';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-// ----------------------------------------------------------------------
-
 DemoNavigationBarPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoNavigationBarPage() {
   return (
@@ -61,8 +57,6 @@ export default function DemoNavigationBarPage() {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 const NAV_ITEMS = [
   {

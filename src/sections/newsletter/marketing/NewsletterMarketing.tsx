@@ -12,8 +12,6 @@ import {
 // components
 import SvgColor from 'src/components/svg-color';
 
-// ----------------------------------------------------------------------
-
 export default function NewsletterMarketing({ sx, ...other }: BoxProps) {
   return (
     <Box sx={{ py: 8, bgcolor: 'background.neutral' }} {...other}>

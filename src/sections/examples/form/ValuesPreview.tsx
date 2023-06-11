@@ -8,8 +8,6 @@ import { bgBlur } from 'src/utils/cssStyles';
 // hooks
 import useResponsive from 'src/hooks/useResponsive';
 
-// ----------------------------------------------------------------------
-
 export default function ValuesPreview() {
   const theme = useTheme();
 
@@ -69,8 +67,6 @@ export default function ValuesPreview() {
     </Portal>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function parseValue(values: FieldValues, value: string) {
   return JSON.stringify(values[value]) || '---';

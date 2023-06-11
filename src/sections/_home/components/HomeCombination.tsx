@@ -10,8 +10,6 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 export default function HomeCombination() {
   const isMdUp = useResponsive('up', 'md');
 

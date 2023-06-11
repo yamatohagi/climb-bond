@@ -1,8 +1,6 @@
 // @mui
 import { Stack, Select, MenuItem, Typography, FormControl, SelectChangeEvent } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 const SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
   { value: 'oldest', label: 'Oldest' },
@@ -23,8 +21,6 @@ const MenuProps = {
     },
   },
 };
-
-// ----------------------------------------------------------------------
 
 type Props = {
   sort: string;

@@ -10,8 +10,6 @@ import { paths } from 'src/routes/paths';
 import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   ...bgGradient({
     color: alpha(theme.palette.grey[900], 0.8),
@@ -24,8 +22,6 @@ const StyledRoot = styled('div')(({ theme }) => ({
     padding: theme.spacing(15, 0),
   },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function HomeForDesigner() {
   return (

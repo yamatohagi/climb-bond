@@ -6,8 +6,6 @@ import { bgGradient } from 'src/utils/cssStyles';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled(Stack)(({ theme }) => ({
   padding: theme.spacing(15, 2.5),
   alignItems: 'center',
@@ -16,8 +14,6 @@ const StyledRoot = styled(Stack)(({ theme }) => ({
     imgUrl: '/assets/background/overlay_2.jpg',
   }),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function SupportHero() {
   return (

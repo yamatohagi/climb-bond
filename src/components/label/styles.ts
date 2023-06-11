@@ -4,8 +4,6 @@ import { Box } from '@mui/material';
 //
 import { LabelColor, LabelVariant } from './types';
 
-// ----------------------------------------------------------------------
-
 export const StyledLabel = styled(Box)(
   ({
     theme,

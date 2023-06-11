@@ -10,8 +10,6 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import { varHover, varTranHover } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 export default function ContactTravelInfo() {
   return (
     <>
@@ -59,8 +57,6 @@ export default function ContactTravelInfo() {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type OfficeCardProps = {
   office: IOfficeMapProps;

@@ -10,8 +10,6 @@ import ReviewList from './ReviewList';
 import ReviewSummary from './ReviewSummary';
 import ReviewToolbar from './ReviewToolbar';
 
-// ----------------------------------------------------------------------
-
 export default function ReviewElearning() {
   const [sort, setSort] = useState('latest');
 

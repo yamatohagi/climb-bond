@@ -1,7 +1,5 @@
 import Iconify, { IconifyProps } from '../iconify';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   icon?: IconifyProps; // Right icon
   isRTL?: boolean;

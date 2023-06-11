@@ -8,8 +8,6 @@ import { IReviewItemProp } from 'src/types/review';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 const AVATAR_SIZE = 64;
 
 const WIDTH = `calc(100% - ${AVATAR_SIZE + 20}px)`;
@@ -130,8 +128,6 @@ export default function ReviewItem({
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 const getHelpful = (helpful: number, isHelpful: boolean) => {
   if (helpful > 0) {

@@ -1,8 +1,6 @@
 import { Theme } from '@mui/material/styles';
 import { TabProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export default function Tabs(theme: Theme) {
   return {
     MuiTabs: {

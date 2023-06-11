@@ -2,8 +2,6 @@ import { memo } from 'react';
 // @mui
 import { Box, BoxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 interface Props extends BoxProps {
   hide?: boolean;
   children?: React.ReactNode;

@@ -5,8 +5,6 @@ import { Typography, Link } from '@mui/material';
 import { TextMaxLineProps } from './types';
 import useTypography from './useTypography';
 
-// ----------------------------------------------------------------------
-
 const TextMaxLine = forwardRef<HTMLAnchorElement, TextMaxLineProps>(
   ({ asLink, variant = 'body1', line = 2, persistent = false, children, sx, ...other }, ref) => {
     const { lineHeight } = useTypography(variant);

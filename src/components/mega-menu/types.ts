@@ -2,8 +2,6 @@
 import { Theme } from '@mui/material/styles';
 import { SxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 type Products = {
   name: string;
   image: string;

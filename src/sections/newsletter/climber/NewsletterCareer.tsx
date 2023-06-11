@@ -4,8 +4,6 @@ import { Stack, Button, Container, Typography, TextField, InputAdornment } from 
 // utils
 import { bgGradient } from 'src/utils/cssStyles';
 
-// ----------------------------------------------------------------------
-
 const StyledRoot = styled('div')(({ theme }) => ({
   ...bgGradient({
     color: `${alpha(theme.palette.grey[900], 0.88)}`,
@@ -13,8 +11,6 @@ const StyledRoot = styled('div')(({ theme }) => ({
   }),
   padding: theme.spacing(15, 0),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function NewsletterClimber() {
   return (

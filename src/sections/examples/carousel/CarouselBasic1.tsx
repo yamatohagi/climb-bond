@@ -6,8 +6,6 @@ import { Card } from '@mui/material';
 import Image from 'src/components/image';
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   data: {
     id: string;

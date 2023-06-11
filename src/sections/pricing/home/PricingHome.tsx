@@ -8,8 +8,6 @@ import { MotionViewport, varFade } from 'src/components/animate';
 //
 import PlanCard from './PlanCard';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   plans: IPricingHomeProps[];
 };

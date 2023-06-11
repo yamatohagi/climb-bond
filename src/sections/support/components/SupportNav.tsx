@@ -19,8 +19,6 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
-// ----------------------------------------------------------------------
-
 interface ContactButtonStyleProps extends StackProps {
   children?: React.ReactNode;
 }
@@ -35,8 +33,6 @@ const StyledContactButton = styled((props: ContactButtonStyleProps) => (
   padding: theme.spacing(2),
   border: `solid 1px ${theme.palette.divider}`,
 }));
-
-// ----------------------------------------------------------------------
 
 type Props = {
   sidebarConfig: {

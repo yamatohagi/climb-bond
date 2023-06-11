@@ -5,8 +5,6 @@ import ContactMap from '../map';
 import ContactCareerInfo from './ContactCareerInfo';
 import ContactCareerForm from './ContactCareerForm';
 
-// ----------------------------------------------------------------------
-
 export default function ContactCareer() {
   return (
     <>

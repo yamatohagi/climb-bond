@@ -3,8 +3,6 @@ import { memo } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 interface Props extends BoxProps {
   front?: boolean;
 }

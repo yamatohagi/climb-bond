@@ -6,8 +6,6 @@ import Toolbar from './Toolbar';
 import ControlPanel from '../ControlPanel';
 import ContainerView from './ContainerView';
 
-// ----------------------------------------------------------------------
-
 export default function ScrollView() {
   const [count, setCount] = useState(0);
   const [selectVariant, setSelectVariant] = useState('slideInUp');
@@ -40,8 +38,6 @@ export default function ScrollView() {
     </Card>
   );
 }
-
-// ----------------------------------------------------------------------
 
 const variantKey = [
   {

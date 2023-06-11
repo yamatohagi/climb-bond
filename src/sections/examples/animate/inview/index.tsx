@@ -6,8 +6,6 @@ import Toolbar from './Toolbar';
 import ControlPanel from '../ControlPanel';
 import ContainerView from './ContainerView';
 
-// ----------------------------------------------------------------------
-
 export default function Inview() {
   const [count, setCount] = useState(0);
 
@@ -51,8 +49,6 @@ export default function Inview() {
     </Card>
   );
 }
-
-// ----------------------------------------------------------------------
 
 const variantKey = [
   {

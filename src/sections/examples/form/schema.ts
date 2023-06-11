@@ -1,7 +1,5 @@
 import * as Yup from 'yup';
 
-// ----------------------------------------------------------------------
-
 export const FormSchema = Yup.object().shape({
   fullName: Yup.string()
     .required('Full name is required')

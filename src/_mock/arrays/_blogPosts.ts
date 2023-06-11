@@ -1,7 +1,5 @@
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 const TITLE = [
   `The A - Z Of Event`,
   `Believing These 7 Myths About Event Keeps You From Growing`,
@@ -72,8 +70,6 @@ const base = (index: number) => ({
       'Integer tincidunt. Nullam dictum felis eu pede mollis pretium. Maecenas ullamcorper, dui et placerat feugiat, eros pede varius nisi, condimentum viverra felis nunc et lorem.',
   },
 });
-
-// ----------------------------------------------------------------------
 
 export const _blogMarketingPosts = [...Array(12)].map((_, index) => ({
   ...base(index),

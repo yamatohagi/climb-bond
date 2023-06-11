@@ -11,11 +11,7 @@ import MainLayout from 'src/layouts/main';
 import TextMaxLine from 'src/components/text-max-line';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-// ----------------------------------------------------------------------
-
 DemoTextMaxLinePage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoTextMaxLinePage() {
   return (

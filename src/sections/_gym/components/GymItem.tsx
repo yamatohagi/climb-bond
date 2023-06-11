@@ -10,8 +10,6 @@ import TextMaxLine from 'src/components/text-max-line';
 
 import { GymsQuery } from 'src/generated/graphql';
 
-// ----------------------------------------------------------------------
-
 export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
   const { id, name, createdAt, climbingType, image } = gym;
 

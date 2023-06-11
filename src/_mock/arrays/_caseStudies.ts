@@ -1,7 +1,5 @@
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 const TITLE = [
   'Bank of America',
   'Technology Nixon',

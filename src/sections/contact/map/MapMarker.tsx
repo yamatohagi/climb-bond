@@ -1,8 +1,6 @@
 // @mui
 import { Box, SvgIcon } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   lat: number;
   lng: number;

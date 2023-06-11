@@ -1,8 +1,6 @@
 import { alpha, Theme } from '@mui/material/styles';
 import { PaginationProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
 
 // NEW VARIANT

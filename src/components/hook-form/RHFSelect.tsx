@@ -16,8 +16,6 @@ import {
   FormHelperText,
 } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 type RHFSelectProps = TextFieldProps & {
   name: string;
   native?: boolean;
@@ -74,8 +72,6 @@ export function RHFSelect({
     />
   );
 }
-
-// ----------------------------------------------------------------------
 
 interface RHFMultiSelectProps extends SelectProps {
   name: string;

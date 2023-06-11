@@ -9,8 +9,6 @@ import Carousel, { CarouselArrows } from 'src/components/carousel';
 //
 import { TestimonialItemContent, TestimonialItemThumbnail } from './TestimonialItem';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   testimonials: ITestimonialProps[];
 };

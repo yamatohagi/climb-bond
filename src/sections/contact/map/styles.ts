@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 export const mapStyle = [
   {
     featureType: 'administrative',

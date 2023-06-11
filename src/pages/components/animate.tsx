@@ -18,8 +18,6 @@ import {
   BackgroundView,
 } from 'src/sections/examples/animate';
 
-// ----------------------------------------------------------------------
-
 const TABS = [
   { value: 'inview', label: 'In View', component: <Inview /> },
   { value: 'scroll', label: 'Scroll', component: <ScrollView /> },
@@ -28,11 +26,7 @@ const TABS = [
   { value: 'other', label: 'Other', component: <OtherView /> },
 ];
 
-// ----------------------------------------------------------------------
-
 DemoAnimatePage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoAnimatePage() {
   const [currentTab, setCurrentTab] = useState('inview');

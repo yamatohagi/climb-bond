@@ -4,8 +4,6 @@ import Select from '@mui/material/Select';
 //
 import { inputStyle, menuItemStyle, MenuProps } from '../styles';
 
-// ----------------------------------------------------------------------
-
 const JOB_BENEFITS = [
   'Free parking',
   'Bonus commission',
@@ -14,8 +12,6 @@ const JOB_BENEFITS = [
   'Device support',
   'Health care',
 ];
-
-// ----------------------------------------------------------------------
 
 export default function CareerFilterBenefits({ filterBenefits, onChangeJobBenefits }: any) {
   return (

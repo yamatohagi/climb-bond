@@ -3,8 +3,6 @@ import { add } from 'date-fns';
 import _mock from '../_mock';
 import { jobContent } from '../assets';
 
-// ----------------------------------------------------------------------
-
 export const _jobs = [...Array(12)].map((_, index) => ({
   id: _mock.id(index),
   companyName: _mock.company(index),
@@ -43,16 +41,12 @@ export const _jobs = [...Array(12)].map((_, index) => ({
   shareLinks: _mock.shareLinks,
 }));
 
-// ----------------------------------------------------------------------
-
 export const _jobsByCompanies = [...Array(12)].map((_, index) => ({
   id: _mock.id(index),
   companyName: _mock.company(index),
   companyLogo: _mock.image.company(index),
   totalJobs: 101 + index,
 }));
-
-// ----------------------------------------------------------------------
 
 const NAMES = [
   'Accounting / Finance',
@@ -82,8 +76,6 @@ export const _jobsByCategories = [...Array(8)].map((_, index) => ({
   icon: ICONS[index],
   totalJobs: 101 + index,
 }));
-
-// ----------------------------------------------------------------------
 
 export const _jobsByCountries = [...Array(12)].map((_, index) => ({
   id: _mock.id(index),

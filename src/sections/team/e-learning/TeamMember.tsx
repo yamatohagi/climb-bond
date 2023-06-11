@@ -11,8 +11,6 @@ import { _socials } from 'src/_mock';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 const StyledOverlay = styled('div')(({ theme }) => ({
   ...bgGradient({
     startColor: `${alpha(theme.palette.common.black, 0)} 0%`,
@@ -31,8 +29,6 @@ const StyledOverlay = styled('div')(({ theme }) => ({
   }),
   '&:hover': { opacity: 1 },
 }));
-
-// ----------------------------------------------------------------------
 
 type Props = {
   member: ITeamMemberProps;
@@ -73,8 +69,6 @@ export default function TeamMember({ member }: Props) {
     </Card>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function Shape() {
   return (

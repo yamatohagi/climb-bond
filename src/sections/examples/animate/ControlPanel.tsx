@@ -11,8 +11,6 @@ import {
 // components
 import Scrollbar from '../../../components/scrollbar';
 
-// ----------------------------------------------------------------------
-
 interface ControlPanelProps extends PaperProps {
   variantKey: {
     type: string;

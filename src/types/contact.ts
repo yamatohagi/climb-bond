@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 export type IOfficeMapProps = {
   email: string;
   photo?: string;

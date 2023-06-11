@@ -8,8 +8,6 @@ import { paths } from 'src/routes/paths';
 // layouts
 import MainLayout from 'src/layouts/main';
 
-// ----------------------------------------------------------------------
-
 const ITEMS = [
   { title: 'Animate', path: paths.components.animate },
   { title: 'Carousel', path: paths.components.carousel },
@@ -27,11 +25,7 @@ const ITEMS = [
   { title: 'Text Max Line', path: paths.components.textMaxLine },
 ];
 
-// ----------------------------------------------------------------------
-
 ComponentsPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function ComponentsPage() {
   return (

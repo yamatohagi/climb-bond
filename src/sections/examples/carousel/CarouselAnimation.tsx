@@ -10,8 +10,6 @@ import Image from 'src/components/image';
 import { MotionContainer, varFade } from 'src/components/animate';
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   data: {
     id: string;
@@ -64,8 +62,6 @@ export default function CarouselAnimation({ data }: Props) {
     </Card>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type CarouselItemProps = {
   item: {

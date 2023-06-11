@@ -4,8 +4,6 @@ import { Box, BoxProps } from '@mui/material';
 //
 import { varContainer } from './variants';
 
-// ----------------------------------------------------------------------
-
 type IProps = BoxProps & MotionProps;
 
 export interface Props extends IProps {

@@ -1,8 +1,6 @@
 // @mui
 import { Typography, TextField, Stack } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export default function PaymentBillingAddress() {
   return (
     <div>

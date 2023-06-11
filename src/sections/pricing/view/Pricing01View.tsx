@@ -7,8 +7,6 @@ import { _pricing01 } from 'src/_mock';
 //
 import { PlanCard } from '../pricing-01';
 
-// ----------------------------------------------------------------------
-
 export default function Pricing01View() {
   const [subscription, setSubscription] = useState('monthly');
 

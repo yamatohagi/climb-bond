@@ -15,8 +15,6 @@ import Iconify from 'src/components/iconify';
 //
 import ContactMap from '../map';
 
-// ----------------------------------------------------------------------
-
 export default function ContactElearningInfo() {
   return (
     <Container

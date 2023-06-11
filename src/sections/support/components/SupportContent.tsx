@@ -4,8 +4,6 @@ import { Box, Accordion, Typography, AccordionSummary, AccordionDetails } from '
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type SupportContentProps = {
   contents: {
     id: string;

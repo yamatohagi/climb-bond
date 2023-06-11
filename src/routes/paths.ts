@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 export const paths = {
   climber: {
     landing: '/climber/landing',

@@ -20,11 +20,7 @@ import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 // sections
 import { ReactHookForm } from 'src/sections/examples/form';
 
-// ----------------------------------------------------------------------
-
 DemoFormValidationPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoFormValidationPage() {
   const [debug, setDebug] = useState(true);

@@ -3,8 +3,6 @@ import { Paper, IconButton } from '@mui/material';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type ToolbarProps = {
   onRefresh: VoidFunction;
 };

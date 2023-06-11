@@ -1,8 +1,6 @@
 import ThemeRtlLayout from './ThemeRtlLayout';
 import ThemeColorPresets from './ThemeColorPresets';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   children: React.ReactNode;
 };

@@ -8,8 +8,6 @@ import Iconify from '../../iconify';
 import { NavItemProps } from '../types';
 import { StyledItem, StyledIcon, StyledDotIcon } from './styles';
 
-// ----------------------------------------------------------------------
-
 export default function NavItem({
   item,
   depth,

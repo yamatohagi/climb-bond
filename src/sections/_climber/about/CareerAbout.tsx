@@ -8,16 +8,12 @@ import { fShortenNumber } from 'src/utils/formatNumber';
 import Image from 'src/components/image';
 import CountUp from 'src/components/count-up';
 
-// ----------------------------------------------------------------------
-
 const SUMMARY = [
   { name: 'Jobs', number: 2230000 },
   { name: 'Successful Hiring', number: 500000 },
   { name: 'Partners', number: 250 },
   { name: 'Employee', number: 1560 },
 ];
-
-// ----------------------------------------------------------------------
 
 const StyledSection = styled('div')(({ theme }) => ({
   overflow: 'hidden',
@@ -49,8 +45,6 @@ const StyledOverlay = styled('div')(({ theme }) => ({
     width: '50%',
   },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function CareerAbout() {
   return (
@@ -99,8 +93,6 @@ export default function CareerAbout() {
     </Container>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function Section() {
   return (

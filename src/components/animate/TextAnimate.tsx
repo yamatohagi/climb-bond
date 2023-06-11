@@ -4,8 +4,6 @@ import { Box, BoxProps } from '@mui/material';
 //
 import { varFade } from './variants';
 
-// ----------------------------------------------------------------------
-
 type Props = BoxProps & MotionProps;
 
 interface TextAnimateProps extends Props {

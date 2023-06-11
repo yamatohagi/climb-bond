@@ -9,8 +9,6 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import Carousel, { CarouselArrows } from 'src/components/carousel';
 
-// ----------------------------------------------------------------------
-
 const StyledContentItem = styled('div')(({ theme }) => ({
   ...bgBlur({ color: theme.palette.grey[900] }),
   bottom: 0,
@@ -25,8 +23,6 @@ const StyledContentItem = styled('div')(({ theme }) => ({
   justifyContent: 'space-between',
   flexDirection: theme.direction === 'rtl' ? 'row-reverse' : 'row',
 }));
-
-// ----------------------------------------------------------------------
 
 type Props = {
   data: {
@@ -72,8 +68,6 @@ export default function CarouselBasic4({ data }: Props) {
     </Card>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type CarouselItemProps = {
   title: string;

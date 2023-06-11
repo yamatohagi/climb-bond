@@ -26,8 +26,6 @@ import Image from 'src/components/image';
 import Lightbox, { useLightBox } from 'src/components/lightbox';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-// ----------------------------------------------------------------------
-
 const images = [...Array(4)].map((_, index) => ({
   src: _mock.image.travel(index + 1),
   title: 'Flamingo',
@@ -51,11 +49,7 @@ const slides: Slide[] = [
   },
 ];
 
-// ----------------------------------------------------------------------
-
 DemoLightboxPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoLightboxPage() {
   const { selected: selectedImage, open, onOpen, onClose } = useLightBox(slides);

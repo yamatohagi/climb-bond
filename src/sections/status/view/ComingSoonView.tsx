@@ -16,8 +16,6 @@ import { _socials } from 'src/_mock';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 export default function ComingSoonView() {
   const { days, hours, minutes, seconds } = useCountdown(new Date('07/07/2024 21:30'));
 
@@ -83,8 +81,6 @@ export default function ComingSoonView() {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type TimeBlockProps = {
   label: string;

@@ -9,8 +9,6 @@ import Iconify from 'src/components/iconify';
 import Image from 'src/components/image';
 import Label from 'src/components/label';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   plan: IPricingHomeProps;
 };

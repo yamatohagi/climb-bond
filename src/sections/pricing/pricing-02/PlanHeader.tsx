@@ -6,8 +6,6 @@ import { IPricing02Props } from 'src/types/pricing';
 import Label from 'src/components/label';
 import Image from 'src/components/image';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   plan: IPricing02Props;
 };

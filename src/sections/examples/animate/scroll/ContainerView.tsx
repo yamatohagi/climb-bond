@@ -8,8 +8,6 @@ import { MotionViewport, varContainer } from 'src/components/animate';
 //
 import getVariant from '../getVariant';
 
-// ----------------------------------------------------------------------
-
 type ContainerViewProps = {
   selectVariant: string;
 };

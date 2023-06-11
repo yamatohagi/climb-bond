@@ -8,8 +8,6 @@ import Iconify from 'src/components/iconify';
 //
 import { SupportHero, SupportNav, SupportContent } from '../components';
 
-// ----------------------------------------------------------------------
-
 const TOPICS = [
   {
     title: 'Account',
@@ -42,8 +40,6 @@ const TOPICS = [
     content: <SupportContent contents={_faqsSupport} />,
   },
 ];
-
-// ----------------------------------------------------------------------
 
 export default function SupportView() {
   const [topic, setTopic] = useState('Payment');

@@ -5,8 +5,6 @@ import Iconify from 'src/components/iconify';
 // types
 import { IOfficeMapProps } from 'src/types/contact';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   lat: number;
   lng: number;

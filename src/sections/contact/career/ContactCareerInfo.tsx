@@ -5,8 +5,6 @@ import { _socials } from 'src/_mock';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 export default function ContactCareerInfo() {
   return (
     <Container

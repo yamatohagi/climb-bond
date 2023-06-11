@@ -3,8 +3,6 @@ import { Typography, Stack, Rating, StackProps } from '@mui/material';
 // types
 import { ITestimonialProps } from 'src/types/testimonial';
 
-// ----------------------------------------------------------------------
-
 interface Props extends StackProps {
   testimonial: ITestimonialProps;
 }

@@ -14,11 +14,7 @@ import Iconify from 'src/components/iconify';
 import Player, { PlayerDialog } from 'src/components/player';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-// ----------------------------------------------------------------------
-
 DemoPlayerPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoPlayerPage() {
   const [openVideo, setOpenVideo] = useState(false);

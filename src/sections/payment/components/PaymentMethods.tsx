@@ -16,8 +16,6 @@ import Iconify from 'src/components/iconify';
 //
 import PaymentNewCardForm from './PaymentNewCardForm';
 
-// ----------------------------------------------------------------------
-
 const PAYMENT_OPTIONS = [
   {
     label: 'Paypal',
@@ -43,8 +41,6 @@ const CARD_OPTIONS = [
     label: '**** **** **** 4545 - Cole Armstrong',
   },
 ];
-
-// ----------------------------------------------------------------------
 
 export default function PaymentMethods() {
   const [method, setMethod] = useState('paypal');
@@ -79,8 +75,6 @@ export default function PaymentMethods() {
     </>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type OptionItemProps = {
   option: {

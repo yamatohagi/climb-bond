@@ -9,8 +9,6 @@ import { _socials } from 'src/_mock';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   tourGuide: IAuthorProps;
 };

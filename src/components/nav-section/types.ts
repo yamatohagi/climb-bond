@@ -1,7 +1,5 @@
 import { StackProps, ListItemButtonProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export type INavItem = {
   item: NavListProps;
   depth: number;

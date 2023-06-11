@@ -12,8 +12,6 @@ import MainLayout from 'src/layouts/main';
 import Image from 'src/components/image';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-// ----------------------------------------------------------------------
-
 const RATIO = ['4/3', '3/4', '6/4', '4/6', '16/9', '9/16', '21/9', '9/21', '1/1'] as const;
 
 const IMAGES = RATIO.map((value, index) => ({
@@ -21,11 +19,7 @@ const IMAGES = RATIO.map((value, index) => ({
   url: _mock.image.travel(index + 1),
 }));
 
-// ----------------------------------------------------------------------
-
 DemoImagePage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoImagePage() {
   return (

@@ -5,8 +5,6 @@ import { Box } from '@mui/material';
 // components
 import { varPath } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 export default function Logo() {
   const theme = useTheme();
 

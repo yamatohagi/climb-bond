@@ -5,8 +5,6 @@ import { Box, BoxProps } from '@mui/material';
 //
 import { IconifyProps } from './types';
 
-// ----------------------------------------------------------------------
-
 interface Props extends BoxProps {
   icon: IconifyProps;
 }

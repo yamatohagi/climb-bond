@@ -15,8 +15,6 @@ import Iconify from 'src/components/iconify';
 //
 import { ReviewProgress } from '../components';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   reviewsNumber: number;
   ratingsNumber: number;

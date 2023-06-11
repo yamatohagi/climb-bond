@@ -3,8 +3,6 @@ import { memo } from 'react';
 import { alpha, styled } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 const StyledContent = styled('div')(({ theme }) => ({
   width: 56,
   height: 56,
@@ -49,8 +47,6 @@ const StyledShape02 = styled('div')(({ theme }) => ({
   transform: 'rotate(45deg)',
   backgroundColor: theme.palette.common.black,
 }));
-
-// ----------------------------------------------------------------------
 
 interface Props extends BoxProps {
   color: string;

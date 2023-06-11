@@ -5,8 +5,6 @@ import { ITeamMemberProps } from 'src/types/team';
 //
 import TeamMember from './TeamMember';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   members: ITeamMemberProps[];
 };

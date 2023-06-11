@@ -5,8 +5,6 @@ import { Grid, Card } from '@mui/material';
 import ControlPanel from '../ControlPanel';
 import ContainerView from './ContainerView';
 
-// ----------------------------------------------------------------------
-
 export default function DialogView() {
   const [open, setOpen] = useState(false);
 
@@ -38,8 +36,6 @@ export default function DialogView() {
     </Card>
   );
 }
-
-// ----------------------------------------------------------------------
 
 const variantKey = [
   {

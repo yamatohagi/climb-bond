@@ -11,8 +11,6 @@ import Image from '../image';
 import TextMaxLine from '../text-max-line';
 import Carousel, { CarouselDots, CarouselArrows } from '../carousel';
 
-// ----------------------------------------------------------------------
-
 export default function MenuCarousel({ products, numberShow, sx }: MenuCarouselProps) {
   const theme = useTheme();
 

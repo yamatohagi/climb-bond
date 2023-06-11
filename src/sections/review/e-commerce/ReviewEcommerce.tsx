@@ -8,8 +8,6 @@ import ReviewNewForm from '../components/ReviewNewForm';
 import ReviewList from './ReviewList';
 import ReviewSummary from './ReviewSummary';
 
-// ----------------------------------------------------------------------
-
 export default function ReviewEcommerce() {
   const [openForm, setOpenForm] = useState(false);
 

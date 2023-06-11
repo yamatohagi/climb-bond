@@ -11,8 +11,6 @@ import {
 // components
 import Image from 'src/components/image';
 
-// ----------------------------------------------------------------------
-
 export default function NewsletterElearning() {
   return (
     <Box

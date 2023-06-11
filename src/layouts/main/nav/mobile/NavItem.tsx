@@ -8,8 +8,6 @@ import Iconify from 'src/components/iconify';
 import { NavItemProps } from '../types';
 import { StyledNavItem } from './styles';
 
-// ----------------------------------------------------------------------
-
 export default function NavItem({ item, open, active, isExternalLink, ...other }: NavItemProps) {
   const { title, path, icon, children } = item;
 

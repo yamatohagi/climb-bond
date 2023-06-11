@@ -18,8 +18,6 @@ import {
 // components
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
-// ----------------------------------------------------------------------
-
 type FormValuesProps = {
   rating: number | null;
   review: string;
@@ -30,8 +28,6 @@ type FormValuesProps = {
 interface Props extends DialogProps {
   onClose: VoidFunction;
 }
-
-// ----------------------------------------------------------------------
 
 export default function ReviewNewForm({ onClose, ...other }: Props) {
   const defaultValues = {

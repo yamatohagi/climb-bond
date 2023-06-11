@@ -4,8 +4,6 @@ import { Stack } from '@mui/material';
 import { NavProps } from '../types';
 import NavList from './NavList';
 
-// ----------------------------------------------------------------------
-
 export default function NavDesktop({ data, sx }: NavProps) {
   return (
     <Stack

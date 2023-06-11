@@ -6,8 +6,6 @@ import { Box } from '@mui/material';
 import Image from 'src/components/image';
 import Carousel, { CarouselDots, CarouselArrows } from 'src/components/carousel';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   data: {
     id: string;
@@ -63,8 +61,6 @@ export default function CarouselBasic3({ data }: Props) {
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type CarouselItemProps = {
   title: string;

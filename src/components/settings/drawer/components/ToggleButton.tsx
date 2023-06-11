@@ -6,8 +6,6 @@ import Iconify from '../../../iconify';
 //
 import BadgeDot from './BadgeDot';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   open: boolean;
   notDefault: boolean;

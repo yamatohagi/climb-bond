@@ -5,8 +5,6 @@ import { IPricingMarketingProps } from 'src/types/pricing';
 // components
 import PlanCard from './PlanCard';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   plans: IPricingMarketingProps[];
 };

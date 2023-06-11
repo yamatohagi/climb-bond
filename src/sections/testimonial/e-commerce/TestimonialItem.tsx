@@ -5,8 +5,6 @@ import { fDate } from 'src/utils/formatTime';
 // types
 import { ITestimonialProps } from 'src/types/testimonial';
 
-// ----------------------------------------------------------------------
-
 interface Props extends StackProps {
   testimonial: ITestimonialProps;
 }

@@ -8,8 +8,6 @@ import { CacheProvider } from '@emotion/react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   children: React.ReactNode;
 };

@@ -6,8 +6,6 @@ import { fShortenNumber } from 'src/utils/formatNumber';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   rating: {
     value: string;

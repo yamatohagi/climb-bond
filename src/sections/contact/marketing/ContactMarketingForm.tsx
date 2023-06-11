@@ -9,8 +9,6 @@ import { fCurrency } from 'src/utils/formatNumber';
 // components
 import FormProvider, { RHFTextField, RHFSlider } from 'src/components/hook-form';
 
-// ----------------------------------------------------------------------
-
 const SERVICES = ['Email marketing', 'SEO', ' Social Marketing', 'Research'];
 
 type FormValuesProps = {
@@ -24,8 +22,6 @@ type FormValuesProps = {
   budget: number | number[];
   message: string;
 };
-
-// ----------------------------------------------------------------------
 
 export default function ContactMarketingForm() {
   const MarketingContactSchema = Yup.object().shape({

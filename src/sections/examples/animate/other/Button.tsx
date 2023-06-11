@@ -2,8 +2,6 @@
 import Iconify from 'src/components/iconify';
 import { IconButtonAnimate, FabButtonAnimate } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 export default function Button() {
   return (
     <>

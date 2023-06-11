@@ -5,8 +5,6 @@ import useOffSetTop from 'src/hooks/useOffSetTop';
 //
 import Header from './Header';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   children?: React.ReactNode;
 };

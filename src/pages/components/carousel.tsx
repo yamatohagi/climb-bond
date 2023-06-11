@@ -22,8 +22,6 @@ import {
   CarouselCenterMode,
 } from 'src/sections/examples/carousel';
 
-// ----------------------------------------------------------------------
-
 const _carouselsExample = [...Array(5)].map((_, index) => ({
   id: _mock.id(index),
   title: _mock.text.blogTitle(index),
@@ -31,11 +29,7 @@ const _carouselsExample = [...Array(5)].map((_, index) => ({
   description: _mock.text.description(index),
 }));
 
-// ----------------------------------------------------------------------
-
 DemoCarouselsPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoCarouselsPage() {
   return (

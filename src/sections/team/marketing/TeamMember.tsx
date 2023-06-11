@@ -13,8 +13,6 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import { varHover, varTranHover } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 const StyledOverlay = styled('div')(({ theme }) => ({
   ...bgGradient({
     startColor: `${alpha(theme.palette.common.black, 0)} 0%`,
@@ -33,8 +31,6 @@ const StyledOverlay = styled('div')(({ theme }) => ({
   }),
   '&:hover': { opacity: 1 },
 }));
-
-// ----------------------------------------------------------------------
 
 interface TeamMarketingMemberProps extends StackProps {
   member: ITeamMemberProps;

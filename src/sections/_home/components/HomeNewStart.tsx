@@ -5,8 +5,6 @@ import { Box, Paper, Container, Typography } from '@mui/material';
 import Image from 'src/components/image';
 import { MotionViewport, varFade } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 export default function HomeNewStart() {
   return (
     <Container

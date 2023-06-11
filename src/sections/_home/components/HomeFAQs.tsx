@@ -20,8 +20,6 @@ import { Pattern01 } from 'src/assets/illustrations/pattern';
 import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 const CONTENTS = [
   {
     question: `What's in the product packages?`,
@@ -48,8 +46,6 @@ const CONTENTS = [
     answer: `Curabitur nisi. Phasellus blandit leo ut odio. Donec posuere vulputate arcu. Donec mi odio, faucibus at, scelerisque quis, convallis in,`,
   },
 ];
-
-// ----------------------------------------------------------------------
 
 export default function HomeFAQs() {
   const isSmUp = useResponsive('up', 'sm');

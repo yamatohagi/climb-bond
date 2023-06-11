@@ -6,8 +6,6 @@ import useResponsive from 'src/hooks/useResponsive';
 //
 import { varContainer } from './variants';
 
-// ----------------------------------------------------------------------
-
 type IProps = BoxProps & MotionProps;
 
 interface Props extends IProps {

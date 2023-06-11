@@ -41,15 +41,11 @@ import _mock from 'src/_mock';
 import Iconify from 'src/components/iconify';
 import { MotionViewport, varFade } from 'src/components/animate';
 
-// ----------------------------------------------------------------------
-
 const FASHION_CATEGORY = [
   { value: 'clothes', label: 'Clothes' },
   { value: 'footwear', label: 'Footwear' },
   { value: 'jean', label: 'Jean' },
 ];
-
-// ----------------------------------------------------------------------
 
 const StyledBlock = styled((props: StackProps) => (
   <Stack
@@ -67,8 +63,6 @@ const StyledBlock = styled((props: StackProps) => (
     marginBottom: '20px !important',
   },
 });
-
-// ----------------------------------------------------------------------
 
 export default function HomeFlexibleComponents() {
   const [tab, setTab] = useState('angular');

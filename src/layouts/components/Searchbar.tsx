@@ -15,8 +15,6 @@ import { HEADER } from 'src/config-global';
 // components
 import Iconify from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 const StyledSearchbar = styled('div')(({ theme }) => ({
   top: 0,
   left: 0,
@@ -36,8 +34,6 @@ const StyledSearchbar = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 5),
   },
 }));
-
-// ----------------------------------------------------------------------
 
 type SearchbarProps = {
   sx?: SxProps<Theme>;

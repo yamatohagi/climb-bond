@@ -8,8 +8,6 @@ import Iconify from 'src/components/iconify';
 import Logo from './Logo';
 import Button from './Button';
 
-// ----------------------------------------------------------------------
-
 export default function Other() {
   const [count, setCount] = useState(0);
 

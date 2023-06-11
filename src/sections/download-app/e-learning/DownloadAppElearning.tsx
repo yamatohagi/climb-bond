@@ -14,8 +14,6 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import SvgColor from 'src/components/svg-color';
 
-// ----------------------------------------------------------------------
-
 const StyledAppStoreButton = styled(Button)(({ theme }) => ({
   flexShrink: 0,
   padding: '5px 12px',
@@ -27,8 +25,6 @@ const StyledAppStoreButton = styled(Button)(({ theme }) => ({
     marginLeft: 0,
   },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function DownloadAppElearning() {
   return (
@@ -90,8 +86,6 @@ export default function DownloadAppElearning() {
     </Container>
   );
 }
-
-// ----------------------------------------------------------------------
 
 function AppStoreButton({ ...other }: StackProps) {
   return (

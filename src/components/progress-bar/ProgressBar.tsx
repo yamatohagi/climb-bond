@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 //
 import StyledProgressBar from './styles';
 
-// ----------------------------------------------------------------------
-
 function ProgressBar() {
   const router = useRouter();
 

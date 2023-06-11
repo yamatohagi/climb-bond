@@ -6,8 +6,6 @@ import { NAV } from 'src/config-global';
 //
 import { NavItemProps } from '../types';
 
-// ----------------------------------------------------------------------
-
 type StyledNavItemProps = Omit<NavItemProps, 'item'>;
 
 export const StyledNavItem = styled(ListItemButton, {

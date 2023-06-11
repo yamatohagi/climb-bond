@@ -11,8 +11,6 @@ import {
   varBgKenburns,
 } from '../../../components/animate';
 
-// ----------------------------------------------------------------------
-
 export default function getVariant(variant = 'slideInUp') {
   return {
     // Slide

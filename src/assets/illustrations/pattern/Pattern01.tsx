@@ -4,8 +4,6 @@ import { m } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 const varUp = {
   animate: { y: [-12, 12, -12] },
   transition: { duration: 8, repeat: Infinity },
@@ -25,8 +23,6 @@ const varRight = {
   animate: { x: [10, -10, 10] },
   transition: { duration: 7, repeat: Infinity },
 };
-
-// ----------------------------------------------------------------------
 
 function Pattern01({ sx, ...other }: BoxProps) {
   const theme = useTheme();

@@ -1,7 +1,5 @@
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 const teachers = [...Array(5)].map((_, index) => ({
   id: _mock.id(index),
   role: _mock.role(index),
@@ -57,8 +55,6 @@ export const _courses = [...Array(12)].map((_, index) => ({
   ],
   shareLinks: _mock.shareLinks,
 }));
-
-// ----------------------------------------------------------------------
 
 const CATEGORY_NAMES = [
   'Python',

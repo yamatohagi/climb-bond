@@ -8,8 +8,6 @@ import { bgGradient } from 'src/utils/cssStyles';
 import Image from 'src/components/image';
 import Carousel, { CarouselArrowIndex } from 'src/components/carousel';
 
-// ----------------------------------------------------------------------
-
 const THUMB_SIZE = 64;
 
 type Props = {
@@ -73,8 +71,6 @@ const StyledThumbnailsContainer = styled('div', {
     },
   }),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function CarouselThumbnail({ data }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);

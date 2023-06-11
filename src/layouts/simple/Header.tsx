@@ -15,8 +15,6 @@ import SettingsDrawer from 'src/components/settings/drawer';
 //
 import HeaderShadow from '../components/HeaderShadow';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   isOffset: boolean;
 };

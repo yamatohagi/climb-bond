@@ -19,8 +19,6 @@ import { NavMobile, NavDesktop, navConfig } from '../nav';
 import Searchbar from '../../components/Searchbar';
 import HeaderShadow from '../../components/HeaderShadow';
 
-// ----------------------------------------------------------------------
-
 type Props = {
   headerOnDark: boolean;
 };

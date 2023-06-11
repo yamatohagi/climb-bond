@@ -7,8 +7,6 @@ import { Stack, Container, Typography, Unstable_Grid2 as Grid } from '@mui/mater
 // components
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
-// ----------------------------------------------------------------------
-
 type FormValuesProps = {
   fullName: string;
   email: string;

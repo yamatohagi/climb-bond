@@ -1,8 +1,6 @@
 //
 import _mock from '../_mock';
 
-// ----------------------------------------------------------------------
-
 const NAME = [
   'Apple iPhone',
   'Samsung Galaxy',
@@ -71,8 +69,6 @@ const DESCRIPTION = `
 <p>Living in today’s metropolitan world of cellular phones, mobile computers and other high-tech gadgets is not just hectic but very impersonal. We make money and then invest our time and effort in making more money..</p>
 `;
 
-// ----------------------------------------------------------------------
-
 export const _productsTable = [...Array(12)].map((_, index) => ({
   id: _mock.id(index),
   orderId: `#011120${index + 1}`,
@@ -82,8 +78,6 @@ export const _productsTable = [...Array(12)].map((_, index) => ({
   status: ['Completed', 'To Process', 'Cancelled', 'Return'][index] || 'Completed',
 }));
 
-// ----------------------------------------------------------------------
-
 export const _productsCarousel = [...Array(4)].map((_, index) => ({
   id: _mock.id(index),
   title: _mock.text.blogTitle(index),
@@ -91,8 +85,6 @@ export const _productsCarousel = [...Array(4)].map((_, index) => ({
   coverImg: _mock.image.product(index),
   label: 'Opening Sale Discount 50%',
 }));
-
-// ----------------------------------------------------------------------
 
 export const _productsCompare = [
   'Apple iPhone 12 Pro',
@@ -113,8 +105,6 @@ export const _productsCompare = [
     '2017',
   ]) || ['Super Retina XDR (OLED)', '', 'A14 Bionic', '', 'IP68', '2017'],
 }));
-
-// ----------------------------------------------------------------------
 
 export const _products = [...Array(24)].map((_, index) => ({
   id: _mock.id(index),

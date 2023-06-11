@@ -12,8 +12,6 @@ import MainLayout from 'src/layouts/main';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 import CountUp from 'src/components/count-up';
 
-// ----------------------------------------------------------------------
-
 const SUMMARY = [
   { name: 'Jobs', number: 2230000 },
   { name: 'Successful Hiring', number: 500000 },
@@ -21,11 +19,7 @@ const SUMMARY = [
   { name: 'Employee', number: 1560 },
 ];
 
-// ----------------------------------------------------------------------
-
 DemoCountUpPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
-
-// ----------------------------------------------------------------------
 
 export default function DemoCountUpPage() {
   return (

@@ -8,12 +8,6 @@ export const pageLinks = [
     items: [
       { title: '404 Error', path: paths.page404 },
       { title: '500 Error', path: paths.page500 },
-      { title: 'Maintenance', path: paths.maintenance },
-      { title: 'ComingSoon', path: paths.comingsoon },
-      { title: 'Pricing 01', path: paths.pricing01 },
-      { title: 'Pricing 02', path: paths.pricing02 },
-      { title: 'Payment', path: paths.payment },
-      { title: 'Support', path: paths.support },
     ],
   },
 ];

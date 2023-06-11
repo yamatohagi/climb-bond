@@ -92,18 +92,6 @@ export default function Header({ headerOnDark }: Props) {
 
               <SettingsDrawer />
             </Stack>
-
-            {isMdUp && (
-              <Button
-                variant="contained"
-                color="inherit"
-                href={paths.zoneStore}
-                target="_blank"
-                rel="noopener"
-              >
-                Buy Now
-              </Button>
-            )}
           </Stack>
 
           {!isMdUp && <NavMobile data={navConfig} />}

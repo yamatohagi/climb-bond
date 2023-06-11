@@ -1,9 +1,10 @@
 import { memo } from 'react';
 // next
 import NextLink from 'next/link';
-import Image from 'src/components/image';
+
 import { useTheme } from '@mui/material/styles';
 import { Box, BoxProps, Link } from '@mui/material';
+import Image from 'next/image';
 
 interface LogoProps extends BoxProps {
   single?: boolean;
@@ -18,10 +19,12 @@ function Logo({ single = false, sx }: LogoProps) {
     <Image
       alt="500"
       src="/assets/logo-main/logo.svg"
-      sx={{
-        width: 100, // Set the width you want here
-        height: 65, // This will keep the aspect ratio intact
-      }}
+      width={100} // Set the width you want here
+      height={85} // This will keep the aspect ratio intact
+      // sx={{
+      //   width: 100, // Set the width you want here
+      //   height: 65, // This will keep the aspect ratio intact
+      // }}
     />
   );
 
@@ -29,10 +32,12 @@ function Logo({ single = false, sx }: LogoProps) {
     <Image
       alt="500"
       src="/assets/logo-main/logo.svg"
-      sx={{
-        width: 100, // Set the width you want here
-        height: 65, // This will keep the aspect ratio intact
-      }}
+      width={100} // Set the width you want here
+      height={65} // This will keep the aspect ratio intact
+      // sx={{
+      //   width: 100, // Set the width you want here
+      //   height: 65, // This will keep the aspect ratio intact
+      // }}
     />
   );
 
@@ -46,7 +51,7 @@ function Logo({ single = false, sx }: LogoProps) {
     >
       <Box
         sx={{
-          width: single ? 74 : 85,
+          width: single ? 94 : 85,
           lineHeight: 0,
           cursor: 'pointer',
           display: 'inline-flex',

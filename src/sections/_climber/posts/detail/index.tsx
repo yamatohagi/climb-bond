@@ -17,9 +17,11 @@ export default function ClimberPostDetail() {
         id: { equals: postId },
       },
     },
+    skip: !postId,
   });
 
   const { data: repliesData, refetch: repliesRefetch } = useRepliesQuery({
+    skip: !postId,
     variables: {
       where: {
         postId: { equals: postId },

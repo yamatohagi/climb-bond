@@ -14,6 +14,7 @@ export default function ClimberPostDetail() {
         id: { equals: gymId },
       },
     },
+    skip: !gymId,
   });
 
   return <>{!loading && data ? <DetailCard gym={data?.findFirstGym} /> : <GymItemSkeleton />}</>;

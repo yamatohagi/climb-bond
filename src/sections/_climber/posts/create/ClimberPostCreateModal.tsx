@@ -28,6 +28,7 @@ export default function ClimberPostCreateModal({
 
   const { data, refetch: gymsOptionsRefetch } = useGymOptionsQuery({
     variables: { orderBy: [{ name: SortOrder.Asc }] },
+    skip: !open,
   });
 
   const {

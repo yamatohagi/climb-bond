@@ -14,7 +14,9 @@ export default function ClimberPostList() {
   const { data: postCountDate, loading: postCountLoading } = use_CountQuery();
   return (
     <>
-      <CreateButton refetch={refetch} />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <CreateButton refetch={refetch} />
+      </Box>
       <Box
         sx={{
           columnGap: 4,

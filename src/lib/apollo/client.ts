@@ -45,11 +45,17 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
+let graphqlUri;
+if (process.env.NODE_ENV === 'production') {
+  graphqlUri = 'https://www.climbbond.com/api/graphql';
+} else if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+  graphqlUri = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/graphql`;
+} else {
+  graphqlUri = 'http://localhost:8002/api/graphql';
+}
+
 const httpLink = createHttpLink({
-  uri: process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/graphql`
-    : 'http://localhost:8002/api/graphql',
-  // uri: 'http://10.20.1.19:5002/api/graphql',
+  uri: graphqlUri,
 });
 
 export const apolloClient = new ApolloClient({

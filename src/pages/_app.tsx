@@ -27,6 +27,8 @@ import { login } from 'src/service/login';
 import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { NextPage } from 'next';
+import GoogleTagManager, { GtmId } from 'src/components/googleTagManager';
+import { gtmId } from 'src/utils/gtm';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -58,6 +60,7 @@ export default function MyApp(props: any) {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <SettingsProvider>
             <ThemeProvider>
+              <GoogleTagManager gtmId={gtmId as GtmId} />
               <ThemeSettings>
                 <MotionLazyContainer>
                   <ProgressBar />

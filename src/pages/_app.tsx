@@ -29,6 +29,7 @@ import { AppProps } from 'next/app';
 import { NextPage } from 'next';
 import GoogleTagManager, { GtmId } from 'src/components/googleTagManager';
 import { gtmId } from 'src/utils/gtm';
+import TagManager from 'react-gtm-module';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -40,6 +41,15 @@ export interface MyAppProps extends AppProps {
 }
 
 export default function MyApp(props: any) {
+  // Google Tag Manager start
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-P6H43R3' });
+  }, []);
+
+  useEffect(() => {
+    document.body.classList?.remove('loading');
+  }, []);
+  // Google Tag Manager end
   useEffect(() => {
     login();
   }, []);

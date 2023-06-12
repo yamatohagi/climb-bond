@@ -112,11 +112,11 @@ export default function GymCreateModal({
                 <RHFSelectBox
                   size="small"
                   name="climbingType"
-                  label="好きな壁"
+                  label="壁のタイプ"
                   options={[
-                    { value: ClimbingType.BOULDER, label: 'ボルダー' },
-                    { value: ClimbingType.LEAD, label: 'リード' },
-                    { value: ClimbingType.BOTH, label: 'どっちも' },
+                    { value: ClimbingType.BOULDER, label: 'BOULDER' },
+                    { value: ClimbingType.LEAD, label: 'LEAD' },
+                    { value: ClimbingType.BOTH, label: 'BOULDER＆LEAD' },
                   ]}
                 />
               </Grid>

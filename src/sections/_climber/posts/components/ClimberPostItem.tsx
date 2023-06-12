@@ -154,7 +154,7 @@ export default function ClimberPostItem({ post }: { post: PostsQuery['posts'][nu
           <Grid xs={5}>
             <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
               <Iconify icon="guidance:climbing-wall" sx={{ mr: 1 }} />
-              {climbingType}
+              {climbingType === 'BOTH' ? 'BOULDER＆LEAD' : climbingType}
             </Stack>
           </Grid>
         </Grid>

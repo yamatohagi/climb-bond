@@ -35,9 +35,12 @@ const Meta = () => (
     <meta name="theme-color" content={palette('light').primary.main} />
     <meta
       name="description"
-      content="Climb Bondは、クライマーのコミュニティサイトです。このサイトを通じて、ビレイパートナーや仲間を見つけ、新たな挑戦を支え合いましょう。"
+      content="壁登り仲間を見つけるならClimb Bond! 信頼できるビレイパートナーや情熱を共有できる新たなクライマーとつながる、あなたのクライミングライフをサポートします!"
     />
-    <meta name="keywords" content="クライマー,コミュニティ,連帯,壁登り,挑戦" />
+    <meta
+      name="keywords"
+      content="クライマー,コミュニティ,ボルダリング,壁登り,ビレイパートナー,リードクライミング,外岩,パートナー探し"
+    />
     <meta name="author" content="Climb Bond" />
   </>
 );

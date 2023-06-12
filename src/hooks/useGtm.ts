@@ -9,7 +9,6 @@ export default function useGtm() {
   useEffect(() => {
     TagManager.initialize({ gtmId });
   }, []);
-
   useEffect(() => {
     document.body.classList?.remove('loading');
   }, []);

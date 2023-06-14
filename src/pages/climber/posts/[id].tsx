@@ -8,7 +8,7 @@ export default function ClimberPostsPage() {
   return (
     <>
       <Head>
-        <title>Posts | Climb Bond</title>
+        <title>投稿 | Climb Bond</title>
       </Head>
 
       <ClimberPostsDetailView />

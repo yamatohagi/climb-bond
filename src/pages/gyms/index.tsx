@@ -11,7 +11,7 @@ export default function GymListPage() {
   return (
     <>
       <Head>
-        <title>Posts | Climb Bond</title>
+        <title>ジム一覧 | Climb Bond</title>
       </Head>
 
       <GymListView />

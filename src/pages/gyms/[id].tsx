@@ -8,7 +8,7 @@ export default function GymDetailPage() {
   return (
     <>
       <Head>
-        <title>Posts | Climb Bond</title>
+        <title>ジム | Climb Bond</title>
       </Head>
 
       <GymDetailView />

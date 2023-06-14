@@ -53,7 +53,7 @@ const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
 
         <Stack spacing={0.5} sx={{ mt: 2, pb: 2 }}>
           <Typography variant="body1" sx={{ color: 'text.disabled' }}>
-            {climbingType}
+            {climbingType === 'BOTH' ? 'BOULDER＆LEAD' : climbingType}
           </Typography>
         </Stack>
       </Stack>

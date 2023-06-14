@@ -12,7 +12,7 @@ export default function ClimberPostsPage() {
   return (
     <>
       <Head>
-        <title>Posts | Climb Bond</title>
+        <title>投稿一覧 | Climb Bond</title>
       </Head>
 
       <ClimberPostsView />

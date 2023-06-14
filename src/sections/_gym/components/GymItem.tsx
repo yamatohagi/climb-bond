@@ -48,7 +48,7 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
 
           <Stack spacing={0.5} sx={{ mt: 2 }}>
             <Typography variant="body1" sx={{ color: 'text.disabled' }}>
-              {climbingType}
+              {climbingType === 'BOTH' ? 'BOULDER＆LEAD' : climbingType}
             </Typography>
           </Stack>
         </Stack>

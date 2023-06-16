@@ -10,3 +10,4 @@ gql.tsx
 
 
 *.js
+*.cjs

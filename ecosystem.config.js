@@ -27,7 +27,8 @@ module.exports = {
       repo: 'https://github.com/yamatohagi/climb-bond', // リポジトリのURL
       path: '/home/ubuntu/climb-bond', // アプリケーションのデプロイ先のパス
       'post-deploy':
-        'pm2 deploy production setup && npm install && npm run build && pm2 deploy production setup && pm2 startOrRestart ecosystem.config.js --env production && pm2 save && git checkout package-lock.json',
+        'npm install && npm run build && pm2 startOrRestart ecosystem.config.js --env production && pm2 save && git checkout package-lock.json',
+
       env: {
         NEXT_PUBLIC_VERCEL_ENV: 'production',
         NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,

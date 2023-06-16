@@ -44,11 +44,13 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 let graphqlUri;
-console.log('+++++++++++++++++++++;');
-console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
 if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'production') {
+  console.log('+++++++++++++++++++++;');
+  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
   graphqlUri = 'https://api.climbbond.com/api/graphql/';
 } else if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+  console.log('---------------------');
+  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
   graphqlUri = `https://api.climbbond.com/api/graphql/`;
 } else {
   graphqlUri = 'http://localhost:8002/api/graphql/';

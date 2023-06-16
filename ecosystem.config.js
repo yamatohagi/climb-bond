@@ -22,7 +22,7 @@ module.exports = {
     production: {
       user: 'ubuntu', // サーバーのユーザー名
       host: '150.230.198.150', // サーバーのホスト
-      key: 'deploy.key', // SSHキーのパス
+      key: '~/.ssh/deploy.key', // SSHキーのパス
       ref: 'origin/main', // デプロイするブランチ
       repo: 'https://github.com/yamatohagi/climb-bond', // リポジトリのURL
       path: '/home/ubuntu/climb-bond', // アプリケーションのデプロイ先のパス

@@ -27,7 +27,10 @@ export default function GymList() {
 
   return (
     <>
-      <GymCreateButton refetch={refetch} />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', m: 1, mr: 0 }}>
+        <GymCreateButton refetch={refetch} />
+      </Box>
+
       <Box
         sx={{
           columnGap: 4,

@@ -29,7 +29,7 @@ import { AppProps } from 'next/app';
 import { NextPage } from 'next';
 import useGtm from 'src/hooks/useGtm';
 import { StoreProvider } from 'easy-peasy';
-import { ErrorSnackbar } from 'src/components/provider/ErrorSnackbar';
+import { CSnackbar } from 'src/components/provider/CSnackbar';
 import { snackbarStore } from 'src/components/provider/snackbarStore';
 
 type NextPageWithLayout = NextPage & {
@@ -68,7 +68,7 @@ export default function MyApp(props: any) {
                   <ProgressBar />
                   {getLayout(<Component {...pageProps} />)}
                   <StoreProvider store={snackbarStore}>
-                    <ErrorSnackbar />
+                    <CSnackbar />
                   </StoreProvider>
                 </MotionLazyContainer>
               </ThemeSettings>

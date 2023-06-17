@@ -46,7 +46,7 @@ export default function GymCreateModal({
       let imageUrl;
       if (imageBlob) {
         imagePath = await uploadImage(imageBlob); // ここも同様にimageFileからimageBlobに変更
-        imageUrl = await getImageUrl(imagePath);
+        imageUrl = await getImageUrl(imagePath!);
       }
       const { data } = await createOneGymMutation({
         variables: {

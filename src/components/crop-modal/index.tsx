@@ -8,7 +8,7 @@ export type Props = {
   photoURL: string;
   disabled: boolean;
   closeCrop: () => void;
-  uploadImage: (croppedAreaPixels: Area, rotation: number) => Promise<void>;
+  saveImage: (croppedAreaPixels: Area, rotation: number) => Promise<void>;
 };
 
 export const CropModal: FC<Props> = ({
@@ -17,7 +17,7 @@ export const CropModal: FC<Props> = ({
   photoURL,
   disabled,
   closeCrop,
-  uploadImage,
+  saveImage,
 }) => {
   /* hook宣言 */
   const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -91,9 +91,9 @@ export const CropModal: FC<Props> = ({
           <Button
             variant="contained"
             disabled={disabled}
-            onClick={() => uploadImage(croppedAreaPixels, rotation)}
+            onClick={() => saveImage(croppedAreaPixels, rotation)}
           >
-            登録
+            確定
           </Button>
         </Box>
       </DialogActions>

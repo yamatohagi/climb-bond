@@ -6,30 +6,11 @@ import { ClimbingType } from '@prisma/client';
 import { useEffect, useState } from 'react';
 import { useCreateOneGymMutation } from 'src/generated/graphql';
 import { LoadingButton } from '@mui/lab';
-
-import { v4 as uuidv4 } from 'uuid';
-import { supabase } from 'src/lib/supabase/supabaseClient';
 import { ObservableQuery } from '@apollo/client';
+import { getImageUrl, uploadImage } from 'src/utils/imageUploader';
 import useGymForm, { GymInput } from './hooks/usePostForm';
+import { ImageHandle } from './components/ImageHandle';
 
-// 画像アップロード機能
-const uploadImage = async (imageFile: File) => {
-  const filePath = `topImages/${uuidv4()}`;
-  const { error, data } = await supabase.storage.from('gymImages').upload(filePath, imageFile);
-  if (error) throw error;
-  return data.path;
-};
-
-// 画像表示機能
-const getImageUrl = async (path: string) => {
-  const { data } = supabase.storage.from('gymImages').getPublicUrl(path);
-
-  return data.publicUrl;
-};
-// ローカルで画像をプレビューするための関数
-const previewImage = (imageFile: File) => URL.createObjectURL(imageFile);
-
-// 画像アップロードと表示機能を組み込んだコード
 export default function GymCreateModal({
   open,
   onClose,
@@ -45,13 +26,12 @@ export default function GymCreateModal({
 }) {
   const [createOneGymMutation] = useCreateOneGymMutation();
   const methods = useGymForm();
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const [imageBlob, setImageBlob] = useState<Blob | null>(null);
 
   const {
     handleSubmit,
     formState: { isSubmitting },
-    register,
   } = methods;
 
   useEffect(() => {
@@ -63,8 +43,9 @@ export default function GymCreateModal({
     const { name, climbingType } = params;
     let imagePath = null;
     let imageUrl;
-    if (imageFile) {
-      imagePath = await uploadImage(imageFile);
+
+    if (imageBlob) {
+      imagePath = await uploadImage(imageBlob); // ここも同様にimageFileからimageBlobに変更
       imageUrl = await getImageUrl(imagePath);
     }
 
@@ -94,19 +75,7 @@ export default function GymCreateModal({
                 <RHFTextField size="small" name="name" label="なまえ" />
               </Grid>
               <Grid item xs={12}>
-                <input
-                  {...register('imageFile')}
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    const file = e.target.files?.item(0);
-                    if (file) {
-                      setImageFile(file);
-                      setPreviewUrl(previewImage(file));
-                    }
-                  }}
-                />
-                {previewUrl && <img src={previewUrl} alt="Preview" />}
+                <ImageHandle setImageBlob={setImageBlob} />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <RHFSelectBox

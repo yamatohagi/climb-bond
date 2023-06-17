@@ -22,6 +22,8 @@ export const createDefaultValues = (schema: z.ZodObject<any>) => {
       defaults[key] = null;
     } else if (field instanceof z.ZodNull) {
       defaults[key] = null;
+    } else if (field instanceof z.ZodNativeEnum) {
+      defaults[key] = '';
     } else if (field instanceof z.ZodUndefined) {
       defaults[key] = undefined;
     } else {

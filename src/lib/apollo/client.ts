@@ -1,25 +1,3 @@
-// scroll bar
-import 'simplebar-react/dist/simplebar.min.css';
-
-// lightbox
-/* eslint-disable import/no-unresolved */
-import 'yet-another-react-lightbox/styles.css';
-import 'yet-another-react-lightbox/plugins/captions.css';
-import 'yet-another-react-lightbox/plugins/thumbnails.css';
-
-// slick-carousel
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
-// lazy image
-import 'react-lazy-load-image-component/src/effects/blur.css';
-
-// next
-// @mui
-// theme
-// utils
-import createEmotionCache from 'src/utils/createEmotionCache';
-// components
 import {
   ApolloClient,
   ApolloProvider as ap,
@@ -28,18 +6,42 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import { snackbarStore } from 'src/components/provider/snackbarStore';
+import createEmotionCache from 'src/utils/createEmotionCache';
 
 export const clientSideEmotionCache = createEmotionCache();
 
+const successLink = new ApolloLink((operation, forward) =>
+  forward(operation).map((response) => {
+    const operationType = (operation.query.definitions[0] as any).operation;
+
+    if (operationType === 'mutation') {
+      // Handle mutation response
+      if (response.data) {
+        snackbarStore.dispatch.snackbar.handleOpen('Mutation succeeded');
+      }
+    } else if (operationType === 'query') {
+      // Handle query response
+      if (response.data) {
+        snackbarStore.dispatch.snackbar.handleOpen('Query succeeded');
+      }
+    }
+    return response;
+  })
+);
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    graphQLErrors.map(({ message, locations, path }) =>
-      console.log(`GraphQLエラーが発生しました: ${message}`)
-    );
+    graphQLErrors.map(({ message, locations, path }) => {
+      console.log(`GraphQLエラーが発生しました: ${message}`);
+      snackbarStore.dispatch.snackbar.handleOpen(message); // SnackbarStoreを使ってメッセージを表示
+      return undefined;
+    });
   }
 
   if (networkError) {
     console.log(`ネットワークエラーが発生しました: ${networkError.message}`);
+    snackbarStore.dispatch.snackbar.handleOpen(networkError.message); // ネットワークエラーメッセージを表示
   }
 });
 
@@ -56,7 +58,7 @@ const httpLink = createHttpLink({
 
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
-  link: ApolloLink.from([errorLink, httpLink]), // Ensure errorLink comes before httpLink
+  link: ApolloLink.from([errorLink, successLink, httpLink]), // Ensure errorLink comes before httpLink
 });
 
 export const ApolloProvider = ap;

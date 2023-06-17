@@ -40,28 +40,30 @@ export default function GymCreateModal({
   }, [defaultName]);
 
   const onSubmit = async (params: GymInput) => {
-    const { name, climbingType } = params;
-    let imagePath = null;
-    let imageUrl;
-
-    if (imageBlob) {
-      imagePath = await uploadImage(imageBlob); // ここも同様にimageFileからimageBlobに変更
-      imageUrl = await getImageUrl(imagePath);
-    }
-
-    const { errors, data } = await createOneGymMutation({
-      variables: {
-        data: {
-          climbingType,
-          name,
-          image: imageUrl,
+    try {
+      const { name, climbingType } = params;
+      let imagePath = null;
+      let imageUrl;
+      if (imageBlob) {
+        imagePath = await uploadImage(imageBlob); // ここも同様にimageFileからimageBlobに変更
+        imageUrl = await getImageUrl(imagePath);
+      }
+      const { data } = await createOneGymMutation({
+        variables: {
+          data: {
+            climbingType,
+            name,
+            image: imageUrl,
+          },
         },
-      },
-    });
-    if (errors) return;
-    await refetch();
-    if (afterSubmit) afterSubmit(data);
-    onClose();
+      });
+      await refetch();
+      if (afterSubmit) afterSubmit(data);
+      onClose();
+    } catch (error) {
+      return undefined;
+    }
+    return undefined;
   };
 
   return (

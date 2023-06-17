@@ -26,9 +26,7 @@ module.exports = {
       ref: 'origin/main', // デプロイするブランチ
       repo: 'https://github.com/yamatohagi/climb-bond', // リポジトリのURL
       path: '/home/ubuntu/climb-bond', // アプリケーションのデプロイ先のパス
-      'post-deploy':
-        'pwd && ls && git log -n 1 && npm install && NODE_OPTIONS="--max-old-space-size=4096" npm run build && pm2 restart climb-bond && pm2 save',
-
+      'post-deploy': './deploy.sh',
       env: {
         NEXT_PUBLIC_VERCEL_ENV: 'production',
         NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,

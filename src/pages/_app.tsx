@@ -28,6 +28,9 @@ import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { NextPage } from 'next';
 import useGtm from 'src/hooks/useGtm';
+import { StoreProvider } from 'easy-peasy';
+import { CSnackbar } from 'src/components/provider/CSnackbar';
+import { snackbarStore } from 'src/components/provider/snackbarStore';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -64,6 +67,9 @@ export default function MyApp(props: any) {
                 <MotionLazyContainer>
                   <ProgressBar />
                   {getLayout(<Component {...pageProps} />)}
+                  <StoreProvider store={snackbarStore}>
+                    <CSnackbar />
+                  </StoreProvider>
                 </MotionLazyContainer>
               </ThemeSettings>
             </ThemeProvider>

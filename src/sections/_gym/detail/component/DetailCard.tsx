@@ -3,14 +3,15 @@ import { FindFirstGymQuery } from 'src/generated/graphql';
 import { formatDistanceToNow } from 'date-fns';
 // eslint-disable-next-line import/no-duplicates
 import { ja } from 'date-fns/locale';
-import { Card, Stack, Typography } from '@mui/material';
+import { Box, Card, Stack, Typography } from '@mui/material';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
+import { LikeButton } from 'src/sections/_climber/posts/components/like-button';
 
 const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
   if (!gym) return null;
-  const { createdAt, climbingType, image, name } = gym;
+  const { createdAt, climbingType, image, name, _count } = gym;
 
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
   return (
@@ -56,6 +57,24 @@ const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
             {climbingType === 'BOTH' ? 'BOULDER＆LEAD' : climbingType}
           </Typography>
         </Stack>
+      </Stack>
+
+      <Stack
+        spacing={0.5}
+        sx={{ px: 3, pb: 2, pt: 2.3, mx: 4, color: 'text.secondary' }}
+        direction="row"
+        justifyContent="space-between"
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />{' '}
+          {_count ? _count.impressionPosts : 0}
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />0
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          {/* <LikeButton likes={like} postId={id} refetch={refetch} /> */}
+        </Box>
       </Stack>
     </Card>
   );

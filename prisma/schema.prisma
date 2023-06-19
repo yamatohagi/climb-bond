@@ -52,7 +52,7 @@ model Gym {
   image           String?
   climbingType    ClimbingType
   posts           Post[]
-  ImpressionPosts GymImpressionPost[]
+  impressionPosts GymImpressionPost[]
   likes           GymLike[]
 }
 

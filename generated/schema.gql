@@ -15,6 +15,22 @@ type AggregateGym {
   _sum: GymSumAggregate
 }
 
+type AggregateGymImpressionPost {
+  _avg: GymImpressionPostAvgAggregate
+  _count: GymImpressionPostCountAggregate
+  _max: GymImpressionPostMaxAggregate
+  _min: GymImpressionPostMinAggregate
+  _sum: GymImpressionPostSumAggregate
+}
+
+type AggregateGymLike {
+  _avg: GymLikeAvgAggregate
+  _count: GymLikeCountAggregate
+  _max: GymLikeMaxAggregate
+  _min: GymLikeMinAggregate
+  _sum: GymLikeSumAggregate
+}
+
 type AggregatePost {
   _avg: PostAvgAggregate
   _count: PostCountAggregate
@@ -142,14 +158,16 @@ input EnumClimbingTypeWithAggregatesFilter {
 }
 
 type Gym {
-  Posts(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]!
   _count: GymCount
   climbingType: ClimbingType!
   createdAt: DateTime!
   deletedAt: DateTime
   id: Int!
   image: String
+  impressionPosts(cursor: GymImpressionPostWhereUniqueInput, distinct: [GymImpressionPostScalarFieldEnum!], orderBy: [GymImpressionPostOrderByWithRelationInput!], skip: Int, take: Int, where: GymImpressionPostWhereInput): [GymImpressionPost!]!
+  likes(cursor: GymLikeWhereUniqueInput, distinct: [GymLikeScalarFieldEnum!], orderBy: [GymLikeOrderByWithRelationInput!], skip: Int, take: Int, where: GymLikeWhereInput): [GymLike!]!
   name: String!
+  posts(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): [Post!]!
   updatedAt: DateTime!
 }
 
@@ -162,7 +180,9 @@ input GymAvgOrderByAggregateInput {
 }
 
 type GymCount {
-  Posts: Int!
+  impressionPosts: Int!
+  likes: Int!
+  posts: Int!
 }
 
 type GymCountAggregate {
@@ -187,12 +207,14 @@ input GymCountOrderByAggregateInput {
 }
 
 input GymCreateInput {
-  Posts: PostCreateNestedManyWithoutGymInput
   climbingType: ClimbingType!
   createdAt: DateTime
   deletedAt: DateTime
   image: String
+  impressionPosts: GymImpressionPostCreateNestedManyWithoutGymInput
+  likes: GymLikeCreateNestedManyWithoutGymInput
   name: String!
+  posts: PostCreateNestedManyWithoutGymInput
   updatedAt: DateTime
 }
 
@@ -206,10 +228,32 @@ input GymCreateManyInput {
   updatedAt: DateTime
 }
 
+input GymCreateNestedOneWithoutImpressionPostsInput {
+  connect: GymWhereUniqueInput
+  connectOrCreate: GymCreateOrConnectWithoutImpressionPostsInput
+  create: GymCreateWithoutImpressionPostsInput
+}
+
+input GymCreateNestedOneWithoutLikesInput {
+  connect: GymWhereUniqueInput
+  connectOrCreate: GymCreateOrConnectWithoutLikesInput
+  create: GymCreateWithoutLikesInput
+}
+
 input GymCreateNestedOneWithoutPostsInput {
   connect: GymWhereUniqueInput
   connectOrCreate: GymCreateOrConnectWithoutPostsInput
   create: GymCreateWithoutPostsInput
+}
+
+input GymCreateOrConnectWithoutImpressionPostsInput {
+  create: GymCreateWithoutImpressionPostsInput!
+  where: GymWhereUniqueInput!
+}
+
+input GymCreateOrConnectWithoutLikesInput {
+  create: GymCreateWithoutLikesInput!
+  where: GymWhereUniqueInput!
 }
 
 input GymCreateOrConnectWithoutPostsInput {
@@ -217,11 +261,35 @@ input GymCreateOrConnectWithoutPostsInput {
   where: GymWhereUniqueInput!
 }
 
+input GymCreateWithoutImpressionPostsInput {
+  climbingType: ClimbingType!
+  createdAt: DateTime
+  deletedAt: DateTime
+  image: String
+  likes: GymLikeCreateNestedManyWithoutGymInput
+  name: String!
+  posts: PostCreateNestedManyWithoutGymInput
+  updatedAt: DateTime
+}
+
+input GymCreateWithoutLikesInput {
+  climbingType: ClimbingType!
+  createdAt: DateTime
+  deletedAt: DateTime
+  image: String
+  impressionPosts: GymImpressionPostCreateNestedManyWithoutGymInput
+  name: String!
+  posts: PostCreateNestedManyWithoutGymInput
+  updatedAt: DateTime
+}
+
 input GymCreateWithoutPostsInput {
   climbingType: ClimbingType!
   createdAt: DateTime
   deletedAt: DateTime
   image: String
+  impressionPosts: GymImpressionPostCreateNestedManyWithoutGymInput
+  likes: GymLikeCreateNestedManyWithoutGymInput
   name: String!
   updatedAt: DateTime
 }
@@ -239,6 +307,553 @@ type GymGroupBy {
   image: String
   name: String!
   updatedAt: DateTime!
+}
+
+type GymImpressionPost {
+  content: String!
+  createdAt: DateTime!
+  deletedAt: DateTime
+  gym: Gym!
+  gymId: Int!
+  id: Int!
+  title: String!
+  updatedAt: DateTime!
+  userName: String!
+}
+
+type GymImpressionPostAvgAggregate {
+  gymId: Float
+  id: Float
+}
+
+input GymImpressionPostAvgOrderByAggregateInput {
+  gymId: SortOrder
+  id: SortOrder
+}
+
+type GymImpressionPostCountAggregate {
+  _all: Int!
+  content: Int!
+  createdAt: Int!
+  deletedAt: Int!
+  gymId: Int!
+  id: Int!
+  title: Int!
+  updatedAt: Int!
+  userName: Int!
+}
+
+input GymImpressionPostCountOrderByAggregateInput {
+  content: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
+  gymId: SortOrder
+  id: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+input GymImpressionPostCreateInput {
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  gym: GymCreateNestedOneWithoutImpressionPostsInput!
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+input GymImpressionPostCreateManyGymInput {
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: Int
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+input GymImpressionPostCreateManyGymInputEnvelope {
+  data: [GymImpressionPostCreateManyGymInput!]!
+  skipDuplicates: Boolean
+}
+
+input GymImpressionPostCreateManyInput {
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  gymId: Int!
+  id: Int
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+input GymImpressionPostCreateNestedManyWithoutGymInput {
+  connect: [GymImpressionPostWhereUniqueInput!]
+  connectOrCreate: [GymImpressionPostCreateOrConnectWithoutGymInput!]
+  create: [GymImpressionPostCreateWithoutGymInput!]
+  createMany: GymImpressionPostCreateManyGymInputEnvelope
+}
+
+input GymImpressionPostCreateOrConnectWithoutGymInput {
+  create: GymImpressionPostCreateWithoutGymInput!
+  where: GymImpressionPostWhereUniqueInput!
+}
+
+input GymImpressionPostCreateWithoutGymInput {
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  title: String!
+  updatedAt: DateTime
+  userName: String!
+}
+
+type GymImpressionPostGroupBy {
+  _avg: GymImpressionPostAvgAggregate
+  _count: GymImpressionPostCountAggregate
+  _max: GymImpressionPostMaxAggregate
+  _min: GymImpressionPostMinAggregate
+  _sum: GymImpressionPostSumAggregate
+  content: String!
+  createdAt: DateTime!
+  deletedAt: DateTime
+  gymId: Int!
+  id: Int!
+  title: String!
+  updatedAt: DateTime!
+  userName: String!
+}
+
+input GymImpressionPostListRelationFilter {
+  every: GymImpressionPostWhereInput
+  none: GymImpressionPostWhereInput
+  some: GymImpressionPostWhereInput
+}
+
+type GymImpressionPostMaxAggregate {
+  content: String
+  createdAt: DateTime
+  deletedAt: DateTime
+  gymId: Int
+  id: Int
+  title: String
+  updatedAt: DateTime
+  userName: String
+}
+
+input GymImpressionPostMaxOrderByAggregateInput {
+  content: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
+  gymId: SortOrder
+  id: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+type GymImpressionPostMinAggregate {
+  content: String
+  createdAt: DateTime
+  deletedAt: DateTime
+  gymId: Int
+  id: Int
+  title: String
+  updatedAt: DateTime
+  userName: String
+}
+
+input GymImpressionPostMinOrderByAggregateInput {
+  content: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
+  gymId: SortOrder
+  id: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+input GymImpressionPostOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input GymImpressionPostOrderByWithAggregationInput {
+  _avg: GymImpressionPostAvgOrderByAggregateInput
+  _count: GymImpressionPostCountOrderByAggregateInput
+  _max: GymImpressionPostMaxOrderByAggregateInput
+  _min: GymImpressionPostMinOrderByAggregateInput
+  _sum: GymImpressionPostSumOrderByAggregateInput
+  content: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
+  gymId: SortOrder
+  id: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+input GymImpressionPostOrderByWithRelationInput {
+  content: SortOrder
+  createdAt: SortOrder
+  deletedAt: SortOrder
+  gym: GymOrderByWithRelationInput
+  gymId: SortOrder
+  id: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+  userName: SortOrder
+}
+
+enum GymImpressionPostScalarFieldEnum {
+  content
+  createdAt
+  deletedAt
+  gymId
+  id
+  title
+  updatedAt
+  userName
+}
+
+input GymImpressionPostScalarWhereInput {
+  AND: [GymImpressionPostScalarWhereInput!]
+  NOT: [GymImpressionPostScalarWhereInput!]
+  OR: [GymImpressionPostScalarWhereInput!]
+  content: StringFilter
+  createdAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
+  gymId: IntFilter
+  id: IntFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+  userName: StringFilter
+}
+
+input GymImpressionPostScalarWhereWithAggregatesInput {
+  AND: [GymImpressionPostScalarWhereWithAggregatesInput!]
+  NOT: [GymImpressionPostScalarWhereWithAggregatesInput!]
+  OR: [GymImpressionPostScalarWhereWithAggregatesInput!]
+  content: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  deletedAt: DateTimeNullableWithAggregatesFilter
+  gymId: IntWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  userName: StringWithAggregatesFilter
+}
+
+type GymImpressionPostSumAggregate {
+  gymId: Int
+  id: Int
+}
+
+input GymImpressionPostSumOrderByAggregateInput {
+  gymId: SortOrder
+  id: SortOrder
+}
+
+input GymImpressionPostUpdateInput {
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  gym: GymUpdateOneRequiredWithoutImpressionPostsNestedInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userName: StringFieldUpdateOperationsInput
+}
+
+input GymImpressionPostUpdateManyMutationInput {
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userName: StringFieldUpdateOperationsInput
+}
+
+input GymImpressionPostUpdateManyWithWhereWithoutGymInput {
+  data: GymImpressionPostUpdateManyMutationInput!
+  where: GymImpressionPostScalarWhereInput!
+}
+
+input GymImpressionPostUpdateManyWithoutGymNestedInput {
+  connect: [GymImpressionPostWhereUniqueInput!]
+  connectOrCreate: [GymImpressionPostCreateOrConnectWithoutGymInput!]
+  create: [GymImpressionPostCreateWithoutGymInput!]
+  createMany: GymImpressionPostCreateManyGymInputEnvelope
+  delete: [GymImpressionPostWhereUniqueInput!]
+  deleteMany: [GymImpressionPostScalarWhereInput!]
+  disconnect: [GymImpressionPostWhereUniqueInput!]
+  set: [GymImpressionPostWhereUniqueInput!]
+  update: [GymImpressionPostUpdateWithWhereUniqueWithoutGymInput!]
+  updateMany: [GymImpressionPostUpdateManyWithWhereWithoutGymInput!]
+  upsert: [GymImpressionPostUpsertWithWhereUniqueWithoutGymInput!]
+}
+
+input GymImpressionPostUpdateWithWhereUniqueWithoutGymInput {
+  data: GymImpressionPostUpdateWithoutGymInput!
+  where: GymImpressionPostWhereUniqueInput!
+}
+
+input GymImpressionPostUpdateWithoutGymInput {
+  content: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userName: StringFieldUpdateOperationsInput
+}
+
+input GymImpressionPostUpsertWithWhereUniqueWithoutGymInput {
+  create: GymImpressionPostCreateWithoutGymInput!
+  update: GymImpressionPostUpdateWithoutGymInput!
+  where: GymImpressionPostWhereUniqueInput!
+}
+
+input GymImpressionPostWhereInput {
+  AND: [GymImpressionPostWhereInput!]
+  NOT: [GymImpressionPostWhereInput!]
+  OR: [GymImpressionPostWhereInput!]
+  content: StringFilter
+  createdAt: DateTimeFilter
+  deletedAt: DateTimeNullableFilter
+  gym: GymRelationFilter
+  gymId: IntFilter
+  id: IntFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+  userName: StringFilter
+}
+
+input GymImpressionPostWhereUniqueInput {
+  id: Int
+}
+
+type GymLike {
+  gym: Gym!
+  gymId: Int!
+  id: Int!
+  userId: String!
+}
+
+type GymLikeAvgAggregate {
+  gymId: Float
+  id: Float
+}
+
+input GymLikeAvgOrderByAggregateInput {
+  gymId: SortOrder
+  id: SortOrder
+}
+
+type GymLikeCountAggregate {
+  _all: Int!
+  gymId: Int!
+  id: Int!
+  userId: Int!
+}
+
+input GymLikeCountOrderByAggregateInput {
+  gymId: SortOrder
+  id: SortOrder
+  userId: SortOrder
+}
+
+input GymLikeCreateInput {
+  gym: GymCreateNestedOneWithoutLikesInput!
+  userId: String!
+}
+
+input GymLikeCreateManyGymInput {
+  id: Int
+  userId: String!
+}
+
+input GymLikeCreateManyGymInputEnvelope {
+  data: [GymLikeCreateManyGymInput!]!
+  skipDuplicates: Boolean
+}
+
+input GymLikeCreateManyInput {
+  gymId: Int!
+  id: Int
+  userId: String!
+}
+
+input GymLikeCreateNestedManyWithoutGymInput {
+  connect: [GymLikeWhereUniqueInput!]
+  connectOrCreate: [GymLikeCreateOrConnectWithoutGymInput!]
+  create: [GymLikeCreateWithoutGymInput!]
+  createMany: GymLikeCreateManyGymInputEnvelope
+}
+
+input GymLikeCreateOrConnectWithoutGymInput {
+  create: GymLikeCreateWithoutGymInput!
+  where: GymLikeWhereUniqueInput!
+}
+
+input GymLikeCreateWithoutGymInput {
+  userId: String!
+}
+
+type GymLikeGroupBy {
+  _avg: GymLikeAvgAggregate
+  _count: GymLikeCountAggregate
+  _max: GymLikeMaxAggregate
+  _min: GymLikeMinAggregate
+  _sum: GymLikeSumAggregate
+  gymId: Int!
+  id: Int!
+  userId: String!
+}
+
+input GymLikeListRelationFilter {
+  every: GymLikeWhereInput
+  none: GymLikeWhereInput
+  some: GymLikeWhereInput
+}
+
+type GymLikeMaxAggregate {
+  gymId: Int
+  id: Int
+  userId: String
+}
+
+input GymLikeMaxOrderByAggregateInput {
+  gymId: SortOrder
+  id: SortOrder
+  userId: SortOrder
+}
+
+type GymLikeMinAggregate {
+  gymId: Int
+  id: Int
+  userId: String
+}
+
+input GymLikeMinOrderByAggregateInput {
+  gymId: SortOrder
+  id: SortOrder
+  userId: SortOrder
+}
+
+input GymLikeOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input GymLikeOrderByWithAggregationInput {
+  _avg: GymLikeAvgOrderByAggregateInput
+  _count: GymLikeCountOrderByAggregateInput
+  _max: GymLikeMaxOrderByAggregateInput
+  _min: GymLikeMinOrderByAggregateInput
+  _sum: GymLikeSumOrderByAggregateInput
+  gymId: SortOrder
+  id: SortOrder
+  userId: SortOrder
+}
+
+input GymLikeOrderByWithRelationInput {
+  gym: GymOrderByWithRelationInput
+  gymId: SortOrder
+  id: SortOrder
+  userId: SortOrder
+}
+
+enum GymLikeScalarFieldEnum {
+  gymId
+  id
+  userId
+}
+
+input GymLikeScalarWhereInput {
+  AND: [GymLikeScalarWhereInput!]
+  NOT: [GymLikeScalarWhereInput!]
+  OR: [GymLikeScalarWhereInput!]
+  gymId: IntFilter
+  id: IntFilter
+  userId: StringFilter
+}
+
+input GymLikeScalarWhereWithAggregatesInput {
+  AND: [GymLikeScalarWhereWithAggregatesInput!]
+  NOT: [GymLikeScalarWhereWithAggregatesInput!]
+  OR: [GymLikeScalarWhereWithAggregatesInput!]
+  gymId: IntWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  userId: StringWithAggregatesFilter
+}
+
+type GymLikeSumAggregate {
+  gymId: Int
+  id: Int
+}
+
+input GymLikeSumOrderByAggregateInput {
+  gymId: SortOrder
+  id: SortOrder
+}
+
+input GymLikeUpdateInput {
+  gym: GymUpdateOneRequiredWithoutLikesNestedInput
+  userId: StringFieldUpdateOperationsInput
+}
+
+input GymLikeUpdateManyMutationInput {
+  userId: StringFieldUpdateOperationsInput
+}
+
+input GymLikeUpdateManyWithWhereWithoutGymInput {
+  data: GymLikeUpdateManyMutationInput!
+  where: GymLikeScalarWhereInput!
+}
+
+input GymLikeUpdateManyWithoutGymNestedInput {
+  connect: [GymLikeWhereUniqueInput!]
+  connectOrCreate: [GymLikeCreateOrConnectWithoutGymInput!]
+  create: [GymLikeCreateWithoutGymInput!]
+  createMany: GymLikeCreateManyGymInputEnvelope
+  delete: [GymLikeWhereUniqueInput!]
+  deleteMany: [GymLikeScalarWhereInput!]
+  disconnect: [GymLikeWhereUniqueInput!]
+  set: [GymLikeWhereUniqueInput!]
+  update: [GymLikeUpdateWithWhereUniqueWithoutGymInput!]
+  updateMany: [GymLikeUpdateManyWithWhereWithoutGymInput!]
+  upsert: [GymLikeUpsertWithWhereUniqueWithoutGymInput!]
+}
+
+input GymLikeUpdateWithWhereUniqueWithoutGymInput {
+  data: GymLikeUpdateWithoutGymInput!
+  where: GymLikeWhereUniqueInput!
+}
+
+input GymLikeUpdateWithoutGymInput {
+  userId: StringFieldUpdateOperationsInput
+}
+
+input GymLikeUpsertWithWhereUniqueWithoutGymInput {
+  create: GymLikeCreateWithoutGymInput!
+  update: GymLikeUpdateWithoutGymInput!
+  where: GymLikeWhereUniqueInput!
+}
+
+input GymLikeWhereInput {
+  AND: [GymLikeWhereInput!]
+  NOT: [GymLikeWhereInput!]
+  OR: [GymLikeWhereInput!]
+  gym: GymRelationFilter
+  gymId: IntFilter
+  id: IntFilter
+  userId: StringFilter
+}
+
+input GymLikeWhereUniqueInput {
+  id: Int
 }
 
 type GymMaxAggregate {
@@ -297,13 +912,15 @@ input GymOrderByWithAggregationInput {
 }
 
 input GymOrderByWithRelationInput {
-  Posts: PostOrderByRelationAggregateInput
   climbingType: SortOrder
   createdAt: SortOrder
   deletedAt: SortOrder
   id: SortOrder
   image: SortOrder
+  impressionPosts: GymImpressionPostOrderByRelationAggregateInput
+  likes: GymLikeOrderByRelationAggregateInput
   name: SortOrder
+  posts: PostOrderByRelationAggregateInput
   updatedAt: SortOrder
 }
 
@@ -344,12 +961,14 @@ input GymSumOrderByAggregateInput {
 }
 
 input GymUpdateInput {
-  Posts: PostUpdateManyWithoutGymNestedInput
   climbingType: EnumClimbingTypeFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
+  impressionPosts: GymImpressionPostUpdateManyWithoutGymNestedInput
+  likes: GymLikeUpdateManyWithoutGymNestedInput
   name: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutGymNestedInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
@@ -362,6 +981,22 @@ input GymUpdateManyMutationInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
+input GymUpdateOneRequiredWithoutImpressionPostsNestedInput {
+  connect: GymWhereUniqueInput
+  connectOrCreate: GymCreateOrConnectWithoutImpressionPostsInput
+  create: GymCreateWithoutImpressionPostsInput
+  update: GymUpdateWithoutImpressionPostsInput
+  upsert: GymUpsertWithoutImpressionPostsInput
+}
+
+input GymUpdateOneRequiredWithoutLikesNestedInput {
+  connect: GymWhereUniqueInput
+  connectOrCreate: GymCreateOrConnectWithoutLikesInput
+  create: GymCreateWithoutLikesInput
+  update: GymUpdateWithoutLikesInput
+  upsert: GymUpsertWithoutLikesInput
+}
+
 input GymUpdateOneRequiredWithoutPostsNestedInput {
   connect: GymWhereUniqueInput
   connectOrCreate: GymCreateOrConnectWithoutPostsInput
@@ -370,13 +1005,47 @@ input GymUpdateOneRequiredWithoutPostsNestedInput {
   upsert: GymUpsertWithoutPostsInput
 }
 
+input GymUpdateWithoutImpressionPostsInput {
+  climbingType: EnumClimbingTypeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  likes: GymLikeUpdateManyWithoutGymNestedInput
+  name: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutGymNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input GymUpdateWithoutLikesInput {
+  climbingType: EnumClimbingTypeFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  deletedAt: NullableDateTimeFieldUpdateOperationsInput
+  image: NullableStringFieldUpdateOperationsInput
+  impressionPosts: GymImpressionPostUpdateManyWithoutGymNestedInput
+  name: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutGymNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
 input GymUpdateWithoutPostsInput {
   climbingType: EnumClimbingTypeFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   deletedAt: NullableDateTimeFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
+  impressionPosts: GymImpressionPostUpdateManyWithoutGymNestedInput
+  likes: GymLikeUpdateManyWithoutGymNestedInput
   name: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input GymUpsertWithoutImpressionPostsInput {
+  create: GymCreateWithoutImpressionPostsInput!
+  update: GymUpdateWithoutImpressionPostsInput!
+}
+
+input GymUpsertWithoutLikesInput {
+  create: GymCreateWithoutLikesInput!
+  update: GymUpdateWithoutLikesInput!
 }
 
 input GymUpsertWithoutPostsInput {
@@ -388,13 +1057,15 @@ input GymWhereInput {
   AND: [GymWhereInput!]
   NOT: [GymWhereInput!]
   OR: [GymWhereInput!]
-  Posts: PostListRelationFilter
   climbingType: EnumClimbingTypeFilter
   createdAt: DateTimeFilter
   deletedAt: DateTimeNullableFilter
   id: IntFilter
   image: StringNullableFilter
+  impressionPosts: GymImpressionPostListRelationFilter
+  likes: GymLikeListRelationFilter
   name: StringFilter
+  posts: PostListRelationFilter
   updatedAt: DateTimeFilter
 }
 
@@ -439,42 +1110,56 @@ input IntWithAggregatesFilter {
 
 type Mutation {
   createManyGym(data: [GymCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyGymImpressionPost(data: [GymImpressionPostCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyGymLike(data: [GymLikeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPost(data: [PostCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPostLike(data: [PostLikeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyPreferredDayAndTime(data: [PreferredDayAndTimeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyReply(data: [ReplyCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createManyViewHistory(data: [ViewHistoryCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
   createOneGym(data: GymCreateInput!): Gym!
+  createOneGymImpressionPost(data: GymImpressionPostCreateInput!): GymImpressionPost!
+  createOneGymLike(data: GymLikeCreateInput!): GymLike!
   createOnePost(data: PostCreateInput!): Post!
   createOnePostLike(data: PostLikeCreateInput!): PostLike!
   createOnePreferredDayAndTime(data: PreferredDayAndTimeCreateInput!): PreferredDayAndTime!
   createOneReply(data: ReplyCreateInput!): Reply!
   createOneViewHistory(data: ViewHistoryCreateInput!): ViewHistory!
   deleteManyGym(where: GymWhereInput): AffectedRowsOutput!
+  deleteManyGymImpressionPost(where: GymImpressionPostWhereInput): AffectedRowsOutput!
+  deleteManyGymLike(where: GymLikeWhereInput): AffectedRowsOutput!
   deleteManyPost(where: PostWhereInput): AffectedRowsOutput!
   deleteManyPostLike(where: PostLikeWhereInput): AffectedRowsOutput!
   deleteManyPreferredDayAndTime(where: PreferredDayAndTimeWhereInput): AffectedRowsOutput!
   deleteManyReply(where: ReplyWhereInput): AffectedRowsOutput!
   deleteManyViewHistory(where: ViewHistoryWhereInput): AffectedRowsOutput!
   deleteOneGym(where: GymWhereUniqueInput!): Gym
+  deleteOneGymImpressionPost(where: GymImpressionPostWhereUniqueInput!): GymImpressionPost
+  deleteOneGymLike(where: GymLikeWhereUniqueInput!): GymLike
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteOnePostLike(where: PostLikeWhereUniqueInput!): PostLike
   deleteOnePreferredDayAndTime(where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
   deleteOneReply(where: ReplyWhereUniqueInput!): Reply
   deleteOneViewHistory(where: ViewHistoryWhereUniqueInput!): ViewHistory
   updateManyGym(data: GymUpdateManyMutationInput!, where: GymWhereInput): AffectedRowsOutput!
+  updateManyGymImpressionPost(data: GymImpressionPostUpdateManyMutationInput!, where: GymImpressionPostWhereInput): AffectedRowsOutput!
+  updateManyGymLike(data: GymLikeUpdateManyMutationInput!, where: GymLikeWhereInput): AffectedRowsOutput!
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): AffectedRowsOutput!
   updateManyPostLike(data: PostLikeUpdateManyMutationInput!, where: PostLikeWhereInput): AffectedRowsOutput!
   updateManyPreferredDayAndTime(data: PreferredDayAndTimeUpdateManyMutationInput!, where: PreferredDayAndTimeWhereInput): AffectedRowsOutput!
   updateManyReply(data: ReplyUpdateManyMutationInput!, where: ReplyWhereInput): AffectedRowsOutput!
   updateManyViewHistory(data: ViewHistoryUpdateManyMutationInput!, where: ViewHistoryWhereInput): AffectedRowsOutput!
   updateOneGym(data: GymUpdateInput!, where: GymWhereUniqueInput!): Gym
+  updateOneGymImpressionPost(data: GymImpressionPostUpdateInput!, where: GymImpressionPostWhereUniqueInput!): GymImpressionPost
+  updateOneGymLike(data: GymLikeUpdateInput!, where: GymLikeWhereUniqueInput!): GymLike
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateOnePostLike(data: PostLikeUpdateInput!, where: PostLikeWhereUniqueInput!): PostLike
   updateOnePreferredDayAndTime(data: PreferredDayAndTimeUpdateInput!, where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
   updateOneReply(data: ReplyUpdateInput!, where: ReplyWhereUniqueInput!): Reply
   updateOneViewHistory(data: ViewHistoryUpdateInput!, where: ViewHistoryWhereUniqueInput!): ViewHistory
   upsertOneGym(create: GymCreateInput!, update: GymUpdateInput!, where: GymWhereUniqueInput!): Gym!
+  upsertOneGymImpressionPost(create: GymImpressionPostCreateInput!, update: GymImpressionPostUpdateInput!, where: GymImpressionPostWhereUniqueInput!): GymImpressionPost!
+  upsertOneGymLike(create: GymLikeCreateInput!, update: GymLikeUpdateInput!, where: GymLikeWhereUniqueInput!): GymLike!
   upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   upsertOnePostLike(create: PostLikeCreateInput!, update: PostLikeUpdateInput!, where: PostLikeWhereUniqueInput!): PostLike!
   upsertOnePreferredDayAndTime(create: PreferredDayAndTimeCreateInput!, update: PreferredDayAndTimeUpdateInput!, where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime!
@@ -1837,12 +2522,18 @@ input PreferredDayAndTimeWhereUniqueInput {
 
 type Query {
   aggregateGym(cursor: GymWhereUniqueInput, orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): AggregateGym!
+  aggregateGymImpressionPost(cursor: GymImpressionPostWhereUniqueInput, orderBy: [GymImpressionPostOrderByWithRelationInput!], skip: Int, take: Int, where: GymImpressionPostWhereInput): AggregateGymImpressionPost!
+  aggregateGymLike(cursor: GymLikeWhereUniqueInput, orderBy: [GymLikeOrderByWithRelationInput!], skip: Int, take: Int, where: GymLikeWhereInput): AggregateGymLike!
   aggregatePost(cursor: PostWhereUniqueInput, orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): AggregatePost!
   aggregatePostLike(cursor: PostLikeWhereUniqueInput, orderBy: [PostLikeOrderByWithRelationInput!], skip: Int, take: Int, where: PostLikeWhereInput): AggregatePostLike!
   aggregatePreferredDayAndTime(cursor: PreferredDayAndTimeWhereUniqueInput, orderBy: [PreferredDayAndTimeOrderByWithRelationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): AggregatePreferredDayAndTime!
   aggregateReply(cursor: ReplyWhereUniqueInput, orderBy: [ReplyOrderByWithRelationInput!], skip: Int, take: Int, where: ReplyWhereInput): AggregateReply!
   aggregateViewHistory(cursor: ViewHistoryWhereUniqueInput, orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): AggregateViewHistory!
   findFirstGym(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): Gym
+  findFirstGymImpressionPost(cursor: GymImpressionPostWhereUniqueInput, distinct: [GymImpressionPostScalarFieldEnum!], orderBy: [GymImpressionPostOrderByWithRelationInput!], skip: Int, take: Int, where: GymImpressionPostWhereInput): GymImpressionPost
+  findFirstGymImpressionPostOrThrow(cursor: GymImpressionPostWhereUniqueInput, distinct: [GymImpressionPostScalarFieldEnum!], orderBy: [GymImpressionPostOrderByWithRelationInput!], skip: Int, take: Int, where: GymImpressionPostWhereInput): GymImpressionPost
+  findFirstGymLike(cursor: GymLikeWhereUniqueInput, distinct: [GymLikeScalarFieldEnum!], orderBy: [GymLikeOrderByWithRelationInput!], skip: Int, take: Int, where: GymLikeWhereInput): GymLike
+  findFirstGymLikeOrThrow(cursor: GymLikeWhereUniqueInput, distinct: [GymLikeScalarFieldEnum!], orderBy: [GymLikeOrderByWithRelationInput!], skip: Int, take: Int, where: GymLikeWhereInput): GymLike
   findFirstGymOrThrow(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): Gym
   findFirstPost(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum!], orderBy: [PostOrderByWithRelationInput!], skip: Int, take: Int, where: PostWhereInput): Post
   findFirstPostLike(cursor: PostLikeWhereUniqueInput, distinct: [PostLikeScalarFieldEnum!], orderBy: [PostLikeOrderByWithRelationInput!], skip: Int, take: Int, where: PostLikeWhereInput): PostLike
@@ -1855,18 +2546,26 @@ type Query {
   findFirstViewHistory(cursor: ViewHistoryWhereUniqueInput, distinct: [ViewHistoryScalarFieldEnum!], orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): ViewHistory
   findFirstViewHistoryOrThrow(cursor: ViewHistoryWhereUniqueInput, distinct: [ViewHistoryScalarFieldEnum!], orderBy: [ViewHistoryOrderByWithRelationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): ViewHistory
   getGym(where: GymWhereUniqueInput!): Gym
+  getGymImpressionPost(where: GymImpressionPostWhereUniqueInput!): GymImpressionPost
+  getGymLike(where: GymLikeWhereUniqueInput!): GymLike
   getPost(where: PostWhereUniqueInput!): Post
   getPostLike(where: PostLikeWhereUniqueInput!): PostLike
   getPreferredDayAndTime(where: PreferredDayAndTimeWhereUniqueInput!): PreferredDayAndTime
   getReply(where: ReplyWhereUniqueInput!): Reply
   getViewHistory(where: ViewHistoryWhereUniqueInput!): ViewHistory
   groupByGym(by: [GymScalarFieldEnum!]!, having: GymScalarWhereWithAggregatesInput, orderBy: [GymOrderByWithAggregationInput!], skip: Int, take: Int, where: GymWhereInput): [GymGroupBy!]!
+  groupByGymImpressionPost(by: [GymImpressionPostScalarFieldEnum!]!, having: GymImpressionPostScalarWhereWithAggregatesInput, orderBy: [GymImpressionPostOrderByWithAggregationInput!], skip: Int, take: Int, where: GymImpressionPostWhereInput): [GymImpressionPostGroupBy!]!
+  groupByGymLike(by: [GymLikeScalarFieldEnum!]!, having: GymLikeScalarWhereWithAggregatesInput, orderBy: [GymLikeOrderByWithAggregationInput!], skip: Int, take: Int, where: GymLikeWhereInput): [GymLikeGroupBy!]!
   groupByPost(by: [PostScalarFieldEnum!]!, having: PostScalarWhereWithAggregatesInput, orderBy: [PostOrderByWithAggregationInput!], skip: Int, take: Int, where: PostWhereInput): [PostGroupBy!]!
   groupByPostLike(by: [PostLikeScalarFieldEnum!]!, having: PostLikeScalarWhereWithAggregatesInput, orderBy: [PostLikeOrderByWithAggregationInput!], skip: Int, take: Int, where: PostLikeWhereInput): [PostLikeGroupBy!]!
   groupByPreferredDayAndTime(by: [PreferredDayAndTimeScalarFieldEnum!]!, having: PreferredDayAndTimeScalarWhereWithAggregatesInput, orderBy: [PreferredDayAndTimeOrderByWithAggregationInput!], skip: Int, take: Int, where: PreferredDayAndTimeWhereInput): [PreferredDayAndTimeGroupBy!]!
   groupByReply(by: [ReplyScalarFieldEnum!]!, having: ReplyScalarWhereWithAggregatesInput, orderBy: [ReplyOrderByWithAggregationInput!], skip: Int, take: Int, where: ReplyWhereInput): [ReplyGroupBy!]!
   groupByViewHistory(by: [ViewHistoryScalarFieldEnum!]!, having: ViewHistoryScalarWhereWithAggregatesInput, orderBy: [ViewHistoryOrderByWithAggregationInput!], skip: Int, take: Int, where: ViewHistoryWhereInput): [ViewHistoryGroupBy!]!
   gym(where: GymWhereUniqueInput!): Gym
+  gymImpressionPost(where: GymImpressionPostWhereUniqueInput!): GymImpressionPost
+  gymImpressionPosts(cursor: GymImpressionPostWhereUniqueInput, distinct: [GymImpressionPostScalarFieldEnum!], orderBy: [GymImpressionPostOrderByWithRelationInput!], skip: Int, take: Int, where: GymImpressionPostWhereInput): [GymImpressionPost!]!
+  gymLike(where: GymLikeWhereUniqueInput!): GymLike
+  gymLikes(cursor: GymLikeWhereUniqueInput, distinct: [GymLikeScalarFieldEnum!], orderBy: [GymLikeOrderByWithRelationInput!], skip: Int, take: Int, where: GymLikeWhereInput): [GymLike!]!
   gyms(cursor: GymWhereUniqueInput, distinct: [GymScalarFieldEnum!], orderBy: [GymOrderByWithRelationInput!], skip: Int, take: Int, where: GymWhereInput): [Gym!]!
   post(where: PostWhereUniqueInput!): Post
   postLike(where: PostLikeWhereUniqueInput!): PostLike

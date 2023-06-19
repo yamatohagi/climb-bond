@@ -3,6 +3,9 @@ import { gql } from '@apollo/client';
 gql`
   query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
     gyms(take: $take, skip: $skip, orderBy: $orderBy) {
+      _count {
+        impressionPosts
+      }
       id
       name
       image

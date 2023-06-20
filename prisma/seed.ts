@@ -23,6 +23,49 @@ async function main() {
     ],
   });
 
+  const gymImpPost = await prisma.gymImpPost.createMany({
+    data: [
+      {
+        userName: 'John Doe',
+        title: 'pump2は辛すぎる',
+        content: '全然歯が立たなかったです。。',
+        gymId: 2,
+      },
+      {
+        userName: 'もつ',
+        title: '何とか',
+        content: '辛かったがテクニカルで面白い！',
+        gymId: 2,
+      },
+    ],
+  });
+
+  const gymImpPostLike = await prisma.gymImpPostLike.createMany({
+    data: [
+      {
+        userId: 'ba4485fb-d976-3df1-414d-7ad587f8ed61',
+        gymImpPostId: 1,
+      },
+      {
+        userId: '967de4f7-a857-c5ff-0b2d-8abf95eab7c3',
+        gymImpPostId: 2,
+      },
+    ],
+  });
+
+  const gymLike = await prisma.gymLike.createMany({
+    data: [
+      {
+        userId: 'ba4485fb-d976-3df1-414d-7ad587f8ed61',
+        gymId: 1,
+      },
+      {
+        userId: '967de4f7-a857-c5ff-0b2d-8abf95eab7c3',
+        gymId: 2,
+      },
+    ],
+  });
+
   const posts = await prisma.post.createMany({
     data: [
       {
@@ -125,6 +168,9 @@ async function main() {
   });
 
   console.log('Created gyms:', gyms);
+  console.log('Created gymImpPost:', gymImpPost);
+  console.log('Created gymImpPostLike:', gymImpPostLike);
+  console.log('Created gymLike:', gymLike);
   console.log('Created posts:', posts);
   console.log('Created preferredDayAndTimes:', preferredDayAndTimes);
   console.log('Created postLike:', postLike);

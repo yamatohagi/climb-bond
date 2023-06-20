@@ -2,7 +2,7 @@
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import NextLink from 'next/link';
-import { Card, Link, Stack, Typography } from '@mui/material';
+import { Box, Card, Link, Stack, Typography } from '@mui/material';
 import { paths } from 'src/routes/paths';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
@@ -11,7 +11,7 @@ import TextMaxLine from 'src/components/text-max-line';
 import { GymsQuery } from 'src/generated/graphql';
 
 export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
-  const { id, name, createdAt, climbingType, image } = gym;
+  const { id, name, createdAt, climbingType, image, _count } = gym;
 
   const timeAgo = formatDistanceToNow(new Date(createdAt), { addSuffix: true, locale: ja });
 
@@ -59,6 +59,24 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
           direction="row"
           justifyContent="space-between"
         />
+        <Stack
+          spacing={0.5}
+          sx={{ px: 3, pb: 2, pt: 2.3, mx: 4, color: 'text.secondary' }}
+          direction="row"
+          justifyContent="space-between"
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />
+            {_count ? _count.impPosts : 0}
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} /> 開発中👷
+            {/* {_count ? _count.viewHistory : 0} */}
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {/* <LikeButton likes={like} postId={id} /> */}
+          </Box>
+        </Stack>
       </Link>
     </Card>
   );

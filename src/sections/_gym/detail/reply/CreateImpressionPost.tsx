@@ -12,10 +12,11 @@ import { useApolloClient } from '@apollo/client';
 import useReplyForm, { ReplyInput } from './hooks/useReplyForm';
 import { CreateReplyProps } from './ service/types';
 
-export default function CreateReply({ postId, refetch, replyCount }: CreateReplyProps) {
+export default function CreateImpressionPost({ postId, refetch, replyCount }: CreateReplyProps) {
   const [createOneReplyMutation] = useCreateOneReplyMutation();
   const client = useApolloClient();
   const methods = useReplyForm();
+
   const {
     reset,
     handleSubmit,

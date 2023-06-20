@@ -1,5 +1,5 @@
 export type CreateReplyProps = {
-  postId: number;
+  gymId: number;
   refetch: any;
   replyCount: number;
 };

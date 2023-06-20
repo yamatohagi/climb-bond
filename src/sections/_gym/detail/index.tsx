@@ -30,7 +30,7 @@ export default function ClimberPostDetail() {
         <ReplyItemSkeleton />
       )}
       <CreateImpressionPost
-        postId={gymId}
+        gymId={gymId}
         refetch={refetch}
         replyCount={data?.findFirstGym?.impressionPosts.length || 0}
       />

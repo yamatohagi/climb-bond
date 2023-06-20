@@ -4226,6 +4226,13 @@ export type FindFirstGymQueryVariables = Exact<{
 
 export type FindFirstGymQuery = { __typename?: 'Query', findFirstGym?: { __typename?: 'Gym', id: number, image?: string | null, name: string, updatedAt: any, createdAt: any, climbingType: ClimbingType, _count?: { __typename?: 'GymCount', impressionPosts: number } | null, impressionPosts: Array<{ __typename?: 'GymImpressionPost', id: number, createdAt: any, updatedAt: any, deletedAt?: any | null, userName: string, title: string, content: string }> } | null };
 
+export type CreateOneGymImpressionPostMutationVariables = Exact<{
+  data: GymImpressionPostCreateInput;
+}>;
+
+
+export type CreateOneGymImpressionPostMutation = { __typename?: 'Mutation', createOneGymImpressionPost: { __typename?: 'GymImpressionPost', id: number } };
+
 export type GymsQueryVariables = Exact<{
   take?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
@@ -4708,6 +4715,39 @@ export function useFindFirstGymLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type FindFirstGymQueryHookResult = ReturnType<typeof useFindFirstGymQuery>;
 export type FindFirstGymLazyQueryHookResult = ReturnType<typeof useFindFirstGymLazyQuery>;
 export type FindFirstGymQueryResult = Apollo.QueryResult<FindFirstGymQuery, FindFirstGymQueryVariables>;
+export const CreateOneGymImpressionPostDocument = gql`
+    mutation CreateOneGymImpressionPost($data: GymImpressionPostCreateInput!) {
+  createOneGymImpressionPost(data: $data) {
+    id
+  }
+}
+    `;
+export type CreateOneGymImpressionPostMutationFn = Apollo.MutationFunction<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>;
+
+/**
+ * __useCreateOneGymImpressionPostMutation__
+ *
+ * To run a mutation, you first call `useCreateOneGymImpressionPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOneGymImpressionPostMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOneGymImpressionPostMutation, { data, loading, error }] = useCreateOneGymImpressionPostMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateOneGymImpressionPostMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>(CreateOneGymImpressionPostDocument, options);
+      }
+export type CreateOneGymImpressionPostMutationHookResult = ReturnType<typeof useCreateOneGymImpressionPostMutation>;
+export type CreateOneGymImpressionPostMutationResult = Apollo.MutationResult<CreateOneGymImpressionPostMutation>;
+export type CreateOneGymImpressionPostMutationOptions = Apollo.BaseMutationOptions<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>;
 export const GymsDocument = gql`
     query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
   gyms(take: $take, skip: $skip, orderBy: $orderBy) {

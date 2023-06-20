@@ -1,9 +1,9 @@
 import { Box, Card, Grid } from '@mui/material';
 import {
-  PostsDocument,
-  PostsQueryResult,
+  GymsDocument,
+  GymsQueryResult,
   SortOrder,
-  useCreateOneReplyMutation,
+  useCreateOneGymImpressionPostMutation,
 } from 'src/generated/graphql';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { RHFTextArea, RHFTextField } from 'src/components/hook-form';
@@ -12,8 +12,8 @@ import { useApolloClient } from '@apollo/client';
 import useReplyForm, { ReplyInput } from './hooks/useReplyForm';
 import { CreateReplyProps } from './ service/types';
 
-export default function CreateImpressionPost({ postId, refetch, replyCount }: CreateReplyProps) {
-  const [createOneReplyMutation] = useCreateOneReplyMutation();
+export default function CreateImpressionPost({ gymId, refetch, replyCount }: CreateReplyProps) {
+  const [createOneGymImpressionPostMutation] = useCreateOneGymImpressionPostMutation();
   const client = useApolloClient();
   const methods = useReplyForm();
 
@@ -24,12 +24,12 @@ export default function CreateImpressionPost({ postId, refetch, replyCount }: Cr
   } = methods;
 
   const handleReplySubmit = async (fv: ReplyInput) => {
-    const { errors } = await createOneReplyMutation({
+    const { errors } = await createOneGymImpressionPostMutation({
       variables: {
         data: {
           ...fv,
-          post: {
-            connect: { id: postId },
+          gym: {
+            connect: { id: gymId },
           },
         },
       },
@@ -38,16 +38,16 @@ export default function CreateImpressionPost({ postId, refetch, replyCount }: Cr
     await refetch();
     reset();
 
-    const cacheData = client.cache.readQuery<PostsQueryResult['data']>({
-      query: PostsDocument,
+    const cacheData = client.cache.readQuery<GymsQueryResult['data']>({
+      query: GymsDocument,
       variables: { orderBy: [{ createdAt: SortOrder.Desc }] },
     });
 
-    const updatedPosts = cacheData?.posts.map((post) =>
-      post.id === postId ? { ...post, _count: { replies: replyCount } } : post
+    const updatedPosts = cacheData?.gyms.map((gym) =>
+      gym.id === gymId ? { ...gym, _count: { replies: replyCount } } : gym
     );
-    console.log(updatedPosts);
-    client.cache.writeQuery({ query: PostsDocument, data: { posts: updatedPosts } });
+
+    client.cache.writeQuery({ query: GymsDocument, data: { gyms: updatedPosts } });
   };
 
   return (

@@ -19,6 +19,7 @@ gql`
         deletedAt
         userName
         title
+        content
       }
     }
   }

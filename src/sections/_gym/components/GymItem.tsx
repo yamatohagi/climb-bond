@@ -70,7 +70,7 @@ export default function GymItem({ gym }: { gym: GymsQuery['gyms'][number] }) {
             {_count ? _count.impressionPosts : 0}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />{' '}
+            <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} /> 開発中👷
             {/* {_count ? _count.viewHistory : 0} */}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>

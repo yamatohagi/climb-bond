@@ -66,8 +66,7 @@ const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
         justifyContent="space-between"
       >
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} />{' '}
-          {_count ? _count.impressionPosts : 0}
+          <Iconify icon="ps:chat-alt" width={17} sx={{ mr: 1 }} /> {_count ? _count.impPosts : 0}
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Iconify icon="foundation:graph-bar" width={17} sx={{ mr: 1 }} />0

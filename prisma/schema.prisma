@@ -44,16 +44,16 @@ model PostLike {
 }
 
 model Gym {
-  id              Int                 @id @default(autoincrement())
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @updatedAt
-  deletedAt       DateTime?
-  name            String
-  image           String?
-  climbingType    ClimbingType
-  posts           Post[]
-  impressionPosts GymImpressionPost[]
-  likes           GymLike[]
+  id           Int          @id @default(autoincrement())
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  deletedAt    DateTime?
+  name         String
+  image        String?
+  climbingType ClimbingType
+  posts        Post[]
+  impPosts     GymImpPost[]
+  likes        GymLike[]
 }
 
 model GymLike {
@@ -63,16 +63,24 @@ model GymLike {
   gym    Gym    @relation(fields: [gymId], references: [id])
 }
 
-model GymImpressionPost {
-  id        Int       @id @default(autoincrement())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+model GymImpPost {
+  id        Int              @id @default(autoincrement())
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
   deletedAt DateTime?
   userName  String
   title     String
   content   String
   gymId     Int
-  gym       Gym       @relation(fields: [gymId], references: [id])
+  gym       Gym              @relation(fields: [gymId], references: [id])
+  likes     GymImpPostLike[]
+}
+
+model GymImpPostLike {
+  id           Int         @id @default(autoincrement())
+  userId       String
+  gymImpPostId Int?
+  GymImpPost   GymImpPost? @relation(fields: [gymImpPostId], references: [id])
 }
 
 model PreferredDayAndTime {

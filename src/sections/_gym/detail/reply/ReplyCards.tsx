@@ -2,17 +2,17 @@ import { Card, Typography, Divider } from '@mui/material';
 import { FindFirstGymQuery } from 'src/generated/graphql';
 
 export default function ReplyCards({
-  impressionPosts,
+  impPosts,
 }: {
-  impressionPosts: NonNullable<FindFirstGymQuery['findFirstGym']>['impressionPosts'];
+  impPosts: NonNullable<FindFirstGymQuery['findFirstGym']>['impPosts'];
 }) {
   return (
     <div>
-      {impressionPosts.map((impressionPost) => (
-        <Card key={impressionPost.id} sx={{ mt: 2, p: 2 }}>
-          <Typography variant="h6">{impressionPost.userName}</Typography>
+      {impPosts.map((impPost) => (
+        <Card key={impPost.id} sx={{ mt: 2, p: 2 }}>
+          <Typography variant="h6">{impPost.userName}</Typography>
           <Divider sx={{ my: 1 }} />
-          <Typography variant="body1">{impressionPost.content}</Typography>
+          <Typography variant="body1">{impPost.content}</Typography>
         </Card>
       ))}
     </div>

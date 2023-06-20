@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 gql`
-  mutation CreateOneGymImpressionPost($data: GymImpressionPostCreateInput!) {
-    createOneGymImpressionPost(data: $data) {
+  mutation CreateOneGymImpPost($data: GymImpPostCreateInput!) {
+    createOneGymImpPost(data: $data) {
       id
     }
   }

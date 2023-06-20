@@ -4,7 +4,7 @@ gql`
   query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
     gyms(take: $take, skip: $skip, orderBy: $orderBy) {
       _count {
-        impressionPosts
+        impPosts
       }
       id
       name

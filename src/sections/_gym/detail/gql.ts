@@ -4,7 +4,7 @@ gql`
   query FindFirstGym($where: GymWhereInput) {
     findFirstGym(where: $where) {
       _count {
-        impressionPosts
+        impPosts
       }
       id
       image
@@ -12,7 +12,7 @@ gql`
       updatedAt
       createdAt
       climbingType
-      impressionPosts {
+      impPosts {
         id
         createdAt
         updatedAt

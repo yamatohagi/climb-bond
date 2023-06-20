@@ -33,13 +33,22 @@ export type AggregateGym = {
   _sum?: Maybe<GymSumAggregate>;
 };
 
-export type AggregateGymImpressionPost = {
-  __typename?: 'AggregateGymImpressionPost';
-  _avg?: Maybe<GymImpressionPostAvgAggregate>;
-  _count?: Maybe<GymImpressionPostCountAggregate>;
-  _max?: Maybe<GymImpressionPostMaxAggregate>;
-  _min?: Maybe<GymImpressionPostMinAggregate>;
-  _sum?: Maybe<GymImpressionPostSumAggregate>;
+export type AggregateGymImpPost = {
+  __typename?: 'AggregateGymImpPost';
+  _avg?: Maybe<GymImpPostAvgAggregate>;
+  _count?: Maybe<GymImpPostCountAggregate>;
+  _max?: Maybe<GymImpPostMaxAggregate>;
+  _min?: Maybe<GymImpPostMinAggregate>;
+  _sum?: Maybe<GymImpPostSumAggregate>;
+};
+
+export type AggregateGymImpPostLike = {
+  __typename?: 'AggregateGymImpPostLike';
+  _avg?: Maybe<GymImpPostLikeAvgAggregate>;
+  _count?: Maybe<GymImpPostLikeCountAggregate>;
+  _max?: Maybe<GymImpPostLikeMaxAggregate>;
+  _min?: Maybe<GymImpPostLikeMinAggregate>;
+  _sum?: Maybe<GymImpPostLikeSumAggregate>;
 };
 
 export type AggregateGymLike = {
@@ -185,7 +194,7 @@ export type Gym = {
   deletedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['Int']['output'];
   image?: Maybe<Scalars['String']['output']>;
-  impressionPosts: Array<GymImpressionPost>;
+  impPosts: Array<GymImpPost>;
   likes: Array<GymLike>;
   name: Scalars['String']['output'];
   posts: Array<Post>;
@@ -193,13 +202,13 @@ export type Gym = {
 };
 
 
-export type GymImpressionPostsArgs = {
-  cursor?: InputMaybe<GymImpressionPostWhereUniqueInput>;
-  distinct?: InputMaybe<Array<GymImpressionPostScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<GymImpressionPostOrderByWithRelationInput>>;
+export type GymImpPostsArgs = {
+  cursor?: InputMaybe<GymImpPostWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+  where?: InputMaybe<GymImpPostWhereInput>;
 };
 
 
@@ -233,7 +242,7 @@ export type GymAvgOrderByAggregateInput = {
 
 export type GymCount = {
   __typename?: 'GymCount';
-  impressionPosts: Scalars['Int']['output'];
+  impPosts: Scalars['Int']['output'];
   likes: Scalars['Int']['output'];
   posts: Scalars['Int']['output'];
 };
@@ -265,7 +274,7 @@ export type GymCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
-  impressionPosts?: InputMaybe<GymImpressionPostCreateNestedManyWithoutGymInput>;
+  impPosts?: InputMaybe<GymImpPostCreateNestedManyWithoutGymInput>;
   likes?: InputMaybe<GymLikeCreateNestedManyWithoutGymInput>;
   name: Scalars['String']['input'];
   posts?: InputMaybe<PostCreateNestedManyWithoutGymInput>;
@@ -282,10 +291,10 @@ export type GymCreateManyInput = {
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type GymCreateNestedOneWithoutImpressionPostsInput = {
+export type GymCreateNestedOneWithoutImpPostsInput = {
   connect?: InputMaybe<GymWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<GymCreateOrConnectWithoutImpressionPostsInput>;
-  create?: InputMaybe<GymCreateWithoutImpressionPostsInput>;
+  connectOrCreate?: InputMaybe<GymCreateOrConnectWithoutImpPostsInput>;
+  create?: InputMaybe<GymCreateWithoutImpPostsInput>;
 };
 
 export type GymCreateNestedOneWithoutLikesInput = {
@@ -300,8 +309,8 @@ export type GymCreateNestedOneWithoutPostsInput = {
   create?: InputMaybe<GymCreateWithoutPostsInput>;
 };
 
-export type GymCreateOrConnectWithoutImpressionPostsInput = {
-  create: GymCreateWithoutImpressionPostsInput;
+export type GymCreateOrConnectWithoutImpPostsInput = {
+  create: GymCreateWithoutImpPostsInput;
   where: GymWhereUniqueInput;
 };
 
@@ -315,7 +324,7 @@ export type GymCreateOrConnectWithoutPostsInput = {
   where: GymWhereUniqueInput;
 };
 
-export type GymCreateWithoutImpressionPostsInput = {
+export type GymCreateWithoutImpPostsInput = {
   climbingType: ClimbingType;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -331,7 +340,7 @@ export type GymCreateWithoutLikesInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
-  impressionPosts?: InputMaybe<GymImpressionPostCreateNestedManyWithoutGymInput>;
+  impPosts?: InputMaybe<GymImpPostCreateNestedManyWithoutGymInput>;
   name: Scalars['String']['input'];
   posts?: InputMaybe<PostCreateNestedManyWithoutGymInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -342,7 +351,7 @@ export type GymCreateWithoutPostsInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
-  impressionPosts?: InputMaybe<GymImpressionPostCreateNestedManyWithoutGymInput>;
+  impPosts?: InputMaybe<GymImpPostCreateNestedManyWithoutGymInput>;
   likes?: InputMaybe<GymLikeCreateNestedManyWithoutGymInput>;
   name: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -364,32 +373,49 @@ export type GymGroupBy = {
   updatedAt: Scalars['DateTime']['output'];
 };
 
-export type GymImpressionPost = {
-  __typename?: 'GymImpressionPost';
+export type GymImpPost = {
+  __typename?: 'GymImpPost';
+  _count?: Maybe<GymImpPostCount>;
   content: Scalars['String']['output'];
   createdAt: Scalars['DateTime']['output'];
   deletedAt?: Maybe<Scalars['DateTime']['output']>;
   gym: Gym;
   gymId: Scalars['Int']['output'];
   id: Scalars['Int']['output'];
+  likes: Array<GymImpPostLike>;
   title: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
   userName: Scalars['String']['output'];
 };
 
-export type GymImpressionPostAvgAggregate = {
-  __typename?: 'GymImpressionPostAvgAggregate';
+
+export type GymImpPostLikesArgs = {
+  cursor?: InputMaybe<GymImpPostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
+};
+
+export type GymImpPostAvgAggregate = {
+  __typename?: 'GymImpPostAvgAggregate';
   gymId?: Maybe<Scalars['Float']['output']>;
   id?: Maybe<Scalars['Float']['output']>;
 };
 
-export type GymImpressionPostAvgOrderByAggregateInput = {
+export type GymImpPostAvgOrderByAggregateInput = {
   gymId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
 };
 
-export type GymImpressionPostCountAggregate = {
-  __typename?: 'GymImpressionPostCountAggregate';
+export type GymImpPostCount = {
+  __typename?: 'GymImpPostCount';
+  likes: Scalars['Int']['output'];
+};
+
+export type GymImpPostCountAggregate = {
+  __typename?: 'GymImpPostCountAggregate';
   _all: Scalars['Int']['output'];
   content: Scalars['Int']['output'];
   createdAt: Scalars['Int']['output'];
@@ -401,7 +427,7 @@ export type GymImpressionPostCountAggregate = {
   userName: Scalars['Int']['output'];
 };
 
-export type GymImpressionPostCountOrderByAggregateInput = {
+export type GymImpPostCountOrderByAggregateInput = {
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
   deletedAt?: InputMaybe<SortOrder>;
@@ -412,17 +438,18 @@ export type GymImpressionPostCountOrderByAggregateInput = {
   userName?: InputMaybe<SortOrder>;
 };
 
-export type GymImpressionPostCreateInput = {
+export type GymImpPostCreateInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  gym: GymCreateNestedOneWithoutImpressionPostsInput;
+  gym: GymCreateNestedOneWithoutImpPostsInput;
+  likes?: InputMaybe<GymImpPostLikeCreateNestedManyWithoutGymImpPostInput>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   userName: Scalars['String']['input'];
 };
 
-export type GymImpressionPostCreateManyGymInput = {
+export type GymImpPostCreateManyGymInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -432,12 +459,12 @@ export type GymImpressionPostCreateManyGymInput = {
   userName: Scalars['String']['input'];
 };
 
-export type GymImpressionPostCreateManyGymInputEnvelope = {
-  data: Array<GymImpressionPostCreateManyGymInput>;
+export type GymImpPostCreateManyGymInputEnvelope = {
+  data: Array<GymImpPostCreateManyGymInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type GymImpressionPostCreateManyInput = {
+export type GymImpPostCreateManyInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -448,34 +475,56 @@ export type GymImpressionPostCreateManyInput = {
   userName: Scalars['String']['input'];
 };
 
-export type GymImpressionPostCreateNestedManyWithoutGymInput = {
-  connect?: InputMaybe<Array<GymImpressionPostWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<GymImpressionPostCreateOrConnectWithoutGymInput>>;
-  create?: InputMaybe<Array<GymImpressionPostCreateWithoutGymInput>>;
-  createMany?: InputMaybe<GymImpressionPostCreateManyGymInputEnvelope>;
+export type GymImpPostCreateNestedManyWithoutGymInput = {
+  connect?: InputMaybe<Array<GymImpPostWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<GymImpPostCreateOrConnectWithoutGymInput>>;
+  create?: InputMaybe<Array<GymImpPostCreateWithoutGymInput>>;
+  createMany?: InputMaybe<GymImpPostCreateManyGymInputEnvelope>;
 };
 
-export type GymImpressionPostCreateOrConnectWithoutGymInput = {
-  create: GymImpressionPostCreateWithoutGymInput;
-  where: GymImpressionPostWhereUniqueInput;
+export type GymImpPostCreateNestedOneWithoutLikesInput = {
+  connect?: InputMaybe<GymImpPostWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<GymImpPostCreateOrConnectWithoutLikesInput>;
+  create?: InputMaybe<GymImpPostCreateWithoutLikesInput>;
 };
 
-export type GymImpressionPostCreateWithoutGymInput = {
+export type GymImpPostCreateOrConnectWithoutGymInput = {
+  create: GymImpPostCreateWithoutGymInput;
+  where: GymImpPostWhereUniqueInput;
+};
+
+export type GymImpPostCreateOrConnectWithoutLikesInput = {
+  create: GymImpPostCreateWithoutLikesInput;
+  where: GymImpPostWhereUniqueInput;
+};
+
+export type GymImpPostCreateWithoutGymInput = {
   content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  likes?: InputMaybe<GymImpPostLikeCreateNestedManyWithoutGymImpPostInput>;
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   userName: Scalars['String']['input'];
 };
 
-export type GymImpressionPostGroupBy = {
-  __typename?: 'GymImpressionPostGroupBy';
-  _avg?: Maybe<GymImpressionPostAvgAggregate>;
-  _count?: Maybe<GymImpressionPostCountAggregate>;
-  _max?: Maybe<GymImpressionPostMaxAggregate>;
-  _min?: Maybe<GymImpressionPostMinAggregate>;
-  _sum?: Maybe<GymImpressionPostSumAggregate>;
+export type GymImpPostCreateWithoutLikesInput = {
+  content: Scalars['String']['input'];
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  gym: GymCreateNestedOneWithoutImpPostsInput;
+  title: Scalars['String']['input'];
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  userName: Scalars['String']['input'];
+};
+
+export type GymImpPostGroupBy = {
+  __typename?: 'GymImpPostGroupBy';
+  _avg?: Maybe<GymImpPostAvgAggregate>;
+  _count?: Maybe<GymImpPostCountAggregate>;
+  _max?: Maybe<GymImpPostMaxAggregate>;
+  _min?: Maybe<GymImpPostMinAggregate>;
+  _sum?: Maybe<GymImpPostSumAggregate>;
   content: Scalars['String']['output'];
   createdAt: Scalars['DateTime']['output'];
   deletedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -486,68 +535,253 @@ export type GymImpressionPostGroupBy = {
   userName: Scalars['String']['output'];
 };
 
-export type GymImpressionPostListRelationFilter = {
-  every?: InputMaybe<GymImpressionPostWhereInput>;
-  none?: InputMaybe<GymImpressionPostWhereInput>;
-  some?: InputMaybe<GymImpressionPostWhereInput>;
+export type GymImpPostLike = {
+  __typename?: 'GymImpPostLike';
+  GymImpPost?: Maybe<GymImpPost>;
+  gymImpPostId?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['Int']['output'];
+  userId: Scalars['String']['output'];
 };
 
-export type GymImpressionPostMaxAggregate = {
-  __typename?: 'GymImpressionPostMaxAggregate';
-  content?: Maybe<Scalars['String']['output']>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
-  gymId?: Maybe<Scalars['Int']['output']>;
-  id?: Maybe<Scalars['Int']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  userName?: Maybe<Scalars['String']['output']>;
+export type GymImpPostLikeAvgAggregate = {
+  __typename?: 'GymImpPostLikeAvgAggregate';
+  gymImpPostId?: Maybe<Scalars['Float']['output']>;
+  id?: Maybe<Scalars['Float']['output']>;
 };
 
-export type GymImpressionPostMaxOrderByAggregateInput = {
-  content?: InputMaybe<SortOrder>;
-  createdAt?: InputMaybe<SortOrder>;
-  deletedAt?: InputMaybe<SortOrder>;
-  gymId?: InputMaybe<SortOrder>;
+export type GymImpPostLikeAvgOrderByAggregateInput = {
+  gymImpPostId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
-  title?: InputMaybe<SortOrder>;
-  updatedAt?: InputMaybe<SortOrder>;
-  userName?: InputMaybe<SortOrder>;
 };
 
-export type GymImpressionPostMinAggregate = {
-  __typename?: 'GymImpressionPostMinAggregate';
-  content?: Maybe<Scalars['String']['output']>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  deletedAt?: Maybe<Scalars['DateTime']['output']>;
-  gymId?: Maybe<Scalars['Int']['output']>;
-  id?: Maybe<Scalars['Int']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  userName?: Maybe<Scalars['String']['output']>;
+export type GymImpPostLikeCountAggregate = {
+  __typename?: 'GymImpPostLikeCountAggregate';
+  _all: Scalars['Int']['output'];
+  gymImpPostId: Scalars['Int']['output'];
+  id: Scalars['Int']['output'];
+  userId: Scalars['Int']['output'];
 };
 
-export type GymImpressionPostMinOrderByAggregateInput = {
-  content?: InputMaybe<SortOrder>;
-  createdAt?: InputMaybe<SortOrder>;
-  deletedAt?: InputMaybe<SortOrder>;
-  gymId?: InputMaybe<SortOrder>;
+export type GymImpPostLikeCountOrderByAggregateInput = {
+  gymImpPostId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
-  title?: InputMaybe<SortOrder>;
-  updatedAt?: InputMaybe<SortOrder>;
-  userName?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
 };
 
-export type GymImpressionPostOrderByRelationAggregateInput = {
+export type GymImpPostLikeCreateInput = {
+  GymImpPost?: InputMaybe<GymImpPostCreateNestedOneWithoutLikesInput>;
+  userId: Scalars['String']['input'];
+};
+
+export type GymImpPostLikeCreateManyGymImpPostInput = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+  userId: Scalars['String']['input'];
+};
+
+export type GymImpPostLikeCreateManyGymImpPostInputEnvelope = {
+  data: Array<GymImpPostLikeCreateManyGymImpPostInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type GymImpPostLikeCreateManyInput = {
+  gymImpPostId?: InputMaybe<Scalars['Int']['input']>;
+  id?: InputMaybe<Scalars['Int']['input']>;
+  userId: Scalars['String']['input'];
+};
+
+export type GymImpPostLikeCreateNestedManyWithoutGymImpPostInput = {
+  connect?: InputMaybe<Array<GymImpPostLikeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<GymImpPostLikeCreateOrConnectWithoutGymImpPostInput>>;
+  create?: InputMaybe<Array<GymImpPostLikeCreateWithoutGymImpPostInput>>;
+  createMany?: InputMaybe<GymImpPostLikeCreateManyGymImpPostInputEnvelope>;
+};
+
+export type GymImpPostLikeCreateOrConnectWithoutGymImpPostInput = {
+  create: GymImpPostLikeCreateWithoutGymImpPostInput;
+  where: GymImpPostLikeWhereUniqueInput;
+};
+
+export type GymImpPostLikeCreateWithoutGymImpPostInput = {
+  userId: Scalars['String']['input'];
+};
+
+export type GymImpPostLikeGroupBy = {
+  __typename?: 'GymImpPostLikeGroupBy';
+  _avg?: Maybe<GymImpPostLikeAvgAggregate>;
+  _count?: Maybe<GymImpPostLikeCountAggregate>;
+  _max?: Maybe<GymImpPostLikeMaxAggregate>;
+  _min?: Maybe<GymImpPostLikeMinAggregate>;
+  _sum?: Maybe<GymImpPostLikeSumAggregate>;
+  gymImpPostId?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['Int']['output'];
+  userId: Scalars['String']['output'];
+};
+
+export type GymImpPostLikeListRelationFilter = {
+  every?: InputMaybe<GymImpPostLikeWhereInput>;
+  none?: InputMaybe<GymImpPostLikeWhereInput>;
+  some?: InputMaybe<GymImpPostLikeWhereInput>;
+};
+
+export type GymImpPostLikeMaxAggregate = {
+  __typename?: 'GymImpPostLikeMaxAggregate';
+  gymImpPostId?: Maybe<Scalars['Int']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+};
+
+export type GymImpPostLikeMaxOrderByAggregateInput = {
+  gymImpPostId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type GymImpPostLikeMinAggregate = {
+  __typename?: 'GymImpPostLikeMinAggregate';
+  gymImpPostId?: Maybe<Scalars['Int']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+};
+
+export type GymImpPostLikeMinOrderByAggregateInput = {
+  gymImpPostId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type GymImpPostLikeOrderByRelationAggregateInput = {
   _count?: InputMaybe<SortOrder>;
 };
 
-export type GymImpressionPostOrderByWithAggregationInput = {
-  _avg?: InputMaybe<GymImpressionPostAvgOrderByAggregateInput>;
-  _count?: InputMaybe<GymImpressionPostCountOrderByAggregateInput>;
-  _max?: InputMaybe<GymImpressionPostMaxOrderByAggregateInput>;
-  _min?: InputMaybe<GymImpressionPostMinOrderByAggregateInput>;
-  _sum?: InputMaybe<GymImpressionPostSumOrderByAggregateInput>;
+export type GymImpPostLikeOrderByWithAggregationInput = {
+  _avg?: InputMaybe<GymImpPostLikeAvgOrderByAggregateInput>;
+  _count?: InputMaybe<GymImpPostLikeCountOrderByAggregateInput>;
+  _max?: InputMaybe<GymImpPostLikeMaxOrderByAggregateInput>;
+  _min?: InputMaybe<GymImpPostLikeMinOrderByAggregateInput>;
+  _sum?: InputMaybe<GymImpPostLikeSumOrderByAggregateInput>;
+  gymImpPostId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type GymImpPostLikeOrderByWithRelationInput = {
+  GymImpPost?: InputMaybe<GymImpPostOrderByWithRelationInput>;
+  gymImpPostId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export enum GymImpPostLikeScalarFieldEnum {
+  GymImpPostId = 'gymImpPostId',
+  Id = 'id',
+  UserId = 'userId'
+}
+
+export type GymImpPostLikeScalarWhereInput = {
+  AND?: InputMaybe<Array<GymImpPostLikeScalarWhereInput>>;
+  NOT?: InputMaybe<Array<GymImpPostLikeScalarWhereInput>>;
+  OR?: InputMaybe<Array<GymImpPostLikeScalarWhereInput>>;
+  gymImpPostId?: InputMaybe<IntNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  userId?: InputMaybe<StringFilter>;
+};
+
+export type GymImpPostLikeScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<GymImpPostLikeScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<GymImpPostLikeScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<GymImpPostLikeScalarWhereWithAggregatesInput>>;
+  gymImpPostId?: InputMaybe<IntNullableWithAggregatesFilter>;
+  id?: InputMaybe<IntWithAggregatesFilter>;
+  userId?: InputMaybe<StringWithAggregatesFilter>;
+};
+
+export type GymImpPostLikeSumAggregate = {
+  __typename?: 'GymImpPostLikeSumAggregate';
+  gymImpPostId?: Maybe<Scalars['Int']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+};
+
+export type GymImpPostLikeSumOrderByAggregateInput = {
+  gymImpPostId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+};
+
+export type GymImpPostLikeUpdateInput = {
+  GymImpPost?: InputMaybe<GymImpPostUpdateOneWithoutLikesNestedInput>;
+  userId?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type GymImpPostLikeUpdateManyMutationInput = {
+  userId?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type GymImpPostLikeUpdateManyWithWhereWithoutGymImpPostInput = {
+  data: GymImpPostLikeUpdateManyMutationInput;
+  where: GymImpPostLikeScalarWhereInput;
+};
+
+export type GymImpPostLikeUpdateManyWithoutGymImpPostNestedInput = {
+  connect?: InputMaybe<Array<GymImpPostLikeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<GymImpPostLikeCreateOrConnectWithoutGymImpPostInput>>;
+  create?: InputMaybe<Array<GymImpPostLikeCreateWithoutGymImpPostInput>>;
+  createMany?: InputMaybe<GymImpPostLikeCreateManyGymImpPostInputEnvelope>;
+  delete?: InputMaybe<Array<GymImpPostLikeWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<GymImpPostLikeScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<GymImpPostLikeWhereUniqueInput>>;
+  set?: InputMaybe<Array<GymImpPostLikeWhereUniqueInput>>;
+  update?: InputMaybe<Array<GymImpPostLikeUpdateWithWhereUniqueWithoutGymImpPostInput>>;
+  updateMany?: InputMaybe<Array<GymImpPostLikeUpdateManyWithWhereWithoutGymImpPostInput>>;
+  upsert?: InputMaybe<Array<GymImpPostLikeUpsertWithWhereUniqueWithoutGymImpPostInput>>;
+};
+
+export type GymImpPostLikeUpdateWithWhereUniqueWithoutGymImpPostInput = {
+  data: GymImpPostLikeUpdateWithoutGymImpPostInput;
+  where: GymImpPostLikeWhereUniqueInput;
+};
+
+export type GymImpPostLikeUpdateWithoutGymImpPostInput = {
+  userId?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type GymImpPostLikeUpsertWithWhereUniqueWithoutGymImpPostInput = {
+  create: GymImpPostLikeCreateWithoutGymImpPostInput;
+  update: GymImpPostLikeUpdateWithoutGymImpPostInput;
+  where: GymImpPostLikeWhereUniqueInput;
+};
+
+export type GymImpPostLikeWhereInput = {
+  AND?: InputMaybe<Array<GymImpPostLikeWhereInput>>;
+  GymImpPost?: InputMaybe<GymImpPostRelationFilter>;
+  NOT?: InputMaybe<Array<GymImpPostLikeWhereInput>>;
+  OR?: InputMaybe<Array<GymImpPostLikeWhereInput>>;
+  gymImpPostId?: InputMaybe<IntNullableFilter>;
+  id?: InputMaybe<IntFilter>;
+  userId?: InputMaybe<StringFilter>;
+};
+
+export type GymImpPostLikeWhereUniqueInput = {
+  id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type GymImpPostListRelationFilter = {
+  every?: InputMaybe<GymImpPostWhereInput>;
+  none?: InputMaybe<GymImpPostWhereInput>;
+  some?: InputMaybe<GymImpPostWhereInput>;
+};
+
+export type GymImpPostMaxAggregate = {
+  __typename?: 'GymImpPostMaxAggregate';
+  content?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  gymId?: Maybe<Scalars['Int']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type GymImpPostMaxOrderByAggregateInput = {
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
   deletedAt?: InputMaybe<SortOrder>;
@@ -558,19 +792,68 @@ export type GymImpressionPostOrderByWithAggregationInput = {
   userName?: InputMaybe<SortOrder>;
 };
 
-export type GymImpressionPostOrderByWithRelationInput = {
+export type GymImpPostMinAggregate = {
+  __typename?: 'GymImpPostMinAggregate';
+  content?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  deletedAt?: Maybe<Scalars['DateTime']['output']>;
+  gymId?: Maybe<Scalars['Int']['output']>;
+  id?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type GymImpPostMinOrderByAggregateInput = {
+  content?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
+  gymId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  userName?: InputMaybe<SortOrder>;
+};
+
+export type GymImpPostOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type GymImpPostOrderByWithAggregationInput = {
+  _avg?: InputMaybe<GymImpPostAvgOrderByAggregateInput>;
+  _count?: InputMaybe<GymImpPostCountOrderByAggregateInput>;
+  _max?: InputMaybe<GymImpPostMaxOrderByAggregateInput>;
+  _min?: InputMaybe<GymImpPostMinOrderByAggregateInput>;
+  _sum?: InputMaybe<GymImpPostSumOrderByAggregateInput>;
+  content?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  deletedAt?: InputMaybe<SortOrder>;
+  gymId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  userName?: InputMaybe<SortOrder>;
+};
+
+export type GymImpPostOrderByWithRelationInput = {
   content?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
   deletedAt?: InputMaybe<SortOrder>;
   gym?: InputMaybe<GymOrderByWithRelationInput>;
   gymId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  likes?: InputMaybe<GymImpPostLikeOrderByRelationAggregateInput>;
   title?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
   userName?: InputMaybe<SortOrder>;
 };
 
-export enum GymImpressionPostScalarFieldEnum {
+export type GymImpPostRelationFilter = {
+  is?: InputMaybe<GymImpPostWhereInput>;
+  isNot?: InputMaybe<GymImpPostWhereInput>;
+};
+
+export enum GymImpPostScalarFieldEnum {
   Content = 'content',
   CreatedAt = 'createdAt',
   DeletedAt = 'deletedAt',
@@ -581,10 +864,10 @@ export enum GymImpressionPostScalarFieldEnum {
   UserName = 'userName'
 }
 
-export type GymImpressionPostScalarWhereInput = {
-  AND?: InputMaybe<Array<GymImpressionPostScalarWhereInput>>;
-  NOT?: InputMaybe<Array<GymImpressionPostScalarWhereInput>>;
-  OR?: InputMaybe<Array<GymImpressionPostScalarWhereInput>>;
+export type GymImpPostScalarWhereInput = {
+  AND?: InputMaybe<Array<GymImpPostScalarWhereInput>>;
+  NOT?: InputMaybe<Array<GymImpPostScalarWhereInput>>;
+  OR?: InputMaybe<Array<GymImpPostScalarWhereInput>>;
   content?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   deletedAt?: InputMaybe<DateTimeNullableFilter>;
@@ -595,10 +878,10 @@ export type GymImpressionPostScalarWhereInput = {
   userName?: InputMaybe<StringFilter>;
 };
 
-export type GymImpressionPostScalarWhereWithAggregatesInput = {
-  AND?: InputMaybe<Array<GymImpressionPostScalarWhereWithAggregatesInput>>;
-  NOT?: InputMaybe<Array<GymImpressionPostScalarWhereWithAggregatesInput>>;
-  OR?: InputMaybe<Array<GymImpressionPostScalarWhereWithAggregatesInput>>;
+export type GymImpPostScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<GymImpPostScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<GymImpPostScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<GymImpPostScalarWhereWithAggregatesInput>>;
   content?: InputMaybe<StringWithAggregatesFilter>;
   createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
   deletedAt?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
@@ -609,61 +892,29 @@ export type GymImpressionPostScalarWhereWithAggregatesInput = {
   userName?: InputMaybe<StringWithAggregatesFilter>;
 };
 
-export type GymImpressionPostSumAggregate = {
-  __typename?: 'GymImpressionPostSumAggregate';
+export type GymImpPostSumAggregate = {
+  __typename?: 'GymImpPostSumAggregate';
   gymId?: Maybe<Scalars['Int']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
 };
 
-export type GymImpressionPostSumOrderByAggregateInput = {
+export type GymImpPostSumOrderByAggregateInput = {
   gymId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
 };
 
-export type GymImpressionPostUpdateInput = {
+export type GymImpPostUpdateInput = {
   content?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  gym?: InputMaybe<GymUpdateOneRequiredWithoutImpressionPostsNestedInput>;
+  gym?: InputMaybe<GymUpdateOneRequiredWithoutImpPostsNestedInput>;
+  likes?: InputMaybe<GymImpPostLikeUpdateManyWithoutGymImpPostNestedInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   userName?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
-export type GymImpressionPostUpdateManyMutationInput = {
-  content?: InputMaybe<StringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
-  title?: InputMaybe<StringFieldUpdateOperationsInput>;
-  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  userName?: InputMaybe<StringFieldUpdateOperationsInput>;
-};
-
-export type GymImpressionPostUpdateManyWithWhereWithoutGymInput = {
-  data: GymImpressionPostUpdateManyMutationInput;
-  where: GymImpressionPostScalarWhereInput;
-};
-
-export type GymImpressionPostUpdateManyWithoutGymNestedInput = {
-  connect?: InputMaybe<Array<GymImpressionPostWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<GymImpressionPostCreateOrConnectWithoutGymInput>>;
-  create?: InputMaybe<Array<GymImpressionPostCreateWithoutGymInput>>;
-  createMany?: InputMaybe<GymImpressionPostCreateManyGymInputEnvelope>;
-  delete?: InputMaybe<Array<GymImpressionPostWhereUniqueInput>>;
-  deleteMany?: InputMaybe<Array<GymImpressionPostScalarWhereInput>>;
-  disconnect?: InputMaybe<Array<GymImpressionPostWhereUniqueInput>>;
-  set?: InputMaybe<Array<GymImpressionPostWhereUniqueInput>>;
-  update?: InputMaybe<Array<GymImpressionPostUpdateWithWhereUniqueWithoutGymInput>>;
-  updateMany?: InputMaybe<Array<GymImpressionPostUpdateManyWithWhereWithoutGymInput>>;
-  upsert?: InputMaybe<Array<GymImpressionPostUpsertWithWhereUniqueWithoutGymInput>>;
-};
-
-export type GymImpressionPostUpdateWithWhereUniqueWithoutGymInput = {
-  data: GymImpressionPostUpdateWithoutGymInput;
-  where: GymImpressionPostWhereUniqueInput;
-};
-
-export type GymImpressionPostUpdateWithoutGymInput = {
+export type GymImpPostUpdateManyMutationInput = {
   content?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
@@ -672,28 +923,88 @@ export type GymImpressionPostUpdateWithoutGymInput = {
   userName?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
-export type GymImpressionPostUpsertWithWhereUniqueWithoutGymInput = {
-  create: GymImpressionPostCreateWithoutGymInput;
-  update: GymImpressionPostUpdateWithoutGymInput;
-  where: GymImpressionPostWhereUniqueInput;
+export type GymImpPostUpdateManyWithWhereWithoutGymInput = {
+  data: GymImpPostUpdateManyMutationInput;
+  where: GymImpPostScalarWhereInput;
 };
 
-export type GymImpressionPostWhereInput = {
-  AND?: InputMaybe<Array<GymImpressionPostWhereInput>>;
-  NOT?: InputMaybe<Array<GymImpressionPostWhereInput>>;
-  OR?: InputMaybe<Array<GymImpressionPostWhereInput>>;
+export type GymImpPostUpdateManyWithoutGymNestedInput = {
+  connect?: InputMaybe<Array<GymImpPostWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<GymImpPostCreateOrConnectWithoutGymInput>>;
+  create?: InputMaybe<Array<GymImpPostCreateWithoutGymInput>>;
+  createMany?: InputMaybe<GymImpPostCreateManyGymInputEnvelope>;
+  delete?: InputMaybe<Array<GymImpPostWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<GymImpPostScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<GymImpPostWhereUniqueInput>>;
+  set?: InputMaybe<Array<GymImpPostWhereUniqueInput>>;
+  update?: InputMaybe<Array<GymImpPostUpdateWithWhereUniqueWithoutGymInput>>;
+  updateMany?: InputMaybe<Array<GymImpPostUpdateManyWithWhereWithoutGymInput>>;
+  upsert?: InputMaybe<Array<GymImpPostUpsertWithWhereUniqueWithoutGymInput>>;
+};
+
+export type GymImpPostUpdateOneWithoutLikesNestedInput = {
+  connect?: InputMaybe<GymImpPostWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<GymImpPostCreateOrConnectWithoutLikesInput>;
+  create?: InputMaybe<GymImpPostCreateWithoutLikesInput>;
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+  update?: InputMaybe<GymImpPostUpdateWithoutLikesInput>;
+  upsert?: InputMaybe<GymImpPostUpsertWithoutLikesInput>;
+};
+
+export type GymImpPostUpdateWithWhereUniqueWithoutGymInput = {
+  data: GymImpPostUpdateWithoutGymInput;
+  where: GymImpPostWhereUniqueInput;
+};
+
+export type GymImpPostUpdateWithoutGymInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  likes?: InputMaybe<GymImpPostLikeUpdateManyWithoutGymImpPostNestedInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  userName?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type GymImpPostUpdateWithoutLikesInput = {
+  content?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
+  gym?: InputMaybe<GymUpdateOneRequiredWithoutImpPostsNestedInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  userName?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type GymImpPostUpsertWithWhereUniqueWithoutGymInput = {
+  create: GymImpPostCreateWithoutGymInput;
+  update: GymImpPostUpdateWithoutGymInput;
+  where: GymImpPostWhereUniqueInput;
+};
+
+export type GymImpPostUpsertWithoutLikesInput = {
+  create: GymImpPostCreateWithoutLikesInput;
+  update: GymImpPostUpdateWithoutLikesInput;
+};
+
+export type GymImpPostWhereInput = {
+  AND?: InputMaybe<Array<GymImpPostWhereInput>>;
+  NOT?: InputMaybe<Array<GymImpPostWhereInput>>;
+  OR?: InputMaybe<Array<GymImpPostWhereInput>>;
   content?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   deletedAt?: InputMaybe<DateTimeNullableFilter>;
   gym?: InputMaybe<GymRelationFilter>;
   gymId?: InputMaybe<IntFilter>;
   id?: InputMaybe<IntFilter>;
+  likes?: InputMaybe<GymImpPostLikeListRelationFilter>;
   title?: InputMaybe<StringFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
   userName?: InputMaybe<StringFilter>;
 };
 
-export type GymImpressionPostWhereUniqueInput = {
+export type GymImpPostWhereUniqueInput = {
   id?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -988,7 +1299,7 @@ export type GymOrderByWithRelationInput = {
   deletedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   image?: InputMaybe<SortOrder>;
-  impressionPosts?: InputMaybe<GymImpressionPostOrderByRelationAggregateInput>;
+  impPosts?: InputMaybe<GymImpPostOrderByRelationAggregateInput>;
   likes?: InputMaybe<GymLikeOrderByRelationAggregateInput>;
   name?: InputMaybe<SortOrder>;
   posts?: InputMaybe<PostOrderByRelationAggregateInput>;
@@ -1037,7 +1348,7 @@ export type GymUpdateInput = {
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   image?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  impressionPosts?: InputMaybe<GymImpressionPostUpdateManyWithoutGymNestedInput>;
+  impPosts?: InputMaybe<GymImpPostUpdateManyWithoutGymNestedInput>;
   likes?: InputMaybe<GymLikeUpdateManyWithoutGymNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   posts?: InputMaybe<PostUpdateManyWithoutGymNestedInput>;
@@ -1053,12 +1364,12 @@ export type GymUpdateManyMutationInput = {
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type GymUpdateOneRequiredWithoutImpressionPostsNestedInput = {
+export type GymUpdateOneRequiredWithoutImpPostsNestedInput = {
   connect?: InputMaybe<GymWhereUniqueInput>;
-  connectOrCreate?: InputMaybe<GymCreateOrConnectWithoutImpressionPostsInput>;
-  create?: InputMaybe<GymCreateWithoutImpressionPostsInput>;
-  update?: InputMaybe<GymUpdateWithoutImpressionPostsInput>;
-  upsert?: InputMaybe<GymUpsertWithoutImpressionPostsInput>;
+  connectOrCreate?: InputMaybe<GymCreateOrConnectWithoutImpPostsInput>;
+  create?: InputMaybe<GymCreateWithoutImpPostsInput>;
+  update?: InputMaybe<GymUpdateWithoutImpPostsInput>;
+  upsert?: InputMaybe<GymUpsertWithoutImpPostsInput>;
 };
 
 export type GymUpdateOneRequiredWithoutLikesNestedInput = {
@@ -1077,7 +1388,7 @@ export type GymUpdateOneRequiredWithoutPostsNestedInput = {
   upsert?: InputMaybe<GymUpsertWithoutPostsInput>;
 };
 
-export type GymUpdateWithoutImpressionPostsInput = {
+export type GymUpdateWithoutImpPostsInput = {
   climbingType?: InputMaybe<EnumClimbingTypeFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
@@ -1093,7 +1404,7 @@ export type GymUpdateWithoutLikesInput = {
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   image?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  impressionPosts?: InputMaybe<GymImpressionPostUpdateManyWithoutGymNestedInput>;
+  impPosts?: InputMaybe<GymImpPostUpdateManyWithoutGymNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   posts?: InputMaybe<PostUpdateManyWithoutGymNestedInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -1104,15 +1415,15 @@ export type GymUpdateWithoutPostsInput = {
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   deletedAt?: InputMaybe<NullableDateTimeFieldUpdateOperationsInput>;
   image?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  impressionPosts?: InputMaybe<GymImpressionPostUpdateManyWithoutGymNestedInput>;
+  impPosts?: InputMaybe<GymImpPostUpdateManyWithoutGymNestedInput>;
   likes?: InputMaybe<GymLikeUpdateManyWithoutGymNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type GymUpsertWithoutImpressionPostsInput = {
-  create: GymCreateWithoutImpressionPostsInput;
-  update: GymUpdateWithoutImpressionPostsInput;
+export type GymUpsertWithoutImpPostsInput = {
+  create: GymCreateWithoutImpPostsInput;
+  update: GymUpdateWithoutImpPostsInput;
 };
 
 export type GymUpsertWithoutLikesInput = {
@@ -1134,7 +1445,7 @@ export type GymWhereInput = {
   deletedAt?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<IntFilter>;
   image?: InputMaybe<StringNullableFilter>;
-  impressionPosts?: InputMaybe<GymImpressionPostListRelationFilter>;
+  impPosts?: InputMaybe<GymImpPostListRelationFilter>;
   likes?: InputMaybe<GymLikeListRelationFilter>;
   name?: InputMaybe<StringFilter>;
   posts?: InputMaybe<PostListRelationFilter>;
@@ -1164,6 +1475,33 @@ export type IntFilter = {
   notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
+export type IntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type IntNullableWithAggregatesFilter = {
+  _avg?: InputMaybe<NestedFloatNullableFilter>;
+  _count?: InputMaybe<NestedIntNullableFilter>;
+  _max?: InputMaybe<NestedIntNullableFilter>;
+  _min?: InputMaybe<NestedIntNullableFilter>;
+  _sum?: InputMaybe<NestedIntNullableFilter>;
+  equals?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  not?: InputMaybe<NestedIntNullableWithAggregatesFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
 export type IntWithAggregatesFilter = {
   _avg?: InputMaybe<NestedFloatFilter>;
   _count?: InputMaybe<NestedIntFilter>;
@@ -1183,7 +1521,8 @@ export type IntWithAggregatesFilter = {
 export type Mutation = {
   __typename?: 'Mutation';
   createManyGym: AffectedRowsOutput;
-  createManyGymImpressionPost: AffectedRowsOutput;
+  createManyGymImpPost: AffectedRowsOutput;
+  createManyGymImpPostLike: AffectedRowsOutput;
   createManyGymLike: AffectedRowsOutput;
   createManyPost: AffectedRowsOutput;
   createManyPostLike: AffectedRowsOutput;
@@ -1191,7 +1530,8 @@ export type Mutation = {
   createManyReply: AffectedRowsOutput;
   createManyViewHistory: AffectedRowsOutput;
   createOneGym: Gym;
-  createOneGymImpressionPost: GymImpressionPost;
+  createOneGymImpPost: GymImpPost;
+  createOneGymImpPostLike: GymImpPostLike;
   createOneGymLike: GymLike;
   createOnePost: Post;
   createOnePostLike: PostLike;
@@ -1199,7 +1539,8 @@ export type Mutation = {
   createOneReply: Reply;
   createOneViewHistory: ViewHistory;
   deleteManyGym: AffectedRowsOutput;
-  deleteManyGymImpressionPost: AffectedRowsOutput;
+  deleteManyGymImpPost: AffectedRowsOutput;
+  deleteManyGymImpPostLike: AffectedRowsOutput;
   deleteManyGymLike: AffectedRowsOutput;
   deleteManyPost: AffectedRowsOutput;
   deleteManyPostLike: AffectedRowsOutput;
@@ -1207,7 +1548,8 @@ export type Mutation = {
   deleteManyReply: AffectedRowsOutput;
   deleteManyViewHistory: AffectedRowsOutput;
   deleteOneGym?: Maybe<Gym>;
-  deleteOneGymImpressionPost?: Maybe<GymImpressionPost>;
+  deleteOneGymImpPost?: Maybe<GymImpPost>;
+  deleteOneGymImpPostLike?: Maybe<GymImpPostLike>;
   deleteOneGymLike?: Maybe<GymLike>;
   deleteOnePost?: Maybe<Post>;
   deleteOnePostLike?: Maybe<PostLike>;
@@ -1215,7 +1557,8 @@ export type Mutation = {
   deleteOneReply?: Maybe<Reply>;
   deleteOneViewHistory?: Maybe<ViewHistory>;
   updateManyGym: AffectedRowsOutput;
-  updateManyGymImpressionPost: AffectedRowsOutput;
+  updateManyGymImpPost: AffectedRowsOutput;
+  updateManyGymImpPostLike: AffectedRowsOutput;
   updateManyGymLike: AffectedRowsOutput;
   updateManyPost: AffectedRowsOutput;
   updateManyPostLike: AffectedRowsOutput;
@@ -1223,7 +1566,8 @@ export type Mutation = {
   updateManyReply: AffectedRowsOutput;
   updateManyViewHistory: AffectedRowsOutput;
   updateOneGym?: Maybe<Gym>;
-  updateOneGymImpressionPost?: Maybe<GymImpressionPost>;
+  updateOneGymImpPost?: Maybe<GymImpPost>;
+  updateOneGymImpPostLike?: Maybe<GymImpPostLike>;
   updateOneGymLike?: Maybe<GymLike>;
   updateOnePost?: Maybe<Post>;
   updateOnePostLike?: Maybe<PostLike>;
@@ -1231,7 +1575,8 @@ export type Mutation = {
   updateOneReply?: Maybe<Reply>;
   updateOneViewHistory?: Maybe<ViewHistory>;
   upsertOneGym: Gym;
-  upsertOneGymImpressionPost: GymImpressionPost;
+  upsertOneGymImpPost: GymImpPost;
+  upsertOneGymImpPostLike: GymImpPostLike;
   upsertOneGymLike: GymLike;
   upsertOnePost: Post;
   upsertOnePostLike: PostLike;
@@ -1247,8 +1592,14 @@ export type MutationCreateManyGymArgs = {
 };
 
 
-export type MutationCreateManyGymImpressionPostArgs = {
-  data: Array<GymImpressionPostCreateManyInput>;
+export type MutationCreateManyGymImpPostArgs = {
+  data: Array<GymImpPostCreateManyInput>;
+  skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type MutationCreateManyGymImpPostLikeArgs = {
+  data: Array<GymImpPostLikeCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -1294,8 +1645,13 @@ export type MutationCreateOneGymArgs = {
 };
 
 
-export type MutationCreateOneGymImpressionPostArgs = {
-  data: GymImpressionPostCreateInput;
+export type MutationCreateOneGymImpPostArgs = {
+  data: GymImpPostCreateInput;
+};
+
+
+export type MutationCreateOneGymImpPostLikeArgs = {
+  data: GymImpPostLikeCreateInput;
 };
 
 
@@ -1334,8 +1690,13 @@ export type MutationDeleteManyGymArgs = {
 };
 
 
-export type MutationDeleteManyGymImpressionPostArgs = {
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+export type MutationDeleteManyGymImpPostArgs = {
+  where?: InputMaybe<GymImpPostWhereInput>;
+};
+
+
+export type MutationDeleteManyGymImpPostLikeArgs = {
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
 };
 
 
@@ -1374,8 +1735,13 @@ export type MutationDeleteOneGymArgs = {
 };
 
 
-export type MutationDeleteOneGymImpressionPostArgs = {
-  where: GymImpressionPostWhereUniqueInput;
+export type MutationDeleteOneGymImpPostArgs = {
+  where: GymImpPostWhereUniqueInput;
+};
+
+
+export type MutationDeleteOneGymImpPostLikeArgs = {
+  where: GymImpPostLikeWhereUniqueInput;
 };
 
 
@@ -1415,9 +1781,15 @@ export type MutationUpdateManyGymArgs = {
 };
 
 
-export type MutationUpdateManyGymImpressionPostArgs = {
-  data: GymImpressionPostUpdateManyMutationInput;
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+export type MutationUpdateManyGymImpPostArgs = {
+  data: GymImpPostUpdateManyMutationInput;
+  where?: InputMaybe<GymImpPostWhereInput>;
+};
+
+
+export type MutationUpdateManyGymImpPostLikeArgs = {
+  data: GymImpPostLikeUpdateManyMutationInput;
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
 };
 
 
@@ -1463,9 +1835,15 @@ export type MutationUpdateOneGymArgs = {
 };
 
 
-export type MutationUpdateOneGymImpressionPostArgs = {
-  data: GymImpressionPostUpdateInput;
-  where: GymImpressionPostWhereUniqueInput;
+export type MutationUpdateOneGymImpPostArgs = {
+  data: GymImpPostUpdateInput;
+  where: GymImpPostWhereUniqueInput;
+};
+
+
+export type MutationUpdateOneGymImpPostLikeArgs = {
+  data: GymImpPostLikeUpdateInput;
+  where: GymImpPostLikeWhereUniqueInput;
 };
 
 
@@ -1512,10 +1890,17 @@ export type MutationUpsertOneGymArgs = {
 };
 
 
-export type MutationUpsertOneGymImpressionPostArgs = {
-  create: GymImpressionPostCreateInput;
-  update: GymImpressionPostUpdateInput;
-  where: GymImpressionPostWhereUniqueInput;
+export type MutationUpsertOneGymImpPostArgs = {
+  create: GymImpPostCreateInput;
+  update: GymImpPostUpdateInput;
+  where: GymImpPostWhereUniqueInput;
+};
+
+
+export type MutationUpsertOneGymImpPostLikeArgs = {
+  create: GymImpPostLikeCreateInput;
+  update: GymImpPostLikeUpdateInput;
+  where: GymImpPostLikeWhereUniqueInput;
 };
 
 
@@ -1638,6 +2023,17 @@ export type NestedFloatFilter = {
   notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
 };
 
+export type NestedFloatNullableFilter = {
+  equals?: InputMaybe<Scalars['Float']['input']>;
+  gt?: InputMaybe<Scalars['Float']['input']>;
+  gte?: InputMaybe<Scalars['Float']['input']>;
+  in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  lt?: InputMaybe<Scalars['Float']['input']>;
+  lte?: InputMaybe<Scalars['Float']['input']>;
+  not?: InputMaybe<NestedFloatNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
+};
+
 export type NestedIntFilter = {
   equals?: InputMaybe<Scalars['Int']['input']>;
   gt?: InputMaybe<Scalars['Int']['input']>;
@@ -1657,6 +2053,22 @@ export type NestedIntNullableFilter = {
   lt?: InputMaybe<Scalars['Int']['input']>;
   lte?: InputMaybe<Scalars['Int']['input']>;
   not?: InputMaybe<NestedIntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type NestedIntNullableWithAggregatesFilter = {
+  _avg?: InputMaybe<NestedFloatNullableFilter>;
+  _count?: InputMaybe<NestedIntNullableFilter>;
+  _max?: InputMaybe<NestedIntNullableFilter>;
+  _min?: InputMaybe<NestedIntNullableFilter>;
+  _sum?: InputMaybe<NestedIntNullableFilter>;
+  equals?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  not?: InputMaybe<NestedIntNullableWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
@@ -2978,7 +3390,8 @@ export type PreferredDayAndTimeWhereUniqueInput = {
 export type Query = {
   __typename?: 'Query';
   aggregateGym: AggregateGym;
-  aggregateGymImpressionPost: AggregateGymImpressionPost;
+  aggregateGymImpPost: AggregateGymImpPost;
+  aggregateGymImpPostLike: AggregateGymImpPostLike;
   aggregateGymLike: AggregateGymLike;
   aggregatePost: AggregatePost;
   aggregatePostLike: AggregatePostLike;
@@ -2986,8 +3399,10 @@ export type Query = {
   aggregateReply: AggregateReply;
   aggregateViewHistory: AggregateViewHistory;
   findFirstGym?: Maybe<Gym>;
-  findFirstGymImpressionPost?: Maybe<GymImpressionPost>;
-  findFirstGymImpressionPostOrThrow?: Maybe<GymImpressionPost>;
+  findFirstGymImpPost?: Maybe<GymImpPost>;
+  findFirstGymImpPostLike?: Maybe<GymImpPostLike>;
+  findFirstGymImpPostLikeOrThrow?: Maybe<GymImpPostLike>;
+  findFirstGymImpPostOrThrow?: Maybe<GymImpPost>;
   findFirstGymLike?: Maybe<GymLike>;
   findFirstGymLikeOrThrow?: Maybe<GymLike>;
   findFirstGymOrThrow?: Maybe<Gym>;
@@ -3002,7 +3417,8 @@ export type Query = {
   findFirstViewHistory?: Maybe<ViewHistory>;
   findFirstViewHistoryOrThrow?: Maybe<ViewHistory>;
   getGym?: Maybe<Gym>;
-  getGymImpressionPost?: Maybe<GymImpressionPost>;
+  getGymImpPost?: Maybe<GymImpPost>;
+  getGymImpPostLike?: Maybe<GymImpPostLike>;
   getGymLike?: Maybe<GymLike>;
   getPost?: Maybe<Post>;
   getPostLike?: Maybe<PostLike>;
@@ -3010,7 +3426,8 @@ export type Query = {
   getReply?: Maybe<Reply>;
   getViewHistory?: Maybe<ViewHistory>;
   groupByGym: Array<GymGroupBy>;
-  groupByGymImpressionPost: Array<GymImpressionPostGroupBy>;
+  groupByGymImpPost: Array<GymImpPostGroupBy>;
+  groupByGymImpPostLike: Array<GymImpPostLikeGroupBy>;
   groupByGymLike: Array<GymLikeGroupBy>;
   groupByPost: Array<PostGroupBy>;
   groupByPostLike: Array<PostLikeGroupBy>;
@@ -3018,8 +3435,10 @@ export type Query = {
   groupByReply: Array<ReplyGroupBy>;
   groupByViewHistory: Array<ViewHistoryGroupBy>;
   gym?: Maybe<Gym>;
-  gymImpressionPost?: Maybe<GymImpressionPost>;
-  gymImpressionPosts: Array<GymImpressionPost>;
+  gymImpPost?: Maybe<GymImpPost>;
+  gymImpPostLike?: Maybe<GymImpPostLike>;
+  gymImpPostLikes: Array<GymImpPostLike>;
+  gymImpPosts: Array<GymImpPost>;
   gymLike?: Maybe<GymLike>;
   gymLikes: Array<GymLike>;
   gyms: Array<Gym>;
@@ -3045,12 +3464,21 @@ export type QueryAggregateGymArgs = {
 };
 
 
-export type QueryAggregateGymImpressionPostArgs = {
-  cursor?: InputMaybe<GymImpressionPostWhereUniqueInput>;
-  orderBy?: InputMaybe<Array<GymImpressionPostOrderByWithRelationInput>>;
+export type QueryAggregateGymImpPostArgs = {
+  cursor?: InputMaybe<GymImpPostWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<GymImpPostOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+  where?: InputMaybe<GymImpPostWhereInput>;
+};
+
+
+export type QueryAggregateGymImpPostLikeArgs = {
+  cursor?: InputMaybe<GymImpPostLikeWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<GymImpPostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
 };
 
 
@@ -3118,23 +3546,43 @@ export type QueryFindFirstGymArgs = {
 };
 
 
-export type QueryFindFirstGymImpressionPostArgs = {
-  cursor?: InputMaybe<GymImpressionPostWhereUniqueInput>;
-  distinct?: InputMaybe<Array<GymImpressionPostScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<GymImpressionPostOrderByWithRelationInput>>;
+export type QueryFindFirstGymImpPostArgs = {
+  cursor?: InputMaybe<GymImpPostWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+  where?: InputMaybe<GymImpPostWhereInput>;
 };
 
 
-export type QueryFindFirstGymImpressionPostOrThrowArgs = {
-  cursor?: InputMaybe<GymImpressionPostWhereUniqueInput>;
-  distinct?: InputMaybe<Array<GymImpressionPostScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<GymImpressionPostOrderByWithRelationInput>>;
+export type QueryFindFirstGymImpPostLikeArgs = {
+  cursor?: InputMaybe<GymImpPostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostLikeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
+};
+
+
+export type QueryFindFirstGymImpPostLikeOrThrowArgs = {
+  cursor?: InputMaybe<GymImpPostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostLikeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
+};
+
+
+export type QueryFindFirstGymImpPostOrThrowArgs = {
+  cursor?: InputMaybe<GymImpPostWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<GymImpPostWhereInput>;
 };
 
 
@@ -3273,8 +3721,13 @@ export type QueryGetGymArgs = {
 };
 
 
-export type QueryGetGymImpressionPostArgs = {
-  where: GymImpressionPostWhereUniqueInput;
+export type QueryGetGymImpPostArgs = {
+  where: GymImpPostWhereUniqueInput;
+};
+
+
+export type QueryGetGymImpPostLikeArgs = {
+  where: GymImpPostLikeWhereUniqueInput;
 };
 
 
@@ -3318,13 +3771,23 @@ export type QueryGroupByGymArgs = {
 };
 
 
-export type QueryGroupByGymImpressionPostArgs = {
-  by: Array<GymImpressionPostScalarFieldEnum>;
-  having?: InputMaybe<GymImpressionPostScalarWhereWithAggregatesInput>;
-  orderBy?: InputMaybe<Array<GymImpressionPostOrderByWithAggregationInput>>;
+export type QueryGroupByGymImpPostArgs = {
+  by: Array<GymImpPostScalarFieldEnum>;
+  having?: InputMaybe<GymImpPostScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<GymImpPostOrderByWithAggregationInput>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+  where?: InputMaybe<GymImpPostWhereInput>;
+};
+
+
+export type QueryGroupByGymImpPostLikeArgs = {
+  by: Array<GymImpPostLikeScalarFieldEnum>;
+  having?: InputMaybe<GymImpPostLikeScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<GymImpPostLikeOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
 };
 
 
@@ -3393,18 +3856,33 @@ export type QueryGymArgs = {
 };
 
 
-export type QueryGymImpressionPostArgs = {
-  where: GymImpressionPostWhereUniqueInput;
+export type QueryGymImpPostArgs = {
+  where: GymImpPostWhereUniqueInput;
 };
 
 
-export type QueryGymImpressionPostsArgs = {
-  cursor?: InputMaybe<GymImpressionPostWhereUniqueInput>;
-  distinct?: InputMaybe<Array<GymImpressionPostScalarFieldEnum>>;
-  orderBy?: InputMaybe<Array<GymImpressionPostOrderByWithRelationInput>>;
+export type QueryGymImpPostLikeArgs = {
+  where: GymImpPostLikeWhereUniqueInput;
+};
+
+
+export type QueryGymImpPostLikesArgs = {
+  cursor?: InputMaybe<GymImpPostLikeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostLikeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostLikeOrderByWithRelationInput>>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<GymImpressionPostWhereInput>;
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
+};
+
+
+export type QueryGymImpPostsArgs = {
+  cursor?: InputMaybe<GymImpPostWhereUniqueInput>;
+  distinct?: InputMaybe<Array<GymImpPostScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<GymImpPostOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<GymImpPostWhereInput>;
 };
 
 
@@ -4224,14 +4702,14 @@ export type FindFirstGymQueryVariables = Exact<{
 }>;
 
 
-export type FindFirstGymQuery = { __typename?: 'Query', findFirstGym?: { __typename?: 'Gym', id: number, image?: string | null, name: string, updatedAt: any, createdAt: any, climbingType: ClimbingType, _count?: { __typename?: 'GymCount', impressionPosts: number } | null, impressionPosts: Array<{ __typename?: 'GymImpressionPost', id: number, createdAt: any, updatedAt: any, deletedAt?: any | null, userName: string, title: string, content: string }> } | null };
+export type FindFirstGymQuery = { __typename?: 'Query', findFirstGym?: { __typename?: 'Gym', id: number, image?: string | null, name: string, updatedAt: any, createdAt: any, climbingType: ClimbingType, _count?: { __typename?: 'GymCount', impPosts: number } | null, impPosts: Array<{ __typename?: 'GymImpPost', id: number, createdAt: any, updatedAt: any, deletedAt?: any | null, userName: string, title: string, content: string }> } | null };
 
-export type CreateOneGymImpressionPostMutationVariables = Exact<{
-  data: GymImpressionPostCreateInput;
+export type CreateOneGymImpPostMutationVariables = Exact<{
+  data: GymImpPostCreateInput;
 }>;
 
 
-export type CreateOneGymImpressionPostMutation = { __typename?: 'Mutation', createOneGymImpressionPost: { __typename?: 'GymImpressionPost', id: number } };
+export type CreateOneGymImpPostMutation = { __typename?: 'Mutation', createOneGymImpPost: { __typename?: 'GymImpPost', id: number } };
 
 export type GymsQueryVariables = Exact<{
   take?: InputMaybe<Scalars['Int']['input']>;
@@ -4240,7 +4718,7 @@ export type GymsQueryVariables = Exact<{
 }>;
 
 
-export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string, image?: string | null, createdAt: any, climbingType: ClimbingType, _count?: { __typename?: 'GymCount', impressionPosts: number } | null }> };
+export type GymsQuery = { __typename?: 'Query', gyms: Array<{ __typename?: 'Gym', id: number, name: string, image?: string | null, createdAt: any, climbingType: ClimbingType, _count?: { __typename?: 'GymCount', impPosts: number } | null }> };
 
 export type AggregateGymQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4667,7 +5145,7 @@ export const FindFirstGymDocument = gql`
     query FindFirstGym($where: GymWhereInput) {
   findFirstGym(where: $where) {
     _count {
-      impressionPosts
+      impPosts
     }
     id
     image
@@ -4675,7 +5153,7 @@ export const FindFirstGymDocument = gql`
     updatedAt
     createdAt
     climbingType
-    impressionPosts {
+    impPosts {
       id
       createdAt
       updatedAt
@@ -4715,44 +5193,44 @@ export function useFindFirstGymLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type FindFirstGymQueryHookResult = ReturnType<typeof useFindFirstGymQuery>;
 export type FindFirstGymLazyQueryHookResult = ReturnType<typeof useFindFirstGymLazyQuery>;
 export type FindFirstGymQueryResult = Apollo.QueryResult<FindFirstGymQuery, FindFirstGymQueryVariables>;
-export const CreateOneGymImpressionPostDocument = gql`
-    mutation CreateOneGymImpressionPost($data: GymImpressionPostCreateInput!) {
-  createOneGymImpressionPost(data: $data) {
+export const CreateOneGymImpPostDocument = gql`
+    mutation CreateOneGymImpPost($data: GymImpPostCreateInput!) {
+  createOneGymImpPost(data: $data) {
     id
   }
 }
     `;
-export type CreateOneGymImpressionPostMutationFn = Apollo.MutationFunction<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>;
+export type CreateOneGymImpPostMutationFn = Apollo.MutationFunction<CreateOneGymImpPostMutation, CreateOneGymImpPostMutationVariables>;
 
 /**
- * __useCreateOneGymImpressionPostMutation__
+ * __useCreateOneGymImpPostMutation__
  *
- * To run a mutation, you first call `useCreateOneGymImpressionPostMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateOneGymImpressionPostMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreateOneGymImpPostMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOneGymImpPostMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createOneGymImpressionPostMutation, { data, loading, error }] = useCreateOneGymImpressionPostMutation({
+ * const [createOneGymImpPostMutation, { data, loading, error }] = useCreateOneGymImpPostMutation({
  *   variables: {
  *      data: // value for 'data'
  *   },
  * });
  */
-export function useCreateOneGymImpressionPostMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>) {
+export function useCreateOneGymImpPostMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneGymImpPostMutation, CreateOneGymImpPostMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>(CreateOneGymImpressionPostDocument, options);
+        return Apollo.useMutation<CreateOneGymImpPostMutation, CreateOneGymImpPostMutationVariables>(CreateOneGymImpPostDocument, options);
       }
-export type CreateOneGymImpressionPostMutationHookResult = ReturnType<typeof useCreateOneGymImpressionPostMutation>;
-export type CreateOneGymImpressionPostMutationResult = Apollo.MutationResult<CreateOneGymImpressionPostMutation>;
-export type CreateOneGymImpressionPostMutationOptions = Apollo.BaseMutationOptions<CreateOneGymImpressionPostMutation, CreateOneGymImpressionPostMutationVariables>;
+export type CreateOneGymImpPostMutationHookResult = ReturnType<typeof useCreateOneGymImpPostMutation>;
+export type CreateOneGymImpPostMutationResult = Apollo.MutationResult<CreateOneGymImpPostMutation>;
+export type CreateOneGymImpPostMutationOptions = Apollo.BaseMutationOptions<CreateOneGymImpPostMutation, CreateOneGymImpPostMutationVariables>;
 export const GymsDocument = gql`
     query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
   gyms(take: $take, skip: $skip, orderBy: $orderBy) {
     _count {
-      impressionPosts
+      impPosts
     }
     id
     name

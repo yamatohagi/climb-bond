@@ -23,7 +23,7 @@ async function main() {
     ],
   });
 
-  const gymImpressionPost = await prisma.gymImpressionPost.createMany({
+  const gymImpPost = await prisma.gymImpPost.createMany({
     data: [
       {
         userName: 'John Doe',
@@ -36,6 +36,19 @@ async function main() {
         title: '何とか',
         content: '辛かったがテクニカルで面白い！',
         gymId: 2,
+      },
+    ],
+  });
+
+  const gymImpPostLike = await prisma.gymImpPostLike.createMany({
+    data: [
+      {
+        userId: 'ba4485fb-d976-3df1-414d-7ad587f8ed61',
+        gymImpPostId: 1,
+      },
+      {
+        userId: '967de4f7-a857-c5ff-0b2d-8abf95eab7c3',
+        gymImpPostId: 2,
       },
     ],
   });
@@ -155,7 +168,8 @@ async function main() {
   });
 
   console.log('Created gyms:', gyms);
-  console.log('Created gymImpressionPost:', gymImpressionPost);
+  console.log('Created gymImpPost:', gymImpPost);
+  console.log('Created gymImpPostLike:', gymImpPostLike);
   console.log('Created gymLike:', gymLike);
   console.log('Created posts:', posts);
   console.log('Created preferredDayAndTimes:', preferredDayAndTimes);

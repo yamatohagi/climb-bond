@@ -3,7 +3,7 @@ import {
   GymsDocument,
   GymsQueryResult,
   SortOrder,
-  useCreateOneGymImpressionPostMutation,
+  useCreateOneGymImpPostMutation,
 } from 'src/generated/graphql';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { RHFTextArea, RHFTextField } from 'src/components/hook-form';
@@ -12,8 +12,8 @@ import { useApolloClient } from '@apollo/client';
 import useReplyForm, { ReplyInput } from './hooks/useReplyForm';
 import { CreateReplyProps } from './ service/types';
 
-export default function CreateImpressionPost({ gymId, refetch, replyCount }: CreateReplyProps) {
-  const [createOneGymImpressionPostMutation] = useCreateOneGymImpressionPostMutation();
+export default function CreateImpPost({ gymId, refetch, replyCount }: CreateReplyProps) {
+  const [createOneGymImpPostMutation] = useCreateOneGymImpPostMutation();
   const client = useApolloClient();
   const methods = useReplyForm();
 
@@ -24,7 +24,7 @@ export default function CreateImpressionPost({ gymId, refetch, replyCount }: Cre
   } = methods;
 
   const handleReplySubmit = async (fv: ReplyInput) => {
-    const { errors } = await createOneGymImpressionPostMutation({
+    const { errors } = await createOneGymImpPostMutation({
       variables: {
         data: {
           ...fv,

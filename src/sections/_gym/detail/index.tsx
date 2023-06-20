@@ -5,7 +5,7 @@ import DetailCard from './component/DetailCard';
 import GymItemSkeleton from '../components/GymItemSkeleton';
 import ReplyItemSkeleton from './reply/ReplyItemSkeleton';
 import ReplyCards from './reply/ReplyCards';
-import CreateImpressionPost from './reply/CreateImpressionPost';
+import CreateImpPost from './reply/CreateImpPost';
 
 export default function ClimberPostDetail() {
   const router = useRouter();
@@ -24,15 +24,15 @@ export default function ClimberPostDetail() {
     <>
       {!loading && data ? <DetailCard gym={data?.findFirstGym} /> : <GymItemSkeleton />}
 
-      {data?.findFirstGym?.impressionPosts ? (
-        <ReplyCards impressionPosts={data?.findFirstGym?.impressionPosts} />
+      {data?.findFirstGym?.impPosts ? (
+        <ReplyCards impPosts={data?.findFirstGym?.impPosts} />
       ) : (
         <ReplyItemSkeleton />
       )}
-      <CreateImpressionPost
+      <CreateImpPost
         gymId={gymId}
         refetch={refetch}
-        replyCount={data?.findFirstGym?.impressionPosts.length || 0}
+        replyCount={data?.findFirstGym?.impPosts.length || 0}
       />
     </>
   );

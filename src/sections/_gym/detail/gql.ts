@@ -12,14 +12,25 @@ gql`
       updatedAt
       createdAt
       climbingType
-      impPosts {
+    }
+  }
+`;
+
+gql`
+  query GymImpPosts($where: GymImpPostWhereInput) {
+    gymImpPosts(where: $where) {
+      id
+      createdAt
+      updatedAt
+      deletedAt
+      userName
+      title
+      content
+      gymId
+      likes {
         id
-        createdAt
-        updatedAt
-        deletedAt
-        userName
-        title
-        content
+        userId
+        gymImpPostId
       }
     }
   }

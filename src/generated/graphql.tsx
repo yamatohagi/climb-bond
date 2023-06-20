@@ -4702,7 +4702,14 @@ export type FindFirstGymQueryVariables = Exact<{
 }>;
 
 
-export type FindFirstGymQuery = { __typename?: 'Query', findFirstGym?: { __typename?: 'Gym', id: number, image?: string | null, name: string, updatedAt: any, createdAt: any, climbingType: ClimbingType, _count?: { __typename?: 'GymCount', impPosts: number } | null, impPosts: Array<{ __typename?: 'GymImpPost', id: number, createdAt: any, updatedAt: any, deletedAt?: any | null, userName: string, title: string, content: string }> } | null };
+export type FindFirstGymQuery = { __typename?: 'Query', findFirstGym?: { __typename?: 'Gym', id: number, image?: string | null, name: string, updatedAt: any, createdAt: any, climbingType: ClimbingType, _count?: { __typename?: 'GymCount', impPosts: number } | null } | null };
+
+export type GymImpPostsQueryVariables = Exact<{
+  where?: InputMaybe<GymImpPostWhereInput>;
+}>;
+
+
+export type GymImpPostsQuery = { __typename?: 'Query', gymImpPosts: Array<{ __typename?: 'GymImpPost', id: number, createdAt: any, updatedAt: any, deletedAt?: any | null, userName: string, title: string, content: string, gymId: number, likes: Array<{ __typename?: 'GymImpPostLike', id: number, userId: string, gymImpPostId?: number | null }> }> };
 
 export type CreateOneGymImpPostMutationVariables = Exact<{
   data: GymImpPostCreateInput;
@@ -4710,6 +4717,20 @@ export type CreateOneGymImpPostMutationVariables = Exact<{
 
 
 export type CreateOneGymImpPostMutation = { __typename?: 'Mutation', createOneGymImpPost: { __typename?: 'GymImpPost', id: number } };
+
+export type CreateOneGymImpPostLikeMutationVariables = Exact<{
+  data: GymImpPostLikeCreateInput;
+}>;
+
+
+export type CreateOneGymImpPostLikeMutation = { __typename?: 'Mutation', createOneGymImpPostLike: { __typename?: 'GymImpPostLike', id: number, userId: string, gymImpPostId?: number | null } };
+
+export type DeleteManyGymImpPostLikeMutationVariables = Exact<{
+  where?: InputMaybe<GymImpPostLikeWhereInput>;
+}>;
+
+
+export type DeleteManyGymImpPostLikeMutation = { __typename?: 'Mutation', deleteManyGymImpPostLike: { __typename?: 'AffectedRowsOutput', count: number } };
 
 export type GymsQueryVariables = Exact<{
   take?: InputMaybe<Scalars['Int']['input']>;
@@ -5153,15 +5174,6 @@ export const FindFirstGymDocument = gql`
     updatedAt
     createdAt
     climbingType
-    impPosts {
-      id
-      createdAt
-      updatedAt
-      deletedAt
-      userName
-      title
-      content
-    }
   }
 }
     `;
@@ -5193,6 +5205,53 @@ export function useFindFirstGymLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type FindFirstGymQueryHookResult = ReturnType<typeof useFindFirstGymQuery>;
 export type FindFirstGymLazyQueryHookResult = ReturnType<typeof useFindFirstGymLazyQuery>;
 export type FindFirstGymQueryResult = Apollo.QueryResult<FindFirstGymQuery, FindFirstGymQueryVariables>;
+export const GymImpPostsDocument = gql`
+    query GymImpPosts($where: GymImpPostWhereInput) {
+  gymImpPosts(where: $where) {
+    id
+    createdAt
+    updatedAt
+    deletedAt
+    userName
+    title
+    content
+    gymId
+    likes {
+      id
+      userId
+      gymImpPostId
+    }
+  }
+}
+    `;
+
+/**
+ * __useGymImpPostsQuery__
+ *
+ * To run a query within a React component, call `useGymImpPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGymImpPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGymImpPostsQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useGymImpPostsQuery(baseOptions?: Apollo.QueryHookOptions<GymImpPostsQuery, GymImpPostsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GymImpPostsQuery, GymImpPostsQueryVariables>(GymImpPostsDocument, options);
+      }
+export function useGymImpPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GymImpPostsQuery, GymImpPostsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GymImpPostsQuery, GymImpPostsQueryVariables>(GymImpPostsDocument, options);
+        }
+export type GymImpPostsQueryHookResult = ReturnType<typeof useGymImpPostsQuery>;
+export type GymImpPostsLazyQueryHookResult = ReturnType<typeof useGymImpPostsLazyQuery>;
+export type GymImpPostsQueryResult = Apollo.QueryResult<GymImpPostsQuery, GymImpPostsQueryVariables>;
 export const CreateOneGymImpPostDocument = gql`
     mutation CreateOneGymImpPost($data: GymImpPostCreateInput!) {
   createOneGymImpPost(data: $data) {
@@ -5226,6 +5285,74 @@ export function useCreateOneGymImpPostMutation(baseOptions?: Apollo.MutationHook
 export type CreateOneGymImpPostMutationHookResult = ReturnType<typeof useCreateOneGymImpPostMutation>;
 export type CreateOneGymImpPostMutationResult = Apollo.MutationResult<CreateOneGymImpPostMutation>;
 export type CreateOneGymImpPostMutationOptions = Apollo.BaseMutationOptions<CreateOneGymImpPostMutation, CreateOneGymImpPostMutationVariables>;
+export const CreateOneGymImpPostLikeDocument = gql`
+    mutation CreateOneGymImpPostLike($data: GymImpPostLikeCreateInput!) {
+  createOneGymImpPostLike(data: $data) {
+    id
+    userId
+    gymImpPostId
+  }
+}
+    `;
+export type CreateOneGymImpPostLikeMutationFn = Apollo.MutationFunction<CreateOneGymImpPostLikeMutation, CreateOneGymImpPostLikeMutationVariables>;
+
+/**
+ * __useCreateOneGymImpPostLikeMutation__
+ *
+ * To run a mutation, you first call `useCreateOneGymImpPostLikeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOneGymImpPostLikeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOneGymImpPostLikeMutation, { data, loading, error }] = useCreateOneGymImpPostLikeMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateOneGymImpPostLikeMutation(baseOptions?: Apollo.MutationHookOptions<CreateOneGymImpPostLikeMutation, CreateOneGymImpPostLikeMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOneGymImpPostLikeMutation, CreateOneGymImpPostLikeMutationVariables>(CreateOneGymImpPostLikeDocument, options);
+      }
+export type CreateOneGymImpPostLikeMutationHookResult = ReturnType<typeof useCreateOneGymImpPostLikeMutation>;
+export type CreateOneGymImpPostLikeMutationResult = Apollo.MutationResult<CreateOneGymImpPostLikeMutation>;
+export type CreateOneGymImpPostLikeMutationOptions = Apollo.BaseMutationOptions<CreateOneGymImpPostLikeMutation, CreateOneGymImpPostLikeMutationVariables>;
+export const DeleteManyGymImpPostLikeDocument = gql`
+    mutation DeleteManyGymImpPostLike($where: GymImpPostLikeWhereInput) {
+  deleteManyGymImpPostLike(where: $where) {
+    count
+  }
+}
+    `;
+export type DeleteManyGymImpPostLikeMutationFn = Apollo.MutationFunction<DeleteManyGymImpPostLikeMutation, DeleteManyGymImpPostLikeMutationVariables>;
+
+/**
+ * __useDeleteManyGymImpPostLikeMutation__
+ *
+ * To run a mutation, you first call `useDeleteManyGymImpPostLikeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteManyGymImpPostLikeMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteManyGymImpPostLikeMutation, { data, loading, error }] = useDeleteManyGymImpPostLikeMutation({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useDeleteManyGymImpPostLikeMutation(baseOptions?: Apollo.MutationHookOptions<DeleteManyGymImpPostLikeMutation, DeleteManyGymImpPostLikeMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteManyGymImpPostLikeMutation, DeleteManyGymImpPostLikeMutationVariables>(DeleteManyGymImpPostLikeDocument, options);
+      }
+export type DeleteManyGymImpPostLikeMutationHookResult = ReturnType<typeof useDeleteManyGymImpPostLikeMutation>;
+export type DeleteManyGymImpPostLikeMutationResult = Apollo.MutationResult<DeleteManyGymImpPostLikeMutation>;
+export type DeleteManyGymImpPostLikeMutationOptions = Apollo.BaseMutationOptions<DeleteManyGymImpPostLikeMutation, DeleteManyGymImpPostLikeMutationVariables>;
 export const GymsDocument = gql`
     query Gyms($take: Int, $skip: Int, $orderBy: [GymOrderByWithRelationInput!]) {
   gyms(take: $take, skip: $skip, orderBy: $orderBy) {

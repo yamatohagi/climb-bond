@@ -30,7 +30,7 @@ export default function GymImpPostCards({
               {timeAgo}
             </Typography>
             <Stack spacing={0.5} sx={{ mt: 2 }}>
-              <Typography variant="body1" sx={{ color: 'text.disabled' }}>
+              <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                 {impPost.content}
               </Typography>
             </Stack>

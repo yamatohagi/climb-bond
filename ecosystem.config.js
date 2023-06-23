@@ -26,7 +26,7 @@ module.exports = {
       key: '~/.ssh/deploy.key', // SSHキーのパス
       ref: 'origin/main', // デプロイするブランチ
       repo: 'https://github.com/yamatohagi/climb-bond', // リポジトリのURL
-      path: '/home/ubuntu/climb-bond', // アプリケーションのデプロイ先のパス
+      path: '/home/yamatohagi/climb-bond', // アプリケーションのデプロイ先のパス
       'post-deploy':
         'pwd && ls && git log -n 1 && npm install && npm run build && pm2 restart climb-bond && pm2 save',
 

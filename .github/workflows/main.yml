@@ -41,6 +41,14 @@ jobs:
             npm ci
           fi
 
+      - name: Cache build cache
+        uses: actions/cache@v3
+        with:
+          path: .cache
+          key: ${{ runner.os }}-build-cache-${{ github.sha }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-cache-${{ github.sha }}-
+
       - name: Build project
         run: npm run build
 

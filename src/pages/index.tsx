@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>投稿 | Climb Bond</title>
+        <title>ジムイキタイ | Climb Bond</title>
       </Head>
 
       <ClimberPostsView />

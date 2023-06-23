@@ -48,9 +48,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .next
-          key: ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-next-${{ github.sha }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-next-
+            ${{ runner.os }}-next-${{ github.sha }}-
 
   deploy:
     needs: build
@@ -63,9 +63,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .next
-          key: ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-next-${{ github.sha }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-next-
+            ${{ runner.os }}-next-${{ github.sha }}-
 
       - name: Set up SSH
         run: |

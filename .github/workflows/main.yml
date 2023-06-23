@@ -76,7 +76,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Rsync files
-        run: rsync -avzr -e 'ssh -i ~/.ssh/deploy.key' --delete ./dist/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_APP_DIR }}
+        run: rsync -avzr -e 'ssh -i ~/.ssh/deploy.key' --delete ./.next/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_APP_DIR }}
 
       - name: Restart App
         run: |

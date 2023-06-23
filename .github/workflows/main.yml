@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18' # Node.js version
 
@@ -26,7 +26,7 @@ jobs:
           echo NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }} >> .env
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: npm-cache
         with:
           path: node_modules
@@ -44,7 +44,7 @@ jobs:
         run: npm run build
 
       - name: Cache production artifacts
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: .next
           key: ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}
@@ -56,10 +56,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Download cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: .next
           key: ${{ runner.os }}-next-${{ hashFiles('**/package-lock.json') }}

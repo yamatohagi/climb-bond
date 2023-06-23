@@ -21,7 +21,7 @@ module.exports = {
   ],
   deploy: {
     production: {
-      user: 'yamatohagi', // サーバーのユーザー名
+      user: 'ubuntu', // サーバーのユーザー名
       host: '35.233.149.73', // サーバーのホスト
       key: '~/.ssh/deploy.key', // SSHキーのパス
       ref: 'origin/main', // デプロイするブランチ

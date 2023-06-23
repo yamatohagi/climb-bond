@@ -45,16 +45,15 @@ export const LikeButton = ({
             query: GymImpPostsDocument,
             variables: gymImpPostsQueryVariables,
           });
-
-          const updatedPosts = cacheData?.gymImpPosts.map((gymImpPost) =>
-            gymImpPost.id === postId
-              ? {
-                  ...gymImpPost,
-                  likes: gymImpPost.likes.filter((like) => like.userId !== gestInfo.key),
-                }
-              : gymImpPost
-          );
-          client.cache.writeQuery({
+          if (!cacheData) return;
+          const updatedPosts = cacheData?.gymImpPosts.map((gymImpPost) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { likes, ...rest } = gymImpPost;
+            return gymImpPost.id === postId
+              ? { ...rest, likes: gymImpPost?.likes.filter((like) => like.userId !== gestInfo.key) }
+              : gymImpPost;
+          });
+          client.cache.writeQuery<GymImpPostsQuery>({
             query: GymImpPostsDocument,
             data: { gymImpPosts: updatedPosts },
           });

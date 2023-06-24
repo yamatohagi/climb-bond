@@ -2,7 +2,7 @@ import 'reflect-metadata';
 
 import path from 'path';
 import { buildSchemaSync } from 'type-graphql';
-import { resolvers } from '@generated/type-graphql';
+import { resolvers } from '../prisma/generated/type-graphql';
 
 buildSchemaSync({
   resolvers,

@@ -7,7 +7,6 @@ import { Box, Card, Stack, Typography } from '@mui/material';
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import TextMaxLine from 'src/components/text-max-line';
-import { LikeButton } from 'src/sections/_climber/posts/components/like-button';
 
 const DetailCard = ({ gym }: { gym: FindFirstGymQuery['findFirstGym'] }) => {
   if (!gym) return null;

@@ -2,7 +2,6 @@ import { memo } from 'react';
 // next
 import NextLink from 'next/link';
 
-import { useTheme } from '@mui/material/styles';
 import { Box, BoxProps, Link } from '@mui/material';
 import Image from 'next/image';
 
@@ -11,10 +10,6 @@ interface LogoProps extends BoxProps {
 }
 
 function Logo({ single = false, sx }: LogoProps) {
-  const theme = useTheme();
-
-  const PRIMARY_MAIN = theme.palette.primary.main;
-
   const singleLogo = (
     <Image
       alt="500"

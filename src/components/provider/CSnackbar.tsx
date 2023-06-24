@@ -22,7 +22,7 @@ export const CSnackbar: React.FC<{}> = () => {
         horizontal: 'right',
       }}
       open={open}
-      autoHideDuration={3000}
+      autoHideDuration={4000}
       onClose={handleClose}
       action={
         <IconButton size="small" aria-label="close" color={color} onClick={handleClose}>

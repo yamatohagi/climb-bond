@@ -1,6 +1,11 @@
 import { Button, DialogTitle, DialogContent, DialogActions, Grid, Dialog } from '@mui/material';
 import { Box } from '@mui/system';
-import { RHFMultiCheckboxAddGrid, RHFSelectBox, RHFTextField } from 'src/components/hook-form';
+import {
+  RHFMultiCheckboxAddGrid,
+  RHFSelectBox,
+  RHFTextArea,
+  RHFTextField,
+} from 'src/components/hook-form';
 import FormProvider from 'src/components/hook-form/FormProvider';
 import { ClimbingType } from '@prisma/client';
 import Iconify from 'src/components/iconify/Iconify';
@@ -37,7 +42,6 @@ export default function ClimberPostCreateModal({
   } = methods;
 
   const onSubmit = async (params: PostInput) => {
-    console.log(Number(params.gymId));
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { gymId, ...otherParams } = params;
     const { errors } = await createOnePostMutation({
@@ -55,6 +59,7 @@ export default function ClimberPostCreateModal({
     });
     if (errors) return;
     refetch();
+    methods.reset();
     onClose();
   };
 
@@ -66,12 +71,15 @@ export default function ClimberPostCreateModal({
           <Box>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <RHFTextField size="small" name="title" label="ひとこと" />
+                <RHFTextField size="small" name="title" label="タイトル" />
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <RHFTextArea size="small" name="content" label="本文" />
               </Grid>
               {/* <Grid item xs={12}>
                     <RHFTextField name="content" label="Content" multiline rows={4} required />
                   </Grid> */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <RHFSelectBox
                   size="small"
                   name="climbingType"
@@ -162,10 +170,10 @@ const generateGrades = () => {
 
 function generateMonths() {
   const months = [];
-  for (let i = 0; i <= 12; i++) {
+  for (let i = 0; i <= 11; i++) {
     months.push({ value: i, label: `${i}ヶ月` });
   }
-  for (let i = 1.5; i < 2; i += 0.5) {
+  for (let i = 1; i < 2; i += 0.5) {
     months.push({ value: i * 12, label: `${i}年` });
   }
 

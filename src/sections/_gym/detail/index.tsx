@@ -21,7 +21,11 @@ export default function ClimberPostDetail() {
     skip: !gymId,
   });
 
-  const { data: gymImpPost, loading: gymImpPostLoading } = useGymImpPostsQuery({
+  const {
+    data: gymImpPost,
+    loading: gymImpPostLoading,
+    refetch: gymImpPostRefetch,
+  } = useGymImpPostsQuery({
     variables: gymImpPostsQueryVariables,
     skip: !gymId,
   });
@@ -37,7 +41,10 @@ export default function ClimberPostDetail() {
       )}
       <CreateImpPost
         gymId={gymId}
-        refetch={refetch}
+        refetch={() => {
+          refetch();
+          gymImpPostRefetch();
+        }}
         replyCount={gymImpPost?.gymImpPosts.length || 0}
       />
     </>

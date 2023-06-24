@@ -2,7 +2,7 @@ import { useStoreState, useStoreActions } from 'easy-peasy';
 import * as React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 
 import { Model } from './snackbarStore';
 import Iconify from '../iconify/Iconify';

@@ -112,5 +112,7 @@ enum ClimbingType {
 }
 
 generator typegraphql {
-  provider = "typegraphql-prisma"
+  provider            = "typegraphql-prisma"
+  output              = "../prisma/generated/type-graphql"
+  formatGeneratedCode = false
 }

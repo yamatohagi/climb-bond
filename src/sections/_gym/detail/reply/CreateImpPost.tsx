@@ -1,4 +1,4 @@
-import { Box, Card, Grid } from '@mui/material';
+import { Box, Card, Grid, Typography } from '@mui/material';
 import {
   GymsDocument,
   GymsQueryResult,
@@ -54,6 +54,7 @@ export default function CreateImpPost({ gymId, refetch, replyCount }: CreateRepl
     <Box sx={{ mt: 2, mb: 3 }}>
       <Card sx={{ padding: 2 }}>
         <FormProvider methods={methods} onSubmit={handleSubmit(handleReplySubmit)}>
+          <Typography variant="h6">新規投稿</Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
               <RHFTextField size="small" name="userName" label="なまえ" />
@@ -62,7 +63,6 @@ export default function CreateImpPost({ gymId, refetch, replyCount }: CreateRepl
               <RHFTextArea size="small" name="content" label="内容" />
             </Grid>
           </Grid>
-
           <LoadingButton
             loading={isSubmitting}
             type="submit"

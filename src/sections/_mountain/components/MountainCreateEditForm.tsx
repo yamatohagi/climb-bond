@@ -1,8 +1,9 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, TextField, Typography } from '@mui/material';
 import FormProvider from 'src/components/hook-form/FormProvider';
-import { RHFTextArea, RHFTextField } from 'src/components/hook-form';
+import { RHFTextArea } from 'src/components/hook-form';
 import { LoadingButton } from '@mui/lab';
-import useMountainForm from '../hooks/useMountainForm';
+import useResponsive from 'src/hooks/useResponsive';
+import RequiredTag from 'src/components/ui/RequiredTag';
 
 export default function MountainCreateEditForm({ handleReplySubmit, methods }: any) {
   const {
@@ -10,13 +11,31 @@ export default function MountainCreateEditForm({ handleReplySubmit, methods }: a
     handleSubmit,
     formState: { isSubmitting, errors: formErrors },
   } = methods;
+  const isMdUp = useResponsive('up', 'md');
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(handleReplySubmit)}>
-      <Typography variant="h6">新規投稿</Typography>
+      <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>
+        山情報を登録
+      </Typography>
+      <Typography variant="body2" sx={{ mb: 2 }}>
+        山情報の登録の協力をお願いします。 入力項目が多数あるので、可能な範囲で構いません。
+        <br /> <br />
+        一度登録した後は、山イキタイのユーザーなら誰でも編集することができます。
+        <br /> <br />
+        既に同じ山が登録されている場合は後から登録したページは削除されますのでご注意ください。
+      </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
-          <RHFTextField size="small" name="userName" label="なまえ" />
+        <Grid item xs={12} sm={12}>
+          <Typography
+            variant={isMdUp ? 'subtitle1' : 'subtitle2'}
+            color="text.secondary"
+            align="left"
+            sx={{ pl: 0.5, mb: 0.3 }}
+          >
+            <RequiredTag /> 名称
+          </Typography>
+          <TextField size="small" name="userName" placeholder="例：たなか たろう" />
         </Grid>
         <Grid item xs={12} sm={12}>
           <RHFTextArea size="small" name="content" label="内容" />

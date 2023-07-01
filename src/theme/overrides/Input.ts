@@ -33,16 +33,16 @@ export default function Input(theme: Theme) {
       },
     },
     MuiTextField: {
-      defaultProps: {
-        variant: 'filled',
-      },
-      styleOverrides: {
-        root: {
-          '& .MuiInputLabel-root.Mui-focused': {
-            color: theme.palette.text.primary,
-          },
-        },
-      },
+      // defaultProps: {
+      //   variant: 'filled',
+      // },
+      // styleOverrides: {
+      //   root: {
+      //     '& .MuiInputLabel-root.Mui-focused': {
+      //       color: theme.palette.text.primary,
+      //     },
+      //   },
+      // },
     },
     MuiFilledInput: {
       defaultProps: {
@@ -72,12 +72,14 @@ export default function Input(theme: Theme) {
         root: {
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: alpha(theme.palette.grey[500], 0.32),
+            borderWidth: '3px',
+            borderRadius: '8bx',
           },
-          '&.Mui-focused': {
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: theme.palette.text.primary,
-            },
-          },
+          // '&.Mui-focused': {
+          //   '& .MuiOutlinedInput-notchedOutline': {
+          //     borderColor: theme.palette.text.primary,
+          //   },
+          // },
           '&.Mui-disabled': {
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: theme.palette.action.disabledBackground,

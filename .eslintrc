@@ -4,8 +4,14 @@
     "browser": true,
     "es2021": true
   },
-  "plugins": ["@typescript-eslint", "prettier"],
-  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier"],
+  "plugins": ["@typescript-eslint", "prettier", "tailwindcss"],
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "prettier",
+    "plugin:tailwindcss/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -17,6 +23,10 @@
     "warnOnUnsupportedTypeScriptVersion": false
   },
   "settings": {
+    "tailwindcss": {
+      "callees": ["cn", "cva"],
+      "config": "tailwind.config.cjs"
+    },
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true
@@ -24,6 +34,9 @@
     }
   },
   "rules": {
+    "@next/next/no-html-link-for-pages": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "error",
     "no-alert": 0,
     "camelcase": 0,
     "no-console": 0,

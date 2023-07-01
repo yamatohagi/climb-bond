@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "target": "es2018",
     "lib": ["es2018", "esnext.asynciterable", "dom", "dom.iterable", "esnext"],
     "experimentalDecorators": true,

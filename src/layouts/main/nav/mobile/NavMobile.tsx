@@ -35,8 +35,8 @@ export default function NavMobile({ data }: NavProps) {
 
   return (
     <>
-      <IconButton onClick={handleOpen} sx={{ ml: 1, color: 'inherit' }}>
-        <Iconify icon="carbon:menu" />
+      <IconButton onClick={handleOpen} sx={{ color: 'inherit', width: '32px', height: '32px' }}>
+        <Iconify icon="clarity:menu-line" width={25} />
       </IconButton>
 
       <Drawer
@@ -44,13 +44,16 @@ export default function NavMobile({ data }: NavProps) {
         onClose={handleClose}
         PaperProps={{
           sx: {
-            pb: 5,
+            pb: 4,
             width: NAV.W_BASE,
           },
         }}
       >
         <Scrollbar>
-          <Logo sx={{ mx: 2.5, my: 3 }} />
+          {/* <Logo sx={{ mx: 2.5, my: 3 }} /> */}
+          <IconButton onClick={handleClose} sx={{ mx: 1.5, my: 1 }}>
+            <Iconify icon="fe:close" width={27} />
+          </IconButton>
 
           <List component="nav" disablePadding>
             {data.map((link) => (

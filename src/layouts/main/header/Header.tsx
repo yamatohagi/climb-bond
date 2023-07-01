@@ -29,7 +29,13 @@ export default function Header({ headerOnDark }: Props) {
   const isOffset = useOffSetTop();
 
   return (
-    <AppBar color="transparent" sx={{ boxShadow: 'none' }}>
+    <AppBar
+      color="transparent"
+      sx={{
+        boxShadow: '0px 1px 8px 0px rgba(0, 0, 0, 0.05)',
+        height: isMdUp ? '70px' : '56px',
+      }}
+    >
       <Toolbar
         disableGutters
         sx={{
@@ -53,32 +59,62 @@ export default function Header({ headerOnDark }: Props) {
           }),
         }}
       >
-        <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
-          <Box sx={{ lineHeight: 0, position: 'relative' }}>
-            <Logo />
-          </Box>
+        {isMdUp ? (
+          <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ lineHeight: 0, position: 'relative' }}>
+              <Logo />
+            </Box>
 
-          {isMdUp && <NavDesktop data={navConfig} />}
+            {isMdUp && <NavDesktop data={navConfig} />}
 
-          <Stack
-            spacing={2}
-            flexGrow={1}
-            direction="row"
-            alignItems="center"
-            justifyContent="flex-end"
-          >
-            <Stack spacing={1} direction="row" alignItems="center">
-              <Searchbar />
-
-              <SettingsDrawer />
+            <Stack
+              spacing={2}
+              flexGrow={1}
+              direction="row"
+              alignItems="center"
+              justifyContent="flex-end"
+            >
+              <Stack spacing={1} direction="row" alignItems="center">
+                <SettingsDrawer />
+                <Searchbar />
+              </Stack>
             </Stack>
-          </Stack>
 
-          {!isMdUp && <NavMobile data={navConfig} />}
-        </Container>
+            {!isMdUp && <NavMobile data={navConfig} />}
+          </Container>
+        ) : (
+          <Container
+            sx={{
+              height: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+              <NavMobile data={navConfig} />
+            </Box>
+            <Box sx={{ lineHeight: 0, position: 'relative' }}>
+              <Logo />
+            </Box>
+            <Stack
+              spacing={2}
+              flexGrow={1}
+              direction="row"
+              alignItems="center"
+              justifyContent="flex-end"
+              sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}
+            >
+              <Stack spacing={1} direction="row" alignItems="center">
+                <SettingsDrawer />
+                <Searchbar />
+              </Stack>
+            </Stack>
+          </Container>
+        )}
       </Toolbar>
 
-      {isOffset && <HeaderShadow />}
+      {/* {true && <HeaderShadow />} */}
     </AppBar>
   );
 }

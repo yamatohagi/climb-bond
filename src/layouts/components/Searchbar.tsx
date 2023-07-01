@@ -54,7 +54,7 @@ export default function Searchbar({ sx }: SearchbarProps) {
     <ClickAwayListener onClickAway={handleClose}>
       <div>
         <IconButton color="inherit" aria-label="search" onClick={handleOpen} sx={sx}>
-          <Iconify icon="carbon:search" />
+          <Iconify icon="iconamoon:search-light" width={24} color="#4B4B4B" />
         </IconButton>
 
         <Slide direction="down" in={open} mountOnEnter unmountOnExit>

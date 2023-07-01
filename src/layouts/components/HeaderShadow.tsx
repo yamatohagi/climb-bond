@@ -11,10 +11,10 @@ export default function HeaderShadow({ sx, ...other }: BoxProps) {
         height: 24,
         zIndex: -1,
         m: 'auto',
-        borderRadius: '50%',
+        borderRadius: '5%',
         position: 'absolute',
         width: `calc(100% - 48px)`,
-        boxShadow: (theme) => theme.customShadows.z8,
+        boxShadow: (theme) => theme.customShadows.z4,
         ...sx,
       }}
       {...other}

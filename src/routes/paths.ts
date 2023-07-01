@@ -5,6 +5,10 @@ export const paths = {
   gym: {
     index: '/gyms',
   },
+  mountain: {
+    index: '/mountains',
+    create: '/mountains/create',
+  },
 
   page404: '/404',
   page500: '/500',

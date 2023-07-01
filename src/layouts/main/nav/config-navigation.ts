@@ -14,5 +14,5 @@ export const pageLinks = [
 
 export const navConfig = [
   { title: 'Home', path: '/' },
-  { title: 'Gyms', path: paths.gym.index },
+  { title: '山を登録する', path: paths.mountain.create },
 ];

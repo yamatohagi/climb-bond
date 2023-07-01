@@ -2,7 +2,8 @@
 import Head from 'next/head';
 // layouts
 import MainLayout from 'src/layouts/main';
-import ClimberPostsView from 'src/sections/_climber/view/ClimberPostsView';
+
+import HomeView from 'src/sections/_home/view/HomeView';
 // sections
 
 HomePage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
@@ -14,7 +15,7 @@ export default function HomePage() {
         <title>ジムイキタイ | Climb Bond</title>
       </Head>
 
-      <ClimberPostsView />
+      <HomeView />
     </>
   );
 }

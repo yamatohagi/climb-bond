@@ -1,20 +1,20 @@
-import * as Popover from '@radix-ui/react-popover';
-import { css } from 'styled-system/css';
+// next
+import Head from 'next/head';
+// layouts
+import MainLayout from 'src/layouts/main';
+import MountainCreateView from 'src/sections/_mountain/view/MountainCreateView';
+// sections
 
-const PopoverDemo = () => (
-  <Popover.Root>
-    <Popover.Trigger
-      className={css({ fontSize: '2xl', fontWeight: { base: 'bold', sm: 'lighter' } })}
-    >
-      Show info
-    </Popover.Trigger>
-    <Popover.Portal>
-      <Popover.Content className="PopoverContent">
-        Some content
-        <Popover.Arrow className="PopoverArrow" />
-      </Popover.Content>
-    </Popover.Portal>
-  </Popover.Root>
-);
+GymListPage.getLayout = (page: any) => <MainLayout>{page}</MainLayout>;
 
-export default PopoverDemo;
+export default function GymListPage() {
+  return (
+    <>
+      <Head>
+        <title>山の登録 - ヤマイキタイ</title>
+      </Head>
+
+      <MountainCreateView />
+    </>
+  );
+}

@@ -4,12 +4,12 @@ const RequiredTag = () => (
   <Box
     component="span"
     sx={{
-      backgroundColor: 'error.main',
+      backgroundColor: '#FF4545',
       color: 'white',
       borderRadius: '4px',
-      padding: '2px 4px',
+      padding: '3px 5px',
       fontWeight: 'bold',
-      fontSize: 11,
+      fontSize: 10,
       mr: 0.3,
     }}
   >

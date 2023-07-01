@@ -7,7 +7,6 @@ import RequiredTag from 'src/components/ui/RequiredTag';
 
 export default function MountainCreateEditForm({ handleReplySubmit, methods }: any) {
   const {
-    reset,
     handleSubmit,
     formState: { isSubmitting, errors: formErrors },
   } = methods;
@@ -29,16 +28,24 @@ export default function MountainCreateEditForm({ handleReplySubmit, methods }: a
         <Grid item xs={12} sm={12}>
           <Typography
             variant={isMdUp ? 'subtitle1' : 'subtitle2'}
-            color="text.secondary"
+            color="#212121"
             align="left"
-            sx={{ pl: 0.5, mb: 0.3 }}
+            sx={{ pl: 0.5, mb: 0.5 }}
           >
             <RequiredTag /> 名称
           </Typography>
           <TextField size="small" name="userName" placeholder="例：たなか たろう" />
         </Grid>
         <Grid item xs={12} sm={12}>
-          <RHFTextArea size="small" name="content" label="内容" />
+          <Typography
+            variant={isMdUp ? 'subtitle1' : 'subtitle2'}
+            color="#212121"
+            align="left"
+            sx={{ pl: 0.5, mb: 0.5 }}
+          >
+            <RequiredTag /> 備考
+          </Typography>
+          <RHFTextArea size="small" name="content" />
         </Grid>
       </Grid>
       <LoadingButton

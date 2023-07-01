@@ -31,6 +31,7 @@ import useGtm from 'src/hooks/useGtm';
 import { StoreProvider } from 'easy-peasy';
 import { CSnackbar } from 'src/components/provider/CSnackbar';
 import { snackbarStore } from 'src/components/provider/snackbarStore';
+import '../styles/globals.css';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;

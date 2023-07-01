@@ -5,6 +5,7 @@
   "description": "Next & TypeScript",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev -p 8002",
     "start": "next start",
     "build": "prisma generate && prisma db push && next build",
@@ -41,6 +42,7 @@
     "@mui/system": "^5.11.15",
     "@mui/x-date-pickers": "^6.0.3",
     "@prisma/client": "^4.15.0",
+    "@radix-ui/react-popover": "1.0.6",
     "@supabase/supabase-js": "^2.24.0",
     "@types/react-gtm-module": "^2.0.1",
     "@types/uuid": "^9.0.2",
@@ -79,6 +81,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "@babel/eslint-parser": "^7.21.3",
+    "@pandacss/dev": "^0.5.0",
     "@types/google-map-react": "^2.1.7",
     "@types/lodash.merge": "^4.6.7",
     "@types/node": "^18.15.11",
